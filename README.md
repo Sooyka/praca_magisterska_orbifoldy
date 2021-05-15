@@ -1,1 +1,1 @@
-# praca_magisterska_orbifoldy
+# Praca magisterska -- orbifoldy
