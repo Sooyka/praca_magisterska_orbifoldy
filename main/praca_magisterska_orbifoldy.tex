@@ -1,0 +1,62 @@
+\documentclass[a4paper, 12pt, twosided]{article}
+\synctex=1
+\usepackage{polski}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb}
+\usepackage[polish,english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{empheq}
+\usepackage{xcolor}
+\usepackage[pdftex,
+            pdfauthor={Bartosz Sójka},
+            pdftitle={Orbifoldy},
+        %    pdfsubject={Orbifoldy}
+            ]{hyperref}
+\usepackage{siunitx}
+\usepackage{geometry}
+%\setlength\parindent{0pt}
+
+%\topmargin = -1in
+
+%\geometry{a4paper, 
+%twoside,
+%%asymmetric,
+%top = 32mm,
+%bottom = 45mm,
+%inner = 35mm,
+%outer = 30mm}
+
+%\linespread{1.24}
+
+%top = 25mm,
+%bottom = 30mm,
+%inner = 30mm,
+%outer = 25mm
+
+\newtheorem{observation}{Observation}[subsection]
+\newtheorem{definition}[observation]{Definicja}
+\newtheorem{theorem}[observation]{Twierdzenie}
+\newtheorem{lemma}[observation]{Lemat}
+
+\newcommand{\todo}[1]{\hfill \break \textbf{\Huge \textcolor{violet}{TO DO: #1} \hfill \break}
+\normalsize}
+\newcommand{\content}[1]{\hfill \break \textbf{\large \textcolor{violet}{#1} \hfill \break}
+\normalsize}
+\newcommand{\smalltodo}[1]{\textbf{\ \textcolor{violet}{To do}}}
+\newcommand{\smalltodoII}[1]{\hfill \break \textbf{\ \textcolor{violet}{To do: #1}}\hfill \break}
+\newcommand{\rysunek}[1]{\hfill \break\\[16pt] \Huge \textbf{\textcolor{violet}{Brakujący rysunek 
+\normalsize
+#1}} \hfill
+\break \\[16pt] \normalsize}
+
+\title{Orbifoldy}
+\author{Bartosz Sójka}
+%\date{}
+\begin{document}
+\input{"../title_page/title_page.tex"}
+\end{document}
+
