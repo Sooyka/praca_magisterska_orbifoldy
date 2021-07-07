@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt, twosided]{article}
+\documentclass[a4paper, 12pt, twosided]{report}
 \synctex=1
 \usepackage{polski}
 \usepackage[T1]{fontenc}
@@ -18,17 +18,19 @@
             ]{hyperref}
 \usepackage{siunitx}
 \usepackage{geometry}
+\usepackage{lipsum}
 %\setlength\parindent{0pt}
 
 %\topmargin = -1in
 
-%\geometry{a4paper, 
-%twoside,
-%%asymmetric,
-%top = 32mm,
-%bottom = 45mm,
-%inner = 35mm,
-%outer = 30mm}
+\geometry{a4paper, 
+twoside,
+%asymmetric,
+top = 25mm,
+bottom = 40mm,
+inner = 35mm,
+outer = 25mm
+}
 
 %\linespread{1.24}
 
@@ -38,9 +40,9 @@
 %outer = 25mm
 
 \newtheorem{observation}{Observation}[subsection]
-\newtheorem{definition}[observation]{Definicja}
-\newtheorem{theorem}[observation]{Twierdzenie}
-\newtheorem{lemma}[observation]{Lemat}
+\newtheorem{definition}[observation]{Definition}
+\newtheorem{theorem}[observation]{Theorem}
+\newtheorem{lemma}[observation]{Lemma}
 
 \newcommand{\todo}[1]{\hfill \break \textbf{\Huge \textcolor{violet}{TO DO: #1} \hfill \break}
 \normalsize}
@@ -58,5 +60,19 @@
 %\date{}
 \begin{document}
 \input{"../title_page/title_page.tex"}
+\tableofcontents
+\begin{abstract}
+\begin{center}
+Orbifolds! Yeah! \\
+Spectrums! Yeah!
+\end{center}
+\end{abstract}
+\input{"../introduction/introduction.tex"}
+\input{"../different_definitions_of_an_orbifold/different_definitions_of_an_orbifold.tex"}
+\input{"../order_structure/order_structure.tex"}
+\input{"../decidability/decidability.tex"}
+\input{"../connection_with_modular_forms/connection_with_modular_forms.tex"}
+\input{"../conclusions/conclusions.tex"}
+\input{"../bibliography/bibliography.tex"}
 \end{document}
 
