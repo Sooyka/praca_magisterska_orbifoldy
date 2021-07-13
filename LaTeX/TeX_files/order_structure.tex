@@ -25,6 +25,100 @@ orbicharacteristic is well defined
 when we specify only such a type of the components of the boundry of an orbifold and not 
 a particular cyclic order.  \\
 
-\section{}
+\section{Reductions of cases}
+Now we want to make some reductions to limit number of cases that we will be dealing with. \\
+For this chapter we will consider orbifolds according to a definition from 
+(\ref{Disk_and_sphere_with_defects}). \\
+Let us observe, that:
+\begin{align*}
+\hspace{3cm}\Delta(\circ) =& \hspace{-1cm} &-2& \hspace{-1cm} &= \Delta(*(^*2)^4) \\
+\hspace{3cm}\Delta(*) =& \hspace{-1cm} &-1& \hspace{-1cm} &= \Delta((^*2)^4) \\
+\hspace{3cm}\Delta(n) =& \hspace{-1cm} &\frac{n-1}{n}& \hspace{-1cm} &= \Delta((^*n)^2)
+\end{align*}
+
+From this we can conclude, that every Euler orbicharacteristic can be obtained 
+by an orbifold of signature of a type ($n$ and $m$ are arbitrary):
+
+\begin{align*}
+I_1I_2\dots I_n & \textrm{or} \\
+*b_1b_2\dots b_m &.
+\end{align*}
+
+Let us denote the set of all possible Euler orbicharacteristics of orbifolds of the form 
+$I_1I_2\dots I_n$ by $\sIS$ and the set 
+of all possible Euler orbicharacteristics of orbifolds of the form $*b_1b_2\dots b_m$ 
+as $\sbD$
+
+Let us observe that the topological structure of $\sIS$ and $\sbD$ are the same since 
+
+\begin{equation*}
+2\sbD=\sIS
+\end{equation*}
+So multiplying by $2$ is the homeomorphism. 
+\section{Determining the order structure}
+In this chapter we will justify, that the order type of all possible Euler orbicharacteristics 
+of two dimentional orbifolds is $\omega^\omega$. 
+We will also describe precisely where condensation points lie and of which order 
+(see below \ref{condensation_points_definitions}) they are.
+\subsection{Definitions regarding order of condensation points}
+\label{condensation_points_definitions} 
+We start with one technical definition of "transitive order" that will be almost what we want
+and then, there will be the the definition of "order", which is the definition that we need. \\ 
+\begin{definition}
+(Inductive). 
+%We say, that the point $a$  from the topological space $X$ is a condensation 
+%point of the transitive order 0, when
+We say that the point is a condensation point of a transitive order $0$, when it is 
+an isolated point. 
+We say that the point is a condensation point of a transitive order $n + 1$, when it is 
+a condensation point (in the usual sense) of the condensation points of the transitive order $n$. 
+\end{definition}  
+The only issue of the definition is that the point of the transitive order $n$ is also a point 
+of the transitive order $k$, for all $0< k \leq n$. We want a definition of order such that 
+for any point, there is at most one integer that is its order. So we define:
+\begin{definition}
+We say that the point is a condensation point of order $n$ iff it is a condensation point 
+of the transitive order $n$ and it is not a condensation point of the transitive order $n+1$. 
+If the point is a condensation point of the transitive order for an arbitraly large $n$ we say that 
+the  point is a condensation point of order $\omega$.
+\end{definition}
+
+\subsection{$\sbD$}
+\subsubsection{Some preliminary observations.}
+Let us observe, that $\lim\limits_{n \to \infty} \Delta(^*n) = -\frac{1}{2}$. From that, we see, 
+that for every point $x \in \sbD$, the point $x - \frac{1}{2}$ is a condensation point. 
+Let us observe, that also, for every point $x \in \sbD$, we have that $x - \frac{1}{2} \in \sbD$, 
+because $\Delta((^*2)^2) = -\frac{1}{2}$. \\
+
+Now we will show that the order type of $\sbD$ is $\omega^\omega$ and where exactly are 
+its condensation points of which orders. For this we will use  
+a handfull of lemmas. 
+
+\begin{lemma}
+If $x$ is a condensation point of the set $\sbD$ of order $n$, then $x-\frac{1}{2}$ is a
+ condensation point of the set $\sbD$ of order at least $n+1$. 
+\end{lemma}
+\textbf{Proof.} \\
+Inductive. \\
+$\bullet$ $n = 0$: If $x$ is an isolated point of the set $\sbD$, then $x \in \sbD$. From that, we 
+have, that points $x - \frac{k-1}{2k}$ are in $\sbD$, from that, that $x-\frac{1}{2}$ is a 
+condensation point of $\sbD$. \\
+$\bullet$ inductive step: Let $x$ be a condensation point of the set $\sbD$ of an order $n > 0$. 
+Let $a_k$ be a sequence od condensation points of order $n-1$ convergent to $x$. From the 
+inductive assumption, we have, that $a_k - \frac{1}{2}$ is a sequence of condensation points 
+of order at least $n$. From the basic sequence arithmetic it is convergent to $x-\frac{1}{2}$. 
+From that, we have that $x-\frac{1}{2}$ is a condensation point of the set $\sbD$ of order 
+at least $n+1$. $_\square$
+\begin{lemma}
+If $x$ is a condensation point of the set $\sbD$ of order $n+1$, then $x+\frac{1}{2}$ is 
+a condensation point of the set $\sbD$ of order at least $n$.  
+\end{lemma}
+\textbf{Proof.} \\
+Inductive \\
+$\bullet$ n = 0: 
+
+
+
+
 
 

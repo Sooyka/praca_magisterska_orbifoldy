@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt, twosided]{report}
+\documentclass[a4paper, 12pt]{report}
 \synctex=1
 \usepackage{polski}
 \usepackage[T1]{fontenc}
@@ -55,6 +55,9 @@ outer = 25mm
 #1}} \hfill
 \break \\[16pt] \normalsize}
 
+\newcommand{\sIS}{{\mathcal{\sigma}^I(S^2)}}
+\newcommand{\sbD}{{\mathcal{\sigma}^b(D^2)}}
+
 \title{Orbifoldy}
 \author{Bartosz Sójka}
 %\date{}
@@ -62,18 +65,19 @@ outer = 25mm
 \input{"../title_page/title_page.tex"}
 \tableofcontents
 \begin{abstract}
-\begin{center}
-Orbifolds! Yeah! \\
-Spectrums! Yeah! 
-\end{center}
-
+%\begin{center}
+%Orbifolds! Yeah! \\
+%Spectrums! Yeah! 
+%\end{center}
+Orbifoldy
 \end{abstract}
+
 \input{"./TeX_files/introduction.tex"}
 \input{"./TeX_files/different_definitions_of_an_orbifold.tex"}
 \input{"./TeX_files/order_structure.tex"}
 \input{"./TeX_files/counting_occurrences.tex"}
 \input{"./TeX_files/decidability.tex"}
-\input{"./TeX_files/connection_with_modular_forms.tex"}
+%\input{"./TeX_files/connection_with_modular_forms.tex"}
 \input{"./TeX_files/conclusions.tex"}
 %\input{"./test/test.tex"}
 \input{"./TeX_files/bibliography.tex"}
