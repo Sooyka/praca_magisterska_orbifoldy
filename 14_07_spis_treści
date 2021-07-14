@@ -1,0 +1,106 @@
+From tjan@impan.pl Wed Jul 14 07:18:42 2021
+Date: Wed, 14 Jul 2021 07:18:41 +0200 (CEST)
+From: Tadeusz Januszkiewicz <tjan@impan.pl>
+To: Bartosz Sojka <Bartosz.Sojka@math.uni.wroc.pl>
+Subject: Re: Środa - fragment pracy
+
+Jakbysmy nie spotkali sie, posylam moje uwagi. Jeszcze enie konkretne
+=================
+Uklad
+
+2 dim orbifoldy. 
+lokalnie R^2/F   mozliwe F: Z_m, D_{2m}.
+Obrazki
+Notacja Conwaya.
+
+
+Orbicharakterystyka Eulera.
+Dodatnie, zerowe, - klasyfikacja (mozna wpisac, nie koniecznie, zreszta to pstryk)
+ujemne, duzo; Conway przydatny.
+
+Twierdzenie uniformizacyjne: matryka o stalej krzywiznie.
+wiec orbicharakterystyka proporcjonalna do pola.
+(sformulowac, nie dowodzic)
+
+Metryki zupelne o skonczonej objetosci.
+Orbicharakterystyka rozszerzona.
+Spektrum pol. 
+To nie jest bardzo konieczne: cusp mozna zamienic na dwa katy proste
+(choc nie zawsze)
+
+Chururgie/modyfikacje/ konstrukcje na orbifoldach 
+zachowujace pole.
+Redukcja: Pola wszystkie = pola dyskow + pola sfer.
+(przyklad pola sfery ktore nie jest polem dysku)
+
+
+Zbior pol
+ 1/2 {(\sum_i{m_i-1\over m_i})-2} 
+plus {(\sum_i{m_i-1\over m_i})-2}.
+(Mozna sie jakos sensownie ograniczyc 
+do jednego z tych dwoch zbiorow?)
+
+
+
+Typ poprzadkowy (cos trzeba powiedziec o typach)
+
+Twierdzenie jak wyglada typ
+
+Algorytm czy p/q jest polem
+
+
+Dalej (nie zapisane )
+Krotnosc pola: opisac funkcje generujaca, 
+jakie wykladniki Puiseaux wystepuja patrz algorytm.
+
+Szacowanie raczej niz wyliczenie wspolczynnika przy t^{p/q}.
+zbieznosc?
+
+
+?? Deformacje metryk na orbifoldzie
+to daje ze niektore pola sa krotne, 
+ale nadzieja ze kazde dwa orbifoldy o tych samych polach 
+sa do siebie deformowalne jest slabo uzasadniona.
+
+
+
+
+
+----- Wiadomość oryginalna -----
+Od: Bartosz Sojka <Bartosz.Sojka@math.uni.wroc.pl>
+Do: Tadeusz Januszkiewicz <tjan@impan.pl>
+DW: Bartosz Sojka <Bartosz.Sojka@math.uni.wroc.pl>
+Wysłano: Tue, 13 Jul 2021 22:13:40 +0200 (CEST)
+Temat: Re: Środa - fragment pracy
+
+Na razie przesyłam tyle.
+Myślę, że jutro dopiszę do końca rozdział "Order structure", możliwe, że
+skończę też "Decidability".
+Wysłałem z pustymi rodziałami, żeby od razu pokazać mniej więcej jak 
+chciałem ułożyć rozdziały.
+
+Pozdrawiam,
+Bartosz Sójka
+
+On Sun, 11 Jul 2021, Tadeusz Januszkiewicz wrote:
+
+> OK
+> dobrze ze pan dal znac
+>
+>
+>
+> ----- Wiadomość oryginalna -----
+> Od: Bartosz Sojka <Bartosz.Sojka@math.uni.wroc.pl>
+> Do: Tadeusz Januszkiewicz <tjan@impan.pl>
+> Wysłano: Sun, 11 Jul 2021 18:26:04 +0200 (CEST)
+> Temat: Środa - fFragment pracy
+>
+> Dzień dobry,
+>
+> wczoraj przyjąłem drugą dawkę szczepionki i ścięło mnie to na dwa dni,
+> więc mniej więcej o tyle przesunie się moment, w którym wyślę fragment
+> pracy.
+>
+> Pozdrawiam,
+> BS
+>
