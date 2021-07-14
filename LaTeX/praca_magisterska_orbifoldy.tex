@@ -5,9 +5,10 @@
 \usepackage{amssymb}
 \usepackage[polish,english]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{microtype}
 \usepackage{mathtools}
+\usepackage{microtype}
 \usepackage{amsthm}
+\usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{empheq}
 \usepackage{xcolor}
@@ -19,6 +20,7 @@
 \usepackage{siunitx}
 \usepackage{geometry}
 \usepackage{lipsum}
+\usepackage{marvosym}
 %\setlength\parindent{0pt}
 
 %\topmargin = -1in
@@ -50,13 +52,20 @@ outer = 25mm
 \normalsize}
 \newcommand{\smalltodo}[1]{\textbf{\ \textcolor{violet}{To do}}}
 \newcommand{\smalltodoII}[1]{\hfill \break \textbf{\ \textcolor{violet}{To do: #1}}\hfill \break}
-\newcommand{\rysunek}[1]{\hfill \break\\[16pt] \Huge \textbf{\textcolor{violet}{Brakujący rysunek 
+\newcommand{\missingpicture}[1]{\hfill \break\\[16pt] \Huge \textbf{\textcolor{violet}
+{Missing picturemi 
 \normalsize
 #1}} \hfill
 \break \\[16pt] \normalsize}
 
+%\newcommand{\beginproof}{{\noindent\textbf{Proof.}\\}}
+%\newcommand{\endproof}{{$_\square$}}
+
 \newcommand{\sIS}{{\mathcal{\sigma}^I(S^2)}}
 \newcommand{\sbD}{{\mathcal{\sigma}^b(D^2)}}
+
+\newcommand{\Eoc}{Euler orbicharacteristic} 
+\newcommand{\cpots}{condensation point of the set}
 
 \title{Orbifoldy}
 \author{Bartosz Sójka}
