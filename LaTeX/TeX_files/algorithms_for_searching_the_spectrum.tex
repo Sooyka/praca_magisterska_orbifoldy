@@ -27,9 +27,9 @@ and for $l \leq 4$ it is. Moreover for an even $l$ it is a condensation point of
 $\frac{l-4}{2}$ (see \ref{biggest \apots})
 and for an odd $l$ it is a condensation point of order $\frac{l-3}{2}$ (see \ref{predescors}). \\
 
-Now we will consider only cases when $\frac{p}{q}$ is not of such form. \\ 
-
-The first approach of the searching algorithm is of this form: \\
+Now we will consider only cases when $\frac{p}{q}$ is not of such form.
+\subsection{The first approach to the searching algorithm}
+%The first approach of the searching algorithm is of this form: \\
 
 %%We start with the 
 %We use: 
@@ -78,18 +78,18 @@ From now we will
 consider only such states. \\
 %There is also a pivot pointing on one counter at any time.  
 The state of the counters $b_1b_2\dots$ correspond to the orbifold of 
-\Eoc  equal $\chi^{orb}(*b_1b_2\dots)$ (where the trailing $1$ are trunkated). \\ 
+\Eoc\ equal $\chi^{orb}(*b_1b_2\dots)$ (where the trailing $1$ are trunkated). \\ 
 When the algorithm is in the state: 
 \begin{itemize}
 \item counters: $b_1b_2\dots$
 \item pivot: on the counter $c$
-\item flag: set to the value $flag\_value$
+\item flag: set to the value $flag\_value$,
 \end{itemize}
 we procced as follows 
 %(the term "We continue." means, that we start the following procedure from the beginning)
 :
 \begin{lstlisting}[firstnumber=1,consecutivenumbers=true]
-In the case, the counter is set to:
+In the case, the flag is set to:
 {
     "smaller", then 
     {
@@ -169,6 +169,7 @@ In the case, the counter is set to:
     }
 }
 \end{lstlisting}
+\subsection{Why this works}
 %\begin{enumerate}
 %    \item if the pivot is on the zeroth column ($c = 0$), then 
 %    \begin{enumerate}[label*=\arabic*.]
@@ -177,7 +178,7 @@ In the case, the counter is set to:
 %    \end{enumerate}
 %    \item abcd
 %\end{enumerate}
-
+\subsection{Improvements}
 Let $m \in \mathbb{N}$ be such that $\frac{p}{q} \in (1-\frac{m}{2},1-
 \frac{m+1}{2})$
 Let us denote by $r \coloneqq \frac{p}{q} - (1-\frac{m}{2})$. \\ 
