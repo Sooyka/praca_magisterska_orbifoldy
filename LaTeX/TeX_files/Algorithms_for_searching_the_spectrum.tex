@@ -85,55 +85,97 @@ When the algorithm is in the state:
 \item pivot: on the counter $c$
 \item flag: set to the value $flag\_value$
 \end{itemize}
-we procced as follows:
+we procced as follows 
+%(the term "We continue." means, that we start the following procedure from the beginning)
+:
 \begin{lstlisting}[firstnumber=1,consecutivenumbers=true]
 In the case, the counter is set to:
-if the flag is set to "equal" then 
 {
-    We found an orbifold and we are ending the whole
-    algorithm with answer "yes, $*b_1b_2\dots$"
-}
-
-if the flag is set to "smaller" then 
-{
-    We increase the counter $c$ by one ($b_c \coloneqq b_c + 1$)
-    and set the value of all counters on the left to $b_c$
-    if $\chi^{orb}(*b_1b_2b_3\dots)<\frac{p}{q}$ then
-        We set the flag to "smaller"
-        We put pivot to the $c+1$ counter
-        
-}
-
-if the flag is set to "greater" then
-{
-    if $\chi^{orb}(*{\infty}b_2b_3\dots)>\frac{p}{q}$ then
+    "equal", then 
     {
-        We search for value $@b_1$ of the first counter 
-        such that $\chi^{orb}(*@b_1b_2b_3\dots)\geq\frac{p}{q}$ 
-        and $\chi^{orb}(*(@b_1-1)b_2b_3\dots)<\frac{p}{q}$.
-        More on how we search for it will be told later, for now  
-        we can think that we search one by one starting 
-        from $b_1$ and going up till $@b_1$.
-        We set $b_1$ to $@b_1$.
-        if $\chi^{orb}(*b_1b_2b_3\dots)=\frac{p}{q}$ then 
-        {
-            we found an orbifold and we are ending the whole
-            algorithm with answer "yes, $*b_1b_2\dots$"
-        }
-        if $\chi^{orb}(*b_1b_2b_3\dots)>\frac{p}{q}$
-        {
-            we set flag to "greater" 
-            and move the pivot to the second column
-        }
+        We found an orbifold and we are ending the whole
+        algorithm with answer "yes, $*b_1b_2\dots$".
     }
-    if $\chi^{orb}(*{\infty}b_2b_3\dots)<\frac{p}{q}$ then
-    {
-        We set $b_1$ to $\infty$.
-        We set flag to "smaller".
-        We move pivot to the second column.
-    }    
-}
 
+    "smaller", then 
+    {
+        We increase the counter $c$ by one ($b_c \coloneqq b_c + 1$).
+        If $b_c = 2$ and the values of all the counters 
+        on the left are also equal 2 then
+        {
+            We end the whole algorithm with the answer "no".
+        }
+        We set the value of all counters on the left to $b_c$
+        If $\chi^{orb}(*b_1b_2b_3\dots)=\frac{p}{q}$ then
+        {
+            We found an orbifold and we are ending the whole
+            algorithm with answer "yes, $*b_1b_2\dots$".
+        }
+        If $\chi^{orb}(*b_1b_2b_3\dots)<\frac{p}{q}$ then
+        {
+            We set the flag to "smaller".
+            We put pivot to the $c+1$ counter.
+            We go to the line 1..
+        }
+        If $\chi^{orb}(*b_1b_2b_3\dots)>\frac{p}{q}$ then  
+        {
+            We set the flag to "greater".
+            We put the pivot on the first counter. 
+            We go to the line 1..
+        }  
+    }
+
+    "greater", then
+    {
+        if $\chi^{orb}(*{\infty}b_2b_3\dots)<\frac{p}{q}$ then
+        {
+            We search for value $b_c'$ of the $c$ counter 
+            such that $\chi^{orb}(*b_1\dots b_{c-1}b_c'b_{c+1}\dots)\leq\frac{p}{q}$ 
+            and $\chi^{orb}(*b_1\dots b_{c-1}(b_c'-1)b_{c+1}\dots)>\frac{p}{q}$.
+            More on how we search for it will be told later, for now  
+            we can think that we search one by one starting 
+            from $b_c$ and going up till $b_c'$.
+            We set $b_c$ to $b_c'$.
+            if $\chi^{orb}(*b_1b_2b_3\dots)=\frac{p}{q}$ then 
+            {
+                We found an orbifold and we are ending the whole
+                algorithm with answer "yes, $*b_1b_2\dots$".
+            }
+            if $\chi^{orb}(*b_1b_2b_3\dots)<\frac{p}{q}$
+            {
+                If $c = 1$ then
+                {
+                    We set the flag to "smaller"
+                    We move the pivot to the column $c+1$
+                    We go to the line 1..
+                }
+                We set all the counters to the left to value $b_c$.
+                If $\chi^{orb}(*b_1b_2b_3\dots)=\frac{p}{q}$ then 
+                {
+                    We found an orbifold and we are ending the whole
+                    algorithm with answer "yes, $*b_1b_2\dots$".
+                }
+                If $\chi^{orb}(*b_1b_2b_3\dots)<\frac{p}{q}$ then 
+                {
+                    We set flag to "smaller".
+                    We move the pivot to the column $c+1$.
+                    We go to the line 1..
+                }
+                If $\chi^{orb}(*b_1b_2b_3\dots)>\frac{p}{q}$ then 
+                {
+                    We set the flag to "greater".
+                    We move the pivot 
+                }
+            }
+        }
+        if $\chi^{orb}(*{\infty}b_2b_3\dots)>\frac{p}{q}$ then
+        {
+            We set $b_1$ to $\infty$.
+            We set flag to "smaller".
+            We move pivot to the second column.
+        }    
+    }
+}
 \end{lstlisting}
 %\begin{enumerate}
 %    \item if the pivot is on the zeroth column ($c = 0$), then 
