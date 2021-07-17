@@ -21,7 +21,10 @@
 \usepackage{geometry}
 \usepackage{lipsum}
 \usepackage{marvosym}
-%\setlength\parindent{0pt}
+%\usepackage{enumitem}
+%\usepackage{alltt}
+\usepackage{listings}
+\setlength\parindent{0pt}
 
 %\topmargin = -1in
 
@@ -34,6 +37,8 @@ inner = 35mm,
 outer = 25mm
 }
 
+\lstset{numbers=left, numberstyle=\small, stepnumber=1, numbersep=5pt, mathescape=true}
+
 %\linespread{1.24}
 
 %top = 25mm,
@@ -41,10 +46,11 @@ outer = 25mm
 %inner = 30mm,
 %outer = 25mm
 
-\newtheorem{observation}{Observation}[subsection]
-\newtheorem{definition}[observation]{Definition}
-\newtheorem{theorem}[observation]{Theorem}
-\newtheorem{lemma}[observation]{Lemma}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
 
 \newcommand{\todo}[1]{\hfill \break \textbf{\Huge \textcolor{violet}{TO DO: #1} \hfill \break}
 \normalsize}
@@ -53,7 +59,7 @@ outer = 25mm
 \newcommand{\smalltodo}[1]{\textbf{\ \textcolor{violet}{To do}}}
 \newcommand{\smalltodoII}[1]{\hfill \break \textbf{\ \textcolor{violet}{To do: #1}}\hfill \break}
 \newcommand{\missingpicture}[1]{\hfill \break\\[16pt] \Huge \textbf{\textcolor{violet}
-{Missing picturemi 
+{Missing picture 
 \normalsize
 #1}} \hfill
 \break \\[16pt] \normalsize}
@@ -65,7 +71,10 @@ outer = 25mm
 \newcommand{\sbD}{{\mathcal{\sigma}^b(D^2)}}
 
 \newcommand{\Eoc}{Euler orbicharacteristic} 
-\newcommand{\cpots}{condensation point of the set}
+\newcommand{\apots}{accumulation point of the set}
+
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
 
 \title{Orbifoldy}
 \author{Bartosz Sójka}
@@ -85,7 +94,7 @@ Orbifoldy
 \input{"./TeX_files/different_definitions_of_an_orbifold.tex"}
 \input{"./TeX_files/characteristics_classification_and_properties_of_the_orbifolds.tex"}
 \input{"./TeX_files/order_structure.tex"}
-\input{"./TeX_files/decidability.tex"}
+\input{"./TeX_files/algorithms_for_searching_the_spectrum.tex"}
 \input{"./TeX_files/counting_occurrences.tex"}
 \input{"./TeX_files/power_series_and_generating_functions.tex"}
 %\input{"./TeX_files/connection_with_modular_forms.tex"}

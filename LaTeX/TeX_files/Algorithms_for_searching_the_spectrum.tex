@@ -1,0 +1,172 @@
+% mainfile: ../praca_magisterska_orbifoldy.tex
+\chapter{Algorithms for searching the spectrum}
+
+\section{Decidability}
+Here we will show the proof that the problem of "deciding whether a given rational number is in an 
+Euler orbicharacteristic's spectrum or not" is decidable by showing algorithm for doing this. 
+Later, our algorithm will have a bonus property of determining of which order of condensation 
+is given point if it is in fact in $\sigma$. \\
+%It fill get also a performance enhancement by this added property. \\
+First stated algorithm is also very inefficient and is presented, because the idea is the most 
+clear in it. Right after it there is stated an algorithm with two enhancements: 
+\begin{itemize}
+\item determining an accumulation point of which order is a given point, if it is in fact in the 
+spectrum (this enhancement gives also an performance boost)
+\item faster searching, because some cases do not need to be checked. 
+\end{itemize}
+We start with $\frac{p}{q}$, where $p \in \mathbb{Z}$, $q \in \mathbb{N}_{>0}$. \\ 
+%and $\textrm{gcd}(p,q)$. \\ 
+
+We want to determine whether there exist $b_1,b_2,\dots,b_k$, such that $\chi^{orb}(*b_1\dots b_k) = 
+\frac{p}{q}$. \\ 
+
+In the case that $\frac{p}{q}$ is of the form $l*\frac{1}{4}$, for some whole $l$ 
+% $q = 4$ 
+we can give the answer right away. For $l > 4$ we have that $l*\frac{1}{4}$ is not in the set 
+and for $l \leq 4$ it is. Moreover for an even $l$ it is a condensation point of order 
+$\frac{l-4}{2}$ (see \ref{biggest \apots})
+and for an odd $l$ it is a condensation point of order $\frac{l-3}{2}$ (see \ref{predescors}). \\
+
+Now we will consider only cases when $\frac{p}{q}$ is not of such form. \\ 
+
+The first approach of the searching algorithm is of this form: \\
+
+%%We start with the 
+%We use: 
+%\begin{itemize}
+%$\mathbb{N}$ counters $b_1b_2\dots$ 
+%(with values ranging from $1$, through all natural numbers, to infinity 
+%(with infinity included)) set to $1$. Each counter correspond to one cone point 
+%on the boundry of the disk of period equal to the value of the counter (with the note, that 
+%if counter is set to $1$ it means a trivial cone point - namely a none cone point, a normal point). 
+%Every state of the counters during runtime of the algorith will have only finitely many 
+%counters with value non-$1$. Moreover every state in the rutime of the algorithm 
+%will have values on consequtive counters ordered in weakly decreasing order. From now we will 
+%consider only such states. \\
+%The state $b_1b_2\dots$ correspond to the orbifold of 
+%\Eoc equal $\chi^{orb}(*b_1b_2\dots)$ (where the trailing $1$ are trunkated). \\ 
+%%There is also a pivot pointing on one counter at any time.  
+
+We use: 
+\begin{itemize}
+\item $\mathbb{N}_{>0}$ counters $b_1b_2\dots$ 
+with values ranging from $1$, through all natural numbers, to infinity 
+(with infinity included). Each counter correspond to one cone point 
+on the boundry of the disk of period equal to the value of the counter (with the note, that 
+if counter is set to $1$ it means a trivial cone point - namely a none cone point, a normal point). 
+\item a pivot pointing to some counter at any time
+\item a flag that can be set to "greater", "smaller" or "equal" corresponding to what was 
+the outcome of comparing \Eoc  of the orbifold corresponding to counters' state and 
+$\frac{p}{q}$.  
+\end{itemize}
+
+We start with:
+\begin{itemize}
+\item all counters set to $1$. 
+\item pivot pointing at the first counter
+\item flag set to "greater"
+\end{itemize}
+
+We will do our computation such that:
+\begin{itemize}
+\item every state of the counters during runtime of the algorithm will have only finitely many 
+counters with value non-$1$. 
+\item every state in the rutime of the algorithm 
+will have values on consequtive counters ordered in weakly decreasing order.
+\end{itemize}
+From now we will 
+consider only such states. \\
+%There is also a pivot pointing on one counter at any time.  
+The state of the counters $b_1b_2\dots$ correspond to the orbifold of 
+\Eoc  equal $\chi^{orb}(*b_1b_2\dots)$ (where the trailing $1$ are trunkated). \\ 
+When the algorithm is in the state: 
+\begin{itemize}
+\item counters: $b_1b_2\dots$
+\item pivot: on the counter $c$
+\item flag: set to the value $flag\_value$
+\end{itemize}
+we procced as follows:
+\begin{lstlisting}[firstnumber=1,consecutivenumbers=true]
+In the case, the counter is set to:
+if the flag is set to "equal" then 
+{
+    We found an orbifold and we are ending the whole
+    algorithm with answer "yes, $*b_1b_2\dots$"
+}
+
+if the flag is set to "smaller" then 
+{
+    We increase the counter $c$ by one ($b_c \coloneqq b_c + 1$)
+    and set the value of all counters on the left to $b_c$
+    if $\chi^{orb}(*b_1b_2b_3\dots)<\frac{p}{q}$ then
+        We set the flag to "smaller"
+        We put pivot to the $c+1$ counter
+        
+}
+
+if the flag is set to "greater" then
+{
+    if $\chi^{orb}(*{\infty}b_2b_3\dots)>\frac{p}{q}$ then
+    {
+        We search for value $@b_1$ of the first counter 
+        such that $\chi^{orb}(*@b_1b_2b_3\dots)\geq\frac{p}{q}$ 
+        and $\chi^{orb}(*(@b_1-1)b_2b_3\dots)<\frac{p}{q}$.
+        More on how we search for it will be told later, for now  
+        we can think that we search one by one starting 
+        from $b_1$ and going up till $@b_1$.
+        We set $b_1$ to $@b_1$.
+        if $\chi^{orb}(*b_1b_2b_3\dots)=\frac{p}{q}$ then 
+        {
+            we found an orbifold and we are ending the whole
+            algorithm with answer "yes, $*b_1b_2\dots$"
+        }
+        if $\chi^{orb}(*b_1b_2b_3\dots)>\frac{p}{q}$
+        {
+            we set flag to "greater" 
+            and move the pivot to the second column
+        }
+    }
+    if $\chi^{orb}(*{\infty}b_2b_3\dots)<\frac{p}{q}$ then
+    {
+        We set $b_1$ to $\infty$.
+        We set flag to "smaller".
+        We move pivot to the second column.
+    }    
+}
+
+\end{lstlisting}
+%\begin{enumerate}
+%    \item if the pivot is on the zeroth column ($c = 0$), then 
+%    \begin{enumerate}[label*=\arabic*.]
+%        \item 
+%        \item
+%    \end{enumerate}
+%    \item abcd
+%\end{enumerate}
+
+Let $m \in \mathbb{N}$ be such that $\frac{p}{q} \in (1-\frac{m}{2},1-
+\frac{m+1}{2})$
+Let us denote by $r \coloneqq \frac{p}{q} - (1-\frac{m}{2})$. \\ 
+
+We will searching in $\sigma$ as such: \\
+
+If $\frac{p}{q} \in \sigma$, then, from the corollary \ref{predescors} we know, that there 
+exist some $n \in \mathbb{N}$, such that $\frac{p}{q} + \frac{n}{2} \in \sigma$ but 
+$\frac{p}{q} + \frac{n}{2} \not\in \sigma$. \\
+
+We will be consequently checking points from $1+r$, through $1+r-\frac{l}{2}$, for 
+$0 \leq l \leq m$, to the $\frac{p}{q}$. We stop at the first found point. 
+If one of these point is in the spectrum, then all smaller (so also $\frac{p}{q}$) are in 
+the spectrum and $\frac{p}{q}$ is the accumulation point of the spectrum of order $m-l$ 
+(from this, 
+ we can see some heuristic, that the points that have smaller order will be generally 
+harder to find in some sense). If none of this points are in in the spectrum, then $\frac{p}{q}$ 
+is not.
+
+%We want to determine this $n$. If $n = 0$, then $\frac{p}{q}$ is not in $\sigma$. 
+%If $n > 0$, then $$
+
+
+
+
+
