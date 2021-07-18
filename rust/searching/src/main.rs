@@ -30,7 +30,40 @@ fn main() {
     let mut counters: Vec<i32> = vec![1];
     let mut pivot = 0;
     let mut flag = Greater;
+    let l = Rational32::from_integer(4 as i32) * p_q;
+    if l.is_integer() {
+        let l = l.to_integer();
+        // match l.cmp(&4) {
+        //     Greater => {
 
+        //     }
+        //     _ => {
+
+        //     }
+        // }
+        if l > 4 {
+            println!("No");
+            return ();
+        } else {
+            if l % 2 == 0 {
+                counters[0] = 0;
+            }
+            while chi_orb(&counters) > p_q {
+                counters.push(0);
+            }
+            println!("{}", ["This rational number is an Euler orbicharacteristic of an orbifold with signature ", &signature_string(&counters)].concat());
+            println!(
+                "{}",
+                [
+                    "and it is a condensation point of order ",
+                    &(if l % 2 == 0 { (l - 4) / 2 } else { (l - 3) / 2 }).to_string()
+                ]
+                .concat()
+            );
+            return ();
+        }
+    }
+    search_point()
     loop {
         match flag {
             Equal => {
@@ -41,17 +74,20 @@ fn main() {
                 counters[pivot] += 1;
                 if break_condition(&counters, pivot) == true {
                     println!("No");
-                    break;
+                    return ();
                 }
                 level_to_b_c(&mut counters, pivot);
                 match chi_orb(&counters).cmp(&p_q) {
                     Equal => {
                         println!("{}", ["Yes, ", &signature_string(&counters)].concat());
-                        break;
+                        return ();
                     }
                     Less => {
                         flag = Less;
                         pivot += 1;
+                        if counters.len() <= pivot {
+                            counters.push(1 as i32);
+                        }
                         continue;
                     }
                     Greater => {
@@ -66,15 +102,10 @@ fn main() {
                 match chi_orb(&counters).cmp(&p_q) {
                     Equal => {
                         println!("{}", ["Yes, ", &signature_string(&counters)].concat());
-                        break;
+                        return ();
                     }
                     Less => {
-                        flag = Greater;
-                        pivot += 1;
-                        continue;
-                    }
-                    Greater => {
-                        let current_chi_orb = chi_orb(&counters) + Rational32::new(1,2);
+                        let current_chi_orb = chi_orb(&counters) + Rational32::new(1, 2);
                         counters[pivot] = b_c_value(current_chi_orb, p_q);
                         if chi_orb(&counters) == p_q {
                             println!("{}", ["Yes, ", &signature_string(&counters)].concat());
@@ -84,11 +115,14 @@ fn main() {
                         match chi_orb(&counters).cmp(&p_q) {
                             Equal => {
                                 println!("{}", ["Yes, ", &signature_string(&counters)].concat());
-                                break;
+                                return ();
                             }
                             Less => {
                                 flag = Less;
                                 pivot += 1;
+                                if counters.len() <= pivot {
+                                    counters.push(1 as i32);
+                                }
                                 continue;
                             }
                             Greater => {
@@ -97,6 +131,14 @@ fn main() {
                                 continue;
                             }
                         }
+                    }
+                    Greater => {
+                        flag = Greater;
+                        pivot += 1;
+                        if counters.len() <= pivot {
+                            counters.push(1 as i32);
+                        }
+                        continue;
                     }
                 }
             }
@@ -112,14 +154,7 @@ fn chi_orb(counters: &Vec<i32>) -> Rational32 {
         if *counter == 1 {
             break;
         }
-        match *counter {
-            0 => {
-                chi_orb -= Rational32::new(1, 2);
-            }
-            _ => {
-                chi_orb -= Rational32::new(*counter - 1, 2 * (*counter));
-            }
-        }
+        chi_orb -= period_to_difference(*counter);
     }
     chi_orb
 }
@@ -160,18 +195,41 @@ fn signature_string(counters: &Vec<i32>) -> String {
 
 fn b_c_value(old_chi_orb: Rational32, p_q: Rational32) -> i32 {
     let mut b_c = 2;
-    let mut new_chi_orb = old_chi_orb;
+    // let mut new_chi_orb = old_chi_orb;
+    let mut a = b_c;
+    while old_chi_orb - period_to_difference(b_c) > p_q {
+        a = b_c;
+        b_c = 2 * b_c;
+    }
+    let mut b = b_c;
+    if old_chi_orb - period_to_difference(b_c) == p_q {
+        return b_c;
+    }
     loop {
-        if {
-            
+        let diff = (b - a) / 2;
+        b_c = a + diff;
+        match (old_chi_orb - period_to_difference(b_c)).cmp(&p_q) {
+            Equal => {
+                return b_c;
+            }
+            Less => {
+                if diff == 1 {
+                    return b_c;
+                }
+                b = b_c;
+                continue;
+            }
+            Greater => {
+                a = b_c;
+                continue;
+            }
         }
     }
-    b_c
 }
 
-fn difference_from_period(b_n: i32) -> Rational32 {
+fn period_to_difference(b_n: i32) -> Rational32 {
     match b_n {
         0 => Rational32::new(1, 2),
-        _ => Rational32::new(b_n-1, 2*b_n)
+        _ => Rational32::new(b_n - 1, 2 * b_n),
     }
 }
