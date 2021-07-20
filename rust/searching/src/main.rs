@@ -9,84 +9,139 @@ use Ordering::*;
 // }
 
 fn main() {
-    println!("Enter a rational number.");
+    loop {
+        println!("Enter a rational number.");
 
-    let mut p_q = String::new();
+        let mut p_q = String::new();
 
-    io::stdin()
-        .read_line(&mut p_q)
-        .expect("Failed to read the line");
+        io::stdin()
+            .read_line(&mut p_q)
+            .expect("Failed to read the line");
 
-    let p_q: Vec<i32> = p_q
-        .split('/')
-        .map(|number_string| number_string.trim().parse().expect("Please type a number!"))
-        .collect();
+        let p_q: Vec<i64> = p_q
+            .split('/')
+            .map(|number_string| number_string.trim().parse().expect("Please type a number!"))
+            .collect();
 
-    // let p_q: Vec<&i32> = p_q
+        // let p_q: Vec<&i64> = p_q
+        let mut counters: Vec<i64> = vec![1];
+        let p_q = Rational64::new(p_q[0], p_q[1]);
+        // let n = 4 * p_q.to_integer() + 4 + 4;
+        // let mut counters: [i64; n];
+        //println!("{}", &p_q.to_string());
+        let l = Rational64::from_integer(4 as i64) * p_q;
+        if l.is_integer() {
+            let l = l.to_integer();
+            // match l.cmp(&4) {
+            //     Greater => {
 
-    let p_q = Rational32::new(p_q[0], p_q[1]);
-    // let n = 4 * p_q.to_integer() + 4 + 4;
-    // let mut counters: [i32; n];
-    let mut counters: Vec<i32> = vec![1];
+            //     }
+            //     _ => {
+
+            //     }
+            // }
+            if l > 4 {
+                println!("No");
+                return ();
+            } else {
+                match l % 2 {
+                    0 => {
+                        counters[0] = 0;
+                    }
+                    1 => {
+                        counters[0] = 2;
+                    }
+                    _ => panic!(),
+                }
+                while chi_orb(&counters) > p_q {
+                    counters.push(0);
+                }
+                println!("{}", [&p_q.to_string(), " ", "This rational number is an Euler orbicharacteristic of an orbifold with a signature ", &signature_string(&counters)].concat());
+                println!(
+                    "{}",
+                    [
+                        "and it is a condensation point of order ",
+                        &(match l % 2 {
+                            0 => (4 - l) / 2,
+                            1 => (3 - l) / 2,
+                            _ => panic!(),
+                        })
+                        .to_string()
+                    ]
+                    .concat()
+                );
+                continue;
+            }
+        }
+
+        let mut distance = Rational64::from_integer(0 as i64);
+
+        let mut order = 0 as i64;
+
+        while Rational64::from_integer(1 as i64) - distance >= p_q + Rational64::new(1, 2) {
+            distance += Rational64::new(1, 2);
+            order += 1;
+        }
+
+        let mut current_point = Rational64::from_integer(1 as i64)
+            + (p_q - (Rational64::from_integer(1 as i64) - distance));
+
+        while !search_point(current_point, order).0 && order > 0 {
+            order -= 1;
+            current_point -= Rational64::new(1, 2);
+        }
+
+        // let _var: i64 = 1 ;
+        // let _var = _var as i64;
+    }
+}
+
+fn search_point(p_q: Rational64, order: i64) -> (bool, Vec<i64>) {
+    let mut counters: Vec<i64> = vec![1];
     let mut pivot = 0;
     let mut flag = Greater;
-    let l = Rational32::from_integer(4 as i32) * p_q;
-    if l.is_integer() {
-        let l = l.to_integer();
-        // match l.cmp(&4) {
-        //     Greater => {
-
-        //     }
-        //     _ => {
-
-        //     }
-        // }
-        if l > 4 {
-            println!("No");
-            return ();
-        } else {
-            if l % 2 == 0 {
-                counters[0] = 0;
-            }
-            while chi_orb(&counters) > p_q {
-                counters.push(0);
-            }
-            println!("{}", ["This rational number is an Euler orbicharacteristic of an orbifold with signature ", &signature_string(&counters)].concat());
-            println!(
-                "{}",
-                [
-                    "and it is a condensation point of order ",
-                    &(if l % 2 == 0 { (l - 4) / 2 } else { (l - 3) / 2 }).to_string()
-                ]
-                .concat()
-            );
-            return ();
-        }
-    }
-    search_point()
     loop {
+        // println!("{}", &signature_string(&counters));
         match flag {
             Equal => {
-                println!("{}", ["Yes, ", &signature_string(&counters)].concat());
-                break;
+                println!("{}", [&p_q.to_string(), " ", "This rational number is an Euler orbicharacteristic of an orbifold with a signature ", &signature_string(&counters)].concat());
+                println!(
+                    "{}",
+                    [
+                        "and it is a condensation point of order ",
+                        &(order.to_string())
+                    ]
+                    .concat()
+                );
+                return (true, counters);
             }
             Less => {
                 counters[pivot] += 1;
                 if break_condition(&counters, pivot) == true {
-                    println!("No");
-                    return ();
+                    println!("{}",
+                        [&p_q.to_string(), " ", "This rational number is not an Euler orbicharacteristic of any orbifold."].concat()
+                    );
+                    return (false, counters);
                 }
                 level_to_b_c(&mut counters, pivot);
                 match chi_orb(&counters).cmp(&p_q) {
                     Equal => {
-                        println!("{}", ["Yes, ", &signature_string(&counters)].concat());
-                        return ();
+                        println!("{}", [&p_q.to_string(), " ", "This rational number is an Euler orbicharacteristic of an orbifold with a signature ", &signature_string(&counters)].concat());
+                        println!(
+                            "{}",
+                            [
+                                "and it is a condensation point of order ",
+                                &(order.to_string())
+                            ]
+                            .concat()
+                        );
+                        return (true, counters);
                     }
                     Less => {
                         flag = Less;
                         pivot += 1;
                         if counters.len() <= pivot {
-                            counters.push(1 as i32);
+                            counters.push(1 as i64);
                         }
                         continue;
                     }
@@ -101,27 +156,51 @@ fn main() {
                 counters[pivot] = 0;
                 match chi_orb(&counters).cmp(&p_q) {
                     Equal => {
-                        println!("{}", ["Yes, ", &signature_string(&counters)].concat());
-                        return ();
+                        println!("{}", [&p_q.to_string(), " ", "This rational number is an Euler orbicharacteristic of an orbifold with a signature ", &signature_string(&counters)].concat());
+                        println!(
+                            "{}",
+                            [
+                                "and it is a condensation point of order ",
+                                &(order.to_string())
+                            ]
+                            .concat()
+                        );
+                        return (true, counters);
                     }
                     Less => {
-                        let current_chi_orb = chi_orb(&counters) + Rational32::new(1, 2);
+                        let current_chi_orb = chi_orb(&counters) + Rational64::new(1, 2);
                         counters[pivot] = b_c_value(current_chi_orb, p_q);
                         if chi_orb(&counters) == p_q {
-                            println!("{}", ["Yes, ", &signature_string(&counters)].concat());
-                            break;
+                            println!("{}", [&p_q.to_string(), " ", "This rational number is an Euler orbicharacteristic of an orbifold with a signature ", &signature_string(&counters)].concat());
+                            println!(
+                                "{}",
+                                [
+                                    "and it is a condensation point of order ",
+                                    &(order.to_string())
+                                ]
+                                .concat()
+                            );
+                            return (true, counters);
                         }
                         level_to_b_c(&mut counters, pivot);
                         match chi_orb(&counters).cmp(&p_q) {
                             Equal => {
-                                println!("{}", ["Yes, ", &signature_string(&counters)].concat());
-                                return ();
+                                println!("{}", [&p_q.to_string(), " ", "This rational number is an Euler orbicharacteristic of an orbifold with a signature ", &signature_string(&counters)].concat());
+                                println!(
+                                    "{}",
+                                    [
+                                        "and it is a condensation point of order ",
+                                        &(order.to_string())
+                                    ]
+                                    .concat()
+                                );
+                                return (true, counters);
                             }
                             Less => {
                                 flag = Less;
                                 pivot += 1;
                                 if counters.len() <= pivot {
-                                    counters.push(1 as i32);
+                                    counters.push(1 as i64);
                                 }
                                 continue;
                             }
@@ -136,7 +215,7 @@ fn main() {
                         flag = Greater;
                         pivot += 1;
                         if counters.len() <= pivot {
-                            counters.push(1 as i32);
+                            counters.push(1 as i64);
                         }
                         continue;
                     }
@@ -144,12 +223,10 @@ fn main() {
             }
         }
     }
-    // let _var: i32 = 1 ;
-    // let _var = _var as i64;
 }
 
-fn chi_orb(counters: &Vec<i32>) -> Rational32 {
-    let mut chi_orb = Rational32::from_integer(1 as i32);
+fn chi_orb(counters: &Vec<i64>) -> Rational64 {
+    let mut chi_orb = Rational64::from_integer(1 as i64);
     for counter in counters {
         if *counter == 1 {
             break;
@@ -159,7 +236,7 @@ fn chi_orb(counters: &Vec<i32>) -> Rational32 {
     chi_orb
 }
 
-fn break_condition(counters: &Vec<i32>, pivot: usize) -> bool {
+fn break_condition(counters: &Vec<i64>, pivot: usize) -> bool {
     let mut break_condition = true;
     for (i, counter) in counters.iter().enumerate() {
         if i > pivot {
@@ -172,7 +249,7 @@ fn break_condition(counters: &Vec<i32>, pivot: usize) -> bool {
     break_condition
 }
 
-fn level_to_b_c(counters: &mut Vec<i32>, pivot: usize) {
+fn level_to_b_c(counters: &mut Vec<i64>, pivot: usize) {
     let b_c = counters[pivot];
     for (i, counter) in counters.iter_mut().enumerate() {
         if i > pivot {
@@ -182,7 +259,7 @@ fn level_to_b_c(counters: &mut Vec<i32>, pivot: usize) {
     }
 }
 
-fn signature_string(counters: &Vec<i32>) -> String {
+fn signature_string(counters: &Vec<i64>) -> String {
     let mut signature_string = String::from("*");
     for counter in counters {
         if *counter == 1 {
@@ -193,11 +270,13 @@ fn signature_string(counters: &Vec<i32>) -> String {
     signature_string
 }
 
-fn b_c_value(old_chi_orb: Rational32, p_q: Rational32) -> i32 {
+fn b_c_value(old_chi_orb: Rational64, p_q: Rational64) -> i64 {
     let mut b_c = 2;
     // let mut new_chi_orb = old_chi_orb;
     let mut a = b_c;
+    // println!("{}",["Before while ", &a.to_string()," ",&b_c.to_string()," ",&old_chi_orb.to_string()].concat());
     while old_chi_orb - period_to_difference(b_c) > p_q {
+        // println!("{}",["In while ", &a.to_string()," ",&b_c.to_string()," ",&old_chi_orb.to_string()].concat());
         a = b_c;
         b_c = 2 * b_c;
     }
@@ -205,9 +284,13 @@ fn b_c_value(old_chi_orb: Rational32, p_q: Rational32) -> i32 {
     if old_chi_orb - period_to_difference(b_c) == p_q {
         return b_c;
     }
+    if a == b {
+        return b_c;
+    }
     loop {
         let diff = (b - a) / 2;
         b_c = a + diff;
+        // println!("{}",[&a.to_string()," ",&b_c.to_string()," ",&b.to_string()].concat());
         match (old_chi_orb - period_to_difference(b_c)).cmp(&p_q) {
             Equal => {
                 return b_c;
@@ -220,6 +303,9 @@ fn b_c_value(old_chi_orb: Rational32, p_q: Rational32) -> i32 {
                 continue;
             }
             Greater => {
+                if diff == 0 {
+                    return b;
+                }
                 a = b_c;
                 continue;
             }
@@ -227,9 +313,9 @@ fn b_c_value(old_chi_orb: Rational32, p_q: Rational32) -> i32 {
     }
 }
 
-fn period_to_difference(b_n: i32) -> Rational32 {
+fn period_to_difference(b_n: i64) -> Rational64 {
     match b_n {
-        0 => Rational32::new(1, 2),
-        _ => Rational32::new(b_n - 1, 2 * b_n),
+        0 => Rational64::new(1, 2),
+        _ => Rational64::new(b_n - 1, 2 * b_n),
     }
 }
