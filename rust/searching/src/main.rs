@@ -29,7 +29,7 @@ fn main() {
         // let n = 4 * p_q.to_integer() + 4 + 4;
         // let mut counters: [i64; n];
         //println!("{}", &p_q.to_string());
-        let l = Rational64::from_integer(4 as i64) * p_q;
+        let l = Rational64::from_integer(4) * p_q;
         if l.is_integer() {
             let l = l.to_integer();
             // match l.cmp(&4) {
@@ -60,7 +60,7 @@ fn main() {
                 println!(
                     "{}",
                     [
-                        "and it is a condensation point of order ",
+                        "and it is an accumulation point of order ",
                         &(match l % 2 {
                             0 => (4 - l) / 2,
                             1 => (3 - l) / 2,
@@ -74,17 +74,17 @@ fn main() {
             }
         }
 
-        let mut distance = Rational64::from_integer(0 as i64);
+        let mut distance = Rational64::from_integer(0);
 
         let mut order = 0 as i64;
 
-        while Rational64::from_integer(1 as i64) - distance >= p_q + Rational64::new(1, 2) {
+        while Rational64::from_integer(1) - distance >= p_q + Rational64::new(1, 2) {
             distance += Rational64::new(1, 2);
             order += 1;
         }
 
-        let mut current_point = Rational64::from_integer(1 as i64)
-            + (p_q - (Rational64::from_integer(1 as i64) - distance));
+        let mut current_point = Rational64::from_integer(1)
+            + (p_q - (Rational64::from_integer(1) - distance));
 
         while !search_point(current_point, order).0 && order > 0 {
             order -= 1;
@@ -108,7 +108,7 @@ fn search_point(p_q: Rational64, order: i64) -> (bool, Vec<i64>) {
                 println!(
                     "{}",
                     [
-                        "and it is a condensation point of order ",
+                        "and it is an accumulation point of order ",
                         &(order.to_string())
                     ]
                     .concat()
@@ -130,7 +130,7 @@ fn search_point(p_q: Rational64, order: i64) -> (bool, Vec<i64>) {
                         println!(
                             "{}",
                             [
-                                "and it is a condensation point of order ",
+                                "and it is an accumulation point of order ",
                                 &(order.to_string())
                             ]
                             .concat()
@@ -141,7 +141,7 @@ fn search_point(p_q: Rational64, order: i64) -> (bool, Vec<i64>) {
                         flag = Less;
                         pivot += 1;
                         if counters.len() <= pivot {
-                            counters.push(1 as i64);
+                            counters.push(1);
                         }
                         continue;
                     }
@@ -160,7 +160,7 @@ fn search_point(p_q: Rational64, order: i64) -> (bool, Vec<i64>) {
                         println!(
                             "{}",
                             [
-                                "and it is a condensation point of order ",
+                                "and it is an accumulation point of order ",
                                 &(order.to_string())
                             ]
                             .concat()
@@ -175,7 +175,7 @@ fn search_point(p_q: Rational64, order: i64) -> (bool, Vec<i64>) {
                             println!(
                                 "{}",
                                 [
-                                    "and it is a condensation point of order ",
+                                    "and it is an accumulation point of order ",
                                     &(order.to_string())
                                 ]
                                 .concat()
@@ -189,7 +189,7 @@ fn search_point(p_q: Rational64, order: i64) -> (bool, Vec<i64>) {
                                 println!(
                                     "{}",
                                     [
-                                        "and it is a condensation point of order ",
+                                        "and it is an accumulation point of order ",
                                         &(order.to_string())
                                     ]
                                     .concat()
@@ -200,7 +200,7 @@ fn search_point(p_q: Rational64, order: i64) -> (bool, Vec<i64>) {
                                 flag = Less;
                                 pivot += 1;
                                 if counters.len() <= pivot {
-                                    counters.push(1 as i64);
+                                    counters.push(1);
                                 }
                                 continue;
                             }
@@ -215,7 +215,7 @@ fn search_point(p_q: Rational64, order: i64) -> (bool, Vec<i64>) {
                         flag = Greater;
                         pivot += 1;
                         if counters.len() <= pivot {
-                            counters.push(1 as i64);
+                            counters.push(1);
                         }
                         continue;
                     }
@@ -226,7 +226,7 @@ fn search_point(p_q: Rational64, order: i64) -> (bool, Vec<i64>) {
 }
 
 fn chi_orb(counters: &Vec<i64>) -> Rational64 {
-    let mut chi_orb = Rational64::from_integer(1 as i64);
+    let mut chi_orb = Rational64::from_integer(1);
     for counter in counters {
         if *counter == 1 {
             break;

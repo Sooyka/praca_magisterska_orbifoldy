@@ -275,4 +275,4 @@ TSWLatexianTemp*
 # Makeindex log files
 *.lpz
 
-rust/searching/target/
+rust/*/target/
