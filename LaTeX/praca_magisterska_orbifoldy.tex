@@ -52,6 +52,8 @@ outer = 25mm
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 
+\numberwithin{equation}{theorem}
+
 \newcommand{\todo}[1]{\hfill \break \textbf{\Huge \textcolor{violet}{TO DO: #1} \hfill \break}
 \normalsize}
 \newcommand{\content}[1]{\hfill \break \textbf{\large \textcolor{violet}{#1} \hfill \break}
@@ -61,6 +63,22 @@ outer = 25mm
 \newcommand{\missingpicture}[1]{\hfill \break\\[16pt] \Huge \textbf{\textcolor{violet}
 {Missing picture \normalsize #1}} \hfill
 \break \\[16pt] \normalsize}
+
+\newcommand{\lrb}{\textnormal{\Big[}}
+\newcommand{\rrb}{\textnormal{\Big]}}
+
+\newcommand{\rba}[1]{\lrb #1\rrb}
+
+\newcommand{\lcb}{\textnormal{\Big(}}
+\newcommand{\rcb}{\textnormal{\Big)}}
+
+\newcommand{\cba}[1]{\lcb #1\rcb}
+
+\newcommand{\ds}{\textnormal{\big/\!\!\big/}}
+\newcommand{\lds}{\textnormal{\big/\!\!\big/\!}}
+\newcommand{\rds}{\!\textnormal{\big/\!\!\big/}}
+
+\newcommand{\dsa}[1]{\ds #1\ds}
 
 %\newcommand{\beginproof}{{\noindent\textbf{Proof.}\\}}
 %\newcommand{\endproof}{{$_\square$}}
@@ -89,8 +107,8 @@ outer = 25mm
 Orbifoldy
 \end{abstract}
 \input{"./TeX_files/introduction.tex"}
-\input{"./TeX_files/definition_of_an_orbifold.tex"}
-\input{"./TeX_files/characteristics_classification_and_properties_of_the_orbifolds.tex"}
+%\input{"./TeX_files/definition_of_an_orbifold.tex"}
+\input{"./TeX_files/definition_characteristics_classification_and_properties_of_the_orbifolds.tex"}
 \input{"./TeX_files/order_structure.tex"}
 \input{"./TeX_files/algorithms_for_searching_the_spectrum.tex"}
 \input{"./TeX_files/counting_occurrences.tex"}

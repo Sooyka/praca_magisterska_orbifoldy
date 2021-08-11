@@ -1,39 +1,41 @@
 % mainfile: ../praca_magisterska_orbifoldy.tex
 %\synctex=1
 \chapter{Order structure} \label{order structure}
-
-Order type with zanurzenie w R
-
-1537/137
-
+%
+%Order type with zanurzenie w R
+%
+%1537/137
+%
 In this chapter we will discuss order type of the set of all possible Euler orbicharacteristics 
 of two dimensional orbifolds. \\
 
 For now, until Chapter \ref{counting occurrences} Counting occurrences, we will not pay attention 
-to how many orbifolds have the same Euler orbicharacteristic. \\ 
-Because of that and since Euler orbicharacteristic does not depend on the cyclic order 
-of points on the components of the boundary we introduce an extension of a notation from 
-\cite{Conway2008}. 
+to how many orbifolds have the same Euler orbicharacteristic. Let us note, that 
+Euler orbicharacteristic does not depend on the cyclic order of points on 
+the components of the boundary. 
+%Because of that and since Euler orbicharacteristic does not depend on the cyclic order 
+%of points on the components of the boundary we introduce an extension of a notation from 
+%\cite{Conway2008}. 
 
-%We will write $*\{a,b,c,d,\dots\}$ to denote not a particular orbifold, but a type 
-%of orbifold that have a cones on a component of the boundry of orders $a,b,c,d,\dots$, but 
-%in any order. \\ 
+%%We will write $*\{a,b,c,d,\dots\}$ to denote not a particular orbifold, but a type 
+%%of orbifold that have a cones on a component of the boundry of orders $a,b,c,d,\dots$, but 
+%%in any order. \\ 
 
-We will write $*\{a,b,c,d,\dots\}$ to denote a type of a boundary (of an orbifold) that have 
-kaleidoscopic points of periods $a,b,c,d,\dots$, but in any order. \\
+%We will write $*\{a,b,c,d,\dots\}$ to denote a type of a boundary (of an orbifold) that have 
+%kaleidoscopic points of periods $a,b,c,d,\dots$, but in any order. \\
 
 
-From what we wrote above (that Euler orbicharacteristic does not depend on the cyclic order 
-of points on the components of the boundary), we can see that Euler 
-orbicharacteristic is well defined 
-%on such types of orbifolds. \\ 
-when we specify only such a type of the components of the boundary of an orbifold and not 
-a particular cyclic order.  \\
+%From what we wrote above (that Euler orbicharacteristic does not depend on the cyclic order 
+%of points on the components of the boundary), we can see that Euler 
+%orbicharacteristic is well defined 
+%%on such types of orbifolds. \\ 
+%when we specify only such a type of the components of the boundary of an orbifold and not 
+%a particular cyclic order.  \\
 
 \section{Reductions of cases}
 Now we want to make some reductions to limit number of cases that we will be dealing with. \\
-For this chapter we will consider orbifolds according to a definition from 
-(\ref{Disk_and_sphere_with_defects}). \\
+%For this chapter we will consider orbifolds according to a definition from 
+%(\ref{Disk_and_sphere_with_defects}). \\
 Let us observe, that:
 \begin{align*}
 \hspace{3cm}\Delta(\circ) =& \hspace{-1cm} &-2& \hspace{-1cm} &= \Delta(*(^*2)^4) \\
@@ -56,10 +58,24 @@ as $\sbD$. \\
 Let us denote the set of all possible \Eoc s of two dimentional orbifolds as $\sigma$. \\
 Let us observe that the topological structure of $\sIS$ and $\sbD$ are the same since 
 
-\begin{equation*}
+\begin{equation}\label{times_two_fact}
 2\sbD=\sIS
-\end{equation*}
-So multiplying by $2$ is the homeomorphism. 
+\end{equation}
+So multiplying by $2$ is the homeomorphism. \\
+From above reductions we conclued that our problem boiled down to analysis possible 
+values of the expression:
+\begin{equation}
+2 - \sum_{i=1}^n \frac{I_i-1}{I_i}. 
+\end{equation}
+and 
+\begin{equation}
+1 - \sum_{j=1}^m \frac{b_j-1}{2b_j}
+\end{equation}
+We also have shown that all possible \Eoc s are achieved without using cusps. As such, we will use 
+cusps, remembering, that we can always get rid of them, if needed. So above $I_i$ and $b_j$ 
+are ranging over $\mathbb{N}_{>0}\cup \{\infty\}$, where expressions for infinity are defined as 
+a limits. The fact that it agrees with the definition of the \Eoc\ on the geometrical terms was 
+addressed here \ref{extended_Euler_orbicharacteristic}.  
 \section{Determining the order structure}
 In this chapter we will justify, that the order type of all possible Euler orbicharacteristics 
 of two dimensional orbifolds is $\omega^\omega$. 
@@ -87,6 +103,10 @@ of the transitive order $n$ and it is not an acccumulation point of the transiti
 If the point is an acccumulation point of the transitive order for an arbitrary large $n$ we say that 
 the  point is an acccumulation point of order $\omega$.
 \end{definition}
+
+When we will say that a point is an accumulation point of some set without specifying an order 
+then we will mean being an accumulation point in the ussual sense; from the point of view 
+of above definitions, that is, an accumulation point of order as least one.
 
 \subsection{Order structure of $\sbD$}
 \subsubsection{Some preliminary observations.}
@@ -213,11 +233,57 @@ a neighborhood $U=(1-\frac{n}{2}-\varepsilon,1-\frac{n}{2}+\varepsilon)$ such th
 we have that $\sbD \cap [1,1-\frac{n}{2})$ is homeomorphic with $\omega^n$. 
 From this $\sbD$ is homeomorphic with $\omega^\omega$. From this $\sIS$ is homeomorphic 
 with $\omega^\omega$. \\
-$\sIS = 2\sbD$, so for all $n\in\mathbb{N}$ set $\sIS \cap [2,n)$ has a lower order type then 
-$\sbD\cap [2,n)$. From this, we have that $\sIS \cup \sbD \cong \omega^\omega$. $_\square$ 
+$\sIS = 2\sbD$, so for all $n\in -\mathbb{N}$ set $\sIS \cap [2,n)$ has a lower order type then 
+$\sbD\cap [2,n)$. From this, we have that $\sIS \cup \sbD \cong \omega^\omega$. $_\square$ \\[4pt]
+From the above discussion we can conclude following:
+% corollary (stated in for deifferent ways 
+%as one are sometimes more useful that another): 
+%\begin{corollary}\label{predescors}
+%Let $x \in \sigma$. Then there exists $n \in \mathbb{N}$ such that $x + \frac{n}{2} \in \sigma$ 
+%but $x+\frac{n+1}{2} \not\in \sigma$. For such $n$ we have that $x$ is an \apots\ $\sigma$ of 
+%order $n$.  
+%\end{corollary}
+%\begin{corollary}
+%\end{corollary}
+%%Above corollary can be refolmulated in a way that sometimes is more useful:
+%\begin{corollary}\label{predescors_variant_II}
+%Let $x \in \sigma$ be an \apots\ $\sigma$ of order $n$. Then there is $y \in \sigma$ that is 
+%an isolated point of $\sigma$ such that $x = y - \frac{n}{2}$.   
+%\end{corollary}
+
+\begin{corollary}\label{predescors}
+Let $x \in \sigma$. Then:
+\begin{itemize}
+\item there exists $n_1 \in \mathbb{N}$ such that $x + \frac{n_1}{2} \in \sigma$ 
+but $x+\frac{n_1+1}{2} \not\in \sigma$. \\ In other words, there exist $y \in \sigma$ and 
+$n_1 \in \mathbb{N}$ such that 
+$y + \frac{1}{2} \not\in \sigma$ and such that $x = y - \frac{n_1}{2}$;
+\item there exists $n_2 \in \mathbb{N}$ such that $x$ is an \apots\ $\sigma$ of 
+order $n_2$
+%\item $x$ is an \apots\ $\sigma$ of order $n_2$, for some $n_2 \in \mathbb{N}$;  
+\end{itemize}
+and $n_1 = n_2$.
+\end{corollary}
+
+
+
+
+
+
+
+\section{Which points are in the $\sigma$?}
+Here we will try to understand better the conditions that let us determine wether the point 
+lie in $\sigma$ or not.
+% We will also state some observations about reasoning which points 
+%belong to $\sigma$ based on the knowlegde of other points belonging there. \\
+
+
+
+\section{More about how this $\omega^\omega$ lies in $\mathbb{R}$}
+
 \begin{theorem}
 The first (biggest) negative \apots\ of all possible \Eoc of two dimensional orbifolds is 
-$\frac{1}{12}$. It is the accumulation point of order $1$. 
+$-\frac{1}{12}$. It is the accumulation point of order $1$. 
 \end{theorem}
 \noindent\textbf{Proof.} \\
 We will show, that $-\frac{1}{12}$ is the biggest negative accumulation point of the set $\sbD$. 
@@ -240,20 +306,7 @@ $(\frac{1}{2},\frac{5}{12})\cap \sbD=\emptyset$ and to the contradiction. \\
 $\bullet$ Above analysis of the cases leads us also to the conclusion, that $\frac{5}{12}$ 
 is 
 an isolated point of the set $\sbD$, from this $-\frac{1}{12}$ is an acccumulation point 
-of order $1$ of the set $\sbD$. $_\square$ \\
-
-From the above discussion we can conclude following: 
-\begin{corollary}\label{predescors}
-Let $x \in \sigma$. Then there exeists $n \in \mathbb{N}$ such that $x + \frac{n}{2} \in \sigma$ 
-but $x+\frac{n+1}{2} \not\in \sigma$. For such $n$ we have that $x$ is an \apots\ $\sigma$ of 
-order $n$.  
-\end{corollary}
-
-\section{Which points are in the $\sigma$?}
-
-
-
- 
+of order $1$ of the set $\sbD$. $_\square$ \\ 
  
 
 

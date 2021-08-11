@@ -30,6 +30,7 @@ fn main() {
         // let mut counters: [i64; n];
         //println!("{}", &p_q.to_string());
         let l = Rational64::from_integer(4) * p_q;
+        println!("{}", l);
         if l.is_integer() {
             let l = l.to_integer();
             // match l.cmp(&4) {
@@ -51,6 +52,9 @@ fn main() {
                     1 => {
                         counters[0] = 2;
                     }
+                    -1 => {
+                        counters[0] = 2;
+                    }
                     _ => panic!(),
                 }
                 while chi_orb(&counters) > p_q {
@@ -64,6 +68,7 @@ fn main() {
                         &(match l % 2 {
                             0 => (4 - l) / 2,
                             1 => (3 - l) / 2,
+                            -1 => (3 - l) / 2,
                             _ => panic!(),
                         })
                         .to_string()
@@ -83,8 +88,8 @@ fn main() {
             order += 1;
         }
 
-        let mut current_point = Rational64::from_integer(1)
-            + (p_q - (Rational64::from_integer(1) - distance));
+        let mut current_point =
+            Rational64::from_integer(1) + (p_q - (Rational64::from_integer(1) - distance));
 
         while !search_point(current_point, order).0 && order > 0 {
             order -= 1;

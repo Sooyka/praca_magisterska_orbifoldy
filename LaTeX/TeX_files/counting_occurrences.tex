@@ -4,6 +4,8 @@ Our ultimate goal is to give the answer to the questions such as: \\
 - For a given $x \in \sigma$, how many orbifolds have $x$ as their \Eoc?\\
 - Why? Is there some underlying geometrical reason for that?\\
 - Can we characterise points $x \in \sigma$ that has the most orbifolds corresponding to them? \\
+- Is there any reasonable normalisation to counter the effect that there are 'more' points as we go 
+to lesser values. (What we mean by 'more' was sted in)
 The first equstion we can tackle is steaming from the chapter \ref{order structure} 
 and it is -- Do $\sbD$ and $\sIS$ coincide? It is easy to answer that $\sbD \neq \sIS$ 
 (and we will do that along some harder questions in the moment), but do they coincide 
@@ -14,26 +16,66 @@ Here we will state some observations and corollaries derived from previous chapt
 about ... \\
 \begin{observation}
 If an \Eoc\ is an accumulation point of order $n$ in $\sbD$ ($\sIS$), there exist an 
-orbifold of the type ... () with $n$ cone points (... points) with that \Eoc. 
+orbifold of the type ... () with $n$ cone points (gyration points) of that \Eoc. 
 \end{observation}
 prrof. from chapter 3. (todo: dopisać)
+\begin{observation}\label{adding_multiplied_differences}
+If $x \in \sbD$ \dsa{$\sIS$}, then $1-x$ \dsa{$2-x$} is a difference in \Eoc\ resulting 
+from some set of cone \dsa{gyration} points. From that $1-n(1-x) \in \sbD$ \dsa{$2-n(2-x)\in \sIS$} 
+for all $n \in \mathbb{N}$. 
+\end{observation}
+%\begin{observation}
+
+%\end{observation}
 \section{$\sbD$ and $\sIS$}
 In this section we would like to develop the tools and answer some questions about 
-interrelationships between $\sbD$ and $\sIS$. \\
+%interrelationships
+relations between $\sbD$ and $\sIS$. \\
 The first, stated in \ref{order structure} is that $2\sbD=\sIS$. 
 This tells us all about simmilarities of their topological structures -- namely, they are the same, 
 but it does not directly answers questions about how they lie in $\mathbb{R}$, relative 
 to each other. \\
 \subsection{$-\frac{1}{84}$ and $-\frac{1}{42}$}
 //Why it is how it is//
-\subsection{All the accumulation points of the $\sIS$ are in $\sbD$}
-\subsubsection{Arithmetical reason}
-If $x \in \sIS$, then $2-x$ is a difference in \Eoc\ resulting from some set of gyration points. 
-We can 
-\subsubsection{Geometrical reason}
-If $x \in \sIS$ 
+%\subsection{All the accumulation points of the $\sIS$ are in $\sbD$}
+\subsection{Accumulation points of the $\sIS$}
+\begin{theorem}
+All accumulation points of the $\sIS$ are in $\sbD$.
+\end{theorem}
+There are two proofs of this theorem showing nice correnpondence -- one arithmetical and 
+one geometrical. 
+\\
+\textbf{Proof I.}
+%\subsubsection{Arithmetical reason}
+\textbf{Arithmetical reason} \\
+We assume that $x \in \sIS$ is an \apots\ $\sIS$.\\
+%If $x \in \sIS$, then $\frac{x}{2} \in \sbD$. Then $1 - \frac{x}{2}$ 
+%is a difference in \Eoc\ resulting from some set of cone points. We can add to the disc twice as 
+%many cone points and resulting orbifold $\mathcal{O}$ will have an \Eoc\ equal to 
+%$1 - 2(1-\frac{x}{2}) = x - 1$. From \ref{third_order_lemma} for the thesis it is sufficient 
+%to $x - 1$ to be an \apots\ $\sbD$ of order at least two. \\
+%%$2-x$ is a difference in \Eoc\ resulting from some set of gyration points. We can 
+%We asumed that $x \in \sIS$ is an \apots\ $\sIS$, so, 
+By \ref{times_two_fact} we have, that 
+$\frac{x}{2} \in \sbD$ is an \apots\ $\sbD$. From \ref{third_order_lemma} we have that 
+$\frac{x}{2} + \frac{1}{2} \in \sbD$. From that, from \ref{adding_multiplied_differences} we have, 
+that $1-\overbrace{2}^{\substack{"n"\rm\ from\ \\ 
+\rm \ref{adding_multiplied_differences}}} 
+(\ \overbrace{1-(\frac{x}{2}+\frac{1}{2})}^{\substack{"1-x"\rm\ 
+from\ \\ \rm \ref{adding_multiplied_differences}}}\ ) \in \sbD$. But $1 - 2(1-(\frac{x}{2}+
+\frac{1}{2})) = x$, so $x \in \sbD$. $_\square$
+% for some $y \in \sbD$, so $\sbD$.
+\\
+\textbf{Proof II.}
+%\subsubsection{Geometrical reason}
+\textbf{Geometrical reason} \\
+We assume that $x \in \sIS$ is an \apots\ $\sIS$.\\
+%If $x \in \sIS$
+From \ref{predescors}  
 
 
+
+\section{Estimations of the number of occurences}
 
 
 
@@ -44,3 +86,14 @@ If $x \in \sIS$
 
 
 \section{Deformations on orbifolds?}
+
+
+
+
+
+
+
+
+
+
+
