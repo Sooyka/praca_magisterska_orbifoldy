@@ -1,0 +1,1 @@
+../.bin/send_to_server.sh
