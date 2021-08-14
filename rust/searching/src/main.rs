@@ -9,6 +9,13 @@ use Ordering::*;
 // }
 
 fn main() {
+    let zero = Rational64::from_integer(0);
+    let one_over_two = Rational64::new(1, 2);
+    let one = Rational64::from_integer(1);
+    // let two = Rational64::from_integer(2);
+    // let three = Rational64::from_integer(3);
+    let four = Rational64::from_integer(4);
+
     loop {
         println!("Enter a rational number.");
 
@@ -23,24 +30,13 @@ fn main() {
             .map(|number_string| number_string.trim().parse().expect("Please type a number!"))
             .collect();
 
-        // let p_q: Vec<&i64> = p_q
         let mut counters: Vec<i64> = vec![1];
         let p_q = Rational64::new(p_q[0], p_q[1]);
-        // let n = 4 * p_q.to_integer() + 4 + 4;
-        // let mut counters: [i64; n];
-        //println!("{}", &p_q.to_string());
-        let l = Rational64::from_integer(4) * p_q;
+       
+        let l = four * p_q;
         println!("{}", l);
         if l.is_integer() {
             let l = l.to_integer();
-            // match l.cmp(&4) {
-            //     Greater => {
-
-            //     }
-            //     _ => {
-
-            //     }
-            // }
             if l > 4 {
                 println!("No");
                 return ();
@@ -79,25 +75,22 @@ fn main() {
             }
         }
 
-        let mut distance = Rational64::from_integer(0);
+        let mut distance = zero;
 
         let mut order = 0 as i64;
 
-        while Rational64::from_integer(1) - distance >= p_q + Rational64::new(1, 2) {
-            distance += Rational64::new(1, 2);
+        while one - distance >= p_q + one_over_two {
+            distance += one_over_two;
             order += 1;
         }
 
         let mut current_point =
-            Rational64::from_integer(1) + (p_q - (Rational64::from_integer(1) - distance));
+            one + (p_q - (one - distance));
 
         while !check_rational_number(current_point, order).0 && order > 0 {
             order -= 1;
-            current_point -= Rational64::new(1, 2);
+            current_point -= one_over_two;
         }
-
-        // let _var: i64 = 1 ;
-        // let _var = _var as i64;
     }
 }
 
