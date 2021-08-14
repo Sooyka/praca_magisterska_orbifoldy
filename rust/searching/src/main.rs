@@ -91,7 +91,7 @@ fn main() {
         let mut current_point =
             Rational64::from_integer(1) + (p_q - (Rational64::from_integer(1) - distance));
 
-        while !search_point(current_point, order).0 && order > 0 {
+        while !check_rational_number(current_point, order).0 && order > 0 {
             order -= 1;
             current_point -= Rational64::new(1, 2);
         }
@@ -101,7 +101,7 @@ fn main() {
     }
 }
 
-fn search_point(p_q: Rational64, order: i64) -> (bool, Vec<i64>) {
+fn check_rational_number(p_q: Rational64, order: i64) -> (bool, Vec<i64>) {
     let mut counters: Vec<i64> = vec![1];
     let mut pivot = 0;
     let mut flag = Greater;
