@@ -8,10 +8,6 @@ use Ordering::*;
 pub fn point_order_and_occurences(p_q: Rational64, occurences_limit: i64) -> (i64, Vec<Vec<i64>>) {
     let points_order_and_first_occurence = determine_points_order(p_q);
     let p_q_order = points_order_and_first_occurence.0;
-    // let p_q_first_occurence = points_order_and_first_occurence.1;
-    // let sleep_time = time::Duration::from_millis(1000);
-    // thread::sleep(sleep_time);
-    // println!("After first");
     let p_q_occurences = search_for_point(p_q, occurences_limit);
     (p_q_order, p_q_occurences)
 }
@@ -29,7 +25,6 @@ pub fn determine_points_order(p_q: Rational64) -> (i64, Vec<i64>) {
     let mut p_q_order = -1;
     let mut p_q_first_occurence: Vec<i64> = vec![];
     let l = _four * p_q;
-    // println!("{}", l);
     if l.is_integer() {
         let l = l.to_integer();
         if l > 4 {
@@ -72,7 +67,6 @@ pub fn determine_points_order(p_q: Rational64) -> (i64, Vec<i64>) {
         let mut found = vec![];
         while found.len() == 0 && depth >= 0 {
             found = search_for_point(current_point, 1);
-            // println!("{}", &current_point.to_string());
             if found.len() == 0 {
                 depth -= 1;
                 current_point -= _one_over_two;
@@ -84,38 +78,19 @@ pub fn determine_points_order(p_q: Rational64) -> (i64, Vec<i64>) {
         p_q_order = depth;
         counters = p_q_first_occurence;
     }
-    // println!(
-    //     "{}",
-    //     [&p_q_order.to_string(), " ", &signature_string(&counters)].concat()
-    // );
-    // let sleep_time = time::Duration::from_millis(5000);
-    // let now = time::Instant::now();
-    // thread::sleep(sleep_time);
     return (p_q_order, counters);
 }
 
 pub fn search_for_point(p_q: Rational64, occurences_limit: i64) -> Vec<Vec<i64>> {
     let mut occurences: Vec<Vec<i64>> = vec![];
-    // let mut counters: Vec<i64> = (*counters).to_vec();
     let mut counters: Vec<i64> = vec![1];
     let mut occurences_count = 0;
     let mut pivot = 0;
     let mut flag = chi_orb(&counters).cmp(&p_q);
-    // println!("start");
-    // let sleep_time = time::Duration::from_millis(1000);
-    // thread::sleep(sleep_time);
     loop {
-        // let sleep_time = time::Duration::from_millis(100);
-        // thread::sleep(sleep_time);
-        println!("{}", &signature_string(&counters));
         match flag {
             Equal => {
-                //println!("Equal");
-                // println!("{}", &signature_string(&counters));
                 occurences.push(counters.clone());
-                //println!("{}", [" ", &signature_string(&counters)].concat());
-                //let sleep_time = time::Duration::from_millis(5000);
-                //thread::sleep(sleep_time);
                 occurences_count += 1;
                 if occurences_count == occurences_limit {
                     return occurences;
@@ -129,7 +104,6 @@ pub fn search_for_point(p_q: Rational64, occurences_limit: i64) -> Vec<Vec<i64>>
                 }
             }
             Less => {
-                //println!("Less");
                 counters[pivot] += 1;
                 if break_condition(&counters, pivot) {
                     return occurences;
@@ -137,7 +111,6 @@ pub fn search_for_point(p_q: Rational64, occurences_limit: i64) -> Vec<Vec<i64>>
                 level_to_b_c(&mut counters, pivot);
                 match chi_orb(&counters).cmp(&p_q) {
                     Equal => {
-                        //println!("Less Equal");
                         occurences.push(counters.clone());
                         occurences_count += 1;
                         if occurences_count == occurences_limit {
@@ -152,7 +125,6 @@ pub fn search_for_point(p_q: Rational64, occurences_limit: i64) -> Vec<Vec<i64>>
                         }
                     }
                     Less => {
-                        //println!("Less Less");
                         flag = Less;
                         pivot += 1;
                         if counters.len() <= pivot {
@@ -161,7 +133,6 @@ pub fn search_for_point(p_q: Rational64, occurences_limit: i64) -> Vec<Vec<i64>>
                         continue;
                     }
                     Greater => {
-                        //println!("Less Greater");
                         flag = Greater;
                         pivot = 0;
                         continue;
@@ -169,12 +140,9 @@ pub fn search_for_point(p_q: Rational64, occurences_limit: i64) -> Vec<Vec<i64>>
                 }
             }
             Greater => {
-                //println!("Greater");
                 counters[pivot] = 0;
-                //println!("{}",[&chi_orb(&counters).to_string(), "\t", &p_q.to_string()].concat() );
                 match chi_orb(&counters).cmp(&p_q) {
                     Equal => {
-                        //println!("Greater Equal");
                         occurences.push(counters.clone());
                         occurences_count += 1;
                         if occurences_count == occurences_limit {
@@ -189,7 +157,6 @@ pub fn search_for_point(p_q: Rational64, occurences_limit: i64) -> Vec<Vec<i64>>
                         }
                     }
                     Less => {
-                        //println!("Greater Less");
                         let current_chi_orb = chi_orb(&counters) + Rational64::new(1, 2);
                         let b_c = b_c_value(current_chi_orb, p_q);
                         if b_c.0 {
@@ -219,7 +186,6 @@ pub fn search_for_point(p_q: Rational64, occurences_limit: i64) -> Vec<Vec<i64>>
                         level_to_b_c(&mut counters, pivot);
                         match chi_orb(&counters).cmp(&p_q) {
                             Equal => {
-                                //println!("Greater Less Equal");
                                 occurences.push(counters.clone());
                                 occurences_count += 1;
                                 if occurences_count == occurences_limit {
@@ -234,7 +200,6 @@ pub fn search_for_point(p_q: Rational64, occurences_limit: i64) -> Vec<Vec<i64>>
                                 }
                             }
                             Less => {
-                                //println!("Greater Less Less");
                                 flag = Less;
                                 pivot += 1;
                                 if counters.len() <= pivot {
@@ -243,7 +208,6 @@ pub fn search_for_point(p_q: Rational64, occurences_limit: i64) -> Vec<Vec<i64>>
                                 continue;
                             }
                             Greater => {
-                                //println!("Greater Less Greater");
                                 flag = Greater;
                                 pivot = 0;
                                 continue;
@@ -251,7 +215,6 @@ pub fn search_for_point(p_q: Rational64, occurences_limit: i64) -> Vec<Vec<i64>>
                         }
                     }
                     Greater => {
-                        //println!("Greater Greater");
                         flag = Greater;
                         pivot += 1;
                         if counters.len() <= pivot {
@@ -305,16 +268,7 @@ pub fn signature_string(counters: &Vec<i64>) -> String {
     reversed_counters.reverse();
     for counter in &reversed_counters {
         if *counter == 1 {
-            //break;
             continue;
-        }
-        match *counter {
-            0 => {
-                signature_string = signature_string + "\t" + "infty";
-            }
-            _ => {
-                signature_string = [&signature_string, "\t", &(*counter).to_string()].concat();
-            }
         }
 
         signature_string = signature_string
@@ -329,9 +283,7 @@ pub fn signature_string(counters: &Vec<i64>) -> String {
 
 fn b_c_value(old_chi_orb: Rational64, p_q: Rational64) -> (bool, i64) {
     let mut b_c = 2;
-    // let mut new_chi_orb = old_chi_orb;
     let mut a = b_c;
-    // println!("{}",["Before while ", &a.to_string()," ",&b_c.to_string()," ",&old_chi_orb.to_string()].concat());
     let mut difference = period_to_difference(b_c);
     let mut chi_orb_value_option = old_chi_orb.checked_sub(&difference);
     let mut chi_orb_value;
@@ -344,7 +296,6 @@ fn b_c_value(old_chi_orb: Rational64, p_q: Rational64) -> (bool, i64) {
         }
     }
     while chi_orb_value > p_q {
-        // println!("{}",["In while ", &a.to_string()," ",&b_c.to_string()," ",&old_chi_orb.to_string()].concat());
         a = b_c;
         b_c = 2 * b_c;
         difference = period_to_difference(b_c);
@@ -368,7 +319,6 @@ fn b_c_value(old_chi_orb: Rational64, p_q: Rational64) -> (bool, i64) {
     loop {
         let diff = (b - a) / 2;
         b_c = a + diff;
-        // println!("{}",[&a.to_string()," ",&b_c.to_string()," ",&b.to_string()].concat());
         difference = period_to_difference(b_c);
         chi_orb_value_option = old_chi_orb.checked_sub(&difference);
         match chi_orb_value_option {
