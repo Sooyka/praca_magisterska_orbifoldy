@@ -1,0 +1,83 @@
+{
+    // Użyj funkcji IntelliSense, aby uzyskać informacje o możliwych atrybutach.
+    // Najedź kursorem, aby wyświetlić opisy istniejących atrybutów.
+    // Aby uzyskać więcej informacji, odwiedź stronę: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'point_order_and_occurences'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=point_order_and_occurences",
+                    "--package=searching"
+                ],
+                "filter": {
+                    "name": "point_order_and_occurences",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            // "terminal": "external"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'point_order_and_occurences'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=point_order_and_occurences",
+                    "--package=searching"
+                ],
+                "filter": {
+                    "name": "point_order_and_occurences",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'printing_the_spectrum'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=printing_the_spectrum",
+                    "--package=searching"
+                ],
+                "filter": {
+                    "name": "printing_the_spectrum",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'printing_the_spectrum'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=printing_the_spectrum",
+                    "--package=searching"
+                ],
+                "filter": {
+                    "name": "printing_the_spectrum",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
