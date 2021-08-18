@@ -1,0 +1,1 @@
+/home/bartosz/Studia_Wrocław/praca_magisterska_orbifoldy/Rust/searching/target/debug/printing_the_spectrum: /home/bartosz/Studia_Wrocław/praca_magisterska_orbifoldy/Rust/searching/src/orbifolds_lib.rs /home/bartosz/Studia_Wrocław/praca_magisterska_orbifoldy/Rust/searching/src/other_stuff.rs build.rs
