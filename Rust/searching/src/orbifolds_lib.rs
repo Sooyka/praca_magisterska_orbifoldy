@@ -1,8 +1,6 @@
 use num_rational::*;
 use num_traits::ops::checked::CheckedSub;
 use std::cmp::*;
-// use std::io;
-// use std::{thread, time};
 use Ordering::*;
 
 pub fn point_order_and_occurences(p_q: Rational64, occurences_limit: i64) -> (i64, Vec<Vec<i64>>) {

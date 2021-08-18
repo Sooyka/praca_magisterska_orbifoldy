@@ -1,16 +1,8 @@
 use num_rational::*;
-// use num_traits::ops::checked::CheckedSub;
-// use std::cmp::*;
 use std::io;
-// use std::{thread, time};
-// use Ordering::*;
 
 mod orbifolds_lib;
 use orbifolds_lib::*;
-// enum Flag {
-//     Dreater,
-//     Smaller,
-// }
 
 fn main() {
     loop {

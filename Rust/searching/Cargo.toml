@@ -14,5 +14,9 @@ name = "point_order_and_occurences"
 path = "src/point_order_and_occurences.rs"
 
 [[bin]]
-name = "printing_the_spectrum"
-path = "src/other_stuff.rs"
+name = "denominators_exclusive"
+path = "src/denominators.rs"
+
+[[bin]]
+name = "denominators"
+path = "src/denominators_exclusive.rs"
