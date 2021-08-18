@@ -21,7 +21,6 @@
             },
             "args": [],
             "cwd": "${workspaceFolder}"
-            // "terminal": "external"
         },
         {
             "type": "lldb",
@@ -45,15 +44,15 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'printing_the_spectrum'",
+            "name": "Debug executable 'denominators_exclusive'",
             "cargo": {
                 "args": [
                     "build",
-                    "--bin=printing_the_spectrum",
+                    "--bin=denominators_exclusive",
                     "--package=searching"
                 ],
                 "filter": {
-                    "name": "printing_the_spectrum",
+                    "name": "denominators_exclusive",
                     "kind": "bin"
                 }
             },
@@ -63,16 +62,53 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in executable 'printing_the_spectrum'",
+            "name": "Debug unit tests in executable 'denominators_exclusive'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
-                    "--bin=printing_the_spectrum",
+                    "--bin=denominators_exclusive",
                     "--package=searching"
                 ],
                 "filter": {
-                    "name": "printing_the_spectrum",
+                    "name": "denominators_exclusive",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'denominators'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=denominators",
+                    "--package=searching"
+                ],
+                "filter": {
+                    "name": "denominators",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'denominators'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=denominators",
+                    "--package=searching"
+                ],
+                "filter": {
+                    "name": "denominators",
                     "kind": "bin"
                 }
             },

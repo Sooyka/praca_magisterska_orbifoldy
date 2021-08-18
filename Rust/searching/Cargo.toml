@@ -15,8 +15,12 @@ path = "src/point_order_and_occurences.rs"
 
 [[bin]]
 name = "denominators_exclusive"
-path = "src/denominators.rs"
+path = "src/denominators_exclusive.rs"
 
 [[bin]]
 name = "denominators"
 path = "src/denominators_exclusive.rs"
+
+[[bin]]
+name = "denominators_exclusive_is"
+path = "src/denominators_exclusive_is.rs"

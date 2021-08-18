@@ -29,10 +29,6 @@ fn main() {
                     println!(
                         "{}",
                         [
-                            &(-p).to_string(),
-                            "/",
-                            &q.to_string(),
-                            "\t\t",
                             &p_q.to_string(),
                             "\t\t",
                             &p_q_order.to_string(),
