@@ -114,6 +114,43 @@
             },
             "args": [],
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'denominators_exclusive_is'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=denominators_exclusive_is",
+                    "--package=searching"
+                ],
+                "filter": {
+                    "name": "denominators_exclusive_is",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'denominators_exclusive_is'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=denominators_exclusive_is",
+                    "--package=searching"
+                ],
+                "filter": {
+                    "name": "denominators_exclusive_is",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
         }
     ]
 }

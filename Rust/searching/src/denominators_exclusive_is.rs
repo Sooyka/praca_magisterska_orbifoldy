@@ -1,6 +1,7 @@
 use num_rational::*;
 use std::io;
 
+use std::{thread, time};
 mod orbifolds_lib;
 use orbifolds_lib::*;
 
@@ -22,10 +23,15 @@ fn main() {
         let mut p_q;
         let mut no_count = 0;
         let mut yes_count = 0;
+        let mut no_denominators = "".to_string();
         match ui {
             0 => {}
-            1 => {q = q_max;}
-            _ => {panic!();}
+            1 => {
+                q = q_max;
+            }
+            _ => {
+                panic!();
+            }
         }
         while q <= q_max {
             for p in 1..q {
@@ -61,12 +67,15 @@ fn main() {
                     .concat()
                 );
                 println!("{}", q.to_string());
-                
+                // let sleep_time = time::Duration::from_millis(5000);
+                // thread::sleep(sleep_time);
+                no_denominators = [no_denominators, q.to_string()].concat();
             }
             no_count = 0;
             yes_count = 0;
             println!("");
             q += 1;
         }
+        println!("{}", no_denominators);
     }
 }
