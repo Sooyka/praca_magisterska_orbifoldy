@@ -8,19 +8,3 @@ edition = "2018"
 [dependencies]
 num-rational = "0.4"
 num-traits = "0.2"
-
-[[bin]]
-name = "point_order_and_occurences"
-path = "src/point_order_and_occurences.rs"
-
-[[bin]]
-name = "denominators_exclusive"
-path = "src/denominators_exclusive.rs"
-
-[[bin]]
-name = "denominators"
-path = "src/denominators_exclusive.rs"
-
-[[bin]]
-name = "denominators_exclusive_is"
-path = "src/denominators_exclusive_is.rs"

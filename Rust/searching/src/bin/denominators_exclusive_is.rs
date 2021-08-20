@@ -1,9 +1,8 @@
 use num_rational::*;
 use std::io;
 
-use std::{thread, time};
-mod orbifolds_lib;
-use orbifolds_lib::*;
+// use std::{thread, time};
+use searching::orbifolds_lib::*;
 
 fn main() {
     loop {
