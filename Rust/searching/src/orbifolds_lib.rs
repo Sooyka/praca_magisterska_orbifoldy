@@ -3,14 +3,12 @@ use num_traits::ops::checked::CheckedSub;
 use std::cmp::*;
 use Ordering::*;
 
-
 pub fn point_order_and_occurences(p_q: Rational64, occurences_limit: i64) -> (i64, Vec<Vec<i64>>) {
     let points_order_and_first_occurence = determine_points_order(p_q);
     let p_q_order = points_order_and_first_occurence.0;
     let p_q_occurences = search_for_point(p_q, occurences_limit);
     (p_q_order, p_q_occurences)
 }
-
 
 pub fn determine_points_order(p_q: Rational64) -> (i64, Vec<i64>) {
     let _zero = Rational64::from_integer(0);
@@ -80,7 +78,6 @@ pub fn determine_points_order(p_q: Rational64) -> (i64, Vec<i64>) {
     }
     return (p_q_order, counters);
 }
-
 
 pub fn search_for_point(p_q: Rational64, occurences_limit: i64) -> Vec<Vec<i64>> {
     let mut occurences: Vec<Vec<i64>> = vec![];
@@ -229,7 +226,6 @@ pub fn search_for_point(p_q: Rational64, occurences_limit: i64) -> Vec<Vec<i64>>
     }
 }
 
-
 pub fn chi_orb(counters: &Vec<i64>) -> Rational64 {
     let mut chi_orb = Rational64::from_integer(1);
     for counter in counters {
@@ -263,7 +259,6 @@ fn level_to_b_c(counters: &mut Vec<i64>, pivot: usize) {
         *counter = b_c;
     }
 }
-
 
 pub fn signature_string(counters: &Vec<i64>) -> String {
     let mut signature_string = String::from("*");
@@ -354,14 +349,12 @@ fn b_c_value(old_chi_orb: Rational64, p_q: Rational64) -> (bool, i64) {
     }
 }
 
-
 pub fn period_to_difference(b_n: i64) -> Rational64 {
     match b_n {
         0 => Rational64::new(1, 2),
         _ => Rational64::new(b_n - 1, 2 * b_n),
     }
 }
-
 
 pub fn print_order_and_occurences(p_q: Rational64, p_q_order_and_occurences: (i64, Vec<Vec<i64>>)) {
     let p_q_order = p_q_order_and_occurences.0;
