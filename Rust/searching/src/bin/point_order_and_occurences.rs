@@ -1,7 +1,7 @@
 use num_rational::*;
 use std::io;
 
-use searching::orbifolds_lib::*;
+use searching::order_and_occurences_lib::*;
 
 fn main() {
     loop {
@@ -22,6 +22,6 @@ fn main() {
 
         let p_q_order_and_occurences = point_order_and_occurences(p_q, 0);
 
-        print_order_and_occurences(p_q, p_q_order_and_occurences);
+        print_order_and_occurences(p_q, &p_q_order_and_occurences);
     }
 }

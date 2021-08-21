@@ -1,7 +1,7 @@
 use num_rational::*;
 use std::io;
 
-use searching::orbifolds_lib::*;
+use searching::order_and_occurences_lib::*;
 
 fn main() {
     loop {
