@@ -1,5 +1,5 @@
 {
-    "exclusive_inclusive": "Exclusive",
+    "only_relatively_prime_numerators": true,
     "maximal_exact": "Maximal",
     "occurences": true,
     "yes_no_counting": true,

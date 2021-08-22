@@ -1,7 +1,7 @@
 use num_rational::*;
 use std::io;
 
-use searching::order_and_occurences_lib::*;
+use searching::points_order_and_occurences_lib::*;
 
 fn main() {
     loop {
@@ -20,7 +20,7 @@ fn main() {
 
         let p_q = Rational64::new(p_q[0], p_q[1]);
 
-        let p_q_order_and_occurences = point_order_and_occurences(p_q, 0);
+        let p_q_order_and_occurences = points_order_and_occurences(p_q, 0);
 
         print_order_and_occurences(p_q, &p_q_order_and_occurences);
     }

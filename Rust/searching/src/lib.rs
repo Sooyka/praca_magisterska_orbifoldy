@@ -1,7 +1,7 @@
 // pub mod disk_orbifolds_lib;
 
 pub mod denominators_lib;
-pub mod order_and_occurences_lib;
+pub mod points_order_and_occurences_lib;
 
 // use serde::Deserialize;
 

@@ -1,8 +1,4 @@
 {
-    "base_manifolds": [
-        "",
-        ""
-    ],
     "only_disk": "",
     "only_sphere": "",
     "disk_and_sphere": ""

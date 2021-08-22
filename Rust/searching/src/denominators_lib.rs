@@ -1,12 +1,6 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub enum DenominatorsExclusiveInclusive {
-    Exclusive,
-    Inclusive,
-}
-
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub enum DenominatorsMaximalExact {
     Maximal,
     Exact,
@@ -24,7 +18,7 @@ pub struct DenominatorsOutput {
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct DenominatorsConfig {
-    pub exclusive_inclusive: DenominatorsExclusiveInclusive,
+    pub only_relatively_prime_numerators: bool,
     pub maximal_exact: DenominatorsMaximalExact,
     pub occurences: bool,
     pub yes_no_counting: bool,
