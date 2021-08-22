@@ -3,8 +3,13 @@ use num_traits::ops::checked::CheckedSub;
 use std::cmp::*;
 use Ordering::*;
 
-pub struct PointsOrderAndOccurences {
+use serde::{Deserialize, Serialize};
 
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct PointsOrderAndOccurencesConfig {
+    pub only_disk: bool,
+    pub only_sphere: bool,
+    pub only_disk_and_sphere: bool,
 }
 
 pub fn points_order_and_occurences(p_q: Rational64, occurences_limit: i64) -> (i64, Vec<Vec<i64>>) {

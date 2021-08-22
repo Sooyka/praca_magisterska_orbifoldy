@@ -1,5 +1,5 @@
 {
-    "only_disk": "",
-    "only_sphere": "",
-    "disk_and_sphere": ""
+    "only_disk": true,
+    "only_sphere": false,
+    "only_disk_and_sphere": false
 }
