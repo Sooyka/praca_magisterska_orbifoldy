@@ -1,25 +1,32 @@
-enum DenominatorsExclusiveInclusive {
+use serde::{Deserialize, Serialize};
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub enum DenominatorsExclusiveInclusive {
     Exclusive,
-    Inclusive
+    Inclusive,
 }
 
-enum DenominatorsMaximalExact {
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub enum DenominatorsMaximalExact {
     Maximal,
-    Exact
+    Exact,
 }
 
-struct DenominatorsOutput {
-    p: bool, 
-    q: bool,
-    p_q: bool,
-    p_q_order: bool,
-    number_of_p_q_occurences: bool,
-    occurences: i64
-
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct DenominatorsOutput {
+    pub provided_p_q: bool,
+    pub p_q: bool,
+    pub p_q_order: bool,
+    pub number_of_p_q_occurences: bool,
+    pub occurences: i64,
+    pub yes_no_counting: bool,
 }
 
-struct DenominatorsConfig {
-    exclusive_inclusive: DenominatorsExclusiveInclusive,
-    maximal_exact: DenominatorsMaximalExact,
-    output: DenominatorsOutput
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct DenominatorsConfig {
+    pub exclusive_inclusive: DenominatorsExclusiveInclusive,
+    pub maximal_exact: DenominatorsMaximalExact,
+    pub occurences: bool,
+    pub yes_no_counting: bool,
+    pub output: DenominatorsOutput,
 }

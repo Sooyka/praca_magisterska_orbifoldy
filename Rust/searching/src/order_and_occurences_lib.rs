@@ -372,15 +372,9 @@ pub fn print_order_and_occurences(
             .concat()
         );
     } else {
-        let mut p_q_orbifolds_signatures = String::from("");
+        let p_q_orbifolds_signatures = signature_strings(p_q_orbifolds);
         let len = p_q_orbifolds.len();
         let number_of_p_q_orbifolds = len.to_string();
-        for (i, orbifold) in p_q_orbifolds.iter().enumerate() {
-            p_q_orbifolds_signatures.push_str(&signature_string(&orbifold));
-            if i != len - 1 {
-                p_q_orbifolds_signatures.push_str("\n");
-            }
-        }
         println!(
             "{}",
             p_q.to_string()
@@ -400,4 +394,16 @@ pub fn print_order_and_occurences(
                 + "."
         );
     }
+}
+
+pub fn signature_strings(signatures: &Vec<Vec<i64>>) -> String {
+    let len = signatures.len();
+    let mut orbifolds_signatures = "".to_string();
+    for (i, orbifold) in signatures.iter().enumerate() {
+        orbifolds_signatures.push_str(&signature_string(&orbifold));
+        if i != len - 1 && len != 0 {
+            orbifolds_signatures.push_str("\n");
+        }
+    }
+    return orbifolds_signatures;
 }

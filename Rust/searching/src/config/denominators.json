@@ -1,12 +1,14 @@
 {
-    "exclusive_inclusive": "",
-    "maximal_exact": "",
+    "exclusive_inclusive": "Exclusive",
+    "maximal_exact": "Maximal",
+    "occurences": true,
+    "yes_no_counting": true,
     "output": {
-        "p": "",
-        "q": "",
-        "p_q": "",
-        "p_q_order": "",
-        "number_of_p_q_occurences": "",
-        "occurences": ""
+        "provided_p_q": true,
+        "p_q": true,
+        "p_q_order": true,
+        "number_of_p_q_occurences": true,
+        "occurences": 2,
+        "yes_no_counting": true
     }
 }
