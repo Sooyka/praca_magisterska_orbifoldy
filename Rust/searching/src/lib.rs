@@ -10,9 +10,9 @@ use std::fs::File;
 use std::io::BufReader;
 // use std::path::Path;
 
-pub fn read_config<C: serde::de::DeserializeOwned>(path: String) -> Result<C, Box<dyn Error>> {
+pub fn read_config<C: serde::de::DeserializeOwned>(lib: String) -> Result<C, Box<dyn Error>> {
     // Open the file in read-only mode with buffer.
-    let file = File::open(path)?;
+    let file = File::open("config/".to_string()+ &lib + ".json")?;
     let reader = BufReader::new(file);
 
     // Read the JSON contents of the file as an instancse of `User`.
