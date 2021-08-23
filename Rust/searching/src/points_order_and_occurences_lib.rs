@@ -18,9 +18,7 @@ pub enum DiskSphere {
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct PointsOrderAndOccurencesConfig {
-    pub only_disk: bool,
-    pub only_sphere: bool,
-    pub only_disk_and_sphere: bool,
+    pub disk_sphere: DiskSphere,
 }
 
 pub fn points_order_and_occurences(p_q: Rational64, occurences_limit: i64) -> (i64, Vec<Vec<i64>>) {
@@ -281,7 +279,17 @@ fn level_to_b_c(counters: &mut Vec<i64>, pivot: usize) {
 }
 
 pub fn signature_string(counters: &Vec<i64>, manifold: &TwoDimentionalManifold) -> String {
-    let mut signature_string = String::from("");
+    let mut signature_string = match manifold {
+        TwoDimentionalManifold::Disk => "*s".to_string(),
+        TwoDimentionalManifold::Sphere => "".to_string(),
+        TwoDimentionalManifold::Genus(n) => {
+            let mut genus_string = "".to_string();
+            for _ in 1..*n {
+                genus_string += "o";
+            }
+            genus_string
+        }
+    } + "\t";
     let mut reversed_counters = counters.clone();
     reversed_counters.reverse();
     let reversed_counters = reversed_counters;
@@ -385,12 +393,15 @@ pub fn print_order_and_occurences(
     if p_q_order == -1 {
         println!(
             "{}",
-            [
-                &p_q.to_string(),
-                " ",
-                " is not an Euler orbicharacteristic of any orbifold."
-            ]
-            .concat()
+            p_q.to_string()
+                + " "
+                + " is not an Euler orbicharacteristic of any "
+                + &match manifold {
+                    TwoDimentionalManifold::Disk => "disk".to_string(),
+                    TwoDimentionalManifold::Sphere => "sphere".to_string(),
+                    TwoDimentionalManifold::Genus(n) => "genus-".to_string() + &n.to_string(),
+                }
+                + " orbifold."
         );
     } else {
         let p_q_orbifolds_signatures = signature_strings(p_q_orbifolds, manifold);
@@ -402,6 +413,12 @@ pub fn print_order_and_occurences(
                 + " "
                 + "is an Euler orbicharacteristic of "
                 + &number_of_p_q_orbifolds
+                + " "
+                + &match manifold {
+                    TwoDimentionalManifold::Disk => "disk".to_string(),
+                    TwoDimentionalManifold::Sphere => "sphere".to_string(),
+                    TwoDimentionalManifold::Genus(n) => "genus-".to_string() + &n.to_string(),
+                }
                 + match len {
                     1 => " orbifold with signature: \n",
                     _ => " orbifolds with signatures: \n",

@@ -23,7 +23,6 @@ fn main() {
                 // break;
             }
         };
-        let output = &config.output;
         match &config.maximal_exact {
             DenominatorsMaximalExact::Maximal => {
                 println!("Enter maximal denumerator.");
@@ -41,8 +40,9 @@ fn main() {
         let mut p_q;
         let mut no_count = 0;
         let mut yes_count = 0;
+        let config: DenominatorsConfig;
         loop {
-            let config: &DenominatorsConfig = &match read_config("denominators".to_string()) {
+            config = match read_config("denominators".to_string()) {
                 Ok(c) => c,
                 Err(err) => {
                     println!(
@@ -59,6 +59,7 @@ fn main() {
             };
             break;
         }
+        let output = &config.output;
         if config.maximal_exact == DenominatorsMaximalExact::Maximal {
             q = q_max;
         }
