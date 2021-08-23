@@ -5,6 +5,17 @@ use Ordering::*;
 
 use serde::{Deserialize, Serialize};
 
+//use searching::*;
+
+use crate::common_lib::*;
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub enum DiskSphere {
+    Disk,
+    Sphere,
+    DiskAndSphere,
+}
+
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct PointsOrderAndOccurencesConfig {
     pub only_disk: bool,
@@ -269,7 +280,7 @@ fn level_to_b_c(counters: &mut Vec<i64>, pivot: usize) {
     }
 }
 
-pub fn signature_string(counters: &Vec<i64>) -> String {
+pub fn signature_string(counters: &Vec<i64>, manifold: &TwoDimentionalManifold) -> String {
     let mut signature_string = String::from("");
     let mut reversed_counters = counters.clone();
     reversed_counters.reverse();
@@ -365,6 +376,7 @@ pub fn period_to_difference(b_n: i64) -> Rational64 {
 pub fn print_order_and_occurences(
     p_q: Rational64,
     p_q_order_and_occurences: &(i64, Vec<Vec<i64>>),
+    manifold: &TwoDimentionalManifold,
 ) {
     let p_q_order = p_q_order_and_occurences.0;
 
@@ -381,7 +393,7 @@ pub fn print_order_and_occurences(
             .concat()
         );
     } else {
-        let p_q_orbifolds_signatures = signature_strings(p_q_orbifolds);
+        let p_q_orbifolds_signatures = signature_strings(p_q_orbifolds, manifold);
         let len = p_q_orbifolds.len();
         let number_of_p_q_orbifolds = len.to_string();
         println!(
@@ -405,11 +417,11 @@ pub fn print_order_and_occurences(
     }
 }
 
-pub fn signature_strings(signatures: &Vec<Vec<i64>>) -> String {
+pub fn signature_strings(signatures: &Vec<Vec<i64>>, manifold: &TwoDimentionalManifold) -> String {
     let len = signatures.len();
     let mut orbifolds_signatures = "".to_string();
     for (i, orbifold) in signatures.iter().enumerate() {
-        orbifolds_signatures.push_str(&signature_string(&orbifold));
+        orbifolds_signatures.push_str(&signature_string(&orbifold, manifold));
         if i != len - 1 && len != 0 {
             orbifolds_signatures.push_str("\n");
         }

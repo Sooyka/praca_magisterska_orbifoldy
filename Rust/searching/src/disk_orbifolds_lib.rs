@@ -3,6 +3,7 @@ use num_traits::ops::checked::CheckedSub;
 use std::cmp::*;
 use Ordering::*;
 
+
 pub fn point_order_and_occurences(p_q: Rational64, occurences_limit: i64) -> (i64, Vec<Vec<i64>>) {
     let points_order_and_first_occurence = determine_points_order(p_q);
     let p_q_order = points_order_and_first_occurence.0;

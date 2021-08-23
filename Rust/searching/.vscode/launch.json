@@ -7,72 +7,17 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'point_order_and_occurences'",
-            "cargo": {
-                "args": [
-                    "build",
-                    "--bin=point_order_and_occurences",
-                    "--package=searching"
-                ],
-                "filter": {
-                    "name": "point_order_and_occurences",
-                    "kind": "bin"
-                }
-            },
-            "args": [],
-            "cwd": "${workspaceFolder}"
-        },
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Debug unit tests in executable 'point_order_and_occurences'",
+            "name": "Debug unit tests in library 'searching'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
-                    "--bin=point_order_and_occurences",
+                    "--lib",
                     "--package=searching"
                 ],
                 "filter": {
-                    "name": "point_order_and_occurences",
-                    "kind": "bin"
-                }
-            },
-            "args": [],
-            "cwd": "${workspaceFolder}"
-        },
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Debug executable 'denominators_exclusive'",
-            "cargo": {
-                "args": [
-                    "build",
-                    "--bin=denominators_exclusive",
-                    "--package=searching"
-                ],
-                "filter": {
-                    "name": "denominators_exclusive",
-                    "kind": "bin"
-                }
-            },
-            "args": [],
-            "cwd": "${workspaceFolder}"
-        },
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Debug unit tests in executable 'denominators_exclusive'",
-            "cargo": {
-                "args": [
-                    "test",
-                    "--no-run",
-                    "--bin=denominators_exclusive",
-                    "--package=searching"
-                ],
-                "filter": {
-                    "name": "denominators_exclusive",
-                    "kind": "bin"
+                    "name": "searching",
+                    "kind": "lib"
                 }
             },
             "args": [],
@@ -118,15 +63,15 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'denominators_exclusive_is'",
+            "name": "Debug executable 'points_order_and_occurences'",
             "cargo": {
                 "args": [
                     "build",
-                    "--bin=denominators_exclusive_is",
+                    "--bin=points_order_and_occurences",
                     "--package=searching"
                 ],
                 "filter": {
-                    "name": "denominators_exclusive_is",
+                    "name": "points_order_and_occurences",
                     "kind": "bin"
                 }
             },
@@ -136,16 +81,16 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in executable 'denominators_exclusive_is'",
+            "name": "Debug unit tests in executable 'points_order_and_occurences'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
-                    "--bin=denominators_exclusive_is",
+                    "--bin=points_order_and_occurences",
                     "--package=searching"
                 ],
                 "filter": {
-                    "name": "denominators_exclusive_is",
+                    "name": "points_order_and_occurences",
                     "kind": "bin"
                 }
             },

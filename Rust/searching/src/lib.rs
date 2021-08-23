@@ -3,6 +3,8 @@
 pub mod denominators_lib;
 pub mod points_order_and_occurences_lib;
 
+pub mod common_lib;
+
 // use serde::Deserialize;
 
 use std::error::Error;
@@ -12,6 +14,8 @@ use std::io::BufReader;
 
 use std::path::Path;
 // use std::path::Path;
+
+
 
 pub fn read_config<C: serde::de::DeserializeOwned>(lib: String) -> Result<C, Box<dyn Error>> {
     // Open the file in read-only mode with buffer.

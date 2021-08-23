@@ -41,26 +41,28 @@ fn main() {
         let mut p_q;
         let mut no_count = 0;
         let mut yes_count = 0;
-
-        let config: &DenominatorsConfig = &match read_config("denominators".to_string()) {
-            Ok(c) => c,
-            Err(err) => {
-                println!(
-                    "{}",
-                    err.to_string() + "\nPress Enter when the issue is resolved."
-                );
-                let mut ui = "".to_string();
-                io::stdin()
-                    .read_line(&mut ui)
-                    .expect("Failed to read the line");
-                continue;
-                // break;
-            }
-        };
-
+        loop {
+            let config: &DenominatorsConfig = &match read_config("denominators".to_string()) {
+                Ok(c) => c,
+                Err(err) => {
+                    println!(
+                        "{}",
+                        err.to_string() + "\nPress Enter when the issue is resolved."
+                    );
+                    let mut ui = "".to_string();
+                    io::stdin()
+                        .read_line(&mut ui)
+                        .expect("Failed to read the line");
+                    continue;
+                    // break;
+                }
+            };
+            break;
+        }
         if config.maximal_exact == DenominatorsMaximalExact::Maximal {
             q = q_max;
         }
+        let manifold = &config.base_manifold;
         while q <= q_max {
             for p in 1..q {
                 p_q = Rational64::new(-p, q);
@@ -120,7 +122,7 @@ fn main() {
                                     + "\n"
                                     + &match number_of_p_q_occurences {
                                         0 => "none".to_string(),
-                                        _ => signature_strings(&p_q_occurences),
+                                        _ => signature_strings(&p_q_occurences, manifold),
                                     },
                             false => "".to_string(),
                         }
