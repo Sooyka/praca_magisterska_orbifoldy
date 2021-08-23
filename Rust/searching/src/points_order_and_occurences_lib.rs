@@ -18,6 +18,7 @@ pub enum DiskSphere {
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct PointsOrderAndOccurencesConfig {
+    pub maximal_number_of_occurences: i64,
     pub disk_sphere: DiskSphere,
 }
 
@@ -280,7 +281,7 @@ fn level_to_b_c(counters: &mut Vec<i64>, pivot: usize) {
 
 pub fn signature_string(counters: &Vec<i64>, manifold: &TwoDimentionalManifold) -> String {
     let mut signature_string = match manifold {
-        TwoDimentionalManifold::Disk => "*s".to_string(),
+        TwoDimentionalManifold::Disk => "*".to_string(),
         TwoDimentionalManifold::Sphere => "".to_string(),
         TwoDimentionalManifold::Genus(n) => {
             let mut genus_string = "".to_string();
@@ -385,6 +386,7 @@ pub fn print_order_and_occurences(
     p_q: Rational64,
     p_q_order_and_occurences: &(i64, Vec<Vec<i64>>),
     manifold: &TwoDimentionalManifold,
+    config: &PointsOrderAndOccurencesConfig,
 ) {
     let p_q_order = p_q_order_and_occurences.0;
 
@@ -412,6 +414,13 @@ pub fn print_order_and_occurences(
             p_q.to_string()
                 + " "
                 + "is an Euler orbicharacteristic of "
+                + {
+                    if len as i64 == config.maximal_number_of_occurences {
+                        "at least "
+                    } else {
+                        ""
+                    }
+                }
                 + &number_of_p_q_orbifolds
                 + " "
                 + &match manifold {
