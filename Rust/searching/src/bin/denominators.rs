@@ -68,14 +68,27 @@ fn main() {
             for p in 1..q {
                 p_q = Rational64::new(-p, q);
                 if *p_q.denom() == q || config.only_relatively_prime_numerators == false {
-                    let p_q_order_and_first_occurence = determine_points_order(p_q, base_manifold);
-                    let p_q_order = p_q_order_and_first_occurence.0;
-                    let mut p_q_occurences = vec![];
-                    if config.occurences {
-                        p_q_occurences = search_for_point(p_q, base_manifold, config.output.occurences);
+                    let p_q_order;
+                    // let mut p_q_occurences = vec![];
+                    let number_of_p_q_occurences;
+                    let mut p_q_order_and_occurences = (-1, vec![]);
+                    if config.order_and_occurences > -1 {
+                        p_q_order_and_occurences = points_order_and_occurences(
+                            p_q,
+                            base_manifold,
+                            config.order_and_occurences,
+                        );
+                        p_q_order = p_q_order_and_occurences.0;
+                        number_of_p_q_occurences = p_q_order_and_occurences.1.len() as i64;
+                        // p_q_occurences = p_q_order_and_occurences.1;
+                    } else {
+                        let p_q_order_and_first_occurence =
+                            determine_points_order(p_q, base_manifold);
+                        p_q_order = p_q_order_and_first_occurence.0;
+                        number_of_p_q_occurences = if p_q_order == -1 { 0 } else { 1 };
                     }
-                    let p_q_occurences = p_q_occurences;
-                    let number_of_p_q_occurences = p_q_occurences.len();
+                    // let p_q_occurences = p_q_occurences;
+                    let p_q_order_and_occurences = p_q_order_and_occurences;
                     if config.yes_no_counting {
                         match p_q_order {
                             -1 => {
@@ -88,18 +101,22 @@ fn main() {
                     }
                     println!(
                         "{}",
-                        match output.provided_p_q {
-                            true => "provided_p_q:".to_string() + "\t\t",
-                            false => "".to_string(),
-                        } + &match output.p_q {
-                            true => "p_q:".to_string() + "\t\t",
-                            false => "".to_string(),
-                        } + &match output.p_q_order {
-                            true => "p_q_order:".to_string() + "\t\t",
-                            false => "".to_string(),
-                        } + &match output.number_of_p_q_occurences {
-                            true => "number_of_p_q_occurences:".to_string() + "\t\t",
-                            false => "".to_string(),
+                        if output.provided_p_q {
+                            "provided_p_q:".to_string() + "\t\t"
+                        } else {
+                            "".to_string()
+                        } + &if output.p_q {
+                            "p_q:".to_string() + "\t\t"
+                        } else {
+                            "".to_string()
+                        } + &if output.p_q_order {
+                            "p_q_order:".to_string() + "\t\t"
+                        } else {
+                            "".to_string()
+                        } + &if output.number_of_p_q_occurences {
+                            "number_of_p_q_occurences:".to_string() + "\t\t"
+                        } else {
+                            "".to_string()
                         }
                     );
                     println!(
@@ -116,20 +133,22 @@ fn main() {
                         } + &match output.number_of_p_q_occurences {
                             true => number_of_p_q_occurences.to_string() + "\t\t\t",
                             false => "".to_string(),
-                        } + &match config.occurences {
+                        } + &match config.output.order_and_occurences {
                             true =>
                                 "\n\n".to_string()
                                     + "occurences:"
                                     + "\n"
-                                    + &match number_of_p_q_occurences {
-                                        0 => "none".to_string(),
-                                        _ => signature_strings(&p_q_occurences, base_manifold),
-                                    },
+                                    + &points_order_and_occurences_string(
+                                        p_q,
+                                        &(p_q_order_and_occurences),
+                                        base_manifold,
+                                        config.order_and_occurences
+                                    ),
                             false => "".to_string(),
                         }
                     );
+                    println!("\n\n");
                 }
-                println!("\n\n");
             }
             if config.yes_no_counting && config.output.yes_no_counting {
                 println!(

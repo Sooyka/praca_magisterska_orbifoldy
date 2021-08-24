@@ -517,6 +517,83 @@ pub fn print_order_and_occurences(
     }
 }
 
+pub fn points_order_and_occurences_string(
+    p_q: Rational64,
+    p_q_order_and_occurences: &(i64, Vec<Vec<i64>>),
+    manifold: &TwoDimentionalManifold, maximal_number_of_occurences: i64,
+) -> String {
+    let p_q_order = p_q_order_and_occurences.0;
+
+    let p_q_orbifolds = &p_q_order_and_occurences.1;
+
+    if p_q_order == -1 {
+        p_q.to_string()
+            + " is not an Euler orbicharacteristic of any "
+            + &match manifold {
+                TwoDimentionalManifold::Disk => "disk".to_string(),
+                TwoDimentionalManifold::Sphere => "sphere".to_string(),
+                TwoDimentionalManifold::Genus(n) => "genus-".to_string() + &n.to_string(),
+                TwoDimentionalManifold::General {
+                    handles: h,
+                    cross_caps: cc,
+                    boundry_components: bc,
+                } => {
+                    "(".to_string()
+                        + &h.to_string()
+                        + ","
+                        + &cc.to_string()
+                        + ","
+                        + &bc.to_string()
+                        + ")"
+                }
+            }
+            + " orbifold."
+    } else {
+        let p_q_orbifolds_signatures = signature_strings(p_q_orbifolds, manifold);
+        let len = p_q_orbifolds.len();
+        let number_of_p_q_orbifolds = len.to_string();
+        p_q.to_string()
+            + " "
+            + "is an Euler orbicharacteristic of "
+            + {
+                if len as i64 == maximal_number_of_occurences {
+                    "at least "
+                } else {
+                    ""
+                }
+            }
+            + &number_of_p_q_orbifolds
+            + " "
+            + &match manifold {
+                TwoDimentionalManifold::Disk => "disk".to_string(),
+                TwoDimentionalManifold::Sphere => "sphere".to_string(),
+                TwoDimentionalManifold::Genus(g) => "genus-".to_string() + &g.to_string(),
+                TwoDimentionalManifold::General {
+                    handles: h,
+                    cross_caps: cc,
+                    boundry_components: bc,
+                } => {
+                    "(".to_string()
+                        + &h.to_string()
+                        + ","
+                        + &cc.to_string()
+                        + ","
+                        + &bc.to_string()
+                        + ")"
+                }
+            }
+            + match len {
+                1 => " orbifold with signature: \n",
+                _ => " orbifolds with signatures: \n",
+            }
+            + &p_q_orbifolds_signatures
+            + "\n"
+            + &"and it is an accumulation point of order ".to_string()
+            + &(p_q_order.to_string())
+            + "."
+    }
+}
+
 pub fn signature_strings(signatures: &Vec<Vec<i64>>, manifold: &TwoDimentionalManifold) -> String {
     let len = signatures.len();
     let mut orbifolds_signatures = "".to_string();

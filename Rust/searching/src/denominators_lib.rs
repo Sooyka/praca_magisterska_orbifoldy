@@ -15,7 +15,7 @@ pub struct DenominatorsOutput {
     pub p_q: bool,
     pub p_q_order: bool,
     pub number_of_p_q_occurences: bool,
-    pub occurences: i64,
+    pub order_and_occurences: bool,
     pub yes_no_counting: bool,
 }
 
@@ -24,7 +24,7 @@ pub struct DenominatorsConfig {
     pub base_manifold: TwoDimentionalManifold,
     pub only_relatively_prime_numerators: bool,
     pub maximal_exact: DenominatorsMaximalExact,
-    pub occurences: bool,
+    pub order_and_occurences: i64,
     pub yes_no_counting: bool,
     pub output: DenominatorsOutput,
 }

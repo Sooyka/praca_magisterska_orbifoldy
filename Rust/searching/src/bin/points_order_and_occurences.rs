@@ -34,7 +34,6 @@ fn main() {
         println!("Enter a rational number.");
 
         let mut p_q = String::new();
-        //let p_q: Vec<i64> = vec![];
         io::stdin()
             .read_line(&mut p_q)
             .expect("Failed to read the line");
@@ -60,21 +59,10 @@ fn main() {
                         .expect("Failed to read the line");
 
                     continue;
-                    // break;
                 }
             };
             break;
         }
-        // let disk: TwoDimentionalManifold = TwoDimentionalManifold {
-        //     handles: 0,
-        //     cross_caps: 0,
-        //     boundry_components: 1,
-        // };
-        // let sphere: TwoDimentionalManifold = TwoDimentionalManifold {
-        //     handles: 0,
-        //     cross_caps: 0,
-        //     boundry_components: 0,
-        // };
         for base_manifold in &config.base_manifolds {
             let p_q_order_and_occurences = points_order_and_occurences(
                 p_q,
@@ -82,7 +70,7 @@ fn main() {
                 config.maximal_number_of_occurences,
             );
 
-            print_order_and_occurences(p_q, &p_q_order_and_occurences, &base_manifold, &config);
+            println!("{}", &points_order_and_occurences_string(p_q, &p_q_order_and_occurences, &base_manifold, config.maximal_number_of_occurences));
         }
     }
 }
