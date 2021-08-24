@@ -21,7 +21,7 @@ pub struct DenominatorsOutput {
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct DenominatorsConfig {
-    pub base_manifold: TwoDimentionalManifold,
+    pub base_manifolds: Vec<TwoDimentionalManifold>,
     pub only_relatively_prime_numerators: bool,
     pub maximal_exact: DenominatorsMaximalExact,
     pub order_and_occurences: i64,

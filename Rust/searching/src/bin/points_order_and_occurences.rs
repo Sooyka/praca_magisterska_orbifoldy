@@ -28,7 +28,6 @@ fn main() {
                     .read_line(&mut ui)
                     .expect("Failed to read the line");
                 continue;
-                // break;
             }
         };
         println!("Enter a rational number.");
@@ -70,7 +69,15 @@ fn main() {
                 config.maximal_number_of_occurences,
             );
 
-            println!("{}", &points_order_and_occurences_string(p_q, &p_q_order_and_occurences, &base_manifold, config.maximal_number_of_occurences));
+            println!(
+                "{}",
+                &points_order_and_occurences_string(
+                    p_q,
+                    &p_q_order_and_occurences,
+                    &base_manifold,
+                    config.maximal_number_of_occurences
+                )
+            );
         }
     }
 }

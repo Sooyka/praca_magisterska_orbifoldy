@@ -6,14 +6,6 @@
         },
         {
             "tag": "Sphere"
-        },
-        {
-            "tag": "General",
-            "content": {
-                "handles": 2,
-                "cross_caps": 3,
-                "boundry_components": 1
-            }
         }
     ]
 }

@@ -1,17 +1,22 @@
 {
-    "base_manifold": {
-        "tag": "Disk"
-    },
-    "only_relatively_prime_numerators": true,
+    "base_manifolds": [
+        {
+            "tag": "Disk"
+        },
+        {
+            "tag": "Sphere"
+        }
+    ],
+    "only_relatively_prime_numerators": false,
     "maximal_exact": "Maximal",
-    "order_and_occurences": 0,
-    "yes_no_counting": true,
+    "order_and_occurences": 1,
+    "yes_no_counting": false,
     "output": {
-        "provided_p_q": true,
-        "p_q": true,
-        "p_q_order": true,
-        "number_of_p_q_occurences": true,
-        "order_and_occurences": true,
-        "yes_no_counting": true
+        "provided_p_q": false,
+        "p_q": false,
+        "p_q_order": false,
+        "number_of_p_q_occurences": false,
+        "order_and_occurences": false,
+        "yes_no_counting": false
     }
 }

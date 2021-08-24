@@ -95,7 +95,7 @@ pub fn determine_points_order(
         let mut current_point = p_q + distance;
         let mut found = vec![];
         while found.len() == 0 && depth >= 0 {
-            found = search_for_point(current_point, base_manifold, 1);
+            found = search_for_point(current_point, &TwoDimentionalManifold::Sphere, 1);
             if found.len() == 0 {
                 depth -= 1;
                 current_point -= _one;
