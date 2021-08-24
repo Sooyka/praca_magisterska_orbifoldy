@@ -10,16 +10,9 @@ use serde::{Deserialize, Serialize};
 use crate::common_lib::*;
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub enum DiskSphere {
-    Disk,
-    Sphere,
-    DiskAndSphere,
-}
-
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct PointsOrderAndOccurencesConfig {
     pub maximal_number_of_occurences: i64,
-    pub disk_sphere: DiskSphere,
+    pub base_manifolds: Vec<TwoDimentionalManifold>,
 }
 
 pub fn points_order_and_occurences(
@@ -53,6 +46,11 @@ pub fn determine_points_order(
         TwoDimentionalManifold::Disk => _two * p_q,
         TwoDimentionalManifold::Sphere => p_q,
         TwoDimentionalManifold::Genus(g) => p_q + 2 * g,
+        TwoDimentionalManifold::General {
+            handles: h,
+            cross_caps: cc,
+            boundry_components: bc,
+        } => p_q + 2 * h + cc + bc,
     };
 
     let l = _two * p_q;
@@ -134,6 +132,11 @@ pub fn search_for_point(
         TwoDimentionalManifold::Disk => _two * p_q,
         TwoDimentionalManifold::Sphere => p_q,
         TwoDimentionalManifold::Genus(g) => p_q + 2 * g,
+        TwoDimentionalManifold::General {
+            handles: h,
+            cross_caps: cc,
+            boundry_components: bc,
+        } => p_q + 2 * h + cc + bc,
     };
     loop {
         match flag {
@@ -321,6 +324,23 @@ pub fn signature_string(counters: &Vec<i64>, manifold: &TwoDimentionalManifold) 
             }
             genus_string
         }
+        TwoDimentionalManifold::General {
+            handles: h,
+            cross_caps: cc,
+            boundry_components: bc,
+        } => {
+            let mut genus_string = "".to_string();
+            for _ in 1..*h {
+                genus_string += "o";
+            }
+            for _ in 1..*cc {
+                genus_string += "x";
+            }
+            for _ in 1..*bc {
+                genus_string += "*";
+            }
+            genus_string
+        }
     } + "\t";
     let mut reversed_counters = counters.clone();
     reversed_counters.reverse();
@@ -427,12 +447,23 @@ pub fn print_order_and_occurences(
         println!(
             "{}",
             p_q.to_string()
-                + " "
                 + " is not an Euler orbicharacteristic of any "
                 + &match manifold {
                     TwoDimentionalManifold::Disk => "disk".to_string(),
                     TwoDimentionalManifold::Sphere => "sphere".to_string(),
                     TwoDimentionalManifold::Genus(n) => "genus-".to_string() + &n.to_string(),
+                    TwoDimentionalManifold::General {
+                        handles: h,
+                        cross_caps: cc,
+                        boundry_components: bc,
+                    } =>
+                        "(".to_string()
+                            + &h.to_string()
+                            + ","
+                            + &cc.to_string()
+                            + ","
+                            + &bc.to_string()
+                            + ")",
                 }
                 + " orbifold."
         );
@@ -457,7 +488,19 @@ pub fn print_order_and_occurences(
                 + &match manifold {
                     TwoDimentionalManifold::Disk => "disk".to_string(),
                     TwoDimentionalManifold::Sphere => "sphere".to_string(),
-                    TwoDimentionalManifold::Genus(n) => "genus-".to_string() + &n.to_string(),
+                    TwoDimentionalManifold::Genus(g) => "genus-".to_string() + &g.to_string(),
+                    TwoDimentionalManifold::General {
+                        handles: h,
+                        cross_caps: cc,
+                        boundry_components: bc,
+                    } =>
+                        "(".to_string()
+                            + &h.to_string()
+                            + ","
+                            + &cc.to_string()
+                            + ","
+                            + &bc.to_string()
+                            + ")",
                 }
                 + match len {
                     1 => " orbifold with signature: \n",

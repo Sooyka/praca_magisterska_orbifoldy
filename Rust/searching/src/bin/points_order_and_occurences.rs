@@ -5,8 +5,6 @@ use std::io;
 use searching::points_order_and_occurences_lib::*;
 use searching::*;
 
-use crate::common_lib::*;
-
 fn main() {
     let _zero = Rational64::from_integer(0);
     let _one_over_two = Rational64::new(1, 2);
@@ -77,27 +75,14 @@ fn main() {
         //     cross_caps: 0,
         //     boundry_components: 0,
         // };
-        let disk: TwoDimentionalManifold = TwoDimentionalManifold::Disk;
-        let sphere: TwoDimentionalManifold = TwoDimentionalManifold::Sphere;
-        match &config.disk_sphere {
-            DiskSphere::Disk => {
-                let p_q_order_and_occurences = points_order_and_occurences(p_q, &TwoDimentionalManifold::Disk,config.maximal_number_of_occurences);
+        for base_manifold in &config.base_manifolds {
+            let p_q_order_and_occurences = points_order_and_occurences(
+                p_q,
+                &base_manifold,
+                config.maximal_number_of_occurences,
+            );
 
-                print_order_and_occurences(p_q, &p_q_order_and_occurences, &disk, &config);
-            }
-            DiskSphere::Sphere => {
-                let p_q_order_and_occurences = points_order_and_occurences(p_q, &TwoDimentionalManifold::Sphere, config.maximal_number_of_occurences);
-
-                print_order_and_occurences(p_q, &p_q_order_and_occurences, &sphere, &config);
-            }
-            DiskSphere::DiskAndSphere => {
-                let p_q_order_and_occurences = points_order_and_occurences(p_q, &TwoDimentionalManifold::Disk, config.maximal_number_of_occurences);
-
-                print_order_and_occurences(p_q, &p_q_order_and_occurences, &disk, &config);
-                let p_q_order_and_occurences = points_order_and_occurences(p_q, &TwoDimentionalManifold::Sphere, config.maximal_number_of_occurences);
-
-                print_order_and_occurences(p_q, &p_q_order_and_occurences, &sphere, &config);
-            }
+            print_order_and_occurences(p_q, &p_q_order_and_occurences, &base_manifold, &config);
         }
     }
 }

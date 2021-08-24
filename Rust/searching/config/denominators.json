@@ -1,5 +1,5 @@
 {
-    "base_manifold": "Disk",
+    "base_manifold": {"tag": "Genus", "content": 7},
     "only_relatively_prime_numerators": true,
     "maximal_exact": "Maximal",
     "occurences": true,
