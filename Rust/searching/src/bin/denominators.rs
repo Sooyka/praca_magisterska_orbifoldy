@@ -63,16 +63,16 @@ fn main() {
         if config.maximal_exact == DenominatorsMaximalExact::Maximal {
             q = q_max;
         }
-        let manifold = &config.base_manifold;
+        let base_manifold = &config.base_manifold;
         while q <= q_max {
             for p in 1..q {
                 p_q = Rational64::new(-p, q);
                 if *p_q.denom() == q || config.only_relatively_prime_numerators == false {
-                    let p_q_order_and_first_occurence = determine_points_order(p_q);
+                    let p_q_order_and_first_occurence = determine_points_order(p_q, base_manifold);
                     let p_q_order = p_q_order_and_first_occurence.0;
                     let mut p_q_occurences = vec![];
                     if config.occurences {
-                        p_q_occurences = search_for_point(p_q, config.output.occurences);
+                        p_q_occurences = search_for_point(p_q, base_manifold, config.output.occurences);
                     }
                     let p_q_occurences = p_q_occurences;
                     let number_of_p_q_occurences = p_q_occurences.len();
@@ -123,7 +123,7 @@ fn main() {
                                     + "\n"
                                     + &match number_of_p_q_occurences {
                                         0 => "none".to_string(),
-                                        _ => signature_strings(&p_q_occurences, manifold),
+                                        _ => signature_strings(&p_q_occurences, base_manifold),
                                     },
                             false => "".to_string(),
                         }

@@ -81,20 +81,20 @@ fn main() {
         let sphere: TwoDimentionalManifold = TwoDimentionalManifold::Sphere;
         match &config.disk_sphere {
             DiskSphere::Disk => {
-                let p_q_order_and_occurences = points_order_and_occurences(_two * p_q, config.maximal_number_of_occurences);
+                let p_q_order_and_occurences = points_order_and_occurences(p_q, &TwoDimentionalManifold::Disk,config.maximal_number_of_occurences);
 
                 print_order_and_occurences(p_q, &p_q_order_and_occurences, &disk, &config);
             }
             DiskSphere::Sphere => {
-                let p_q_order_and_occurences = points_order_and_occurences(p_q, config.maximal_number_of_occurences);
+                let p_q_order_and_occurences = points_order_and_occurences(p_q, &TwoDimentionalManifold::Sphere, config.maximal_number_of_occurences);
 
                 print_order_and_occurences(p_q, &p_q_order_and_occurences, &sphere, &config);
             }
             DiskSphere::DiskAndSphere => {
-                let p_q_order_and_occurences = points_order_and_occurences(_two * p_q, config.maximal_number_of_occurences);
+                let p_q_order_and_occurences = points_order_and_occurences(p_q, &TwoDimentionalManifold::Disk, config.maximal_number_of_occurences);
 
                 print_order_and_occurences(p_q, &p_q_order_and_occurences, &disk, &config);
-                let p_q_order_and_occurences = points_order_and_occurences(p_q, config.maximal_number_of_occurences);
+                let p_q_order_and_occurences = points_order_and_occurences(p_q, &TwoDimentionalManifold::Sphere, config.maximal_number_of_occurences);
 
                 print_order_and_occurences(p_q, &p_q_order_and_occurences, &sphere, &config);
             }

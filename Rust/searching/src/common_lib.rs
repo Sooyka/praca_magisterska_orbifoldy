@@ -1,6 +1,5 @@
 use serde::{Deserialize, Serialize};
 
-
 // #[derive(Debug, PartialEq, Serialize, Deserialize)]
 // pub struct TwoDimentionalManifold {
 //     pub handles: i64,
@@ -12,5 +11,5 @@ use serde::{Deserialize, Serialize};
 pub enum TwoDimentionalManifold {
     Disk,
     Sphere,
-    Genus(i64)
+    Genus(i64),
 }

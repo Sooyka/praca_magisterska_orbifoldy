@@ -22,14 +22,21 @@ pub struct PointsOrderAndOccurencesConfig {
     pub disk_sphere: DiskSphere,
 }
 
-pub fn points_order_and_occurences(p_q: Rational64, occurences_limit: i64) -> (i64, Vec<Vec<i64>>) {
-    let points_order_and_first_occurence = determine_points_order(p_q);
+pub fn points_order_and_occurences(
+    p_q: Rational64,
+    base_manifold: &TwoDimentionalManifold,
+    occurences_limit: i64,
+) -> (i64, Vec<Vec<i64>>) {
+    let points_order_and_first_occurence = determine_points_order(p_q, base_manifold);
     let p_q_order = points_order_and_first_occurence.0;
-    let p_q_occurences = search_for_point(p_q, occurences_limit);
+    let p_q_occurences = search_for_point(p_q, base_manifold, occurences_limit);
     (p_q_order, p_q_occurences)
 }
 
-pub fn determine_points_order(p_q: Rational64) -> (i64, Vec<i64>) {
+pub fn determine_points_order(
+    p_q: Rational64,
+    base_manifold: &TwoDimentionalManifold,
+) -> (i64, Vec<i64>) {
     let _zero = Rational64::from_integer(0);
     let _one_over_two = Rational64::new(1, 2);
     let _one_over_four = Rational64::new(1, 4);
@@ -41,6 +48,13 @@ pub fn determine_points_order(p_q: Rational64) -> (i64, Vec<i64>) {
     let mut counters: Vec<i64> = vec![];
     let mut p_q_order = -1;
     let mut p_q_first_occurence: Vec<i64> = vec![];
+
+    let p_q = match base_manifold {
+        TwoDimentionalManifold::Disk => _two * p_q,
+        TwoDimentionalManifold::Sphere => p_q,
+        TwoDimentionalManifold::Genus(g) => p_q + 2 * g,
+    };
+
     let l = _two * p_q;
     if l.is_integer() {
         let l = l.to_integer();
@@ -83,7 +97,7 @@ pub fn determine_points_order(p_q: Rational64) -> (i64, Vec<i64>) {
         let mut current_point = p_q + distance;
         let mut found = vec![];
         while found.len() == 0 && depth >= 0 {
-            found = search_for_point(current_point, 1);
+            found = search_for_point(current_point, base_manifold, 1);
             if found.len() == 0 {
                 depth -= 1;
                 current_point -= _one;
@@ -98,12 +112,29 @@ pub fn determine_points_order(p_q: Rational64) -> (i64, Vec<i64>) {
     return (p_q_order, counters);
 }
 
-pub fn search_for_point(p_q: Rational64, occurences_limit: i64) -> Vec<Vec<i64>> {
+pub fn search_for_point(
+    p_q: Rational64,
+    base_manifold: &TwoDimentionalManifold,
+    occurences_limit: i64,
+) -> Vec<Vec<i64>> {
+    let _zero = Rational64::from_integer(0);
+    let _one_over_two = Rational64::new(1, 2);
+    let _one_over_four = Rational64::new(1, 4);
+    let _one = Rational64::from_integer(1);
+    let _two = Rational64::from_integer(2);
+    let _three = Rational64::from_integer(3);
+    let _four = Rational64::from_integer(4);
+
     let mut occurences: Vec<Vec<i64>> = vec![];
     let mut counters: Vec<i64> = vec![1];
     let mut occurences_count = 0;
     let mut pivot = 0;
     let mut flag = chi_orb(&counters).cmp(&p_q);
+    let p_q = match base_manifold {
+        TwoDimentionalManifold::Disk => _two * p_q,
+        TwoDimentionalManifold::Sphere => p_q,
+        TwoDimentionalManifold::Genus(g) => p_q + 2 * g,
+    };
     loop {
         match flag {
             Equal => {
