@@ -8,7 +8,7 @@ use serde::{Deserialize, Serialize};
 // }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
-#[serde(tag = "tag", content = "content")]
+#[serde(tag = "topology", content = "features")]
 pub enum TwoDimentionalManifold {
     Disk,
     Sphere,

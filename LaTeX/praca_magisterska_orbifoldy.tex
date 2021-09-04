@@ -1,87 +1,7 @@
 \documentclass[a4paper, 12pt]{report}
 \synctex=1
-\usepackage{polski}
-\usepackage[T1]{fontenc}
-\usepackage{amssymb}
-\usepackage[polish,english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{mathtools}
-\usepackage{microtype}
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{empheq}
-\usepackage{xcolor}
-\usepackage[pdftex,
-            pdfauthor={Bartosz Sójka},
-            pdftitle={Orbifoldy},
-        %    pdfsubject={Orbifoldy}
-            ]{hyperref}
-\usepackage{siunitx}
-\usepackage{geometry}
-\usepackage{lipsum}
-\usepackage{marvosym}
-%\usepackage{enumitem}
-%\usepackage{alltt}
-\usepackage{listings}
-\setlength\parindent{0pt}
 
-%\topmargin = -1in
-
-\geometry{a4paper, 
-%twoside,
-%asymmetric,
-top = 25mm,
-bottom = 40mm,
-inner = 35mm,
-outer = 25mm
-}
-
-\lstset{numbers=left, numberstyle=\small, stepnumber=1, numbersep=5pt, mathescape=true}
-
-%\linespread{1.24}
-
-%top = 25mm,
-%bottom = 30mm,
-%inner = 30mm,
-%outer = 25mm
-
-\newtheorem{theorem}{Theorem}[subsection]
-\newtheorem{observation}[theorem]{Observation}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
-
-\numberwithin{equation}{theorem}
-
-\newcommand{\todo}[1]{\hfill \break \textbf{\Huge \textcolor{violet}{TO DO: #1} \hfill \break}
-\normalsize}
-\newcommand{\content}[1]{\hfill \break \textbf{\large \textcolor{violet}{#1} \hfill \break}
-\normalsize}
-\newcommand{\smalltodo}[1]{\textbf{\ \textcolor{violet}{To do}}}
-\newcommand{\smalltodoII}[1]{\hfill \break \textbf{\ \textcolor{violet}{To do: #1}}\hfill \break}
-\newcommand{\missingpicture}[1]{\hfill \break\\[16pt] \Huge \textbf{\textcolor{violet}
-{Missing picture \normalsize #1}} \hfill
-\break \\[16pt] \normalsize}
-
-\newcommand{\lrb}{\textnormal{\Big[}}
-\newcommand{\rrb}{\textnormal{\Big]}}
-
-\newcommand{\rba}[1]{\lrb #1\rrb}
-
-\newcommand{\lcb}{\textnormal{\Big(}}
-\newcommand{\rcb}{\textnormal{\Big)}}
-
-\newcommand{\cba}[1]{\lcb #1\rcb}
-
-\newcommand{\ds}{\textnormal{\big/\!\!\big/}}
-\newcommand{\lds}{\textnormal{\big/\!\!\big/\!}}
-\newcommand{\rds}{\!\textnormal{\big/\!\!\big/}}
-
-\newcommand{\dsa}[1]{\ds #1\ds}
-
-%\newcommand{\beginproof}{{\noindent\textbf{Proof.}\\}}
-%\newcommand{\endproof}{{$_\square$}}
+\input{"./part_of_preamble.tex"}
 
 \newcommand{\cho}[1]{{\chi^{orb}(#1)}}
 
@@ -91,17 +11,30 @@ outer = 25mm
 \newcommand{\Eoc}{Euler orbicharacteristic} 
 \newcommand{\apots}{accumulation point of the set}
 
-\renewcommand{\labelenumii}{\theenumii}
-\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
 
 \title{Orbifoldy}
 \author{Bartosz Sójka}
 %\date{}
 \begin{document}
 \input{"../title_page/title_page.tex"}
+\newpage
+\null
+\thispagestyle{empty}
+
+%\input{"./dedication.tex"}
+\newpage
+\thispagestyle{empty}
+\vspace*{19cm}
+\hspace*{10cm}
+\textit{dla Wujka}
+\newpage
+\null
+\thispagestyle{empty}
+
+\newpage
 \tableofcontents
 \begin{abstract}
-\setcounter{page}{4}
+\setcounter{page}{7}
 %\begin{center}
 %Orbifolds! Yeah! \\
 %Spectrums! Yeah! 
@@ -111,12 +44,13 @@ Orbifoldy
 \input{"./TeX_files/introduction.tex"}
 %\input{"./TeX_files/definition_of_an_orbifold.tex"}
 \input{"./TeX_files/definition_characteristics_classification_and_properties_of_the_orbifolds.tex"}
-\input{"./TeX_files/order_structure.tex"}
+\input{"./TeX_files/order_type_and_topological_structure.tex"}
 \input{"./TeX_files/algorithms_for_searching_the_spectrum.tex"}
 \input{"./TeX_files/counting_occurrences.tex"}
-\input{"./TeX_files/power_series_and_generating_functions.tex"}
+%\input{"./TeX_files/power_series_and_generating_functions.tex"}
 %\input{"./TeX_files/connection_with_modular_forms.tex"}
 \input{"./TeX_files/conclusions.tex"}
+\input{"./TeX_files/further_directions.tex"}
 %\input{"./test/test.tex"}
 \input{"./TeX_files/bibliography.tex"}
 %~\cite{Conway2002}

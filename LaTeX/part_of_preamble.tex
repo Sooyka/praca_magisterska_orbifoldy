@@ -1,0 +1,90 @@
+% mainfile: ./praca_magisterska_orbifoldy.tex
+
+\usepackage{polski}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb}
+\usepackage[polish,english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsrefs}
+\usepackage{empheq}
+\usepackage{xcolor}
+\usepackage[pdftex,
+            pdfauthor={Bartosz Sójka},
+            pdftitle={Orbifoldy},
+        %    pdfsubject={Orbifoldy}
+            ]{hyperref}
+\usepackage{siunitx}
+\usepackage{geometry}
+\usepackage{lipsum}
+\usepackage{marvosym}
+%\usepackage{enumitem}
+%\usepackage{alltt}
+\usepackage{listings}
+\setlength\parindent{0pt}
+
+%\topmargin = -1in
+
+\geometry{a4paper, 
+%twoside,
+%asymmetric,
+top = 25mm,
+bottom = 40mm,
+inner = 35mm,
+outer = 25mm
+}
+
+\lstset{numbers=left, numberstyle=\small, stepnumber=1, numbersep=5pt, mathescape=true}
+
+%\linespread{1.24}
+
+%top = 25mm,
+%bottom = 30mm,
+%inner = 30mm,
+%outer = 25mm
+
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\numberwithin{equation}{theorem}
+
+\newcommand{\todo}[1]{\hfill \break \textbf{\Huge \textcolor{violet}{TO DO: #1} \hfill \break}
+\normalsize}
+\newcommand{\content}[1]{\hfill \break \textbf{\large \textcolor{violet}{#1} \hfill \break}
+\normalsize}
+\newcommand{\smalltodo}[1]{\textbf{\ \textcolor{violet}{To do}}}
+\newcommand{\smalltodoII}[1]{\hfill \break \textbf{\ \textcolor{violet}{To do: #1}}\hfill \break}
+\newcommand{\missingpicture}[1]{\hfill \break\\[16pt] \Huge \textbf{\textcolor{violet}
+{Missing picture \normalsize #1}} \hfill
+\break \\[16pt] \normalsize}
+
+\newcommand{\lrb}{\textnormal{\Big[}}
+\newcommand{\rrb}{\textnormal{\Big]}}
+
+\newcommand{\rba}[1]{\lrb #1\rrb}
+
+\newcommand{\lcb}{\textnormal{\Big(}}
+\newcommand{\rcb}{\textnormal{\Big)}}
+
+\newcommand{\cba}[1]{\lcb #1\rcb}
+
+\newcommand{\ds}{\textnormal{\big/\!\!\big/}}
+\newcommand{\lds}{\textnormal{\big/\!\!\big/\!}}
+\newcommand{\rds}{\!\textnormal{\big/\!\!\big/}}
+
+\newcommand{\dsa}[1]{\ds #1\ds}
+
+
+
+%\newcommand{\beginproof}{{\noindent\textbf{Proof.}\\}}
+%\newcommand{\endproof}{{$_\square$}}
+
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}

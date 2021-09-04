@@ -19,17 +19,19 @@ pub fn points_order_and_occurences(
     p_q: Rational64,
     base_manifold: &TwoDimentionalManifold,
     occurences_limit: i64,
-) -> (i64, Vec<Vec<i64>>) {
+) -> ((i64, bool), (Vec<Vec<i64>>, bool)) {
     let points_order_and_first_occurence = determine_points_order(p_q, base_manifold);
     let p_q_order = points_order_and_first_occurence.0;
+    let p_q_order_possible_missing = points_order_and_first_occurence.2;
+    // let p_q_order = 1;
     let p_q_occurences = search_for_point(p_q, base_manifold, occurences_limit);
-    (p_q_order, p_q_occurences)
+    ((p_q_order, p_q_order_possible_missing), p_q_occurences)
 }
 
 pub fn determine_points_order(
     p_q: Rational64,
     base_manifold: &TwoDimentionalManifold,
-) -> (i64, Vec<i64>) {
+) -> (i64, Vec<i64>, bool) {
     let _zero = Rational64::from_integer(0);
     let _one_over_two = Rational64::new(1, 2);
     let _one_over_four = Rational64::new(1, 4);
@@ -52,14 +54,14 @@ pub fn determine_points_order(
             boundry_components: bc,
         } => p_q + 2 * h + cc + bc,
     };
-
+    let mut possibly_ommited = false;
     let l = _two * p_q;
     if l.is_integer() {
         let l = l.to_integer();
         if l > 4 {
-            return (p_q_order, vec![]);
+            return (p_q_order, vec![], false);
         } else {
-            while chi_orb(&counters) - _one_over_two > p_q {
+            while chi_orb(&counters).1 - _one_over_two > p_q {
                 counters.push(0);
             }
             match l % 2 {
@@ -95,8 +97,10 @@ pub fn determine_points_order(
         let mut current_point = p_q + distance;
         let mut found = vec![];
         while found.len() == 0 && depth >= 0 {
-            found = search_for_point(current_point, &TwoDimentionalManifold::Sphere, 1);
+            let search_result = search_for_point(current_point, &TwoDimentionalManifold::Sphere, 1);
+            found = search_result.0;
             if found.len() == 0 {
+                possibly_ommited = search_result.1;
                 depth -= 1;
                 current_point -= _one;
             }
@@ -107,14 +111,14 @@ pub fn determine_points_order(
         p_q_order = depth;
         counters = p_q_first_occurence;
     }
-    return (p_q_order, counters);
+    return (p_q_order, counters, possibly_ommited);
 }
 
 pub fn search_for_point(
     p_q: Rational64,
     base_manifold: &TwoDimentionalManifold,
     occurences_limit: i64,
-) -> Vec<Vec<i64>> {
+) -> (Vec<Vec<i64>>, bool) {
     let _zero = Rational64::from_integer(0);
     let _one_over_two = Rational64::new(1, 2);
     let _one_over_four = Rational64::new(1, 4);
@@ -127,7 +131,7 @@ pub fn search_for_point(
     let mut counters: Vec<i64> = vec![1];
     let mut occurences_count = 0;
     let mut pivot = 0;
-    let mut flag = chi_orb(&counters).cmp(&p_q);
+    let mut flag = chi_orb(&counters).1.cmp(&p_q);
     let p_q = match base_manifold {
         TwoDimentionalManifold::Disk => _two * p_q,
         TwoDimentionalManifold::Sphere => p_q,
@@ -138,13 +142,34 @@ pub fn search_for_point(
             boundry_components: bc,
         } => p_q + 2 * h + cc + bc,
     };
+    // counters[0] = 7312724677;
+    // counters.push(405642);
+    // counters.push(403);
+    // counters.push(33);
+    // pivot = 0;
+    // flag = Greater;
+    let mut possibly_ommited = false;
     loop {
+        // println!(
+        //     "{}",
+        //     &(signature_string(&counters, base_manifold)
+        //         + "\n"
+        //         + &pivot.to_string()
+        //         + "\n"
+        //         + &match flag {
+        //             Equal => "Equal",
+        //             Less => "Less",
+        //             Greater => "Greater",
+        //         })
+        // );
+
         match flag {
             Equal => {
                 occurences.push(counters.clone());
                 occurences_count += 1;
                 if occurences_count == occurences_limit {
-                    return occurences;
+                    possibly_ommited = true;
+                    return (occurences, possibly_ommited);
                 } else {
                     flag = Less;
                     pivot += 1;
@@ -157,15 +182,29 @@ pub fn search_for_point(
             Less => {
                 counters[pivot] += 1;
                 if break_condition(&counters, pivot) {
-                    return occurences;
+                    return (occurences, possibly_ommited);
                 }
                 level_to_b_c(&mut counters, pivot);
-                match chi_orb(&counters).cmp(&p_q) {
+                let chi_orb_0 = chi_orb(&counters);
+                match if chi_orb_0.0 {
+                    flag = Less;
+                    pivot += 1;
+                    if counters.len() <= pivot {
+                        counters.push(1);
+                    }
+                    possibly_ommited = true;
+                    continue;
+                } else {
+                    chi_orb_0.1
+                }
+                .cmp(&p_q)
+                {
                     Equal => {
                         occurences.push(counters.clone());
                         occurences_count += 1;
                         if occurences_count == occurences_limit {
-                            return occurences;
+                            possibly_ommited = true;
+                            return (occurences, possibly_ommited);
                         } else {
                             flag = Less;
                             pivot += 1;
@@ -192,12 +231,26 @@ pub fn search_for_point(
             }
             Greater => {
                 counters[pivot] = 0;
-                match chi_orb(&counters).cmp(&p_q) {
+                let chi_orb_0 = chi_orb(&counters);
+                match if chi_orb_0.0 {
+                    flag = Less;
+                    pivot += 1;
+                    if counters.len() <= pivot {
+                        counters.push(1);
+                    }
+                    possibly_ommited = true;
+                    continue;
+                } else {
+                    chi_orb_0.1
+                }
+                .cmp(&p_q)
+                {
                     Equal => {
                         occurences.push(counters.clone());
                         occurences_count += 1;
                         if occurences_count == occurences_limit {
-                            return occurences;
+                            possibly_ommited = true;
+                            return (occurences, possibly_ommited);
                         } else {
                             flag = Less;
                             pivot += 1;
@@ -208,7 +261,19 @@ pub fn search_for_point(
                         }
                     }
                     Less => {
-                        let current_chi_orb = chi_orb(&counters) + Rational64::new(1, 1);
+                        let chi_orb_0 = chi_orb(&counters);
+
+                        let current_chi_orb = if chi_orb_0.0 {
+                            flag = Less;
+                            pivot += 1;
+                            if counters.len() <= pivot {
+                                counters.push(1);
+                            }
+                            possibly_ommited = true;
+                            continue;
+                        } else {
+                            chi_orb_0.1
+                        } + Rational64::new(1, 1);
                         let b_c = b_c_value(current_chi_orb, p_q);
                         if b_c.0 {
                             flag = Less;
@@ -216,15 +281,29 @@ pub fn search_for_point(
                             if counters.len() <= pivot {
                                 counters.push(1);
                             }
+                            possibly_ommited = true;
                             continue;
                         } else {
                             counters[pivot] = b_c.1;
                         }
-                        if chi_orb(&counters) == p_q {
+                        let chi_orb_0 = chi_orb(&counters);
+                        if if chi_orb_0.0 {
+                            flag = Less;
+                            pivot += 1;
+                            if counters.len() <= pivot {
+                                counters.push(1);
+                            }
+                            possibly_ommited = true;
+                            continue;
+                        } else {
+                            chi_orb_0.1
+                        } == p_q
+                        {
                             occurences.push(counters.clone());
                             occurences_count += 1;
                             if occurences_count == occurences_limit {
-                                return occurences;
+                                possibly_ommited = true;
+                                return (occurences, possibly_ommited);
                             } else {
                                 flag = Less;
                                 pivot += 1;
@@ -235,12 +314,26 @@ pub fn search_for_point(
                             }
                         }
                         level_to_b_c(&mut counters, pivot);
-                        match chi_orb(&counters).cmp(&p_q) {
+                        let chi_orb_0 = chi_orb(&counters);
+                        match if chi_orb_0.0 {
+                            flag = Less;
+                            pivot += 1;
+                            if counters.len() <= pivot {
+                                counters.push(1);
+                            }
+                            possibly_ommited = true;
+                            continue;
+                        } else {
+                            chi_orb_0.1
+                        }
+                        .cmp(&p_q)
+                        {
                             Equal => {
                                 occurences.push(counters.clone());
                                 occurences_count += 1;
                                 if occurences_count == occurences_limit {
-                                    return occurences;
+                                    possibly_ommited = true;
+                                    return (occurences, possibly_ommited);
                                 } else {
                                     flag = Less;
                                     pivot += 1;
@@ -279,15 +372,23 @@ pub fn search_for_point(
     }
 }
 
-pub fn chi_orb(counters: &Vec<i64>) -> Rational64 {
+pub fn chi_orb(counters: &Vec<i64>) -> (bool, Rational64) {
     let mut chi_orb = Rational64::from_integer(2);
     for counter in counters {
         if *counter == 1 {
             break;
         }
-        chi_orb -= period_to_difference(*counter);
+        match chi_orb.checked_sub(&period_to_difference(*counter)) {
+            Some(diff) => {
+                chi_orb = diff;
+            }
+            None => {
+                return (true, Rational64::from_integer(-1));
+            }
+        }
+        //chi_orb -= period_to_difference(*counter);
     }
-    chi_orb
+    (false, chi_orb)
 }
 
 fn break_condition(counters: &Vec<i64>, pivot: usize) -> bool {
@@ -519,16 +620,19 @@ pub fn print_order_and_occurences(
 
 pub fn points_order_and_occurences_string(
     p_q: Rational64,
-    p_q_order_and_occurences: &(i64, Vec<Vec<i64>>),
-    manifold: &TwoDimentionalManifold, maximal_number_of_occurences: i64,
+    p_q_order_and_occurences: &((i64, bool), (Vec<Vec<i64>>, bool)),
+    manifold: &TwoDimentionalManifold,
+    _maximal_number_of_occurences: i64,
 ) -> String {
     let p_q_order = p_q_order_and_occurences.0;
 
     let p_q_orbifolds = &p_q_order_and_occurences.1;
 
-    if p_q_order == -1 {
+    if p_q_order.0 == -1 {
         p_q.to_string()
-            + " is not an Euler orbicharacteristic of any "
+            + " is"
+            + if p_q_order.1 { " possibly " } else { " " }
+            + "not an Euler orbicharacteristic of any "
             + &match manifold {
                 TwoDimentionalManifold::Disk => "disk".to_string(),
                 TwoDimentionalManifold::Sphere => "sphere".to_string(),
@@ -549,14 +653,14 @@ pub fn points_order_and_occurences_string(
             }
             + " orbifold."
     } else {
-        let p_q_orbifolds_signatures = signature_strings(p_q_orbifolds, manifold);
-        let len = p_q_orbifolds.len();
+        let p_q_orbifolds_signatures = signature_strings(&p_q_orbifolds.0, manifold);
+        let len = p_q_orbifolds.0.len();
         let number_of_p_q_orbifolds = len.to_string();
         p_q.to_string()
             + " "
             + "is an Euler orbicharacteristic of "
             + {
-                if len as i64 == maximal_number_of_occurences {
+                if p_q_orbifolds.1 {
                     "at least "
                 } else {
                     ""
@@ -589,7 +693,8 @@ pub fn points_order_and_occurences_string(
             + &p_q_orbifolds_signatures
             + "\n"
             + &"and it is an accumulation point of order ".to_string()
-            + &(p_q_order.to_string())
+            + if p_q_order.1 { "at least " } else { "" }
+            + &(p_q_order.0.to_string())
             + "."
     }
 }
