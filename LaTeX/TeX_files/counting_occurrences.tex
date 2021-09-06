@@ -14,14 +14,40 @@ from a sufficiently distatn point? (Yes.) \\
 \section{Finitenes}
 First we will show that for any $x \in \sigma$ there are always only finitely many orbifolds 
 with an \Eoc\ equal to $x$. \\ 
-Let us observe, that we only need to show this for sphere orbifolds. It is like that, because, 
+Let us observe, that we only need to show this for $S^2$ orbifolds. It is like that, because, 
 as discussed in \ref{surgeries} every orbifold can be obtained be modyfying the sphere and 
 %the set of differences in \Eoc\ made by
 %all possible modifications that are not adding orbipoints is bounded. 
 there is only finitely many possible modifications that are not adding an orbipoint, each 
 changing \Eoc\ by non-zero value. \\ 
 
-Suppouse, that there exists an orbifold with an \Eoc\ qual to $x$. Then 
+\begin{theorem}
+For any $x \in \sigma$ there are always only finitely many orbifolds 
+with an \Eoc\ equal to $x$.
+\end{theorem}
+\textbf{Proof:} \\
+% Suppouse, that there exists an orbifold with an \Eoc\ qual to $x$. Then, 
+According to the note above, we only need to proof this for $S^2$ orbifolds. \\ 
+Let $x$ be a rational number. 
+For the sake of contradiction, assume, that there exists an infinite family of orbifolds 
+$\{\mathcal{O}\}_{i \in I}$ with an \Eoc\ of each qual to $x$. For each $i$, tet $m_i$ be the 
+order of the orbipoint with the highest order of $\mathcal{O}_i$. As for every $n \in \mathbb{N}$ 
+there are only finitely many $S^2$ orbifolds with all orbipoints of order less than $n$, we have 
+that the set $\{m_i\}_{i \in I}$ is unbounded. Let $\{m_n\}_{n\in \mathbb{N}}$ be some strictly 
+increasing sequence 
+of elements of $\{m_i\}_{i \in I}$ that diverges into infinity. \\
+Let $\{a_n\}$ be the sequence of differences in \Eoc\ caused by points corresponding to $\{m_i\}$. 
+Let $\{b_n\}$ be the sequence of differences in \Eoc\ caused by other points on those orbifolds. 
+So for every $n$ we have $\cho{\mathcal{O}_n} = 2 + a_n + b_n$. As $\{m_n\}$ is strictly 
+increasing we have that $a_n$ is strictly decreasing, so $b_n$ must be strictly 
+increasing, because $\cho{\mathcal{O}_n}$ is constant for all $n$ (all $\{\mathcal{O}_n\}$ 
+are from the family with \Eoc\ equal to $x$). \\ 
+But $\{b_n\} \subseteq \sIS - 2$, so it is well ordered as $\sIS$ is well ordered. 
+From \ref{well_order} and \ref{times_two_fact} we know that $\sIS$ has no infinite 
+strongly increasing sequences, so 
+$\sIS - 2$ has no infinite strongly increasing sequences. That gives us a contradiction. 
+\Lightning $_\square$ 
+ 
 \section{Some connections between \Eoc\ and geometry of corresponding orbifolds}
 Here we will state some observations and corollaries derived from previous chapters 
 about ... 
