@@ -8,7 +8,7 @@
 %
 In this chapter we will discuss that both the order type and the topology 
 of the set of all possible Euler orbicharacteristics 
-of two dimensional orbifolds are that of $\omega^\omega$. We will call this set $\sigma$. \\ 
+of two-dimensional orbifolds are that of $\omega^\omega$. We will call this set $\sigma$. \\ 
 We will see (in the observation \ref{boils_down}) that the problem of determining this boils
  down to the 
  analysis of all 
@@ -80,16 +80,16 @@ I_1I_2\dots I_n & \textrm{\ or} \\
 \end{align*}
 
 Let us denote the set of all possible Euler orbicharacteristics of orbifolds of the form 
-$I_1I_2\dots I_n$ by $\sIS$ and the set 
+$I_1I_2\dots I_n$ by $\speS$ and the set 
 of all possible Euler orbicharacteristics of orbifolds of the form $*b_1b_2\dots b_m$ 
-as $\sbD$. 
-So we have that $\sigma = \sbD \cup \sIS$. \\
+as $\speD$. 
+So we have that $\sigma = \speD \cup \speS$. \\
 % Let us denote the set of all possible \Eoc s of two-dimentional orbifolds as $\sigma$. \\
-Let us also observe that the order type and topology of $\sIS$ and $\sbD$ are 
+Let us also observe that the order type and topology of $\speS$ and $\speD$ are 
 the same since 
 
 \begin{equation}\label{times_two_fact}
-2\sbD=\sIS
+2\speD=\speS
 \end{equation}
 and multiplying by $2$ is the order preserving homeomorphism of $\mathbb{R}$. \\[16pt]
 Now we can make aforementioned observation:
@@ -113,32 +113,24 @@ addressed in \ref{extended_Euler_orbicharacteristic}. \\
 Here is the notation that will be used: \\
 $\sigma$ - spectrum of all possible \Eoc\ of two-dimentional orbifolds \\
 $\sigma(M)$ - spectrum of all possible \Eoc\ of $M$ orbifolds \\
-$\sigma^I(M)$ - spectrum of all possible \Eoc\ of $M$ orbifolds with orbipoints only 
-in the interior of $M$ \\
-$\sigma^b(M)$ - spectrum of all possible \Eoc\ of $M$ orbifolds with orbipoints only 
-on the boundry of $M$ (when $M$ has no boundry $\sigma^b(M) = \{\chi(M)\}$) \\
-Examples that will be extensively use: \\
-$\sIS$ - spectrum of all possible \Eoc\ of $S^2$ orbifolds \\
-$\sbD$ - spectrum of all possible \Eoc\ of $D^2$ orbifolds with orbipoints only on the boundry 
-(equal to $\sigma(D^2)$ - spectrum of all possible \Eoc\ of all $D^2$ orbifolds) \\
 
 % We would like to make some more observations concerning subsets of $\sigma$. 
-For any two-dimentional manifold $M$, observe, that:
+% For any two-dimentional manifold $M$, observe, that:
 
 Now we state what we can already conclude. 
 \begin{observation}
 If two-dimentional manifold $M$ has no boundry, then:
 \begin{equation} 
-\sigma(M) = \sigma^I(M) = \chi(M) - (\sIS - 2) 
+\sigma(M) = \chi(M) - (\speS - 2) 
 \end{equation}
 and
 \begin{equation} 
-\sigma(M) \subseteq \sIS 
+\sigma(M) \subseteq \speS 
 \end{equation} 
 
 If, in addition, $M \neq S^2$, then 
 \begin{equation} 
-\sigma(M) \subseteq \sbD. 
+\sigma(M) \subseteq \speD. 
 \end{equation}
 
 \end{observation}
@@ -150,26 +142,30 @@ of $M$, so $\sigma(M) = \sigma^I(M)$. From \ref{} we have, that:
 \frac{I_i-1}{I_i}\ |\ n \in \mathbb{N} \land \forall_i I_i \in \mathbb{N} \cup \infty\}.
 \end{equation}
 And from 
-$\chi(M) - (\sIS - 2)$
+$\chi(M) - (\speS - 2)$
 \begin{observation}
 If two-dimentional manifold  $M$ has a boundry, then 
 \begin{equation}
-\begin{gathered} 
-\sigma(M) = \sigma^b(M) =  \\
+\sigma(M) = \chi(M) + (\speD - 1)
+\end{equation}
+and 
+\begin{equation}
+\sigma(M) \subseteq \speD
+\end{equation}
+\end{observation}
+\textbf{Proof} \\
+\begin{equation}
 \{\chi(M) - \sum_{j=1}^m 
-\frac{b_j-1}{2b_j}\ |\ m \in \mathbb{N} \land \forall_j b_j \in \mathbb{N} \cup \infty\} = \\
-\chi(M) + (\sbD - 1)
-\end{gathered}
-\end{equation}.
-\end{observation}
-\begin{observation}
-If two-dimentional manifold  $M$ has no boundry, then $\sigma(M) \subseteq \sIS$. 
-If, in addition, $M \neq S^2$, then 
-$\sigma(M) \subseteq \sbD$.
-\end{observation}
-\begin{observation}
-If two-dimentional manifold  $M$ has a boundry, then $\sigma(M) \subseteq \sbD$.
-\end{observation}
+\frac{b_j-1}{2b_j}\ |\ m \in \mathbb{N} \land \forall_j b_j \in \mathbb{N} \cup \infty\} 
+\end{equation}
+%\begin{observation}
+%If two-dimentional manifold  $M$ has no boundry, then $\sigma(M) \subseteq \speS$. 
+%If, in addition, $M \neq S^2$, then 
+%$\sigma(M) \subseteq \speD$.
+%\end{observation}
+%\begin{observation}
+%If two-dimentional manifold  $M$ has a boundry, then $\sigma(M) \subseteq \speD$.
+%\end{observation}
 
 \begin{theorem}\label{all_spectra_are_isomorphic}
 For any two two-dimentional manifolds $M$, $N$ spectras $\sigma(M)$ and $\sigma(N)$ have the same 
@@ -179,119 +175,139 @@ order type and topology.
 
 
 
-\section{Determining the order type}
-In this section we will justify, that the order type of the spectrum all possible 
-Euler orbicharacteristics 
-of two dimensional orbifolds $\sigma$ is $\omega^\omega$. 
-We will also describe precisely where accumulation points of the spectrum lie and of which order 
+\section{Order type and topology of $\speD$}
+To determine order type and topology of $\sigma$ we will first study how $\speD$ looks like. 
+Then, remembering that 
+$\sigma = \speS \cup \speD$ and $\speS = 2\speD$ we will make an argument for $\sigma$. \\
+In this section we will also describe precisely where accumulation points of $\speD$ lie and of 
+ which order 
 (see below \ref{accumulation_points_definitions}) they are. \\
-To do so, remembering that $\sigma = \sIS \cup \sbD$ and \ref{all_spectra_are_isomorphic} we 
-will first study how $\sbD$ looks like.
-\subsection{Definitions regarding order of accumulation points}
+\subsection{Definition of order of accumulation points}
 \label{accumulation_points_definitions} 
-We start with one technical definition of "transitive order" that will be almost what we want
-and then, there will be the the definition of "order", which is the definition that we need.
+%We start with one technical definition of "transitive order" that will be almost what we want
+%and then, there will be the the definition of "order", which is the definition that we need.
+%\begin{definition}
+%(Inductive). 
+%%We say, that the point $a$  from the topological space $X$ is an acccumulation 
+%%point of the transitive order 0, when
+%We say that the point is an acccumulation point of a transitive order $0$, when it is 
+%an isolated point. 
+%We say that the point is an acccumulation point of a transitive order $n + 1$, when it is 
+%an acccumulation point (in the usual sense) of the accumulation points of the transitive 
+%order $n$. 
+%\end{definition}  
+%The only issue of the above definition is that the point of the transitive order $n$ 
+%is also a point 
+%of the transitive order $k$, for all $0< k \leq n$. We want a definition of order such that 
+%for any point, there is at most one integer that is its order. So we define:
+%\begin{definition}
+%We say that the point is an acccumulation point of order $n$ iff it is an acccumulation point 
+%of the transitive order $n$ and it is not an acccumulation point of the transitive order $n+1$. 
+%If the point is an acccumulation point of the transitive order for an arbitrary large 
+%$n$ we say that 
+%the  point is an acccumulation point of order $\omega$.
+%\end{definition}
+We start with definition of being "at least of order $n$" that will be almost what we want
+and then, there will be the definition of being "order", which is the definition that we need. \\
+For a given set we define as follows:
 \begin{definition}
 (Inductive). 
 %We say, that the point $a$  from the topological space $X$ is an acccumulation 
 %point of the transitive order 0, when
-We say that the point is an acccumulation point of a transitive order $0$, when it is 
-an isolated point. 
-We say that the point is an acccumulation point of a transitive order $n + 1$, when it is 
-an acccumulation point (in the usual sense) of the accumulation points of the transitive 
-order $n$. 
+We say that the point is an acccumulation point of order at least $0$, when it belongs to a set. 
+We say that the point is an acccumulation point of order at least $n + 1$, when it is 
+an acccumulation point (in the usual sense) of the accumulation points each of order at least $n$. 
 \end{definition}  
-The only issue of the above definition is that the point of the transitive order $n$ 
-is also a point 
-of the transitive order $k$, for all $0< k \leq n$. We want a definition of order such that 
-for any point, there is at most one integer that is its order. So we define:
+%The only issue of the above definition is that the point of the transitive order $n$ 
+%is also a point 
+%of the transitive order $k$, for all $0< k \leq n$. We want a definition of order such that 
+%for any point, there is at most one integer that is its order. So we define:
 \begin{definition}
 We say that the point is an acccumulation point of order $n$ iff it is an acccumulation point 
-of the transitive order $n$ and it is not an acccumulation point of the transitive order $n+1$. 
-If the point is an acccumulation point of the transitive order for an arbitrary large 
+of order at least $n$ and it is not an acccumulation point of order at least $n+1$. 
+If the point is an acccumulation point of order at least $n$ for an arbitrary large 
 $n$ we say that 
-the  point is an acccumulation point of order $\omega$.
+the point is an acccumulation point of order $\omega$.
 \end{definition}
-
 When we will say that a point is an accumulation point of some set without specifying an order 
 then we will mean being an accumulation point in the ussual sense; from the point of view 
 of above definitions, that is, an accumulation point of order at least one.
-\subsection{Order structure of $\sbD$}
+\subsection{Order type of $\speD$}
 \subsubsection{Some preliminary observations}
 Let us observe, that $\lim\limits_{n \to \infty} \Delta(^*n) = -\frac{1}{2}$. From that, we see, 
-that for every point $x \in \sbD$, the point $x - \frac{1}{2}$ is an acccumulation point. 
-Let us observe, that also, for every point $x \in \sbD$, we have that $x - \frac{1}{2} \in \sbD$, 
+that for every point $x \in \speD$, the point $x - \frac{1}{2}$ is an acccumulation point. 
+Let us observe, that also, for every point $x \in \speD$, we have that $x - \frac{1}{2} \in \speD$, 
 because $\Delta(^*\infty) = -\frac{1}{2}$. \\
 
-Now we will show that the order type of $\sbD$ is $\omega^\omega$ and where exactly are 
+Now we will show that the order type of $\speD$ is $\omega^\omega$ and where exactly are 
 its accumulation points of which orders. For this we will use  
 a handful of lemmas. 
 
 \begin{lemma}\label{first_order_lemma}
-If $x$ is an acccumulation point of the set $\sbD$ of order $n$, then $x-\frac{1}{2}$ is a
- accumulation point of the set $\sbD$ of order at least $n+1$. 
+If $x$ is an acccumulation point of the set $\speD$ of order $n$, then $x-\frac{1}{2}$ is a
+ accumulation point of the set $\speD$ of order at least $n+1$. 
 \end{lemma}
 \textbf{Proof.} \\
 Inductive. \\
-$\bullet$ $n = 0$: If $x$ is an isolated point of the set $\sbD$, then $x \in \sbD$. From that, we 
-have, that points $x - \frac{k-1}{2k}$ are in $\sbD$, from that, that $x-\frac{1}{2}$ is a 
-accumulation point of $\sbD$. \\
-$\bullet$ inductive step: Let $x$ be an acccumulation point of the set $\sbD$ of an order $n > 0$. 
+$\bullet$ $n = 0$: If $x$ is an isolated point of the set $\speD$, then $x \in \speD$. From that, we 
+have, that points $x - \frac{k-1}{2k}$ are in $\speD$, from that, that $x-\frac{1}{2}$ is a 
+accumulation point of $\speD$. \\
+$\bullet$ inductive step: Let $x$ be an acccumulation point of the set $\speD$ of an order $n > 0$. 
 Let $a_k$ be a sequence of accumulation points of order $n-1$ convergent to $x$. From the 
 inductive assumption, we have, that $a_k - \frac{1}{2}$ is a sequence of accumulation points 
 of order at least $n$. From the basic sequence arithmetic it is convergent to $x-\frac{1}{2}$. 
-From that, we have that $x-\frac{1}{2}$ is an acccumulation point of the set $\sbD$ of order 
+From that, we have that $x-\frac{1}{2}$ is an acccumulation point of the set $\speD$ of order 
 at least $n+1$. $_\square$
 \begin{lemma}\label{second_order_lemma}
-If $x$ is an acccumulation point of the set $\sbD$ of order $n$, then $x+\frac{1}{2}$ is 
-an acccumulation point of the set $\sbD$ of order at least $n-1$.  
+If $x$ is an acccumulation point of the set $\speD$ of order $n$, then $x+\frac{1}{2}$ is 
+an acccumulation point of the set $\speD$ of order at least $n-1$.  
 \end{lemma}
 \noindent\textbf{Proof.} \\
 Inductive \\
 $\bullet$ $n = 1$: We assume, that $x$ is an acccumulation point of isolated points of the set 
-$\sbD$. Let us observe, that for all $m$ there are only finitely many Euler orbicharacteristics 
+$\speD$. Let us observe, that for all $m$ there are only finitely many Euler orbicharacteristics 
 in the interval $[1,x]$ of orbifolds that have cone points of period equal at most $m$. \\ 
 From that, for arbitrary small neighborhood $U \ni x$ and arbitrary large $m$ there exist an orbifold 
 that has a cone point of period grater than $m$, whose Euler orbicharacteristic lies in $U$. 
 Let us take a sequence of such \Eoc s $a_k$ convergent to $x$, such that we can choose 
 a sequence divergent to infinity of periods of cone points $b_k$ of orbifolds of \Eoc s equal $a_k$. 
 \smalltodoII{picture} 
-Let us observe, that for all $k$, the number $a_k+\frac{b_k-1}{2b_k}$ is in $\sbD$. 
+Let us observe, that for all $k$, the number $a_k+\frac{b_k-1}{2b_k}$ is in $\speD$. 
 It is so, because $a_k$ is an \Eoc of an orbifold that have a cone point of period $b_k$, so 
 identical orbifold, only without this cone point has an \Eoc equal to $a_k + \frac{b_k-1}{2b_k}$. 
 The sequence $a_k + \frac{b_k-1}{2b_k}$ converge to $x+\frac{1}{2}$. From that we have, that 
-$x + \frac{1}{2}$ is an acccumulation point of the set $\sbD$ of order at least $0$. \\
-$\bullet$ inductive step: Let $x$ be an acccumulation point of the set $\sbD$ of order $n > 1$. 
-Let $a_k$ be a sequence of accumulation points of the set $\sbD$ of order $n-1$ convergent to $x$. 
+$x + \frac{1}{2}$ is an acccumulation point of the set $\speD$ of order at least $0$. \\
+$\bullet$ inductive step: Let $x$ be an acccumulation point of the set $\speD$ of order $n > 1$. 
+Let $a_k$ be a sequence of accumulation points of the set $\speD$ of order $n-1$ convergent to $x$. 
 From the inductive assumption the sequence $a_k + \frac{1}{2}$ is a sequence of an acccumulation
- points of the set $\sbD$ of order $n-2$ convergent to $x + \frac{1}{2}$. From that 
- $x + \frac{1}{2}$ is an acccumulation point of the set $\sbD$ of order at least $n-1$. $_\square$ 
+ points of the set $\speD$ of order $n-2$ convergent to $x + \frac{1}{2}$. From that 
+ $x + \frac{1}{2}$ is an acccumulation point of the set $\speD$ of order at least $n-1$. $_\square$ 
 \begin{lemma}\label{third_order_lemma}
-If $x$ is an acccumulation point of the set $\sbD$ of order $n+1$, then \\
-$x - \frac{1}{2}$ is an acccumulation point of the set $\sbD$ of order $n+2$ and \\
-$x + \frac{1}{2}$ is an acccumulation point of the set $\sbD$ of order $n$. 
+If $x$ is an acccumulation point of the set $\speD$ of order $n+1$, then \\
+$x - \frac{1}{2}$ is an acccumulation point of the set $\speD$ of order $n+2$ and \\
+$x + \frac{1}{2}$ is an acccumulation point of the set $\speD$ of order $n$. 
 \end{lemma}
 \noindent\textbf{Proof.} \\
-Let $x$ be an acccumulation point of the set $\sbD$ of order $n+1$. From the lemma 
+Let $x$ be an acccumulation point of the set $\speD$ of order $n+1$. From the lemma 
  \ref{first_order_lemma} we know, that $x - \frac{1}{2}$ is an acccumulation point of the set 
- $\sbD$ of order at least $n+2$. Now let us assume (for a contradiction), that $x - \frac{1}{2}$ 
- is an \apots $\sbD$ of order $k>n+2$. But then from the lemma \ref{second_order_lemma} 
- we have that $x$ is an acccumulation point of the set $\sbD$ of order at least $n+2$ and that 
+ $\speD$ of order at least $n+2$. Now let us assume (for a contradiction), that $x - \frac{1}{2}$ 
+ is an \apots $\speD$ of order $k>n+2$. But then from the lemma \ref{second_order_lemma} 
+ we have that $x$ is an acccumulation point of the set $\speD$ of order at least $n+2$ and that 
  is a contradiction. \\
 Analogously, from the lemma \ref{second_order_lemma} we know, that $x + \frac{1}{2}$ is a 
-accumulation point of the set $\sbD$ of order at least $n$. Let us assume (for a contradiction), 
-that $x+ \frac{1}{2}$ is an acccumulation point of the set $\sbD$ of order $k>n$. But then 
-from the lemma \ref{first_order_lemma} we have that $x$ is an acccumulation point of the set $\sbD$ 
+accumulation point of the set $\speD$ of order at least $n$. Let us assume (for a contradiction), 
+that $x+ \frac{1}{2}$ is an acccumulation point of the set $\speD$ of order $k>n$. But then 
+from the lemma \ref{first_order_lemma} we have that $x$ is an acccumulation point of the set $\speD$ 
 of order at least $n+2$ and that is a contradiction. $_\square$ 
 \begin{lemma}\label{accumulations_points_of_the_set}
-For all $n \in \mathbb{N}$ all accumulation points of the set $\sbD$ of order $n$ are in $\sbD$.
+For all $n \in \mathbb{N}$ all accumulation points of the set $\speD$ of order $n$ are in $\speD$.
 \end{lemma}
 \noindent\textbf{Proof.} \\
 Inductive \\
-$\bullet$ $n=0$: Clear, as they are isolated points of $\sbD$. \\
-$\bullet$ inductive step: Let $x$ be a \apots  $\sbD$ of order $n>0$. From the lemma 
-\ref{third_order_lemma} point $x+\frac{1}{2}$ is an acccumulation point of the set $\sbD$  
-of order $n-1$. From the inductive assumption $x+\frac{1}{2} \in \sbD$. Then $x \in \sbD$. 
+$\bullet$ $n=0$: Clear, as they are isolated points of $\speD$. \\
+$\bullet$ inductive step: Let $x$ be a \apots  $\speD$ of order $n>0$. From the lemma 
+\ref{third_order_lemma} point $x+\frac{1}{2}$ is an acccumulation point of the set $\speD$  
+of order $n-1$. From the inductive assumption $x+\frac{1}{2} \in \speD$. Then $x \in \speD$. 
 $_\square$ 
 \begin{lemma}\label{two_sets_lemma}
 If $A, B \subseteqq \mathbb{R}$ have no infinite ascending sequences, then set 
@@ -307,43 +323,42 @@ ascending sequence, so $a_n$ has a weakly decreasing subsequence $a_{n_k}$. But 
 subsequence $b_{n_k}$ must be strictly increasing, what gives 
 us a contradiction. \Lightning $_\square$ 
 \begin{lemma}\label{well_order}
-In $\sbD$ there are no infinite ascending sequences.
+In $\speD$ there are no infinite ascending sequences.
 \end{lemma}
 \noindent\textbf{Proof.} \\
 Let us denote by $A_n$ the set of all possible \Eoc s realised by orbifolds of type 
 $*b_1,\dots,b_n$. Then $A_0 = \{1\}$ and $A_{n+1}=A_n+\{-\frac{n-1}{2n}\ |\ n\geq 2\}$. 
 From that, from the lemma \ref{two_sets_lemma}, for all $n$, we have that $A_n$ do not have 
-infinite ascending sequence. $\sbD = \bigcup\limits^\infty_{n=0}A_n$. Let us also observe, that 
-for all $n$, we have $A_n \subseteqq [1-\frac{n}{4},1-\frac{n}{2}]$. From that we have $\sbD$ 
+infinite ascending sequence. $\speD = \bigcup\limits^\infty_{n=0}A_n$. Let us also observe, that 
+for all $n$, we have $A_n \subseteqq [1-\frac{n}{4},1-\frac{n}{2}]$. From that we have $\speD$ 
 do not have infinite ascending sequences. $_\square$
 \begin{theorem}\label{biggest \apots}
-The biggest \apots\ $\sbD$ of order $n$ is $1-\frac{n}{2}$.
+The biggest \apots\ $\speD$ of order $n$ is $1-\frac{n}{2}$.
 \end{theorem}
 \noindent\textbf{Proof.}\\
 Inductive \\
-$\bullet$ $n=0$: $1\in \sbD$ and $1$ is the biggest element of $\sbD$. \\
+$\bullet$ $n=0$: $1\in \speD$ and $1$ is the biggest element of $\speD$. \\
 $\bullet$ an inductive step: From the inductive assumption we know that $1-\frac{n}{2}$ is 
-the biggest \apots\  $\sbD$ of order $n$. From the lemma \ref{third_order_lemma} we have then 
-that $1-\frac{n+1}{2}$ is a \apots  $\sbD$ of order $n+1$. Let us assume (for a contradiction), 
+the biggest \apots\  $\speD$ of order $n$. From the lemma \ref{third_order_lemma} we have then 
+that $1-\frac{n+1}{2}$ is a \apots  $\speD$ of order $n+1$. Let us assume (for a contradiction), 
 that there exist a bigger accumulation point of order $n+1$ equal to $y > 1-\frac{n+1}{2}$. 
-But then, from lemma \ref{third_order_lemma}, point $y+\frac{1}{2}$ would be an acccumulation point 
+But then, from lemma \ref{third_order_lemma}, point $y+\frac{1}{2}$ would be an acccumulation 
+point 
 of order $n$, what gives a contradiction, because $y+\frac{1}{2}>1-\frac{n}{2}$. $_\square$ 
-\subsection{Order structure of the set of all possible Euler orbicharacteristics $\sigma$}
+
 \begin{theorem}
-The order type of the set of possible Euler orbicharacteristics of two dimensional orbifolds 
-$\sigma$ is $\omega^\omega$. 
+Order type and topological structure of $\speD$ are those of $\omega^\omega$. 
 \end{theorem}
-\noindent\textbf{Proof.} \\
-From the lemma \ref{well_order} we know, that $\sbD$ is well ordered. From this and 
+
+\textbf{Proof} \\
+From the lemma \ref{well_order} we know, that $\speD$ is well ordered. From this and 
 from the theorem \ref{biggest \apots} we know, that for the point $1-\frac{n}{2}$ there exist 
 a neighborhood $U=(1-\frac{n}{2}-\varepsilon,1-\frac{n}{2}+\varepsilon)$ such that $U \cap 
-\sbD$ is homeomorphic to $\omega^n$. From this, and again from theorem \ref{biggest \apots} 
-we have that $\sbD \cap [1,1-\frac{n}{2})$ is homeomorphic with $\omega^n$. 
-From this $\sbD$ is homeomorphic with $\omega^\omega$. From this $\sIS$ is homeomorphic 
-with $\omega^\omega$. \\
-$\sIS = 2\sbD$, so for all $n\in -\mathbb{N}$ set $\sIS \cap [2,n)$ has a lower order type then 
-$\sbD\cap [2,n)$. From this, we have that $\sIS \cup \sbD \cong \omega^\omega$. $_\square$ \\[4pt]
-From the above discussion we can conclude following:
+\speD$ is homeomorphic to $\omega^n$. From this, and again from theorem \ref{biggest \apots} 
+we have that $\speD \cap [1,1-\frac{n}{2})$ is homeomorphic with $\omega^n$. 
+From this $\speD$ is homeomorphic with $\omega^\omega$.
+
+From the above discussion we can also formulate following corollaries that will be useful later:
 % corollary (stated in for deifferent ways 
 %as one are sometimes more useful that another): 
 %\begin{corollary}\label{predescors}
@@ -360,15 +375,15 @@ From the above discussion we can conclude following:
 %\end{corollary}
 
 \begin{corollary}\label{predescors}
-Let $x \in \sigma$. Then:
+Let $x \in \speD$. Then:
 \begin{itemize}
-\item there exists $n_1 \in \mathbb{N}$ such that $x + \frac{n_1}{2} \in \sigma$ 
-but $x+\frac{n_1+1}{2} \not\in \sigma$. \\ In other words, there exist $y \in \sigma$ and 
+\item there exists $n_1 \in \mathbb{N}$ such that $x + \frac{n_1}{2} \in \speD$ 
+but $x+\frac{n_1+1}{2} \not\in \speD$. \\ In other words, there exist $y \in \speD$ and 
 $n_1 \in \mathbb{N}$ such that 
-$y + \frac{1}{2} \not\in \sigma$ and such that $x = y - \frac{n_1}{2}$;
-\item there exists $n_2 \in \mathbb{N}$ such that $x$ is an \apots\ $\sigma$ of 
+$y + \frac{1}{2} \not\in \speD$ and such that $x = y - \frac{n_1}{2}$;
+\item there exists $n_2 \in \mathbb{N}$ such that $x$ is an \apots\ $\speD$ of 
 order $n_2$
-%\item $x$ is an \apots\ $\sigma$ of order $n_2$, for some $n_2 \in \mathbb{N}$;  
+%\item $x$ is an \apots\ $\speD$ of order $n_2$, for some $n_2 \in \mathbb{N}$;  
 \end{itemize}
 and $n_1 = n_2$.
 \end{corollary}
@@ -376,8 +391,23 @@ and $n_1 = n_2$.
 
 
 
-\section{Determining the topology}
+\section{Order type and topology of $\sigma$}
+\begin{theorem}
+The order type of the set of possible Euler orbicharacteristics of two-dimensional orbifolds 
+$\sigma$ is $\omega^\omega$. 
+\end{theorem}
+\noindent\textbf{Proof.} \\
+From the lemma \ref{well_order} we know, that $\speD$ is well ordered. From this and 
+from the theorem \ref{biggest \apots} we know, that for the point $1-\frac{n}{2}$ there exist 
+a neighborhood $U=(1-\frac{n}{2}-\varepsilon,1-\frac{n}{2}+\varepsilon)$ such that $U \cap 
+\speD$ is homeomorphic to $\omega^n$. From this, and again from theorem \ref{biggest \apots} 
+we have that $\speD \cap [1,1-\frac{n}{2})$ is homeomorphic with $\omega^n$. 
+From this $\speD$ is homeomorphic with $\omega^\omega$. From this $\speS$ is homeomorphic 
+with $\omega^\omega$. \\
+$\speS = 2\speD$, so for all $n\in -\mathbb{N}$ set $\speS \cap [2,n)$ has a lower order type then 
+$\speD\cap [2,n)$. From this, we have that $\speS \cup \speD \cong \omega^\omega$. $_\square$ \\[4pt]
 
+\section{Order type and topology of some subsets of $\sigma$}
 
 \section{Which points are in the $\sigma$?}
 Here we will try to understand better the conditions that let us determine wether the point 
@@ -390,31 +420,31 @@ lie in $\sigma$ or not.
 \section{More about how this $\omega^\omega$ lies in $\mathbb{R}$}
 
 \begin{theorem}
-The first (biggest) negative \apots\ of all possible \Eoc of two dimensional orbifolds is 
+The first (biggest) negative \apots\ of all possible \Eoc of two-dimensional orbifolds is 
 $-\frac{1}{12}$. It is the accumulation point of order $1$. 
 \end{theorem}
 \noindent\textbf{Proof.} \\
-We will show, that $-\frac{1}{12}$ is the biggest negative accumulation point of the set $\sbD$. 
+We will show, that $-\frac{1}{12}$ is the biggest negative accumulation point of the set $\speD$. 
 From this we will obtain the thesis, as the set of all possible Euler orbicharacteristics 
-of two dimensional orbifolds is equal to $\sIS \cup \sbD$ and $\sIS = 2\sbD$, so 
-the biggest negative point of the set $\sIS$ is smaller than the biggest negative accumulation 
-point of the set $\sbD$. \\
+of two-dimensional orbifolds is equal to $\speS \cup \speD$ and $\speS = 2\speD$, so 
+the biggest negative point of the set $\speS$ is smaller than the biggest negative accumulation 
+point of the set $\speD$. \\
 $\bullet$ $-\frac{1}{12}=\chi^{orb}((2,3))-\frac{1}{2}$, from this we have that $-\frac{1}{12}$ 
-an acccumulation point of the set $\sbD$ of order at least $1$. \\
+an acccumulation point of the set $\speD$ of order at least $1$. \\
 $\bullet$ Let us assume (for a contradiction), that there exist bigger, negative 
-accumulation point of the set $\sbD$ of order at least $1$. Let us denote it by $x$. \\
+accumulation point of the set $\speD$ of order at least $1$. Let us denote it by $x$. \\
 However, then, from the lemma \ref{third_order_lemma} point $x+\frac{1}{2}$ is the accumulation 
-point of the set $\sbD$. What is more, since $x\in (0, -\frac{1}{12})$, then $x+\frac{1}{2} 
+point of the set $\speD$. What is more, since $x\in (0, -\frac{1}{12})$, then $x+\frac{1}{2} 
 \in (\frac{1}{2}, \frac{5}{12}$. From the lemma \ref{accumulations_points_of_the_set} we 
-have that $x$ is in $\sbD$. But orbifolds of the type $*b_1$ can have \Eoc only greater or 
+have that $x$ is in $\speD$. But orbifolds of the type $*b_1$ can have \Eoc only greater or 
 equal $\frac{1}{2}$. Orbifolds of the type $*b_1b_2$ can only have \Eoc $\frac{1}{2}$, 
 $\frac{5}{12}$ and some smaller. Orbifolds of the type $*b_1b_2b_3\dots$ can have \Eoc only 
 lower than $\frac{1}{4}$. This analysis of the cases leads us to the conclusion, that 
-$(\frac{1}{2},\frac{5}{12})\cap \sbD=\emptyset$ and to the contradiction. \\
+$(\frac{1}{2},\frac{5}{12})\cap \speD=\emptyset$ and to the contradiction. \\
 $\bullet$ Above analysis of the cases leads us also to the conclusion, that $\frac{5}{12}$ 
 is 
-an isolated point of the set $\sbD$, from this $-\frac{1}{12}$ is an acccumulation point 
-of order $1$ of the set $\sbD$. $_\square$ \\ 
+an isolated point of the set $\speD$, from this $-\frac{1}{12}$ is an acccumulation point 
+of order $1$ of the set $\speD$. $_\square$ \\ 
  
 
 

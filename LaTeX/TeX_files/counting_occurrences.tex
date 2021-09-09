@@ -7,77 +7,150 @@ Our ultimate goal is to give the answer to the questions such as: \\
 - Is there any reasonable normalisation to counter the effect that there are 'more' points as we go 
 to lesser values. (What we mean by 'more' was sted in) \\
 The first equstion we can tackle is steaming from the chapter \ref{order structure} 
-and it is -- Do $\sbD$ and $\sIS$ coincide? It is easy to answer that $\sbD \neq \sIS$ 
+and it is -- Do $\speD$ and $\speS$ coincide? It is easy to answer that $\speD \neq \speS$ 
 (and we will do that along some harder questions in the moment), but do they coincide 
 starting from a sufficiently distant point? Or maybe, for every denominator, do they coincide 
 from a sufficiently distatn point? (Yes.) \\
 \section{Finitenes}
-First we will show that for any $x \in \sigma$ there are always only finitely many orbifolds 
-with an \Eoc\ equal to $x$. \\ 
-Let us observe, that we only need to show this for $S^2$ orbifolds. It is like that, because, 
-as discussed in \ref{surgeries} every orbifold can be obtained be modyfying the sphere and 
-%the set of differences in \Eoc\ made by
-%all possible modifications that are not adding orbipoints is bounded. 
-there is only finitely many possible modifications that are not adding an orbipoint, each 
-changing \Eoc\ by non-zero value. \\ 
 
-\begin{theorem}
-For any $x \in \sigma$ there are always only finitely many orbifolds 
-with an \Eoc\ equal to $x$.
+Here we will show that for any $x \in \sigma$:
+\begin{itemize}
+\item for every $n \in \mathbb{N}$ there are only finitely many orbifolds 
+with the \Eoc\ greater or equal to $x$ and all orbipoints of order at most $n$
+\item there are finitely many orbifolds with an \Eoc\ equal to $x$. 
+\end{itemize}
+
+\begin{theorem}\label{first_finiteness_theorem}
+For any $x \in \sigma$ and $n \in \mathbb{N}$ there are only finitely many orbifolds 
+with the \Eoc\ greater or equal to $x$ and all orbipoints of order at most $n$.
+\end{theorem}
+\textbf{Proof:}
+
+
+
+\begin{theorem}\label{second_finiteness_theorem}
+For any $x \in \sigma$ there are only finitely many orbifolds 
+with the \Eoc\ equal to $x$.
 \end{theorem}
 \textbf{Proof:} \\
 % Suppouse, that there exists an orbifold with an \Eoc\ qual to $x$. Then, 
-According to the note above, we only need to proof this for $S^2$ orbifolds. \\ 
 Let $x$ be a rational number. 
-For the sake of contradiction, assume, that there exists an infinite family of orbifolds 
-$\{\mathcal{O}\}_{i \in I}$ with an \Eoc\ of each qual to $x$. For each $i$, tet $m_i$ be the 
-order of the orbipoint with the highest order of $\mathcal{O}_i$. As for every $n \in \mathbb{N}$ 
-there are only finitely many $S^2$ orbifolds with all orbipoints of order less than $n$, we have 
-that the set $\{m_i\}_{i \in I}$ is unbounded. Let $\{m_n\}_{n\in \mathbb{N}}$ be some strictly 
-increasing sequence 
-of elements of $\{m_i\}_{i \in I}$ that diverges into infinity. \\
-Let $\{a_n\}$ be the sequence of differences in \Eoc\ caused by points corresponding to $\{m_i\}$. 
-Let $\{b_n\}$ be the sequence of differences in \Eoc\ caused by other points on those orbifolds. 
-So for every $n$ we have $\cho{\mathcal{O}_n} = 2 + a_n + b_n$. As $\{m_n\}$ is strictly 
-increasing we have that $a_n$ is strictly decreasing, so $b_n$ must be strictly 
-increasing, because $\cho{\mathcal{O}_n}$ is constant for all $n$ (all $\{\mathcal{O}_n\}$ 
+Let $\mathcal{O}$ be the set of all orbifolds with 
+an \Eoc\ qual to $x$. 
+Those orbifolds can have different base manifolds. However, the set of base manifolds of 
+orbifolds from $\mathcal{O}$ is finite, as there are only finitely many 
+two dimentional manifolds with an Euler characteristic greater or equal to $x$ and an 
+orbifold always has 
+an \Eoc\ less or equal to the Euler characteristic of its underlying manifold. \\
+We will now provide an argument that shows that for any base manifold $M$, the number 
+of $M$ orbifolds with \Eoc\ equal to $x$ is finite. It will complete the proof of our theorem.\\
+Let $M$ be a two dimentional manifold. \\
+For the sake of contradiction, assume, that there exists an infinite set 
+of $M$ orbifolds $\mathcal{O}_M \subseteq \mathcal{O}$. 
+Let $\mathcal{O}_M = \{O\}_{i \in I}$. \\  
+For each $i$, let $s_i = (I^0_i, \dots, I^{k_i}_i; b^0_i, \dots, b^{l_i}_i)$ be the signature 
+of $O_i$ written with decreasing orders of elliptic orbipoints and decreasing orders of corner 
+reflection points. So for each $i$ we have, that $I^0_i$ is 
+the order of the orbipoint with the highest order of all the elliptic orbipoints of 
+$\mathcal{O}_i$ and $b^0_i$ is 
+the order of the orbipoint with the highest order of all the corner reflection orbipoints of 
+$\mathcal{O}_i$. 
+By \ref{first_finiteness_theorem} we know that if the set $\{I^0_i\}_{i \in I} \cup 
+\{b^0_i\}_{i \in I}$ 
+would be bounded 
+by some $n \in \mathbb{N}$ it would mean, that $\mathcal{O}_M$ would be finite. As 
+(from the assumption) this is not a case, we know
+that the set $\{I^0_i\}_{i \in I} \cup \{b^0_i\}_{i \in I}$ is unbounded. 
+Let $\{i_n\}_{n\in \mathbb{N}} \subseteq I$ be a sequence of indeces such that
+$\{(I^0_{i_n}, b^0_{i_n})\}_{n\in \mathbb{N}}$ is strictly increasing on one cordinate 
+and non-decreasing on the other. \\
+%Let $\{a_n\}$ be the sequence such that $a_n = \frac{m_n-1}{m_n} \end{cases}$ if point 
+%corresponding 
+%to $m_n$ is an elliptic point and $a_n = \frac{m_n-1}{2m_n}$ if point corre 
+Let $\{x_n\}$ be the sequence such that $x_n = \Delta(I^0_{i_n}b^0_{i_n})$.
+Let $\{y_n\}$ be the sequence such that $y_n = \Delta(I^1_{i_n}\dots I^{k_{i_n}}_{i_n} b^1_{i_n}
+\dots b^{l_{i_n}}_{i_n})$. 
+So for every $n$ we know $\cho{O_n} = \chi(M) + a_n + b_n$. As $\{(I^0_{i_n}, b^0_{i_n})\}$ 
+is strictly 
+increasing on one cordinate and non-decreasing on the other, we know 
+that $x_n$ is strictly decreasing, so $y_n$ must be strictly 
+increasing (*), because $\cho{O_n}$ is constant for all $n$ (all $O_n$ 
 are from the family with \Eoc\ equal to $x$). \\ 
-But $\{b_n\} \subseteq \sIS - 2$, so it is well ordered as $\sIS$ is well ordered. 
-From \ref{well_order} and \ref{times_two_fact} we know that $\sIS$ has no infinite 
+But $\{y_n\} \subseteq \spe{M} - \chi(M)$. 
+From \ref{well_order} and \ref{times_two_fact} we know that $\spe{M}$ has no infinite 
 strongly increasing sequences, so 
-$\sIS - 2$ has no infinite strongly increasing sequences. That gives us a contradiction. 
+$\spe{M} - \chi(M)$ has no infinite strongly increasing sequences. That gives us a 
+contradiction with *. 
 \Lightning $_\square$ 
+
+
+
+%First we will show that for any $x \in \sigma$ there are always only finitely many orbifolds 
+%with an \Eoc\ equal to $x$. \\ 
+%Let us observe, that we only need to show this for $S^2$ orbifolds. It is like that, because, 
+%as discussed in \ref{surgeries} every orbifold can be obtained be modyfying the sphere and 
+%%the set of differences in \Eoc\ made by
+%%all possible modifications that are not adding orbipoints is bounded. 
+%there is only finitely many possible modifications that are not adding an orbipoint, each 
+%changing \Eoc\ by non-zero value. \\ 
+
+%\begin{theorem}
+%For any $x \in \sigma$ there are always only finitely many orbifolds 
+%with an \Eoc\ equal to $x$.
+%\end{theorem}
+%\textbf{Proof:} \\
+%% Suppouse, that there exists an orbifold with an \Eoc\ qual to $x$. Then, 
+%According to the note above, we only need to proof this for $S^2$ orbifolds. \\ 
+%Let $x$ be a rational number. 
+%For the sake of contradiction, assume, that there exists an infinite family of orbifolds 
+%$\{\mathcal{O}\}_{i \in I}$ with an \Eoc\ of each qual to $x$. For each $i$, tet $m_i$ be the 
+%order of the orbipoint with the highest order of $\mathcal{O}_i$. As for every $n \in \mathbb{N}$ 
+%there are only finitely many $S^2$ orbifolds with all orbipoints of order less than $n$, we have 
+%that the set $\{m_i\}_{i \in I}$ is unbounded. Let $\{m_n\}_{n\in \mathbb{N}}$ be some strictly 
+%increasing sequence 
+%of elements of $\{m_i\}_{i \in I}$ that diverges into infinity. \\
+%Let $\{a_n\}$ be the sequence of differences in \Eoc\ caused by points corresponding to $\{m_i\}$. 
+%Let $\{b_n\}$ be the sequence of differences in \Eoc\ caused by other points on those orbifolds. 
+%So for every $n$ we have $\cho{\mathcal{O}_n} = 2 + a_n + b_n$. As $\{m_n\}$ is strictly 
+%increasing we have that $a_n$ is strictly decreasing, so $b_n$ must be strictly 
+%increasing, because $\cho{\mathcal{O}_n}$ is constant for all $n$ (all $\{\mathcal{O}_n\}$ 
+%are from the family with \Eoc\ equal to $x$). \\ 
+%But $\{b_n\} \subseteq \speS - 2$, so it is well ordered as $\speS$ is well ordered. 
+%From \ref{well_order} and \ref{times_two_fact} we know that $\speS$ has no infinite 
+%strongly increasing sequences, so 
+%$\speS - 2$ has no infinite strongly increasing sequences. That gives us a contradiction. 
+%\Lightning $_\square$ 
  
 \section{Some connections between \Eoc\ and geometry of corresponding orbifolds}
 Here we will state some observations and corollaries derived from previous chapters 
 about ... 
 \begin{observation}
-If an \Eoc\ is an accumulation point of order $n$ in $\sbD$ \dsa{$\sIS$}, there exist an 
+If an \Eoc\ is an accumulation point of order $n$ in $\speD$ \dsa{$\speS$}, there exist an 
 orbifold of the type ... \dsa{} with $n$ cone \dsa{gyration} points of that \Eoc. 
 \end{observation}
 prrof. from chapter 3. (todo: dopisać)
 \begin{observation}\label{adding_multiplied_differences}
-If $x \in \sbD$ \dsa{$\sIS$}, then $1-x$ \dsa{$2-x$} is a difference in \Eoc\ resulting 
-from some set of cone \dsa{gyration} points. From that $1-n(1-x) \in \sbD$ \dsa{$2-n(2-x)\in \sIS$} 
+If $x \in \speD$ \dsa{$\speS$}, then $1-x$ \dsa{$2-x$} is a difference in \Eoc\ resulting 
+from some set of cone \dsa{gyration} points. From that $1-n(1-x) \in \speD$ \dsa{$2-n(2-x)\in \speS$} 
 for all $n \in \mathbb{N}$. 
 \end{observation}
 %\begin{observation}
 
 %\end{observation}
-\section{$\sbD$ and $\sIS$}
+\section{$\speD$ and $\speS$}
 In this section we would like to develop the tools and answer some questions about 
 %interrelationships
-relations between $\sbD$ and $\sIS$. \\
-The first, stated in \ref{order structure} is that $2\sbD=\sIS$. 
+relations between $\speD$ and $\speS$. \\
+The first, stated in \ref{order structure} is that $2\speD=\speS$. 
 This tells us all about simmilarities of their topological structures -- namely, they are the same, 
 but it does not directly answers questions about how they lie in $\mathbb{R}$, relative 
 to each other. 
 \subsection{$-\frac{1}{84}$ and $-\frac{1}{42}$}
 //Why it is how it is//
-%\subsection{All the accumulation points of the $\sIS$ are in $\sbD$}
-\subsection{Accumulation points of the $\sIS$}
+%\subsection{All the accumulation points of the $\speS$ are in $\speD$}
+\subsection{Accumulation points of the $\speS$}
 \begin{theorem}
-All accumulation points of the $\sIS$ are in $\sbD$.
+All accumulation points of the $\speS$ are in $\speD$.
 \end{theorem}
 There are two proofs of this theorem showing nice correnpondence -- one arithmetical and 
 one geometrical. 
@@ -85,30 +158,30 @@ one geometrical.
 \textbf{Proof I.}
 %\subsubsection{Arithmetical reason}
 \textbf{Arithmetical reason} \\
-We assume that $x \in \sIS$ is an \apots\ $\sIS$.\\
-%If $x \in \sIS$, then $\frac{x}{2} \in \sbD$. Then $1 - \frac{x}{2}$ 
+We assume that $x \in \speS$ is an \apots\ $\speS$.\\
+%If $x \in \speS$, then $\frac{x}{2} \in \speD$. Then $1 - \frac{x}{2}$ 
 %is a difference in \Eoc\ resulting from some set of cone points. We can add to the disc twice as 
 %many cone points and resulting orbifold $\mathcal{O}$ will have an \Eoc\ equal to 
 %$1 - 2(1-\frac{x}{2}) = x - 1$. From \ref{third_order_lemma} for the thesis it is sufficient 
-%to $x - 1$ to be an \apots\ $\sbD$ of order at least two. \\
+%to $x - 1$ to be an \apots\ $\speD$ of order at least two. \\
 %%$2-x$ is a difference in \Eoc\ resulting from some set of gyration points. We can 
-%We asumed that $x \in \sIS$ is an \apots\ $\sIS$, so, 
+%We asumed that $x \in \speS$ is an \apots\ $\speS$, so, 
 By \ref{times_two_fact} we have, that 
-$\frac{x}{2} \in \sbD$ is an \apots\ $\sbD$. From \ref{third_order_lemma} we have that 
-$\frac{x}{2} + \frac{1}{2} \in \sbD$. From that, from \ref{adding_multiplied_differences} we have, 
+$\frac{x}{2} \in \speD$ is an \apots\ $\speD$. From \ref{third_order_lemma} we have that 
+$\frac{x}{2} + \frac{1}{2} \in \speD$. From that, from \ref{adding_multiplied_differences} we have, 
 that $1-\overbrace{2}^{\substack{"n"\rm\ from\ \\ 
 \rm \ref{adding_multiplied_differences}}} 
 (\ \overbrace{1-(\frac{x}{2}+\frac{1}{2})}^{\substack{"1-x"\rm\ 
-from\ \\ \rm \ref{adding_multiplied_differences}}}\ ) \in \sbD$. But $1 - 2(1-(\frac{x}{2}+
-\frac{1}{2})) = x$, so $x \in \sbD$. $_\square$
-% for some $y \in \sbD$, so $\sbD$.
+from\ \\ \rm \ref{adding_multiplied_differences}}}\ ) \in \speD$. But $1 - 2(1-(\frac{x}{2}+
+\frac{1}{2})) = x$, so $x \in \speD$. $_\square$
+% for some $y \in \speD$, so $\speD$.
 \\[2pt]
 \textbf{Proof II.}
 %\subsubsection{Geometrical reason}
 \textbf{Geometrical reason} \\
-We assume that $x \in \sIS$ is an \apots\ $\sIS$.\\
-%If $x \in \sIS$
-From \ref{predescors} we know, that $x$ can be expressed as $y - 1$ for some $y \in \sIS$. \\
+We assume that $x \in \speS$ is an \apots\ $\speS$.\\
+%If $x \in \speS$
+From \ref{predescors} we know, that $x$ can be expressed as $y - 1$ for some $y \in \speS$. \\
 Let $\mathcal{O}$ be an orbifold with the base manifold $S^2$, such that $\cho{\mathcal{O}} 
 = y$. \\
 Let $\mathcal{O}_c$ be the orbifold created from $\mathcal{O}$ by adding one cusp. 
@@ -121,7 +194,7 @@ manifold $D^2$ and the same
 orbipoints as $\mathcal{O}$. Since orbipoints of $\mathcal{O}$ create a difference 
 in \Eoc\ equal to $2-y$, we have that $\cho{\mathcal{O}_D} = 1 - (2-y) = y - 1 = x$. 
 We can then move all orbipoints from the interior of $\mathcal{O}_D$ to its boundry 
-by doubling them, so $x \in \sbD$. $_\square$
+by doubling them, so $x \in \speD$. $_\square$
 
 \section{Translating questions to ones about Egyptian fractions}\label{Egyptian_fractions}
 
