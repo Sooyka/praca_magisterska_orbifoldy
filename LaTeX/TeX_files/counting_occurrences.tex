@@ -4,7 +4,8 @@ Our ultimate goal is to give the answer to the questions such as: \\
 - For a given $x \in \sigma$, how many orbifolds have $x$ as their \Eoc?\\
 - Why? Is there some underlying geometrical reason for that?\\
 - Can we characterise points $x \in \sigma$ that has the most orbifolds corresponding to them? \\
-- Is there any reasonable normalisation to counter the effect that there are 'more' points as we go 
+- Is there any reasonable normalisation to counter the effect that there are 'more' 
+points as we go 
 to lesser values. (What we mean by 'more' was sted in) \\
 The first equstion we can tackle is steaming from the chapter \ref{order structure} 
 and it is -- Do $\speD$ and $\speS$ coincide? It is easy to answer that $\speD \neq \speS$ 
@@ -13,17 +14,17 @@ starting from a sufficiently distant point? Or maybe, for every denominator, do 
 from a sufficiently distatn point? (Yes.) \\
 \section{Finitenes}
 
-Here we will show that for any $x \in \sigma$:
-\begin{itemize}
-\item for every $n \in \mathbb{N}$ there are only finitely many orbifolds 
-with the \Eoc\ greater or equal to $x$ and all orbipoints of order at most $n$
-\item there are finitely many orbifolds with an \Eoc\ equal to $x$. 
-\end{itemize}
+%Here we will show that for any $x \in \sigma$:
+%\begin{itemize}
+%\item for every $n \in \mathbb{N}$ there are only finitely many orbifolds 
+%with the \Eoc\ greater or equal to $x$ and all orbipoints of order at most $n$
+%\item there are finitely many orbifolds with an \Eoc\ equal to $x$. 
+%\end{itemize}
 
-\begin{theorem}\label{first_finiteness_theorem}
+\begin{observation}\label{first_finiteness_theorem}
 For any $x \in \sigma$ and $n \in \mathbb{N}$ there are only finitely many orbifolds 
 with the \Eoc\ greater or equal to $x$ and all orbipoints of order at most $n$.
-\end{theorem}
+\end{observation}
 \textbf{Proof:}
 
 
@@ -42,18 +43,20 @@ orbifolds from $\mathcal{O}$ is finite, as there are only finitely many
 two dimentional manifolds with an Euler characteristic greater or equal to $x$ and an 
 orbifold always has 
 an \Eoc\ less or equal to the Euler characteristic of its underlying manifold. \\
-We will now provide an argument that shows that for any base manifold $M$, the number 
-of $M$ orbifolds with \Eoc\ equal to $x$ is finite. It will complete the proof of our theorem.\\
+%We will now provide an argument that shows that for any base manifold $M$, the number 
+%of $M$ orbifolds with \Eoc\ equal to $x$ is finite. It will complete the proof of our theorem.\\
+It remains to proof, that for any base manifold $M$, the number of $M$ orbifolds 
+with \Eoc\ equal to $x$ is finite.
 Let $M$ be a two dimentional manifold. \\
 For the sake of contradiction, assume, that there exists an infinite set 
 of $M$ orbifolds $\mathcal{O}_M \subseteq \mathcal{O}$. 
 Let $\mathcal{O}_M = \{O\}_{i \in I}$. \\  
-For each $i$, let $s_i = (I^0_i, \dots, I^{k_i}_i; b^0_i, \dots, b^{l_i}_i)$ be the signature 
-of $O_i$ written with decreasing orders of elliptic orbipoints and decreasing orders of corner 
-reflection points. So for each $i$ we have, that $I^0_i$ is 
-the order of the orbipoint with the highest order of all the elliptic orbipoints of 
+For each $i$, let $s_i = (I^0_i, \cdots, I^{k_i}_i; b^0_i, \cdots, b^{l_i}_i)$ be the signature 
+of $O_i$ written with decreasing orders of rotational orbipoints and decreasing orders of 
+dihedral points. So for each $i$ we have, that $I^0_i$ is 
+the order of the orbipoint with the highest order of all the rotational orbipoints of 
 $\mathcal{O}_i$ and $b^0_i$ is 
-the order of the orbipoint with the highest order of all the corner reflection orbipoints of 
+the order of the orbipoint with the highest order of all the dihedral orbipoints of 
 $\mathcal{O}_i$. 
 By \ref{first_finiteness_theorem} we know that if the set $\{I^0_i\}_{i \in I} \cup 
 \{b^0_i\}_{i \in I}$ 
@@ -66,23 +69,27 @@ $\{(I^0_{i_n}, b^0_{i_n})\}_{n\in \mathbb{N}}$ is strictly increasing on one cor
 and non-decreasing on the other. \\
 %Let $\{a_n\}$ be the sequence such that $a_n = \frac{m_n-1}{m_n} \end{cases}$ if point 
 %corresponding 
-%to $m_n$ is an elliptic point and $a_n = \frac{m_n-1}{2m_n}$ if point corre 
-Let $\{x_n\}$ be the sequence such that $x_n = \Delta(I^0_{i_n}b^0_{i_n})$.
-Let $\{y_n\}$ be the sequence such that $y_n = \Delta(I^1_{i_n}\dots I^{k_{i_n}}_{i_n} b^1_{i_n}
-\dots b^{l_{i_n}}_{i_n})$. 
+%to $m_n$ is an rotational point and $a_n = \frac{m_n-1}{2m_n}$ if point corre 
+Let $\{x_n\}$ be the sequence such that $x_n = \Delta(I^0_{i_n},b^0_{i_n})$.
+Let $\{y_n\}$ be the sequence such that $y_n = \Delta(I^1_{i_n},\cdots,
+I^{k_{i_n}}_{i_n}, b^1_{i_n},
+\cdots, b^{l_{i_n}}_{i_n})$. 
 So for every $n$ we know $\cho{O_n} = \chi(M) + a_n + b_n$. As $\{(I^0_{i_n}, b^0_{i_n})\}$ 
 is strictly 
 increasing on one cordinate and non-decreasing on the other, we know 
 that $x_n$ is strictly decreasing, so $y_n$ must be strictly 
-increasing (*), because $\cho{O_n}$ is constant for all $n$ (all $O_n$ 
+increasing,  
+%(*), 
+because $\cho{O_n}$ is constant for all $n$ (all $O_n$ 
 are from the family with \Eoc\ equal to $x$). \\ 
-But $\{y_n\} \subseteq \spe{M} - \chi(M)$. 
-From \ref{well_order} and \ref{times_two_fact} we know that $\spe{M}$ has no infinite 
+But $\{y_n\} \subseteq \speM{M} - \chi(M)$. 
+From \ref{well_order} and \ref{times_two_fact} we know that $\speM{M}$ has no infinite 
 strongly increasing sequences, so 
-$\spe{M} - \chi(M)$ has no infinite strongly increasing sequences. That gives us a 
-contradiction with *. 
-\Lightning $_\square$ 
-
+$\speM{M} - \chi(M)$ has no infinite strongly increasing sequences. That gives us a 
+contradiction.
+%*. 
+%\Lightning 
+$_\square$ 
 
 
 %First we will show that for any $x \in \sigma$ there are always only finitely many orbifolds 
@@ -109,7 +116,8 @@ contradiction with *.
 %that the set $\{m_i\}_{i \in I}$ is unbounded. Let $\{m_n\}_{n\in \mathbb{N}}$ be some strictly 
 %increasing sequence 
 %of elements of $\{m_i\}_{i \in I}$ that diverges into infinity. \\
-%Let $\{a_n\}$ be the sequence of differences in \Eoc\ caused by points corresponding to $\{m_i\}$. 
+%Let $\{a_n\}$ be the sequence of differences in \Eoc\ caused by points corresponding 
+%to $\{m_i\}$. 
 %Let $\{b_n\}$ be the sequence of differences in \Eoc\ caused by other points on those orbifolds. 
 %So for every $n$ we have $\cho{\mathcal{O}_n} = 2 + a_n + b_n$. As $\{m_n\}$ is strictly 
 %increasing we have that $a_n$ is strictly decreasing, so $b_n$ must be strictly 
@@ -122,16 +130,20 @@ contradiction with *.
 %\Lightning $_\square$ 
  
 \section{Some connections between \Eoc\ and geometry of corresponding orbifolds}
+\todo{zobaczyć, czy ten rozdział ma sens}
 Here we will state some observations and corollaries derived from previous chapters 
 about ... 
 \begin{observation}
-If an \Eoc\ is an accumulation point of order $n$ in $\speD$ \dsa{$\speS$}, there exist an 
-orbifold of the type ... \dsa{} with $n$ cone \dsa{gyration} points of that \Eoc. 
+If an \Eoc\ is an accumulation point of order $n$ in $\speD$ (respectively $\speS$), 
+there exist an $D^2$ (resp. $S^2$) 
+orbifold with $n$ dihedral (resp. rotational) points of that \Eoc. 
 \end{observation}
 prrof. from chapter 3. (todo: dopisać)
 \begin{observation}\label{adding_multiplied_differences}
-If $x \in \speD$ \dsa{$\speS$}, then $1-x$ \dsa{$2-x$} is a difference in \Eoc\ resulting 
-from some set of cone \dsa{gyration} points. From that $1-n(1-x) \in \speD$ \dsa{$2-n(2-x)\in \speS$} 
+If $x \in \speD$ (respectively $\speS$), then $1-x$ (resp. $2-x$) is a difference in 
+\Eoc\ resulting 
+from some set of dihedral (resp. rotational) points. From that $1-n(1-x) \in \speD$ (resp. 
+$2-n(2-x)\in \speS$) 
 for all $n \in \mathbb{N}$. 
 \end{observation}
 %\begin{observation}
@@ -142,7 +154,8 @@ In this section we would like to develop the tools and answer some questions abo
 %interrelationships
 relations between $\speD$ and $\speS$. \\
 The first, stated in \ref{order structure} is that $2\speD=\speS$. 
-This tells us all about simmilarities of their topological structures -- namely, they are the same, 
+This tells us all about simmilarities of their topological structures -- namely, 
+they are the same, 
 but it does not directly answers questions about how they lie in $\mathbb{R}$, relative 
 to each other. 
 \subsection{$-\frac{1}{84}$ and $-\frac{1}{42}$}
@@ -168,7 +181,8 @@ We assume that $x \in \speS$ is an \apots\ $\speS$.\\
 %We asumed that $x \in \speS$ is an \apots\ $\speS$, so, 
 By \ref{times_two_fact} we have, that 
 $\frac{x}{2} \in \speD$ is an \apots\ $\speD$. From \ref{third_order_lemma} we have that 
-$\frac{x}{2} + \frac{1}{2} \in \speD$. From that, from \ref{adding_multiplied_differences} we have, 
+$\frac{x}{2} + \frac{1}{2} \in \speD$. From that, from \ref{adding_multiplied_differences} 
+we have, 
 that $1-\overbrace{2}^{\substack{"n"\rm\ from\ \\ 
 \rm \ref{adding_multiplied_differences}}} 
 (\ \overbrace{1-(\frac{x}{2}+\frac{1}{2})}^{\substack{"1-x"\rm\ 
@@ -201,14 +215,14 @@ by doubling them, so $x \in \speD$. $_\square$
 \section{Estimations of the number of occurences}
 
 
+\todo{dac jakieś żródła i ok}
 
 
 
 
 
 
-
-\section{Deformations on orbifolds?}
+%\section{Deformations on orbifolds?}
 
 
 
