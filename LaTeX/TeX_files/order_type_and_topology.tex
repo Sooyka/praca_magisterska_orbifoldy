@@ -546,6 +546,7 @@ the reverse order).  \\
 We will inductively construct the family of order preserving homeomorphisms $f_\mu$, 
 indexed by ordinal numbers less 
 %or equal
+\smalltodoII{fix this}
 than 
 $\omega^\omega$ each 
 prefix of $\omega^\omega$ homeomorphic to $\nu + 1$ (so on all ordinals less 
@@ -591,11 +592,21 @@ function. \\
 Now we want to prove that $f_\mu$ is a homeomorphism. As from inductive assumtion we know, 
 that $f_{\mu - 1}$ was a homeomorphism it is sufficient to show that preimages of open 
 sets containing $f_\mu(\mu)$ and images of open sets containing $\mu$ are open. \\
-Lets take \todo{finish}
-$\bullet$ $\mu$ is a limit ordinal less than $\omega^\omega$: 
+Since $f_\mu(\mu)$ is a successor and since $\speD$ is well ordered, we have, that $f_\mu(\mu)$ 
+is an isolated point in $\speD$. \\
+Simmilarly $\mu$ is an isolated point in $\mu + 1$ as an successor ordinal. \\
+From this we have, that open sets containing $f_\mu(\mu)$ (resp. $\mu$) are of the form 
+$U \cup \{f_\mu(\mu)\}$ (resp. $V \cup \{\mu\}$) for some $U$ -- open set in $\speD$. 
+(resp. $V$ -- open set in $\mu + 1$).
+%Holding the notation of $U$ and $V$ we have that $f_\mu[V] = $
+\smalltodoII{może rozwinąć}
+From this this is clear. \\
+%Let us observe, that 
+%Lets take \todo{finish}
+$\bullet$ $\mu$ is a limit ordinal less than $\omega^\omega$:  
 %\todo{net and so on}
 From the inductive assumption, for each $\nu < \mu$ we have an order preserving homeomorphism 
-$f_nu$ on the ordinals less or equal to $\nu$ and those functions pairwise coincide 
+$f_\nu$ on the ordinals less or equal to $\nu$ and those functions pairwise coincide 
 on the intersections 
 of their domains. For every ordinal $\nu < \mu$ we define 
 $f_\mu(\nu) \coloneqq f_\nu(\nu)$. It remains to define $f_\mu(\mu)$. \\
