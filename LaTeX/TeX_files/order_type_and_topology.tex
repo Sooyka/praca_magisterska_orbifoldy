@@ -264,11 +264,12 @@ For a given set we define as follows:
 %We say, that the point $a$  from the topological space $X$ is an acccumulation 
 %point of the transitive order 0, when
 We say that the point $x$ is an acccumulation point of a set $X$ 
-of order at least $0$, when it belongs to a set. 
-We say that the point is an acccumulation point of a set 
+of order at least $0$, when it belongs to the set $X$. 
+We say that the point $x$ is an acccumulation point of a set 
 of order at least $n + 1$, when it is 
 an acccumulation point (in the usual sense) of the accumulation points each of order at least 
-$n$ i.e. in every neighbourhood . 
+$n$ i.e. in every neighbourhood of $x$ there is at least one accumulation point of a set $X$ 
+of order at least $n$, distincs from $x$. 
 \end{definition}  
 %The only issue of the above definition is that the point of the transitive order $n$ 
 %is also a point 
@@ -286,6 +287,7 @@ then we will mean being an accumulation point in the ussual sense; from the poin
 of above definitions, that is, an accumulation point of order at least one.
 %\todo{dopisać notację do punktów skupienia różnego stopnia}
 \begin{lemma}
+
 \end{lemma}
 \subsection{Analysis of locations of accumulation points of $\speD$ with respect to their order}
 %\subsubsection{Some preliminary observations}
@@ -535,12 +537,13 @@ We will prove it by inductively constructing an order preserving homeomorphism $
 $\omega^\omega$ and $\speD$. \\
 For simplycity, we will take reverse (decreasing) order on $\speD$ i.e. $1$ will be the smallest 
  element 
-(so for example $0 > 1$ in this order and in general $x < y $ in the ussual order iff $x > y$ in 
+(so for example $0 > 1$ in this order)
+% and in general $x < y $ in the ussual order iff $x > y$ in 
 the reverse order).  \\
 %\todo{dopisać dowód}
 %Since $\speD$ is well ordered (as we know from \ref{well_order}) it has an order preserving 
 %bijection with some ordinal number. 
-We will inductively construct the family of order preserving homeomorphisms $f_\mu$ 
+We will inductively construct the family of order preserving homeomorphisms $f_\mu$, 
 indexed by ordinal numbers less 
 %or equal
 than 
