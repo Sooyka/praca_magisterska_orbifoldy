@@ -418,6 +418,35 @@ that there exist a bigger accumulation point of order $n+1$ equal to $y > 1-\fra
 But then, from lemma \ref{third_order_lemma}, point $y+\frac{1}{2}$ would be an acccumulation 
 point 
 of order $n$, what gives a contradiction, because $y+\frac{1}{2}>1-\frac{n}{2}$. $_\square$ 
+\\[8pt]
+From the above discussion we can also formulate following corollary that will be useful later: 
+% corollary (stated in for deifferent ways 
+%as one are sometimes more useful that another): 
+%\begin{corollary}\label{predescors}
+%Let $x \in \spe$. Then there exists $n \in \mathbb{N}$ such that $x + \frac{n}{2} \in \spe$ 
+%but $x+\frac{n+1}{2} \not\in \spe$. For such $n$ we have that $x$ is an \apots\ $\spe$ of 
+%order $n$.  
+%\end{corollary}
+%\begin{corollary}
+%\end{corollary}
+%%Above corollary can be refolmulated in a way that sometimes is more useful:
+%\begin{corollary}\label{predescors_variant_II}
+%Let $x \in \spe$ be an \apots\ $\spe$ of order $n$. Then there is $y \in \spe$ that is 
+%an isolated point of $\spe$ such that $x = y - \frac{n}{2}$.   
+%\end{corollary}
+\begin{corollary}\label{predescors}
+Let $x \in \speD$. Then:
+\begin{itemize}
+\item there exists $n_1 \in \mathbb{N}$ such that $x + \frac{n_1}{2} \in \speD$ 
+but $x+\frac{n_1+1}{2} \not\in \speD$. \\ In other words, there exist $y \in \speD$ and 
+$n_1 \in \mathbb{N}$ such that 
+$y + \frac{1}{2} \not\in \speD$ and such that $x = y - \frac{n_1}{2}$;
+\item there exists $n_2 \in \mathbb{N}$ such that $x$ is an \apots\ $\speD$ of 
+order $n_2$
+%\item $x$ is an \apots\ $\speD$ of order $n_2$, for some $n_2 \in \mathbb{N}$;  
+\end{itemize}
+and $n_1 = n_2$.
+\end{corollary}
 
 \subsection{Proof that $\speD$ is well ordered}
 
@@ -527,9 +556,36 @@ But this contradicts \ref{ascending_in_B_n}.  $_\square$
 
 
 \subsection{Proof that order structure and topology of $\speD$ are those of $\omega^\omega$}
+\smalltodoII{rozbić to na dwa?} 
+\begin{theorem}\label{speD_order_type}
+Order type of $\speD$ is $\omega^\omega$. 
+\end{theorem}
+\textbf{Proof.} \\
+%that order type of $\speD$ is $\omega^\omega$: \\
+- proof that it is at least $\omega^\omega$ \\
+suppouse that it is less than $\omega^\omega$\\
+then it is smaller than $\omega^n$ for some $n$. \\
+but for sufficiently distant have accumulation point. \\
+done \\
+- proof that it is at most $\omega^\omega$\\
+suppouse it is bigger \\
+then there is a point before which there is omega omega order \\
+wooo, but it cant be since first with accumulation is at something spmething \\
+done \\
+ok, so how to give convincing correspondence between accumulation points and $\omega^n$??
+Lemma \\
+there cant be order of type \\
+i wish I can cite this from somewhere \\ 
+%
+%\newpage
+%
+
+From the theorem \ref{order_preserving_homeomorphism_theorem} and ... we have that 
+the topology of $\speD$ is $\omega^\omega$. 
+
 
 \begin{theorem}\label{speD_theorem}
-Order type and topology of $\speD$ are those of $\omega^\omega$. 
+Topology of $\speD$ is that of $\omega^\omega$. 
 \end{theorem}
 
 \textbf{Proof} \\
@@ -625,44 +681,28 @@ As we have \ref{accumulation_points_of_the_set}
 As $\mathbb{R}$ is Hausdorff, from \cite{Kelley1975} (chapter 2, 
 theorem 3, page 67) we know, that .  
 \\ 
-Firstly we will determine the order type of $\speD$. 
-From the lemma \ref{well_order} we know, that $\speD$ is well ordered, so it has order type 
-of some ordinal number. From this and 
-from the theorem \ref{greatest \apots} we know, that for the point $1-\frac{n}{2}$ there exist 
-a neighborhood $U=(1-\frac{n}{2}-\varepsilon,1-\frac{n}{2}+\varepsilon)$ such that $U \cap 
-\speD$ is homeomorphic to $\omega^n$. From this, and again from theorem \ref{greatest \apots} 
-we have that $\speD \cap [1,1-\frac{n}{2})$ is homeomorphic with $\omega^n$. 
-From this $\speD$ is homeomorphic with $\omega^\omega$.
+%\newpage
+- show that if $\mu < \omega^n$, then it is earlier than $\frac{n}{2}$ something something\\
+\smalltodo 
+\\
+- done\\
+XD \\
+$le\ XD$ \\ 
+For the sake of contradiction, let us assume, that $\phi_\nu$ is unbounded. \\
+There exist $n$ such that $\phi_\nu < \omega^n$. \\
+The only unbounded in $\mathbb{R}$ prefix of $\speD$ is a whole $\speD$. \\ 
+From this we conclude that $\speD$ schould have order type of $\omega^\omega$.
+\\ 
+%Firstly we will determine the order type of $\speD$. 
+%From the lemma \ref{well_order} we know, that $\speD$ is well ordered, so it has order type 
+%of some ordinal number. From this and 
+%from the theorem \ref{greatest \apots} we know, that for the point $1-\frac{n}{2}$ there exist 
+%a neighborhood $U=(1-\frac{n}{2}-\varepsilon,1-\frac{n}{2}+\varepsilon)$ such that $U \cap 
+%\speD$ is homeomorphic to $\omega^n$. From this, and again from theorem \ref{greatest \apots} 
+%we have that $\speD \cap [1,1-\frac{n}{2})$ is homeomorphic with $\omega^n$. 
+%From this $\speD$ is homeomorphic with $\omega^\omega$.
 
-From the above discussion we can also formulate following corollaries that will be useful later:
-% corollary (stated in for deifferent ways 
-%as one are sometimes more useful that another): 
-%\begin{corollary}\label{predescors}
-%Let $x \in \spe$. Then there exists $n \in \mathbb{N}$ such that $x + \frac{n}{2} \in \spe$ 
-%but $x+\frac{n+1}{2} \not\in \spe$. For such $n$ we have that $x$ is an \apots\ $\spe$ of 
-%order $n$.  
-%\end{corollary}
-%\begin{corollary}
-%\end{corollary}
-%%Above corollary can be refolmulated in a way that sometimes is more useful:
-%\begin{corollary}\label{predescors_variant_II}
-%Let $x \in \spe$ be an \apots\ $\spe$ of order $n$. Then there is $y \in \spe$ that is 
-%an isolated point of $\spe$ such that $x = y - \frac{n}{2}$.   
-%\end{corollary}
 
-\begin{corollary}\label{predescors}
-Let $x \in \speD$. Then:
-\begin{itemize}
-\item there exists $n_1 \in \mathbb{N}$ such that $x + \frac{n_1}{2} \in \speD$ 
-but $x+\frac{n_1+1}{2} \not\in \speD$. \\ In other words, there exist $y \in \speD$ and 
-$n_1 \in \mathbb{N}$ such that 
-$y + \frac{1}{2} \not\in \speD$ and such that $x = y - \frac{n_1}{2}$;
-\item there exists $n_2 \in \mathbb{N}$ such that $x$ is an \apots\ $\speD$ of 
-order $n_2$
-%\item $x$ is an \apots\ $\speD$ of order $n_2$, for some $n_2 \in \mathbb{N}$;  
-\end{itemize}
-and $n_1 = n_2$.
-\end{corollary}
 
 \section{Order type and topology of $\spebr{M}$}\label{all_spectra_are_isomorphic}
 Ok, all isomorphic with $\speD$ \\
@@ -678,13 +718,16 @@ $\spe$ is $\omega^\omega$.
 \todo{tutaj też dopisać dowód}
 Provide some argument about being homeomorphic 
 \noindent\textbf{Proof.} \\
-From \ref{speD_theorem} we knowm, that $\speD$ is homeomorphic with $\omega^\omega$. From 
+From \ref{speD_theorem} we know, that $\speD$ is homeomorphic with $\omega^\omega$. From 
 \ref{all_spectra_are_isomorphic}, we know, that $\speS$ is homeomorphic 
 with $\omega^\omega$. \\
-$\speS = 2\speD$, so for all $n\in -\mathbb{N}$ set $\speS \cap [2,n)$ has a lower order type then 
-$\speD\cap [2,n)$. From this, we have that $\speS \cup \speD \cong \omega^\omega$. $_\square$ \\[4pt]
+$\speS = 2\speD$, so for all $n\in \mathbb{N}$ set $\speS \cap [2,-n)$ has a lower order type then 
+$\speD\cap [2,-n)$. From this and from \ref{sum_lemma}, we have that $\speS \cup \speD$ 
+has an order type of $\omega^\omega$. \\
+For homeomorphicity, the proof of theorem \ref{speD_theorem} works as well in this case.
+$_\square$ \\[4pt]
 
-\section{Order type and topology of some subsets of $\spe$ and $\spe(M)$}
+\section{Order type and topology of some subsets of $\spe$ and $\spe(M)$} 
 $\spe_n$ \\
 taking limit points is the order type of $\omega^\omega$ but not homeomorphic anymore. 
 
