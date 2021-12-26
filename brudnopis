@@ -1,7 +1,5 @@
-% mainfile: ../praca_magisterska_orbifoldy.tex
-\chapter{Order preserving homeomorphism}
-\begin{theorem}\label{order_preserving_homeomorphism_theorem}
-Let $A$ be a well-ordered subset of $\mathbb{R}$ Topology of $\speD$ is that of $\omega^\omega$. 
+\begin{theorem}\label{speD_theorem}
+Topology of $\speD$ is that of $\omega^\omega$. 
 \end{theorem}
 
 \textbf{Proof} \\
