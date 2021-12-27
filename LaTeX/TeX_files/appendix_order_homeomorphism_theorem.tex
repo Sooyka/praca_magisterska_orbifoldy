@@ -1,61 +1,83 @@
 % mainfile: ../praca_magisterska_orbifoldy.tex
 \chapter{Order preserving homeomorphism}
+Conserning accumulation points, we will use the terminology, that we introduced in 
+\ref{accumulation_points_definitions}
+
 \begin{theorem}\label{order_preserving_homeomorphism_theorem}
-Let $A$ be a well-ordered subset of $\mathbb{R}$ Topology of $\speD$ is that of $\omega^\omega$. 
+Let $A \subseteq \mathbb{R}$ has order type $\alpha$. 
+Let $A$ be such that every accumulation point of $A$ belong to $A$. Then $A$ has not only 
+order type $\alpha$ but is also homeomorphic to $\alpha$. 
 \end{theorem}
 
-\textbf{Proof} \\
-We will prove it by inductively constructing an order preserving homeomorphism $f$ between 
-$\omega^\omega$ and $\speD$. \\
-For simplycity, we will take reverse (decreasing) order on $\speD$ i.e. $1$ will be the smallest 
- element 
-(so for example $0 > 1$ in this order)
-% and in general $x < y $ in the ussual order iff $x > y$ in 
-the reverse order).  \\
-%\todo{dopisać dowód}
-%Since $\speD$ is well ordered (as we know from \ref{well_order}) it has an order preserving 
-%bijection with some ordinal number. 
+\textbf{Proof.} \\
+Let us observe, that $\alpha$ must be countable -- as $A$ is well ordered we can assign to every 
+element $a_1 \in A$ an non-empty open interval, between $a_1$ and it's succesor $a_2$. 
+From eery such interval we can pick a rational number. Fromthis we have injection of $A$ into 
+$\mathbb{Q}$. \\
+Without loss of generality, let us assume, that is $A$ has no infinite descending sequence 
+(case with $A$ having no infinite ascending sequence is completly analogus). \\
+
+As $A$ has an order type $\alpha$ we have that there is an order preserving map 
+$f : \alpha \to A$. 
+We will prove the theorem by inductively showing, that $f$ is a homeomorphism. \\
+
+
+%For simplycity, we will take reverse (decreasing) order on $A$ i.e. $1$ will be the smallest 
+% element 
+%(so for example $0 > 1$ in this order)
+%% and in general $x < y $ in the ussual order iff $x > y$ in 
+%the reverse order).  \\
+%%\todo{dopisać dowód}
+%%Since $A$ is well ordered (as we know from \ref{well_order}) it has an order preserving 
+%%bijection with some ordinal number. 
+Let us denote $f_\mu \coloneqq f\raisebox{-0.5\depth}{\big|}_{\mu_1 + 1}$ so 
+$f_\mu$ is defined on all ordinals lass or equal to $\mu$.
 We will inductively construct the family of order preserving homeomorphisms $f_\mu$, 
 indexed by ordinal numbers less 
-%or equal
-\smalltodoII{fix this}
+or equal
+%\smalltodoII{fix this}
 than 
-$\omega^\omega$ each 
-prefix of $\omega^\omega$ homeomorphic to $\nu + 1$ (so on all ordinals less 
-or equal to $\nu$) 
-and some prefix of $\speD$. We will construct them in such a way, that for any $\mu_1 < \mu_2 
-< \omega^\omega$ function $f_{\mu_2}$ restricted to the ordinals less or equal to 
-$\mu_1$ coincides with $f_{\mu_1}$.
-Then we will take $f \coloneqq \bigcup\limits_{0 \leq \mu < 
-\omega^\omega} f_\mu$ (so $f(\mu) \coloneqq f_\mu(\mu)$). \\
+$\alpha$. 
+%For every $\mu < \alpha$ homeomorphism $f_\mu$ will be between 
+%prefix of $\alpha$ homeomorphic to $\nu + 1$ (so on all ordinals less 
+%or equal to $\nu$) 
+%and some prefix of $A$. 
+%We will construct them in such a way, that for any $\mu_1 < \mu_2 
+%< \alpha$ function $f_{\mu_2}$ restricted to the ordinals less or equal to 
+%$\mu_1$ coincides with $f_{\mu_1}$.
+%Then we will take $f \coloneqq \bigcup\limits_{0 \leq \mu < 
+%\alpha} f_\mu$ (so $f(\mu) \coloneqq f_\mu(\mu)$). \\
 Our inductive assumption for a given $\mu$ will be that 
 for all $\nu < \mu$ function $f_\nu$ will be an order preserving homeomorphism 
-between prefix of $\omega^\omega$ homeomorphic to $\nu + 1$ (so on all ordinals less 
+between prefix of $\alpha$ homeomorphic to $\nu + 1$ (so defined on all ordinals less 
 or equal to $\nu$) 
-and some prefix of $\speD$ and that for every $\nu_1 < \nu_2 < \mu$ function $f_{\nu_2}$ 
-restricted to the ordinals less or equal than $\nu_1$ coincides with $f_{\nu_1}$. \\ 
-%Our inductive assumtion will be, that for all $\mu \leq \omega^\omega$ 
+and some prefix of $A$; and that for every $\nu_1 < \nu_2 < \mu$ function 
+$f_{\nu_2}\raisebox{-0.5\depth}{\big|}_{\nu_1 + 1} = f_{\nu_1}$. \\ 
+Then we will put $f = f_\alpha$\\[8pt]
+%restricted to the ordinals less or equal than $\nu_1$ coincides with $f_{\nu_1}$. \\ 
+%Our inductive assumtion will be, that for all $\mu \leq \alpha$ 
 %function $f_\mu$ is a homeomorphism 
-%between prefix of $\omega^\omega$ homeomorphic to $\mu$ and some \\
+%between prefix of $\alpha$ homeomorphic to $\mu$ and some \\
 %$\bullet$ $\mu = 0$: Function $f_0$ is an empty function and as such it is an order preserving 
 %homeomorphism. \\
-$\bullet$ $\mu = 0$: We take $f_0$ as a function on $\{0\}$ taking value $1$. 
-Both $0$ and $1$ are the smallest elements of, respectively, $\omega^\omega$ and $\speD$ 
-so $f_0$ is defined between prefix of $\omega^\omega$ of all ordinals less or equal to $0$, and 
-some prefix of $\speD$. 
+$\bullet$ $\mu = 0$: Let $a_0$ be the smallest element of $A$. 
+We take $f_0$ as a function on $\{0\}$ taking value $a_0$. 
+Both $0$ and $a_0$ are the smallest elements of, respectively, $\alpha$ and $A$ 
+so $f_0$ is defined between prefix of $\alpha$ of all ordinals less or equal to $0$, and 
+some prefix of $A$. 
 Function $f_0$ also preserves order on one element set.
 Function $f_0$ is an homeomorphism between one element sets, both with discreate topology. \\
-$\bullet$ $\mu$ is a successor ordinal less than $\omega^\omega$: From an inductive assumption 
+$\bullet$ $\mu$ is a successor ordinal less than $\alpha$: From an inductive assumption 
 we have an order preserving homeomorphism $f_{\mu - 1}$ between all ordinals 
-less or equal to $\mu - 1$ and some prefix of $\speD$. 
+less or equal to $\mu - 1$ and some prefix of $A$. 
 We define $f_\mu$ on all numbers less or equal to $\mu - 1$ to be equal $f_{\mu-1}$. \\
 %Now we have two cases: \\ 
 It remains to define $f_\mu(\mu)$. 
-As $\speD$ is well ordered it is well defined to take successor of an element of $\speD$. 
-We define $f_\mu(\mu)$ to be a succesor of $f_{\mu - 1}(\mu-1)$ in $\speD$. As such (and from 
-inductive assumption) it is indeed defined as a function between prefix of $\omega^\omega$ of all 
+As $A$ is well ordered it is well defined to take successor of an element of $A$. 
+We define $f_\mu(\mu)$ to be a succesor of $f_{\mu - 1}(\mu-1)$ in $A$. As such (and from 
+inductive assumption) it is indeed defined as a function between prefix of $\alpha$ of all 
 ordinals less or equal to $\mu$, and 
-some prefix of $\speD$.
+some prefix of $A$.
 \\
 Now we want to prove, that $f_\mu$ preservse the order. From the inductive assumption 
 it preserves the order up to $\mu - 1$. As $\mu$ is the successor of $\mu - 1$ and 
@@ -64,34 +86,34 @@ function. \\
 Now we want to prove that $f_\mu$ is a homeomorphism. As from inductive assumtion we know, 
 that $f_{\mu - 1}$ was a homeomorphism it is sufficient to show that preimages of open 
 sets containing $f_\mu(\mu)$ and images of open sets containing $\mu$ are open. \\
-Since $f_\mu(\mu)$ is a successor and since $\speD$ is well ordered, we have, that $f_\mu(\mu)$ 
-is an isolated point in $\speD$. \\
+Since $f_\mu(\mu)$ is a successor and since $A$ is well ordered, we have, that $f_\mu(\mu)$ 
+is an isolated point in $A$. \\
 Simmilarly $\mu$ is an isolated point in $\mu + 1$ as an successor ordinal. \\
 From this we have, that open sets containing $f_\mu(\mu)$ (resp. $\mu$) are of the form 
-$U \cup \{f_\mu(\mu)\}$ (resp. $V \cup \{\mu\}$) for some $U$ -- open set in $\speD$. 
-(resp. $V$ -- open set in $\mu + 1$).
+$U \cup \{f_\mu(\mu)\}$ (resp. $V \cup \{\mu\}$) for some $U$ -- open set in $A$. 
+(resp. $V$ -- open set in $\mu + 1$). 
 %Holding the notation of $U$ and $V$ we have that $f_\mu[V] = $
-\smalltodoII{może rozwinąć}
-From this this is clear. \\
+\smalltodoII{może rozwinąć} 
+From this this is clear. \\ 
 %Let us observe, that 
 %Lets take \todo{finish}
-$\bullet$ $\mu$ is a limit ordinal less than $\omega^\omega$:  
+$\bullet$ $\mu$ is a limit ordinal less than $\alpha$:  
 %\todo{net and so on}
 From the inductive assumption, for each $\nu < \mu$ we have an order preserving homeomorphism 
 $f_\nu$ on the ordinals less or equal to $\nu$ and those functions pairwise coincide 
 on the intersections 
 of their domains. For every ordinal $\nu < \mu$ we define 
 $f_\mu(\nu) \coloneqq f_\nu(\nu)$. It remains to define $f_\mu(\mu)$. \\
-We consider a net $\phi_\nu \coloneqq \{f_\nu(\nu)\}_{\nu<\mu} \subset \mathbb{R}$
+We consider a net $\phi_\mu \coloneqq \{f_\nu(\nu)\}_{\nu<\mu} \subset \mathbb{R}$
 %, indexed by all $\nu < \mu$
-. From the inductive assumption we know that the domain of the net $\phi_\nu$, as 
-well as it's image is well ordered and that the net $\phi_\nu$.  
+. From the inductive assumption we know that the domain of the net $\phi_\mu$, as 
+well as it's image is well ordered and that the net $\phi_\mu$ 
 is an order preserving homeomorphism.
 % is  this is a well ordered net. \todo{napisać jakoś lepiej tę własność}
-Now we will show that the net $\phi_\nu$ has a limit in $\speD$. \\
-First we will show, that $\phi_\nu$ has a limit in $\mathbb{R}$. For this, we will show that 
-$\phi_\nu$ is bounded. \\
-Order type of the image of $\phi_\nu$ is equal to $\mu$ and it is a prefix of $\speD$. 
+Now we will show that the net $\phi_\mu$ has a limit in $A$. \\
+First we will show, that $\phi_\mu$ has a limit in $\mathbb{R}$. For this, we will show that 
+$\phi_\mu$ is bounded. \\
+Order type of the image of $\phi_\nu$ is equal to $\mu$ and it is a prefix of $A$. 
 
 As we have \ref{accumulation_points_of_the_set} 
 As $\mathbb{R}$ is Hausdorff, from \cite{Kelley1975} (chapter 2, 
@@ -106,14 +128,14 @@ XD \\
 $le\ XD$ \\ 
 For the sake of contradiction, let us assume, that $\phi_\nu$ is unbounded. \\
 There exist $n$ such that $\phi_\nu < \omega^n$. \\
-The only unbounded in $\mathbb{R}$ prefix of $\speD$ is a whole $\speD$. \\ 
-From this we conclude that $\speD$ schould have order type of $\omega^\omega$.
+The only unbounded in $\mathbb{R}$ prefix of $A$ is a whole $A$. \\ 
+From this we conclude that $A$ schould have order type of $\alpha$.
 \\ 
-%Firstly we will determine the order type of $\speD$. 
-%From the lemma \ref{well_order} we know, that $\speD$ is well ordered, so it has order type 
+%Firstly we will determine the order type of $A$. 
+%From the lemma \ref{well_order} we know, that $A$ is well ordered, so it has order type 
 %of some ordinal number. From this and 
 %from the theorem \ref{greatest \apots} we know, that for the point $1-\frac{n}{2}$ there exist 
 %a neighborhood $U=(1-\frac{n}{2}-\varepsilon,1-\frac{n}{2}+\varepsilon)$ such that $U \cap 
-%\speD$ is homeomorphic to $\omega^n$. From this, and again from theorem \ref{greatest \apots} 
-%we have that $\speD \cap [1,1-\frac{n}{2})$ is homeomorphic with $\omega^n$. 
-%From this $\speD$ is homeomorphic with $\omega^\omega$.
+%A$ is homeomorphic to $\omega^n$. From this, and again from theorem \ref{greatest \apots} 
+%we have that $A \cap [1,1-\frac{n}{2})$ is homeomorphic with $\omega^n$. 
+%From this $A$ is homeomorphic with $\alpha$.
