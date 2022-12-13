@@ -1,5 +1,35 @@
 % mainfile: ../praca_magisterska_orbifoldy.tex
-\chapter{Order preserving homeomorphism}
+\chapter{Appendix about well orders}
+\section{Usefull lemmas}
+\begin{lemma}\label{two_sets_lemma}
+If $A, B \subseteq \mathbb{R}$ have no infinite strictly ascending sequences, then set 
+$A + B \coloneqq \{a+b\ |\ a \in A, b \in B\}$ also have no infinite strictly ascending sequences. 
+\end{lemma}
+\noindent\textbf{Proof.} \\
+Let $A$, $B$ have no infinite strictly ascending sequences. 
+Let $c_n \in A + B$ are elements of some sequence. With a sequence $c_n$ there are 
+two associated sequences $a_n$, $b_n$, such that, for all $n$, we have $a_n \in A$, 
+$b_n \in B$ and 
+$a_n + b_n = c_n$. Assume (for contradiction), that $c_n$ is an infinite strictly 
+ascending sequence. 
+Then $\forall_n\ a_{n+1}>a_n\ \lor\ b_{n+1} > b_n$. From the assumption $a_n$ has no infinite 
+ascending sequence, so $a_n$ has a weakly decreasing subsequence $a_{n_k}$. But then 
+subsequence $b_{n_k}$ must be strictly increasing, as $c_{n_k}$ is strictly increasing, what gives 
+us a contradiction. 
+%\Lightning 
+$_\square$ 
+
+\begin{lemma}\label{sum_lemma}
+If $A, B \subseteq \mathbb{R}$ have no infinite strictly ascending sequences, then set 
+$A \cup B$ also have no infinite strictly ascending sequences.
+\end{lemma}
+\textbf{Proof.} \\
+Let $A$, $B$ have no infinite strictly ascending sequences. 
+For the sake of contradiction, lets assume, that $A \cup B$ has an infinite strictly 
+ascending sequence $c_n$. Let $c_{n_k}$, $c_{n_l}$ be subsequences of $c_n$ consisting 
+of elements from, respectively $A$ and $B$. At least one of them must be infinite and 
+strictly increasing, which gives us a contradiction. $_\square$ 
+\section{Order preserving homeomorphisms}
 Conserning accumulation points, we will use the terminology, that we introduced in 
 \ref{accumulation_points_definitions}
 
@@ -12,14 +42,22 @@ order type $\alpha$ but is also homeomorphic to $\alpha$.
 \textbf{Proof.} \\
 Let us observe, that $\alpha$ must be countable -- as $A$ is well ordered we can assign to every 
 element $a_1 \in A$ an non-empty open interval, between $a_1$ and it's succesor $a_2$. 
-From eery such interval we can pick a rational number. Fromthis we have injection of $A$ into 
+From every such interval we can pick a rational number. From this we have injection of $A$ into 
 $\mathbb{Q}$. \\
-Without loss of generality, let us assume, that is $A$ has no infinite descending sequence 
+Without loss of generality, let us assume, that $A$ has no infinite descending sequence 
 (case with $A$ having no infinite ascending sequence is completly analogus). \\
 
-As $A$ has an order type $\alpha$ we have that there is an order preserving map 
-$f : \alpha \to A$. 
-We will prove the theorem by inductively showing, that $f$ is a homeomorphism. \\
+As $A$ has an order type $\alpha$ we have that there is an order preserving bijection 
+$f : \alpha \to A$. \\
+For an ordinal $\mu < \alpha$, let us denote $f_\mu 
+\coloneqq f\raisebox{-0.5\depth}{\big|}_{\mu + 1}$ so 
+$f_\mu$ is defined on all ordinals less or equal to $\mu$. Then we have that
+$f = \bigcup\limits_{\mu < \alpha} f_\mu$. Let us also denote $A_\mu \coloneqq f_\mu[\mu+1]$ --
+the image of $\mu + 1$ (as a set of all ordinals less or equal to $\mu$) in $A$. 
+Let us remark, that $A_\mu$ has an order type $\mu + 1$.\\ 
+
+We will prove the theorem by inductively showing for all $\mu < \alpha$, that $f_\mu$ is a 
+homeomorphism, and by showing that this is sufficient for $f$ to be a homeomorphism. \\
 
 
 %For simplycity, we will take reverse (decreasing) order on $A$ i.e. $1$ will be the smallest 
@@ -30,14 +68,13 @@ We will prove the theorem by inductively showing, that $f$ is a homeomorphism. \
 %%\todo{dopisać dowód}
 %%Since $A$ is well ordered (as we know from \ref{well_order}) it has an order preserving 
 %%bijection with some ordinal number. 
-Let us denote $f_\mu \coloneqq f\raisebox{-0.5\depth}{\big|}_{\mu_1 + 1}$ so 
-$f_\mu$ is defined on all ordinals lass or equal to $\mu$.
-We will inductively construct the family of order preserving homeomorphisms $f_\mu$, 
-indexed by ordinal numbers less 
-or equal
-%\smalltodoII{fix this}
-than 
-$\alpha$. 
+
+%We will inductively show that the family of maps  $f_\mu$, 
+%indexed by ordinal numbers less 
+%or equal
+%%\smalltodoII{fix this}
+%than 
+%$\alpha$. 
 %For every $\mu < \alpha$ homeomorphism $f_\mu$ will be between 
 %prefix of $\alpha$ homeomorphic to $\nu + 1$ (so on all ordinals less 
 %or equal to $\nu$) 
@@ -48,89 +85,194 @@ $\alpha$.
 %Then we will take $f \coloneqq \bigcup\limits_{0 \leq \mu < 
 %\alpha} f_\mu$ (so $f(\mu) \coloneqq f_\mu(\mu)$). \\
 Our inductive assumption for a given $\mu$ will be that 
-for all $\nu < \mu$ function $f_\nu$ will be an order preserving homeomorphism 
-between prefix of $\alpha$ homeomorphic to $\nu + 1$ (so defined on all ordinals less 
+for all $\nu < \mu$ function $f_\nu$ is a
+%n order preserving 
+homeomorphism 
+between $\nu + 1$ (so defined on all ordinals less 
 or equal to $\nu$) 
-and some prefix of $A$; and that for every $\nu_1 < \nu_2 < \mu$ function 
-$f_{\nu_2}\raisebox{-0.5\depth}{\big|}_{\nu_1 + 1} = f_{\nu_1}$. \\ 
-Then we will put $f = f_\alpha$\\[8pt]
+and $A_\nu$; and that for every $\nu_1 < \nu_2 < \mu$ we have 
+$f_{\nu_2}\raisebox{-0.5\depth}{\big|}_{\nu_1 + 1} = f_{\nu_1}$.
+%Then we will put $f = f_\alpha$
+\\[8pt]
 %restricted to the ordinals less or equal than $\nu_1$ coincides with $f_{\nu_1}$. \\ 
 %Our inductive assumtion will be, that for all $\mu \leq \alpha$ 
 %function $f_\mu$ is a homeomorphism 
 %between prefix of $\alpha$ homeomorphic to $\mu$ and some \\
 %$\bullet$ $\mu = 0$: Function $f_0$ is an empty function and as such it is an order preserving 
 %homeomorphism. \\
-$\bullet$ $\mu = 0$: Let $a_0$ be the smallest element of $A$. 
-We take $f_0$ as a function on $\{0\}$ taking value $a_0$. 
-Both $0$ and $a_0$ are the smallest elements of, respectively, $\alpha$ and $A$ 
-so $f_0$ is defined between prefix of $\alpha$ of all ordinals less or equal to $0$, and 
-some prefix of $A$. 
-Function $f_0$ also preserves order on one element set.
-Function $f_0$ is an homeomorphism between one element sets, both with discreate topology. \\
-$\bullet$ $\mu$ is a successor ordinal less than $\alpha$: From an inductive assumption 
-we have an order preserving homeomorphism $f_{\mu - 1}$ between all ordinals 
-less or equal to $\mu - 1$ and some prefix of $A$. 
-We define $f_\mu$ on all numbers less or equal to $\mu - 1$ to be equal $f_{\mu-1}$. \\
-%Now we have two cases: \\ 
-It remains to define $f_\mu(\mu)$. 
-As $A$ is well ordered it is well defined to take successor of an element of $A$. 
-We define $f_\mu(\mu)$ to be a succesor of $f_{\mu - 1}(\mu-1)$ in $A$. As such (and from 
-inductive assumption) it is indeed defined as a function between prefix of $\alpha$ of all 
-ordinals less or equal to $\mu$, and 
-some prefix of $A$.
-\\
-Now we want to prove, that $f_\mu$ preservse the order. From the inductive assumption 
-it preserves the order up to $\mu - 1$. As $\mu$ is the successor of $\mu - 1$ and 
-$f_\mu(\mu)$ is a successor of $f_\mu(\mu-1)$, we have that $f_\mu$ is indeed an order preserving 
-function. \\
-Now we want to prove that $f_\mu$ is a homeomorphism. As from inductive assumtion we know, 
-that $f_{\mu - 1}$ was a homeomorphism it is sufficient to show that preimages of open 
+$\bullet$ $\mu = 0$: \\
+%Let $a_0$ be the smallest element of $A$. 
+%We take $f_0$ as a function on $\{0\}$ taking value $a_0$. 
+%Both $0$ and $a_0$ are the smallest elements of, respectively, $\alpha$ and $A$ 
+%so $f_0$ is defined between prefix of $\alpha$ of all ordinals less or equal to $0$, and 
+%some prefix of $A$. 
+%Function $f_0$ also preserves order on one element set.
+Function $f_0$ is an homeomorphism between one element sets, both with discreate topology. \\[8pt]
+$\bullet$ $\mu < \alpha$ is a successor ordinal:\\ 
+%From an inductive assumption 
+%we have an order preserving homeomorphism $f_{\mu - 1}$ between all ordinals 
+%less or equal to $\mu - 1$ and some prefix of $A$. 
+%We define $f_\mu$ on all numbers less or equal to $\mu - 1$ to be equal $f_{\mu-1}$. \\
+%%Now we have two cases: \\ 
+%It remains to define $f_\mu(\mu)$. 
+%As $A$ is well ordered it is well defined to take successor of an element of $A$. 
+%We define $f_\mu(\mu)$ to be a succesor of $f_{\mu - 1}(\mu-1)$ in $A$. As such (and from 
+%inductive assumption) it is indeed defined as a function between prefix of $\alpha$ of all 
+%ordinals less or equal to $\mu$, and 
+%some prefix of $A$.
+%\\
+%Now we want to prove, that $f_\mu$ preservse the order. From the inductive assumption 
+%it preserves the order up to $\mu - 1$. As $\mu$ is the successor of $\mu - 1$ and 
+%$f_\mu(\mu)$ is a successor of $f_\mu(\mu-1)$, we have that $f_\mu$ is indeed an order preserving 
+%function. \\
+%Now we want to prove that $f_\mu$ is a homeomorphism. 
+Since $\mu$ is a successor ordinal, $\mu-1$ exists. \\
+From inductive assumtion we know,
+that $f_{\mu - 1} : \mu \to A_{\mu - 1}$ is a homeomorphism, 
+so it is sufficient to show that preimages of open 
 sets containing $f_\mu(\mu)$ and images of open sets containing $\mu$ are open. \\
-Since $f_\mu(\mu)$ is a successor and since $A$ is well ordered, we have, that $f_\mu(\mu)$ 
-is an isolated point in $A$. \\
+Since $f_\mu(\mu)$ is a successor (because $f_\mu$ preserves the order) 
+and since $A_\mu$ is well ordered, we have, that $f_\mu(\mu)$ 
+is an isolated point in $A_\mu$. \\
 Simmilarly $\mu$ is an isolated point in $\mu + 1$ as an successor ordinal. \\
 From this we have, that open sets containing $f_\mu(\mu)$ (resp. $\mu$) are of the form 
-$U \cup \{f_\mu(\mu)\}$ (resp. $V \cup \{\mu\}$) for some $U$ -- open set in $A$. 
-(resp. $V$ -- open set in $\mu + 1$). 
-%Holding the notation of $U$ and $V$ we have that $f_\mu[V] = $
-\smalltodoII{może rozwinąć} 
-From this this is clear. \\ 
+\begin{equation}\label{form of open sets}
+U \cup \{f_\mu(\mu)\} \textrm{ (resp. } V \cup \{\mu\}\textrm{)} 
+\end{equation}
+for some $U$ -- open set in $A_{\mu-1}$. 
+(resp. $V$ -- open set in $\mu$). \\
+Let $U$ be an open set in $A_{\mu - 1}$ and $V = f_{\mu - 1}^{-1}[U]$ an open set in $\mu$. \\
+we have that 
+%$f_\mu[V] = $
+%\smalltodoII{może rozwinąć} 
+%From this this is clear. \\ 
+\begin{gather}
+f_\mu^{-1}\left[ U \cup \{f_\mu(\mu)\} \right] = f_\mu^{-1}\left[ U \right] \cup 
+f_\mu^{-1}\left[ \{f_\mu(\mu)\} \right] =
+%\underbrace{f_{\mu - 1}^{-1}\left[ U\right]}_{\textrm{open in } \mu} 
+f_{\mu - 1}^{-1}\left[ U\right] \cup \{\mu\} = V \cup \{\mu\}
+\end{gather}
+and
+\begin{gather}
+f_\mu \left[ V \cup \{\mu\} \right] = f_\mu \left[ V \right] \cup f_\mu\left[ \{\mu\} \right] = 
+%\underbrace{f_{\mu - 1} \left[ V \right]}_{\textrm{open in } A_{\mu - 1}} 
+f_{\mu - 1} \left[ V \right] \cup \{f_\mu (\mu)\} = U \cup \{f_\mu(\mu)\}
+\end{gather}
+so by \ref{form of open sets}, we have that preimages of open 
+sets containing $f_\mu(\mu)$ and images of open sets containing $\mu$ are indeed open. \\[8pt]
 %Let us observe, that 
 %Lets take \todo{finish}
-$\bullet$ $\mu$ is a limit ordinal less than $\alpha$:  
+$\bullet$ $\mu < \alpha$ is a limit ordinal: \\ 
 %\todo{net and so on}
-From the inductive assumption, for each $\nu < \mu$ we have an order preserving homeomorphism 
-$f_\nu$ on the ordinals less or equal to $\nu$ and those functions pairwise coincide 
-on the intersections 
-of their domains. For every ordinal $\nu < \mu$ we define 
-$f_\mu(\nu) \coloneqq f_\nu(\nu)$. It remains to define $f_\mu(\mu)$. \\
-We consider a net $\phi_\mu \coloneqq \{f_\nu(\nu)\}_{\nu<\mu} \subset \mathbb{R}$
-%, indexed by all $\nu < \mu$
-. From the inductive assumption we know that the domain of the net $\phi_\mu$, as 
-well as it's image is well ordered and that the net $\phi_\mu$ 
-is an order preserving homeomorphism.
-% is  this is a well ordered net. \todo{napisać jakoś lepiej tę własność}
-Now we will show that the net $\phi_\mu$ has a limit in $A$. \\
-First we will show, that $\phi_\mu$ has a limit in $\mathbb{R}$. For this, we will show that 
-$\phi_\mu$ is bounded. \\
-Order type of the image of $\phi_\nu$ is equal to $\mu$ and it is a prefix of $A$. 
+%From the inductive assumption, for each $\nu < \mu$ we have an order preserving homeomorphism 
+%$f_\nu$ on the ordinals less or equal to $\nu$ and those functions pairwise coincide 
+%on the intersections 
+%of their domains. For every ordinal $\nu < \mu$ we define 
+%$f_\mu(\nu) \coloneqq f_\nu(\nu)$. It remains to define $f_\mu(\mu)$. \\
+%We consider a net $\phi_\mu \coloneqq \{f_\nu(\nu)\}_{\nu<\mu} \subset \mathbb{R}$
+%%, indexed by all $\nu < \mu$
+%. From the inductive assumption we know that the domain of the net $\phi_\mu$, as 
+%well as it's image is well ordered and that the net $\phi_\mu$ 
+%is an order preserving homeomorphism.
+%% is  this is a well ordered net. \todo{napisać jakoś lepiej tę własność}
+%Now we will show that the net $\phi_\mu$ has a limit in $A$. \\
+%First we will show, that $\phi_\mu$ has a limit in $\mathbb{R}$. For this, we will show that 
+%$\phi_\mu$ is bounded. \\
+%Order type of the image of $\phi_\nu$ is equal to $\mu$ and it is a prefix of $A$. 
+%For now, let us assume, that 
+Let $f_{\nu<\mu} \coloneqq f_{\mu}\Big|_{\{\nu\,|\,\nu<\mu\}}$. Then $f_{\nu < \mu}$ 
+is a well ordered net from $\mu$ to $\mathbb{R}$ with image $A_\mu\setminus\{f(\mu)\}$. 
+It is bounded by $f(\mu)$, so,
+as $\mathbb{R}$ is Hausdorff, from \cite{Kelley1975} (chapter 2, 
+theorem 3, page 67) we know, that $f_{\nu<\mu}$ has a unique limit as a net. Let us call this 
+limit $r$. This limit is 
+as well an accumulation point of $A$, so by the assumption of the theorem, we have that 
+$r \in A$.
+\begin{observation}
+We have that $r = f_\mu(\mu)$.
+\end{observation}
+\textit{Proof.} \\
+For the sake of contradiction, let us assume, that $r > f_\mu(\mu)$. 
+Then, as r is an accumulation 
+point of $f_{\nu<\mu}$, we have that $\exists_{\nu<\mu}\ f_\mu(\mu)<f_\mu(\nu)$. 
+Which is a contradiction as $f$ preservers the order. Hence, $r \leq f_\mu(\mu)$.
+Now, for the sake of contradiction, let us assume, that $r < f_\mu(\mu)$. \\
+As we have, that $r \in A$, we have, that there exist some $\eta$ such that $r = f(\eta)$. 
+Since $f$ preserves order and we assumed that $r < f_\mu(\mu)$, we have, that $\eta < \mu$. 
+But then, as $\mu$ is a limit ordinal, we have, that $\eta +1 < \mu$ as well. From this, 
+we conclude that there exist some ordinal $<\mu$, namely $\eta +1$, such that $f_\mu(\eta+1) > r$. 
+This however is a contradiction, as $f$ preserves the order and $r$ is an accumulation point. 
+Hence, $r \geq f_\mu(\mu)$. \\
+From this we conclude, that indeed $r = f_\mu(\mu)$. $_\square$\\
+%We have that $\forall_{\nu<\mu}\  f(\nu)<r$ \\ 
+%The limit is $f_\mu(\mu)$ as it is the 
+%biggest element of $A_\mu$ and $f_\mu$ is well ordered net. 
+%\\
+%As we have \ref{accumulation_points_of_the_set} 
+%%\newpage
+%- show that if $\mu < \omega^n$, then it is earlier than $\frac{n}{2}$ something something\\
+%\smalltodo 
+%\\
+%- done\\
+%XD \\
+%$le\ XD$ \\ 
+%For the sake of contradiction, let us assume, that $\phi_\nu$ is unbounded. \\
+%There exist $n$ such that $\phi_\nu < \omega^n$. \\
+%The only unbounded in $\mathbb{R}$ prefix of $A$ is a whole $A$. \\ 
+%From this we conclude that $A$ schould have order type of $\alpha$.
+%\\ 
+%Then $f_\mu$ is a ordinal indexed sequence.
+For the continuity of $f$ and $f^{-1}$ it is sufficient to show, that for every 
+$U \subseteq A_\mu$ and $V \subseteq \mu+1$ 
+in prebases of respective topologies, $f_\mu^{-1}[U]$ and $f_\mu[V]$ are open ($\ast$). \\
+Prebase open sets in $A_\mu$ are the ones inherited from the order topology on $\mathbb{R}$, 
+for all $s \in \mathbb{R}$:
+\begin{align*}
+\{r\ &|\ r<s\} \cap A_\mu\\
+\{r\ &|\ s<r\} \cap A_\mu.
+\end{align*}
+Prebase open sets in $\mu+1$ are from order topology, for all $\nu \in \mu+1$:
+\begin{align*}
+\{\eta\ &|\ \eta<\nu\} \\
+\{\eta\ &|\ \nu<\eta\}.
+\end{align*}
+From our induction assumption we have ($\ast$) checked for following prebase sets: \\
+$\{r\ |\ r<s\} \cap A_\mu$, for all $s < f(\mu)$. \\
+$\{\eta\ |\ \eta<\nu\}$, for all $\nu < \mu$, \\
+It was left to be shown, that ($\ast$) holds for the prebase sets: \\
+$\{r\ |\ r<f(\mu)\} \cap A_\mu$, \\
+$\{r\ |\ s<r\} \cap A_\mu$, for all $s \leq f(\mu)$\\
+$\{\eta\ |\ \eta<\mu\}$, \\
+$\{\eta\ |\ \nu<\eta\}$, for all $\nu \leq \mu$, \\ 
 
-As we have \ref{accumulation_points_of_the_set} 
-As $\mathbb{R}$ is Hausdorff, from \cite{Kelley1975} (chapter 2, 
-theorem 3, page 67) we know, that .  
-\\ 
-%\newpage
-- show that if $\mu < \omega^n$, then it is earlier than $\frac{n}{2}$ something something\\
-\smalltodo 
-\\
-- done\\
-XD \\
-$le\ XD$ \\ 
-For the sake of contradiction, let us assume, that $\phi_\nu$ is unbounded. \\
-There exist $n$ such that $\phi_\nu < \omega^n$. \\
-The only unbounded in $\mathbb{R}$ prefix of $A$ is a whole $A$. \\ 
-From this we conclude that $A$ schould have order type of $\alpha$.
-\\ 
+Prebase set -- $\{r\ |\ r<f(\mu)\} \cap A_\mu$: \\
+We have that:
+\begin{align*}
+f^{-1}[\{r\ |\ s<f(\mu)\} \cap A_\mu] = \{\eta\ |\ \eta <\mu\},
+\end{align*}
+which is open. \\
+Prebase set -- $\{r\ |\ s<r\} \cap A_\mu$: \\
+Let $s < f(\mu)$. We have two cases: \\
+-- $s \in A$: then let $\nu$ be such that $f(\nu)=s$. Then we have that:
+\begin{align*}
+f^{-1}[\{r\ |\ s<r\} \cap A_\mu] = \{\eta\ |\ \nu < \eta \},
+\end{align*}
+which is open. \\
+-- $s \not\in A$: then, by the assumption of the theorem we know that $s$ is not an accumulation 
+point of $A$. From this we conclude, that 
+$\exists_{t\in A} (t<s \land \neg \exists_{t' \in A} t<t'<s)$. Let $\nu$ be such that $f(\nu) = t$. 
+Then we have that:
+\begin{align*}
+f^{-1}[\{r\ |\ s<r\} \cap A_\mu] = \{\eta\ |\ \nu < \eta \},
+\end{align*}
+which is open. \\
+Prebase set -- :
+a\\
+This concludes the inductive part of the proof, that for every $\mu < \alpha$ we have that 
+$f_\mu$ is a homeomorphism. Now we will show, that this is sufficient for $f$ to be a 
+homeomorphism. \\
+\todo{wszystkie ograniczone otwarte działają}
+\todo{wszystkie nieograniczone też}
 %Firstly we will determine the order type of $A$. 
 %From the lemma \ref{well_order} we know, that $A$ is well ordered, so it has order type 
 %of some ordinal number. From this and 
