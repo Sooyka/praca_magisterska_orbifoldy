@@ -1,22 +1,19 @@
 {
     "base_manifolds": [
-        {
-            "topology": "Disk"
-        },
-        {
-            "topology": "Sphere"
-        }
+        "Disk",
+        "Sphere",
+        {"Genus": 7}
     ],
     "only_relatively_prime_numerators": true,
     "maximal_exact": "Maximal",
     "order_and_occurences": 0,
     "yes_no_counting": false,
     "output": {
-        "provided_p_q": false,
-        "p_q": false,
-        "p_q_order": false,
-        "number_of_p_q_occurences": false,
-        "order_and_occurences": false,
-        "yes_no_counting": false
+        "provided_p_q": true,
+        "p_q": true,
+        "p_q_order": true,
+        "number_of_p_q_occurences": true,
+        "order_and_occurences": true,
+        "yes_no_counting": true
     }
 }

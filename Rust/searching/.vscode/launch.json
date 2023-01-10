@@ -26,15 +26,15 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'denominators'",
+            "name": "Debug executable 'searching'",
             "cargo": {
                 "args": [
                     "build",
-                    "--bin=denominators",
+                    "--bin=searching",
                     "--package=searching"
                 ],
                 "filter": {
-                    "name": "denominators",
+                    "name": "searching",
                     "kind": "bin"
                 }
             },
@@ -44,58 +44,21 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in executable 'denominators'",
+            "name": "Debug unit tests in executable 'searching'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
-                    "--bin=denominators",
+                    "--bin=searching",
                     "--package=searching"
                 ],
                 "filter": {
-                    "name": "denominators",
+                    "name": "searching",
                     "kind": "bin"
                 }
             },
             "args": [],
             "cwd": "${workspaceFolder}"
         },
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Debug executable 'points_order_and_occurences'",
-            "cargo": {
-                "args": [
-                    "build",
-                    "--bin=points_order_and_occurences",
-                    "--package=searching"
-                ],
-                "filter": {
-                    "name": "points_order_and_occurences",
-                    "kind": "bin"
-                }
-            },
-            "args": [],
-            "cwd": "${workspaceFolder}"
-        },
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Debug unit tests in executable 'points_order_and_occurences'",
-            "cargo": {
-                "args": [
-                    "test",
-                    "--no-run",
-                    "--bin=points_order_and_occurences",
-                    "--package=searching"
-                ],
-                "filter": {
-                    "name": "points_order_and_occurences",
-                    "kind": "bin"
-                }
-            },
-            "args": [],
-            "cwd": "${workspaceFolder}"
-        }
     ]
 }

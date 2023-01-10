@@ -1,15 +1,10 @@
 {
     "maximal_number_of_occurences": 0,
     "base_manifolds": [
+        "Disk",
+        "Sphere",
         {
-            "tag": "Disk"
-        },
-        {
-            "tag": "Sphere"
-        },
-        {
-            "tag": "General",
-            "content": {
+            "General": {
                 "handles": 2,
                 "cross_caps": 3,
                 "boundry_components": 1

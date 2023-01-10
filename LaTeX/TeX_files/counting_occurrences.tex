@@ -1,5 +1,7 @@
 % mainfile: ../praca_magisterska_orbifoldy.tex
 \chapter{Counting occurrences} \label{counting occurrences}
+In this chapter we would care not only whether the pointis or is not in the spectrum -- we will 
+give a closer look of how many orbifolds have particular \Eoc. \\
 Our ultimate goal is to give the answer to the questions such as: \\
 - For a given $x \in \sigma$, how many orbifolds have $x$ as their \Eoc?\\
 - Why? Is there some underlying geometrical reason for that?\\
@@ -27,8 +29,24 @@ write about cyclic order
 For any $x \in \sigma$ and $n \in \mathbb{N}$ there are only finitely many orbifolds 
 with the \Eoc\ greater or equal to $x$ and all orbipoints of order at most $n$.
 \end{observation}
-\textbf{Proof:}
-
+\textbf{Proof:} \\
+For a given $x$, there are only finitely many manifolds 
+with an Euler characteristic $y \geq x$. Only them can be 
+base manifolds for an orbifold with an \Eoc\ $y'\geq x$, as adding orbipoints always 
+decreases an \Eoc\ . \\
+It remains to proove then, that for any base manifold $M$, there are only finetly many orbifolds, 
+with: \\
+-an \Eoc\ $y \geq x$, \\
+-all orbipoints of order at most $n$ and\\  
+-with $M$ as a base manifold. \\
+We proceed now simmilarly to the proof of \ref{finiteness_lemma} -- 
+on the orbifold with an \Eoc\ $y \in [x,2]$, there can be at most 
+$\max \{\lfloor 4(1-x) \rfloor, \lfloor 2(2-x) \rfloor\}$ orbipoints. 
+Thus, for a given manifold $M$ and a given $x$ and $n$, there can be at most 
+$(n-1)^{\max \{\lfloor 4(1-x) \rfloor, \lfloor 2(2-x) \rfloor\}}$ orbifolds with an \Eoc\ 
+$y \geq x$, 
+all orbipoints of order at most $n$ and $M$ as a base manifold.$_\square$ 
+ 
 
 
 \begin{theorem}\label{second_finiteness_theorem}
@@ -48,11 +66,11 @@ an \Eoc\ less or equal to the Euler characteristic of its underlying manifold. \
 %We will now provide an argument that shows that for any base manifold $M$, the number 
 %of $M$ orbifolds with \Eoc\ equal to $x$ is finite. It will complete the proof of our theorem.\\
 It remains to proof, that for any base manifold $M$, the number of $M$ orbifolds 
-with \Eoc\ equal to $x$ is finite.
+with \Eoc\ equal to $x$ is finite: \\
 Let $M$ be a two dimentional manifold. \\
-For the sake of contradiction, assume, that there exists an infinite set 
-of $M$ orbifolds $\mathcal{O}_M \subseteq \mathcal{O}$. 
-Let $\mathcal{O}_M = \{O\}_{i \in I}$. \\  
+For the sake of contradiction, assume, that there exists an infinite set $\mathcal{O}_M$
+of $M$-orbifolds such that $\mathcal{O}_M \subseteq \mathcal{O}$. ($\ast$)\\ 
+Let $\mathcal{O}_M = \{O\}_{i \in I}$. 
 For each $i$, let $s_i = (I^0_i, \cdots, I^{k_i}_i; b^0_i, \cdots, b^{l_i}_i)$ be the signature 
 of $O_i$ written with decreasing orders of rotational orbipoints and decreasing orders of 
 dihedral points. So for each $i$ we have, that $I^0_i$ is 
@@ -64,7 +82,7 @@ By \ref{first_finiteness_theorem} we know that if the set $\{I^0_i\}_{i \in I} \
 \{b^0_i\}_{i \in I}$ 
 would be bounded 
 by some $n \in \mathbb{N}$ it would mean, that $\mathcal{O}_M$ would be finite. As 
-(from the assumption) this is not a case, we know
+from ($\ast$) this is not the case, we know
 that the set $\{I^0_i\}_{i \in I} \cup \{b^0_i\}_{i \in I}$ is unbounded. 
 Let $\{i_n\}_{n\in \mathbb{N}} \subseteq I$ be a sequence of indeces such that
 $\{(I^0_{i_n}, b^0_{i_n})\}_{n\in \mathbb{N}}$ is strictly increasing on one cordinate 
@@ -224,7 +242,7 @@ by doubling them, so $x \in \speD$. $_\square$
 \section{Estimations of the number of occurences}
 
 
-\todo{dac jakieś żródła i ok}
+\todo{dac jakieś źródła i ok}
 
 
 

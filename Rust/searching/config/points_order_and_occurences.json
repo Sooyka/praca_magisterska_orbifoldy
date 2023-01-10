@@ -1,11 +1,7 @@
 {
     "maximal_number_of_occurences": 0,
     "base_manifolds": [
-        {
-            "topology": "Sphere"
-        },
-        {
-            "topology": "Sphere"
-        }
+        "Disk",
+        "Sphere"
     ]
 }
