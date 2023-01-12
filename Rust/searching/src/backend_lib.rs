@@ -1,4 +1,3 @@
-use crate::backend_lib::ExWhRa64::*;
 use num_rational::*;
 use num_traits::ops::checked::*;
 use serde::{Deserialize, Serialize};
@@ -14,72 +13,6 @@ pub const ONE: Rational64 = Rational64::new_raw(1, 1);
 pub const TWO: Rational64 = Rational64::new_raw(2, 1);
 pub const THREE: Rational64 = Rational64::new_raw(3, 1);
 pub const FOUR: Rational64 = Rational64::new_raw(4, 1);
-
-// use crate::backend_lib::ExWh::*;
-// use crate::backend_lib::ExRa::*;
-
-// #[macro_export]
-// macro_rules! no_ex {
-//     (i64) => {
-//         searching::mathematics_lib::ExWh
-//     };
-//     (Ratio<i64>) => {
-//         searching::mathematics_lib::ExRa
-//     };
-// }
-
-// #[macro_export]
-// macro_rules! fu_ty {
-//     (i64) => {
-//         i64
-//     };
-//     (Ratio<i64>) => {
-//         use num_rational::Ratio<i64>
-//     };
-// }
-
-// #[macro_export]
-// macro_rules! ty_ref {
-//     (i64, $exp1:expr, $exp2:expr) => {
-//         ($exp1, $exp2)
-//     };
-//     (Ratio<i64>, $exp1:expr, $exp2:expr) => {
-//         (&($exp1), &($exp2))
-//     };
-// }
-
-// #[macro_export]
-// macro_rules! ch_op {
-//     (+) => {
-//         checked_add
-//     };
-//     (-) => {
-//         checked_sub
-//     };
-//     (*) => {
-//         checked_mul
-//     };
-//     (/) => {
-//         checked_div
-//     };
-// }
-
-// #[macro_export]
-// macro_rules! ch_re {
-//     ($typ:ty, $exp1:expr, $op:tt, $exp2:expr) => {
-//         match <fu_ty!($typ)>:: ch_op!($tt) ty_ref!($typ, $exp1, $exp2) {
-//             Some(exp3) => exp3,
-//             None => return <no_ex!($typ)>::Overflow,
-//         }
-//     };
-// }
-
-// fn r_checked_add(a:&Ratio<i64> , b:&Ratio<i64> ) -> Result<Ratio<i64>, ExWhRa64>{
-//     match <Ratio<i64>>::checked_add(a, b){
-//         Some(a_b) => Ok(a_b),
-//         None => Err(Ov),
-//     }
-// }
 
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Clone, Copy)]
 pub enum ExWh {
@@ -473,67 +406,6 @@ impl std::ops::Div for ExRa {
                 };
                 ExRa::Rational(pq3)
             }
-        }
-    }
-}
-
-#[derive(Debug, Clone)]
-pub struct ExCo64 {
-    ex: Rational64,
-    co: Rational64,
-}
-
-#[derive(Debug, Clone)]
-pub enum ExWhRa64 {
-    Ep(Vec<ExCo64>),
-    Wh(i64),
-    Ra(Rational64),
-    Ov,
-    Om(Vec<ExCo64>),
-    Un,
-}
-
-impl std::ops::Add for ExWhRa64 {
-    type Output = Self;
-
-    fn add(self, other: Self) -> Self {
-        match (self, other) {
-            (Ep(_), Ep(_)) => todo!(),
-            (Ep(_), Wh(_)) => todo!(),
-            (Ep(_), Ra(_)) => todo!(),
-            (Ep(_), Ov) => todo!(),
-            (Ep(_), Om(_)) => todo!(),
-            (Wh(_), Ep(_)) => todo!(),
-            (Wh(_), Wh(_)) => todo!(),
-            (Wh(_), Ra(_)) => todo!(),
-            (Wh(_), Ov) => todo!(),
-            (Wh(_), Om(_)) => todo!(),
-            (Ra(_), Ep(_)) => todo!(),
-            (Ra(_), Wh(_)) => todo!(),
-            (Ra(_), Ra(_)) => todo!(),
-            (Ra(_), Ov) => todo!(),
-            (Ra(_), Om(_)) => todo!(),
-            (Ov, Ep(_)) => todo!(),
-            (Ov, Wh(_)) => todo!(),
-            (Ov, Ra(_)) => todo!(),
-            (Ov, Ov) => todo!(),
-            (Ov, Om(_)) => todo!(),
-            (Om(_), Ep(_)) => todo!(),
-            (Om(_), Wh(_)) => todo!(),
-            (Om(_), Ra(_)) => todo!(),
-            (Om(_), Ov) => todo!(),
-            (Om(_), Om(_)) => todo!(),
-            (Ep(_), Un) => todo!(),
-            (Wh(_), Un) => todo!(),
-            (Ra(_), Un) => todo!(),
-            (Ov, Un) => todo!(),
-            (Om(_), Un) => todo!(),
-            (Un, Ep(_)) => todo!(),
-            (Un, Wh(_)) => todo!(),
-            (Un, Ra(_)) => todo!(),
-            (Un, Ov) => todo!(),
-            (Un, Om(_)) => todo!(),
-            (Un, Un) => todo!(),
         }
     }
 }

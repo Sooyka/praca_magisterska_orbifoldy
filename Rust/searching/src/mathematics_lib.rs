@@ -1,19 +1,10 @@
 use crate::backend_lib::*;
 use crate::backend_lib::ExWh::*;
 use crate::backend_lib::ExRa::*;
-use crate::backend_lib::ExWhRa64::*;
 use crate::mathematics_lib::TwoDimentionalManifold::*;
 use num_rational::*;
 use num_traits::ops::checked::*;
 use serde::{Deserialize, Serialize};
-
-pub const ZERO: Rational64 = Rational64::new_raw(0, 1);
-pub const ONE_OVER_FOUR: Rational64 = Rational64::new_raw(1, 4);
-pub const ONE_OVER_TWO: Rational64 = Rational64::new_raw(1, 2);
-pub const ONE: Rational64 = Rational64::new_raw(1, 1);
-pub const TWO: Rational64 = Rational64::new_raw(2, 1);
-pub const THREE: Rational64 = Rational64::new_raw(3, 1);
-pub const FOUR: Rational64 = Rational64::new_raw(4, 1);
 
 #[derive(Debug, PartialEq, Serialize, Deserialize, Clone, Copy)]
 pub enum TwoDimentionalManifold {
