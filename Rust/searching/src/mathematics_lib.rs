@@ -1,5 +1,7 @@
-use crate::mathematics_lib::ExWh::*;
-use crate::mathematics_lib::ExRa::*;
+use crate::backend_lib::*;
+use crate::backend_lib::ExWh::*;
+use crate::backend_lib::ExRa::*;
+use crate::backend_lib::ExWhRa64::*;
 use crate::mathematics_lib::TwoDimentionalManifold::*;
 use num_rational::*;
 use num_traits::ops::checked::*;
@@ -30,44 +32,6 @@ pub struct TwoDimentionalOrbifold {
     pub b_m: TwoDimentionalManifold, // base manifold
     pub r: Vec<ExWh>,              // rotational points
     pub d: Vec<Vec<ExWh>>,         //dihedral points
-}
-
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Clone, Copy)]
-pub enum ExWh {
-    MInfty,
-    Whole(i64),
-    Overflow,
-    PInfty,
-}
-
-impl std::fmt::Display for ExWh {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ExWh::MInfty => write!(f, "-♾️"),
-            Whole(n) => write!(f, "{n}"),
-            ExWh::Overflow => write!(f, "Overflow"),
-            ExWh::PInfty => write!(f, "♾️"),
-        }
-    }
-}
-
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
-pub enum ExRa {
-    MInfty,
-    Rational(Rational64),
-    Overflow,
-    PInfty,
-}
-
-impl std::fmt::Display for ExRa {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ExRa::MInfty => write!(f, "-♾️"),
-            Rational(pq) => write!(f, "{pq}"),
-            ExRa::Overflow => write!(f, "Overflow"),
-            ExRa::PInfty => write!(f, "♾️"),
-        }
-    }
 }
 
 pub fn chi(m: &TwoDimentionalManifold) -> ExWh {
@@ -102,6 +66,7 @@ pub fn chi(m: &TwoDimentionalManifold) -> ExWh {
         }
     }
 }
+
 
 pub fn chi_orb(o: &TwoDimentionalOrbifold) -> ExRa {
     let mut chi_orb = match chi(&o.b_m) {
