@@ -4,8 +4,8 @@ use std::cmp::*;
 use Ordering::*;
 
 use crate::backend_lib::*;
-use crate::mathematics_lib::ExRa::*;
-use crate::mathematics_lib::ExWh::*;
+use crate::backend_lib::ExRa::*;
+use crate::backend_lib::ExWh::*;
 use crate::mathematics_lib::TwoDimentionalManifold::*;
 use crate::mathematics_lib::*;
 // use crate::searching_algorithm_lib::PointsOrder;

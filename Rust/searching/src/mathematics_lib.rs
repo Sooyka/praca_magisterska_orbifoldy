@@ -29,32 +29,8 @@ pub fn chi(m: &TwoDimentionalManifold) -> ExWh {
     match m {
         Disk => Whole(1),
         Sphere => Whole(2),
-        Genus(g) => match i64::checked_mul(2, *g) {
-            Some(g_2) => match i64::checked_sub(2, g_2) {
-                Some(chi) => Whole(chi),
-                None => ExWh::Overflow,
-            },
-            None => ExWh::Overflow,
-        },
-        General { h, c_c, b_c } => {
-            let h_chi = match i64::checked_mul(2, *h) {
-                Some(h_two) => h_two,
-                None => return ExWh::Overflow,
-            };
-            let mut sum: i64 = match i64::checked_add(h_chi, *c_c) {
-                Some(s) => s,
-                None => return ExWh::Overflow,
-            };
-            sum = match i64::checked_add(sum, *b_c) {
-                Some(s) => s,
-                None => return ExWh::Overflow,
-            };
-            sum = match i64::checked_sub(2, sum) {
-                Some(s) => s,
-                None => return ExWh::Overflow,
-            };
-            Whole(sum)
-        }
+        Genus(g) => Whole(2) - Whole(2)*Whole(*g),
+        General { h, c_c, b_c } =>  Whole(2)-(Whole(2)*Whole(*h)+Whole(*c_c)+Whole(*b_c)),
     }
 }
 
