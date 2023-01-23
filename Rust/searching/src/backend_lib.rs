@@ -33,6 +33,17 @@ impl std::fmt::Display for ExWh {
     }
 }
 
+impl Into<ExRa> for ExWh {
+    fn into(self) -> ExRa {
+        match self {
+            ExWh::MInfty => ExRa::MInfty,
+            ExWh::Whole(n) => ExRa::Rational(Rational64::from_integer(n)),
+            ExWh::Overflow => ExRa::Overflow,
+            ExWh::PInfty => ExRa::PInfty,
+        }
+    }
+}
+
 impl std::ops::Add for ExWh {
     type Output = Self;
 
@@ -285,9 +296,13 @@ impl std::ops::Mul for ExRa {
     fn mul(self, other: Self) -> Self {
         match (self, other) {
             (ExRa::Rational(ZERO), ExRa::MInfty) => panic!("Multiplying ZERO by -♾️ is undefined!"),
-            (ExRa::MInfty, ExRa::Rational(ZERO)) => panic!("Multiplying -♾️ by an ZERO is undefined!"),
+            (ExRa::MInfty, ExRa::Rational(ZERO)) => {
+                panic!("Multiplying -♾️ by an ZERO is undefined!")
+            }
             (ExRa::Rational(ZERO), ExRa::PInfty) => panic!("Multiplying ZERO by ♾️ is undefined!"),
-            (ExRa::PInfty, ExRa::Rational(ZERO)) => panic!("Multiplying ♾️ by an ZERO is undefined!"),
+            (ExRa::PInfty, ExRa::Rational(ZERO)) => {
+                panic!("Multiplying ♾️ by an ZERO is undefined!")
+            }
             (ExRa::Rational(ZERO), _) => ExRa::Rational(ZERO),
             (_, ExRa::Rational(ZERO)) => ExRa::Rational(ZERO),
             (ExRa::MInfty, ExRa::PInfty) => ExRa::MInfty,
@@ -353,7 +368,9 @@ impl std::ops::Div for ExRa {
     fn div(self, other: Self) -> Self {
         match (self, other) {
             (ExRa::Rational(ZERO), _) => ExRa::Rational(ZERO),
-            (ExRa::Rational(ZERO), ExRa::Rational(ZERO)) => panic!("Dividing ZERO by ZERO is undefined!"),
+            (ExRa::Rational(ZERO), ExRa::Rational(ZERO)) => {
+                panic!("Dividing ZERO by ZERO is undefined!")
+            }
             (_, ExRa::Rational(ZERO)) => panic!("Sign of dividing by ZERO is undefined!"),
             (ExRa::MInfty, ExRa::PInfty) => panic!("Dividing -♾️ by ♾️ is undefined!"),
             (ExRa::PInfty, ExRa::MInfty) => panic!("Dividing ♾️ by -♾️ is undefined!"),

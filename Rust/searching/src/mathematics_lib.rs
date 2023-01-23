@@ -42,11 +42,13 @@ pub fn chi_orb(o: &TwoDimentionalOrbifold) -> ExRa {
         ExWh::Overflow => return ExRa::Overflow,
         ExWh::PInfty => return ExRa::PInfty,
     };
+    let chi = chi(&o.b_m);
+    let mut chi_orb: ExRa = if let Whole(chi_t) = chi {chi.into()}else{return chi.into()}; 
 
     for o_p in &o.r {
         let diff = match rot_per_dif(*o_p) {
             ExRa::MInfty => panic!("Difference in Euler orbicharacteristic caused a single orbipoint can not be infinite!"),
-            Rational(r) => r,
+            Rational(r) => Rational(r),
             ExRa::Overflow => return ExRa::Overflow, 
             ExRa::PInfty => panic!("Difference in Euler orbicharacteristic caused a single orbipoint can not be infinite!"),
         };
@@ -54,6 +56,7 @@ pub fn chi_orb(o: &TwoDimentionalOrbifold) -> ExRa {
             Some(chi_orb_1) => chi_orb_1,
             None => return ExRa::Overflow,
         };
+        chi_orb = chi_orb - diff;
     }
     for b_c in &o.d {
         for o_p in b_c {
