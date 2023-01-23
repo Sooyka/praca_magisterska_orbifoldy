@@ -1,6 +1,7 @@
 use num_rational::*;
 use num_traits::ops::checked::*;
 use serde::{Deserialize, Serialize};
+use std::cmp::Ordering::*;
 use std::error::Error;
 use std::fs::File;
 use std::io::BufReader;
@@ -165,11 +166,13 @@ impl std::ops::Div for ExWh {
 
     fn div(self, other: Self) -> Self {
         match (self, other) {
-            (ExWh::Whole(0), _) => ExWh::Whole(0),
             (ExWh::Whole(0), ExWh::Whole(0)) => panic!("Dividing 0 by 0 is undefined!"),
+            (ExWh::Whole(0), _) => ExWh::Whole(0),
             (_, ExWh::Whole(0)) => panic!("Sign of dividing by 0 is undefined!"),
             (ExWh::MInfty, ExWh::PInfty) => panic!("Dividing -♾️ by ♾️ is undefined!"),
             (ExWh::PInfty, ExWh::MInfty) => panic!("Dividing ♾️ by -♾️ is undefined!"),
+            (ExWh::PInfty, ExWh::PInfty) => panic!("Dividing ♾️ by ♾️ is undefined!"),
+            (ExWh::MInfty, ExWh::MInfty) => panic!("Dividing -♾️ by -♾️ is undefined!"),
             (ExWh::MInfty, ExWh::Overflow) => {
                 panic!("Sign of dividing -♾️ by an overflow is undefined!")
             }
@@ -295,16 +298,40 @@ impl std::ops::Mul for ExRa {
 
     fn mul(self, other: Self) -> Self {
         match (self, other) {
-            (ExRa::Rational(ZERO), ExRa::MInfty) => panic!("Multiplying ZERO by -♾️ is undefined!"),
-            (ExRa::MInfty, ExRa::Rational(ZERO)) => {
-                panic!("Multiplying -♾️ by an ZERO is undefined!")
+            (ExRa::MInfty, ExRa::Rational(pq)) => match pq.cmp(&ZERO) {
+                Less => ExRa::PInfty,
+                Equal => panic!("Multiplying -♾️ by an 0 is undefined!"),
+                Greater => ExRa::MInfty,
+            },
+            (ExRa::Rational(pq), ExRa::MInfty) => match pq.cmp(&ZERO) {
+                Less => ExRa::PInfty,
+                Equal => panic!("Multiplying ZERO by -♾️ is undefined!"),
+                Greater => ExRa::MInfty,
+            },
+            (ExRa::PInfty, ExRa::Rational(pq)) => match pq.cmp(&ZERO) {
+                Less => ExRa::MInfty,
+                Equal => panic!("Multiplying ♾️ by an 0 is undefined!"),
+                Greater => ExRa::PInfty,
+            },
+            (ExRa::Rational(pq), ExRa::PInfty) => match pq.cmp(&ZERO) {
+                Less => ExRa::PInfty,
+                Equal => panic!("Multiplying ZERO by ♾️ is undefined!"),
+                Greater => ExRa::MInfty,
+            },
+            (ExRa::Rational(pq), ExRa::Overflow) => {
+                if pq == ZERO {
+                    ExRa::Rational(ZERO)
+                } else {
+                    ExRa::Overflow
+                }
             }
-            (ExRa::Rational(ZERO), ExRa::PInfty) => panic!("Multiplying ZERO by ♾️ is undefined!"),
-            (ExRa::PInfty, ExRa::Rational(ZERO)) => {
-                panic!("Multiplying ♾️ by an ZERO is undefined!")
+            (ExRa::Overflow, ExRa::Rational(pq)) => {
+                if pq == ZERO {
+                    ExRa::Rational(ZERO)
+                } else {
+                    ExRa::Overflow
+                }
             }
-            (ExRa::Rational(ZERO), _) => ExRa::Rational(ZERO),
-            (_, ExRa::Rational(ZERO)) => ExRa::Rational(ZERO),
             (ExRa::MInfty, ExRa::PInfty) => ExRa::MInfty,
             (ExRa::PInfty, ExRa::MInfty) => ExRa::MInfty,
             (ExRa::PInfty, ExRa::PInfty) => ExRa::PInfty,
@@ -321,36 +348,8 @@ impl std::ops::Mul for ExRa {
             (ExRa::Overflow, ExRa::PInfty) => {
                 panic!("Sign of multiplying an overflow by ♾️ is undefined!")
             }
-            (ExRa::MInfty, ExRa::Rational(pq)) => {
-                if pq > ZERO {
-                    ExRa::MInfty
-                } else {
-                    ExRa::PInfty
-                }
-            }
-            (ExRa::Rational(pq), ExRa::MInfty) => {
-                if pq > ZERO {
-                    ExRa::MInfty
-                } else {
-                    ExRa::PInfty
-                }
-            }
-            (ExRa::PInfty, ExRa::Rational(pq)) => {
-                if pq > ZERO {
-                    ExRa::PInfty
-                } else {
-                    ExRa::MInfty
-                }
-            }
-            (ExRa::Rational(pq), ExRa::PInfty) => {
-                if pq > ZERO {
-                    ExRa::PInfty
-                } else {
-                    ExRa::MInfty
-                }
-            }
-            (ExRa::Overflow, _) => ExRa::Overflow,
-            (_, ExRa::Overflow) => ExRa::Overflow,
+
+            (ExRa::Overflow, ExRa::Overflow) => ExRa::Overflow,
             (ExRa::Rational(pq1), ExRa::Rational(pq2)) => {
                 let pq3 = match <Ratio<i64>>::checked_mul(&pq1, &pq2) {
                     Some(pq_t) => pq_t,
@@ -367,13 +366,10 @@ impl std::ops::Div for ExRa {
 
     fn div(self, other: Self) -> Self {
         match (self, other) {
-            (ExRa::Rational(ZERO), _) => ExRa::Rational(ZERO),
-            (ExRa::Rational(ZERO), ExRa::Rational(ZERO)) => {
-                panic!("Dividing ZERO by ZERO is undefined!")
-            }
-            (_, ExRa::Rational(ZERO)) => panic!("Sign of dividing by ZERO is undefined!"),
             (ExRa::MInfty, ExRa::PInfty) => panic!("Dividing -♾️ by ♾️ is undefined!"),
             (ExRa::PInfty, ExRa::MInfty) => panic!("Dividing ♾️ by -♾️ is undefined!"),
+            (ExRa::PInfty, ExRa::PInfty) => panic!("Dividing ♾️ by ♾️ is undefined!"),
+            (ExRa::MInfty, ExRa::MInfty) => panic!("Dividing -♾️ by -♾️ is undefined!"),
             (ExRa::MInfty, ExRa::Overflow) => {
                 panic!("Sign of dividing -♾️ by an overflow is undefined!")
             }
@@ -386,37 +382,45 @@ impl std::ops::Div for ExRa {
             (ExRa::Overflow, ExRa::PInfty) => {
                 panic!("Sign of dividing an overflow by ♾️ is undefined!")
             }
-            (ExRa::MInfty, ExRa::Rational(pq)) => {
-                if pq > ZERO {
-                    ExRa::MInfty
+            (ExRa::MInfty, ExRa::Rational(pq)) => match pq.cmp(&ZERO) {
+                Less => ExRa::PInfty,
+                Equal => panic!("Sign of dividing by 0 is undefined!"),
+                Greater => ExRa::MInfty,
+            },
+            (ExRa::Rational(pq), ExRa::MInfty) => match pq.cmp(&ZERO) {
+                Less => ExRa::PInfty,
+                Equal => ExRa::Rational(ZERO),
+                Greater => ExRa::MInfty,
+            },
+            (ExRa::PInfty, ExRa::Rational(pq)) => match pq.cmp(&ZERO) {
+                Less => ExRa::MInfty,
+                Equal => panic!("Sign of dividing by 0 is undefined!"),
+                Greater => ExRa::PInfty,
+            },
+            (ExRa::Rational(pq), ExRa::PInfty) => match pq.cmp(&ZERO) {
+                Less => ExRa::PInfty,
+                Equal => ExRa::Rational(ZERO),
+                Greater => ExRa::MInfty,
+            },
+            (ExRa::Rational(pq), ExRa::Overflow) => {
+                if pq == ZERO {
+                    ExRa::Rational(ZERO)
                 } else {
-                    ExRa::PInfty
+                    ExRa::Overflow
                 }
             }
-            (ExRa::Rational(pq), ExRa::MInfty) => {
-                if pq > ZERO {
-                    ExRa::MInfty
+            (ExRa::Overflow, ExRa::Rational(pq)) => {
+                if pq == ZERO {
+                    panic!("Sign of dividing by 0 is undefined!")
                 } else {
-                    ExRa::PInfty
+                    ExRa::Overflow
                 }
             }
-            (ExRa::PInfty, ExRa::Rational(pq)) => {
-                if pq > ZERO {
-                    ExRa::PInfty
-                } else {
-                    ExRa::MInfty
-                }
-            }
-            (ExRa::Rational(pq), ExRa::PInfty) => {
-                if pq > ZERO {
-                    ExRa::PInfty
-                } else {
-                    ExRa::MInfty
-                }
-            }
-            (ExRa::Overflow, _) => ExRa::Overflow,
-            (_, ExRa::Overflow) => ExRa::Overflow,
+            (ExRa::Overflow, ExRa::Overflow) => ExRa::Overflow,
             (ExRa::Rational(pq1), ExRa::Rational(pq2)) => {
+                if self == ExRa::Rational(ZERO) && other == ExRa::Rational(ZERO) {
+                    panic!("Dividing 0 by 0 is undefined!")
+                }
                 let pq3 = match <Ratio<i64>>::checked_div(&pq1, &pq2) {
                     Some(pq_t) => pq_t,
                     None => return ExRa::Overflow,

@@ -1,11 +1,12 @@
 use num_rational::*;
 use num_traits::ops::checked::*;
 use std::cmp::*;
+use std::collections::HashSet;
 use Ordering::*;
 
-use crate::backend_lib::*;
 use crate::backend_lib::ExRa::*;
 use crate::backend_lib::ExWh::*;
+use crate::backend_lib::*;
 use crate::mathematics_lib::TwoDimentionalManifold::*;
 use crate::mathematics_lib::*;
 // use crate::searching_algorithm_lib::PointsOrder;
@@ -36,10 +37,10 @@ pub struct PointsOrder {
 #[derive(Debug)]
 pub struct PosOmm {
     pub pos_omm: bool,
-    pub pos_rea: Vec<PosOmmRea>,
+    pub pos_rea: HashSet<PosOmmRea>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Eq, Hash)]
 pub enum PosOmmRea {
     DenLimit,
     Overflow,
@@ -47,7 +48,7 @@ pub enum PosOmmRea {
 
 pub struct PointsOrbifolds {
     pub orbifolds: Vec<TwoDimentionalOrbifold>,
-    pub pos_omm: bool, // some orbifolds were possibly ommited due too the overflow or limits provided
+    pub omm_inf: bool, // some orbifolds were possibly ommited due too the overflow or limits provided
 }
 
 pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder {
@@ -55,32 +56,24 @@ pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder
     let mut order = -1; // order of point outside of the specturm is -1
 
     let mut pos_omm = false;
-    let mut pos_rea = vec![];
+    let pos_rea = HashSet::new();
     let p_q = match adj_for_b_m(p_q, b_m) {
         Rational(p_q_0) => p_q_0,
         ExRa::Overflow => {
+            pos_rea.insert(PosOmmRea::Overflow);
             return PointsOrder {
                 order: -1,
                 instances: vec![],
                 omm_inf: PosOmm {
                     pos_omm: true,
-                    pos_rea: vec![PosOmmRea::Overflow],
+                    pos_rea,
                 },
-            }
+            };
         }
         _ => panic!("Adjusted p_q should be finite!"),
     };
 
     // we want to handle p_q = k/2 case
-    // let l = match <Ratio<i64>>::checked_mul(&TWO, &p_q) {
-    //     Some(l_1) => l_1,
-    //     None => {
-    //         return Negative {
-    //             order: -1,
-    //             pos_omm: true,
-    //         }
-    //     }
-    // };
     let l = TWO * p_q;
     if l.is_integer() {
         let l = l.to_integer();
@@ -90,12 +83,10 @@ pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder
                 instances: vec![],
                 omm_inf: PosOmm {
                     pos_omm: false,
-                    pos_rea: vec![],
+                    pos_rea: pos_rea,
                 },
             };
         }
-
-        let mut con = true;
 
         order = match l % 2 {
             0 => (4 - l) / 2,
@@ -122,7 +113,7 @@ pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder
         }
 
         return PointsOrder {
-            order: order,
+            order,
             instances: vec![co_to_orb(&counters, b_m)],
             omm_inf: PosOmm { pos_omm, pos_rea },
         };
@@ -142,94 +133,41 @@ pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder
         let search_result = points_orb(cur_pnt, TwoDimentionalManifold::Sphere, 1, 0);
         found = search_result.orbifolds;
         if found.len() == 0 {
-            pos_omm = search_result.pos_omm;
+            pos_omm |= search_result.pos_omm;
+            pos_rea.union
             depth -= 1;
             cur_pnt -= ONE;
         }
     }
-    let mut instance: TwoDimentionalOrbifold;
-    if found.len() > 0 {
-        instance = found[0].clone();
-    }
-    order = depth;
-    counters = instance.r;
+    // let instance: TwoDimentionalOrbifold;
+    // if found.len() > 0 {
+    //     instance = found[0].clone();
+    //     counters = instance.r;
+    // }
+    // order = depth;
+
     return PointsOrder {
-        order: order,
-        instances: vec![co_to_orb(&counters, b_m)],
+        order: depth,
+        instances: found,
         omm_inf: PosOmm { pos_omm, pos_rea },
     };
-    // match b_m {
-    //     Disk => {
-    //         return NonNegative {
-    //             order: order,
-    //             instance: TwoDimentionalOrbifold {
-    //                 b_m: Disk,
-    //                 r: vec![],
-    //                 d: vec![counters],
-    //             },
-    //             pos_omm: pos_omm,
-    //         }
-    //     }
-    //     _ => {
-    //         return NonNegative {
-    //             order: order,
-    //             instance: TwoDimentionalOrbifold {
-    //                 b_m: b_m,
-    //                 r: counters,
-    //                 d: vec![],
-    //             },
-    //             pos_omm: pos_omm,
-    //         }
-    //     }
-    // }
 }
 
 // add that this is sphere based, change name to naormalise to sphere add function normalising to given manifold
 fn adj_for_b_m(p_q: Rational64, b_m: TwoDimentionalManifold) -> ExRa {
     let chi = chi(&b_m);
     match chi {
-        Whole(chi) => match b_m {
-            Disk => match <Ratio<i64>>::checked_mul(&TWO, &p_q) {
-                Some(p_q_0) => return Rational(p_q_0),
-                None => return ExRa::Overflow,
-            },
+        Whole(_) => match b_m {
+            Disk => Rational(TWO) * Rational(p_q),
             Sphere => Rational(p_q),
-            Genus(g) => {
-                let chi_1 = match <i64>::checked_sub(2, chi) {
-                    Some(chi_1) => chi_1,
-                    None => return ExRa::Overflow,
-                };
-                match <Ratio<i64>>::checked_add(&p_q, &Rational64::from_integer(chi_1)) {
-                    Some(chi_2) => return Rational(chi_2),
-                    None => return ExRa::Overflow,
-                }
-            }
-            General { h, c_c, b_c } => {
+            Genus(_) => Rational(p_q) + (Rational(TWO) - chi.into()),
+            General { h: _, c_c: _, b_c } => {
                 if b_c == 0 {
                     // Rational(p_q + (2 - chi))
-                    let chi_1 = match i64::checked_sub(2, chi) {
-                        Some(chi_1) => chi_1,
-                        None => return ExRa::Overflow,
-                    };
-                    match <Ratio<i64>>::checked_add(&p_q, &Rational64::from_integer(chi_1)) {
-                        Some(chi_2) => return Rational(chi_2),
-                        None => return ExRa::Overflow,
-                    }
+                    Rational(p_q) + (Rational(TWO) - chi.into())
                 } else {
                     // Rational(TWO * (p_q + (1 - chi)))
-                    let chi_1 = match i64::checked_sub(1, chi) {
-                        Some(chi_1) => chi_1,
-                        None => return ExRa::Overflow,
-                    };
-                    let chi_2 =
-                        match <Ratio<i64>>::checked_add(&p_q, &Rational64::from_integer(chi_1)) {
-                            Some(chi_2) => chi_2,
-                            None => return ExRa::Overflow,
-                        };
-                    match <Ratio<i64>>::checked_mul(&TWO, &chi_2) {
-                        Some(chi_3) => return Rational(chi_3),
-                        None => return ExRa::Overflow,
-                    }
+                    Rational(TWO) * (Rational(p_q) + (Rational(ONE) - chi.into()))
                 }
             }
         },
@@ -243,31 +181,30 @@ fn co_to_orb(counters: &Vec<ExWh>, b_m: TwoDimentionalManifold) -> TwoDimentiona
         Disk => TwoDimentionalOrbifold {
             b_m: Disk,
             r: vec![],
-            d: vec![*counters],
+            d: vec![counters.clone()],
         },
-        General { h, c_c, b_c } => {
+        General { h: _, c_c: _, b_c } => {
             if b_c == 0 {
                 TwoDimentionalOrbifold {
                     b_m: b_m,
-                    r: *counters,
+                    r: counters.clone(),
                     d: vec![],
                 }
             } else {
                 TwoDimentionalOrbifold {
                     b_m: b_m,
                     r: vec![],
-                    d: vec![*counters],
+                    d: vec![counters.clone()],
                 }
             }
         }
         _ => TwoDimentionalOrbifold {
             b_m: b_m,
-            r: *counters,
+            r: counters.clone(),
             d: vec![],
         },
     }
 }
-
 
 // add reason to overflow
 pub fn points_orb(
@@ -432,7 +369,7 @@ pub fn points_orb(
                         let b_c = b_c_value(current_chi_orb, p_q); // smallest b_c such that Euler orbicharacterictic would be smaller or equal p/q
                         match b_c {
                             ExWh::MInfty => panic!("Counters value should not be equal to -♾️"),
-                            Whole(n) => {
+                            Whole(_) => {
                                 counters[pivot] = b_c;
                             }
                             ExWh::Overflow => {
@@ -472,6 +409,7 @@ pub fn points_orb(
                                 };
                             } else {
                                 flag = Less;
+                                // the following lines are not here on purpose:
                                 // pivot += 1;
                                 // if counters.len() <= pivot {
                                 //     counters.push(Whole(1));
@@ -577,61 +515,70 @@ fn level_to_pivot(counters: &mut Vec<ExWh>, pivot: usize) {
 }
 
 fn b_c_value(old_chi_orb: Rational64, p_q: Rational64) -> ExWh {
-    let mut b_c = 2;
+    let mut b_c = Whole(2);
     let mut a = b_c;
     let mut chi_orb_value;
-    match old_chi_orb.checked_sub(&rot_per_dif(b_c)) {
-        None => {
+    match Rational(old_chi_orb) - rot_per_dif(b_c) {
+        ExRa::Overflow => {
             return ExWh::Overflow;
         }
-        Some(result) => {
-            chi_orb_value = result;
+        Rational(pq) => {
+            chi_orb_value = pq;
+        }
+        _ => {
+            panic!("This should be finite!")
         }
     }
     while chi_orb_value > p_q {
         a = b_c;
-        b_c = 2 * b_c;
-        match old_chi_orb.checked_sub(&rot_per_dif(b_c)) {
-            None => {
+        b_c = Whole(2) * b_c;
+        match Rational(old_chi_orb) - rot_per_dif(b_c) {
+            ExRa::Overflow => {
                 return ExWh::Overflow;
             }
-            Some(result) => {
-                chi_orb_value = result;
+            Rational(pq) => {
+                chi_orb_value = pq;
+            }
+            _ => {
+                panic!("This should be finite!")
             }
         }
     }
     let mut b = b_c;
-    if old_chi_orb - rot_per_dif(b_c) == p_q {
-        return Whole(b_c);
+    if Rational(old_chi_orb) - rot_per_dif(b_c) == Rational(p_q) {
+        return b_c;
     }
     if a == b {
-        return Whole(b_c);
+        return b_c;
     }
     loop {
-        let diff = (b - a) / 2;
+        let diff = (b - a) / Whole(2);
         b_c = a + diff;
-        match old_chi_orb.checked_sub(&rot_per_dif(b_c)) {
-            None => {
+        match Rational(old_chi_orb) - rot_per_dif(b_c) {
+            ExRa::Overflow => {
                 return ExWh::Overflow;
             }
-            Some(result) => {
-                chi_orb_value = result;
+            Rational(pq) => {
+                chi_orb_value = pq;
+            }
+            _ => {
+                panic!("This should be finite!")
             }
         }
         match (chi_orb_value).cmp(&p_q) {
             Equal => {
-                return Whole(b_c);
+                return b_c;
             }
             Less => {
-                if diff == 1 {
-                    return Whole(b_c);
+                if diff == Whole(1) {
+                    return b_c;
                 }
                 b = b_c;
                 continue;
             }
             Greater => {
-                if diff == 0 {
-                    return Whole(b);
+                if diff == Whole(0) {
+                    return b;
                 }
                 a = b_c;
                 continue;
