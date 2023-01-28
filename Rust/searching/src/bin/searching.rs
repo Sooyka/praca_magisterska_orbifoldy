@@ -1,10 +1,7 @@
 use num_rational::*;
-use std::error::Error;
 use std::io;
 
-use backend_lib::*;
 use mathematics_lib::TwoDimentionalManifold::*;
-use mathematics_lib::*;
 use searching::*;
 use searching_algorithm_lib::*;
 fn main() -> ! {
@@ -39,6 +36,7 @@ fn main() -> ! {
 
         let p_q = Rational64::new(p_q[0], p_q[1]);
         println!("{:?}", points_order(p_q, Disk));
+        println!("{:?}", points_orb(p_q, Disk, 0, 0));
         // let config: PointsOrderAndOccurencesConfig;
         // loop {
         //     config = match read_config("points_order_and_occurences".to_string()) {

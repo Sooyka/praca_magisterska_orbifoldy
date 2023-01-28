@@ -1,7 +1,7 @@
 use num_rational::*;
-use num_traits::ops::checked::*;
 use std::cmp::*;
 use std::collections::HashSet;
+use std::hash::Hash;
 use Ordering::*;
 
 use crate::backend_lib::ExRa::*;
@@ -30,44 +30,36 @@ use crate::mathematics_lib::*;
 pub struct PointsOrder {
     pub order: i64,
     pub instances: Vec<TwoDimentionalOrbifold>,
-    pub omm_inf: PosOmm, //if during some search i64 was overflowed, there is possibility that some result was ommited, its for possibly_ommited
-                         // reaason for possible ommision immision info
+    pub omm_inf: HashSet<PosOmmRea>, //if during some search i64 was overflowed, there is possibility that some result was ommited, its for possibly_ommited
+                                     // reaason for possible ommision immision info
 }
 
-#[derive(Debug)]
-pub struct PosOmm {
-    pub pos_omm: bool,
-    pub pos_rea: HashSet<PosOmmRea>,
-}
-
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, PartialEq, Eq, Hash, Clone, Copy)]
 pub enum PosOmmRea {
+    OccLimit,
     DenLimit,
     Overflow,
 }
 
+#[derive(Debug)]
 pub struct PointsOrbifolds {
     pub orbifolds: Vec<TwoDimentionalOrbifold>,
-    pub omm_inf: bool, // some orbifolds were possibly ommited due too the overflow or limits provided
+    pub omm_inf: HashSet<PosOmmRea>, // some orbifolds were possibly ommited due too the overflow or limits provided
 }
 
 pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder {
     let mut counters: Vec<ExWh> = vec![];
     let mut order = -1; // order of point outside of the specturm is -1
 
-    let mut pos_omm = false;
-    let pos_rea = HashSet::new();
+    let mut omm_inf: HashSet<PosOmmRea> = HashSet::new();
     let p_q = match adj_for_b_m(p_q, b_m) {
         Rational(p_q_0) => p_q_0,
         ExRa::Overflow => {
-            pos_rea.insert(PosOmmRea::Overflow);
+            omm_inf.insert(PosOmmRea::Overflow);
             return PointsOrder {
-                order: -1,
+                order,
                 instances: vec![],
-                omm_inf: PosOmm {
-                    pos_omm: true,
-                    pos_rea,
-                },
+                omm_inf,
             };
         }
         _ => panic!("Adjusted p_q should be finite!"),
@@ -81,10 +73,7 @@ pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder
             return PointsOrder {
                 order: -1,
                 instances: vec![],
-                omm_inf: PosOmm {
-                    pos_omm: false,
-                    pos_rea: pos_rea,
-                },
+                omm_inf,
             };
         }
 
@@ -95,7 +84,7 @@ pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder
             _ => panic!("Residue from dividing by 2 must be 0, 1 or -1!"),
         };
 
-        for i in 0..order {
+        for _i in 0..order {
             counters.push(ExWh::PInfty);
         }
 
@@ -115,7 +104,7 @@ pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder
         return PointsOrder {
             order,
             instances: vec![co_to_orb(&counters, b_m)],
-            omm_inf: PosOmm { pos_omm, pos_rea },
+            omm_inf,
         };
     }
     let mut dist = ZERO;
@@ -133,23 +122,61 @@ pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder
         let search_result = points_orb(cur_pnt, TwoDimentionalManifold::Sphere, 1, 0);
         found = search_result.orbifolds;
         if found.len() == 0 {
-            pos_omm |= search_result.pos_omm;
-            pos_rea.union
+            // omm_inf = omm_inf
+            //     .union(&search_result.omm_inf)
+            //     .map(|x| x.to_owned())
+            //     .collect();
+            omm_inf = &omm_inf | &search_result.omm_inf;
             depth -= 1;
             cur_pnt -= ONE;
         }
     }
-    // let instance: TwoDimentionalOrbifold;
-    // if found.len() > 0 {
-    //     instance = found[0].clone();
-    //     counters = instance.r;
-    // }
-    // order = depth;
 
+    let mut instances: Vec<TwoDimentionalOrbifold> = vec![];
+    if found.len() > 0 {
+        let instance: TwoDimentionalOrbifold;
+        match b_m {
+            Disk => {
+                instance = TwoDimentionalOrbifold {
+                    b_m: Disk,
+                    r: vec![],
+                    d: vec![found[0].r.clone()],
+                };
+                instances.push(instance);
+            }
+            Sphere => {
+                instances = found;
+            }
+            Genus(g) => {
+                instance = TwoDimentionalOrbifold {
+                    b_m: Genus(g),
+                    r: found[0].r.clone(),
+                    d: vec![],
+                };
+                instances.push(instance);
+            }
+            General { h, c_c, b_c } => {
+                if b_c == 0 {
+                    instance = TwoDimentionalOrbifold {
+                        b_m: General { h, c_c, b_c },
+                        r: found[0].r.clone(),
+                        d: vec![],
+                    };
+                } else {
+                    instance = TwoDimentionalOrbifold {
+                        b_m: General { h, c_c, b_c },
+                        r: vec![],
+                        d: vec![found[0].r.clone()],
+                    };
+                }
+                instances.push(instance);
+            }
+        }
+    }
     return PointsOrder {
         order: depth,
-        instances: found,
-        omm_inf: PosOmm { pos_omm, pos_rea },
+        instances,
+        omm_inf,
     };
 }
 
@@ -212,12 +239,13 @@ pub fn points_orb(
     p_q: Rational64,
     b_m: TwoDimentionalManifold, //base manifold
     occ_lim: i64,                //occurences limit, zero for no limit
-    deg_lim: i64,                // degree limit, zero for no limit
+    _deg_lim: i64,               // degree limit, zero for no limit
 ) -> PointsOrbifolds {
     let mut occurences: Vec<Vec<ExWh>> = vec![];
     let mut counters: Vec<ExWh> = vec![Whole(1)];
     let mut occ_co: i64 = 0; //occurences count
     let mut pivot = 0;
+    let mut omm_inf = HashSet::new();
     let mut flag = if let Rational(chi_orb) = per_chi_orb(&counters) {
         chi_orb
     } else {
@@ -225,13 +253,13 @@ pub fn points_orb(
     }
     .cmp(&p_q);
 
-    let mut possibly_ommited = false;
     let p_q = match adj_for_b_m(p_q, b_m) {
         Rational(p_q_0) => p_q_0,
         ExRa::Overflow => {
+            omm_inf.insert(PosOmmRea::Overflow);
             return PointsOrbifolds {
                 orbifolds: cos_to_orb(&occurences, b_m),
-                pos_omm: true,
+                omm_inf,
             };
         }
         _ => panic!("Adjusted p_q should be finite!"),
@@ -281,7 +309,7 @@ pub fn points_orb(
                 if break_condition(&counters, pivot) {
                     return PointsOrbifolds {
                         orbifolds: cos_to_orb(&occurences, b_m),
-                        pos_omm: possibly_ommited,
+                        omm_inf,
                     };
                 }
                 level_to_pivot(&mut counters, pivot);
@@ -293,7 +321,7 @@ pub fn points_orb(
                         if counters.len() <= pivot {
                             counters.push(Whole(1));
                         }
-                        possibly_ommited = true;
+                        omm_inf.insert(PosOmmRea::Overflow);
                         continue;
                     }
                     _ => panic!("Euler Orbicharacteristic should be finite."),
@@ -303,10 +331,10 @@ pub fn points_orb(
                         occurences.push(counters.clone());
                         occ_co += 1;
                         if occ_co == occ_lim {
-                            possibly_ommited = true;
+                            omm_inf.insert(PosOmmRea::OccLimit);
                             return PointsOrbifolds {
                                 orbifolds: cos_to_orb(&occurences, b_m),
-                                pos_omm: possibly_ommited,
+                                omm_inf,
                             };
                         } else {
                             flag = Less;
@@ -337,10 +365,10 @@ pub fn points_orb(
                 let chi_orb_0 = match per_chi_orb(&counters) {
                     Rational(chi_orb) => chi_orb,
                     ExRa::Overflow => {
-                        possibly_ommited = true;
+                        omm_inf.insert(PosOmmRea::Overflow);
                         return PointsOrbifolds {
                             orbifolds: cos_to_orb(&occurences, b_m),
-                            pos_omm: possibly_ommited,
+                            omm_inf,
                         };
                     }
                     _ => panic!("Euler Orbicharacteristic should be finite."),
@@ -350,10 +378,10 @@ pub fn points_orb(
                         occurences.push(counters.clone());
                         occ_co += 1;
                         if occ_co == occ_lim {
-                            possibly_ommited = true;
+                            omm_inf.insert(PosOmmRea::OccLimit);
                             return PointsOrbifolds {
                                 orbifolds: cos_to_orb(&occurences, b_m),
-                                pos_omm: possibly_ommited,
+                                omm_inf,
                             };
                         } else {
                             flag = Less;
@@ -378,7 +406,7 @@ pub fn points_orb(
                                 if counters.len() <= pivot {
                                     counters.push(Whole(1));
                                 }
-                                possibly_ommited = true;
+                                omm_inf.insert(PosOmmRea::Overflow);
                                 continue;
                             }
                             ExWh::PInfty => {
@@ -393,7 +421,7 @@ pub fn points_orb(
                                 if counters.len() <= pivot {
                                     counters.push(Whole(1));
                                 }
-                                possibly_ommited = true;
+                                omm_inf.insert(PosOmmRea::Overflow);
                                 continue;
                             }
                             _ => panic!("Euler Orbicharacteristic should be finite."),
@@ -402,10 +430,10 @@ pub fn points_orb(
                             occurences.push(counters.clone());
                             occ_co += 1;
                             if occ_co == occ_lim {
-                                possibly_ommited = true;
+                                omm_inf.insert(PosOmmRea::OccLimit);
                                 return PointsOrbifolds {
                                     orbifolds: cos_to_orb(&occurences, b_m),
-                                    pos_omm: possibly_ommited,
+                                    omm_inf,
                                 };
                             } else {
                                 flag = Less;
@@ -426,7 +454,7 @@ pub fn points_orb(
                                 if counters.len() <= pivot {
                                     counters.push(Whole(1));
                                 }
-                                possibly_ommited = true;
+                                omm_inf.insert(PosOmmRea::Overflow);
                                 continue;
                             }
                             _ => panic!("Euler Orbicharacteristic should be finite."),
@@ -436,10 +464,10 @@ pub fn points_orb(
                                 occurences.push(counters.clone());
                                 occ_co += 1;
                                 if occ_co == occ_lim {
-                                    possibly_ommited = true;
+                                    omm_inf.insert(PosOmmRea::OccLimit);
                                     return PointsOrbifolds {
                                         orbifolds: cos_to_orb(&occurences, b_m),
-                                        pos_omm: possibly_ommited,
+                                        omm_inf,
                                     };
                                 } else {
                                     flag = Less;

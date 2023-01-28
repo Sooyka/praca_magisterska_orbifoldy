@@ -1,6 +1,6 @@
 % mainfile: ../praca_magisterska_orbifoldy.tex
 \chapter{Appendix about well orders}
-\section{Usefull lemmas}
+\section{Lemmas}
 \begin{lemma}\label{two_sets_lemma}
 If $A, B \subseteq \mathbb{R}$ have no infinite strictly ascending sequences, then set 
 $A + B \coloneqq \{a+b\ |\ a \in A, b \in B\}$ also have no infinite strictly ascending sequences. 
@@ -40,7 +40,7 @@ Let $A \subseteq \mathbb{R}$ has an order type $\alpha$.
 Let $A$ be such that every accumulation point of $A$ belong to $A$. Then $A$ has not only an
 order type $\alpha$ but is also homeomorphic to $\alpha$. 
 \end{lemma}
-
+\todo{dopisać, że to równoważność}
 \textbf{Proof.} \\
 %Let us observe, that $\alpha$ must be countable -- as $A$ is well ordered we can assign to every 
 %element $a_1 \in A$ an non-empty open interval, between $a_1$ and it's succesor $a_2$. 
@@ -336,7 +336,8 @@ which is open.$_\square$
 %which is open. \\
 %-- $s \not\in A$: then, by the assumption of the theorem we know that $s$ is not an accumulation 
 %point of $A$. From this we conclude, that 
-%$\exists_{t\in A} (t<s \land \neg \exists_{t' \in A} t<t'<s)$. Let $\nu$ be such that $f(\nu) = t$. 
+%$\exists_{t\in A} (t<s \land \neg \exists_{t' \in A} t<t'<s)$. Let $\nu$ be such that $f(\nu) 
+%= t$. 
 %Then we have that:
 %\begin{align*}
 %f^{-1}[\{r\ |\ s<r\} \cap A_\mu] = \{\eta\ |\ \nu < \eta \},
@@ -357,3 +358,24 @@ which is open.$_\square$
 %%A$ is homeomorphic to $\omega^n$. From this, and again from theorem \ref{greatest \apots} 
 %%we have that $A \cap [1,1-\frac{n}{2})$ is homeomorphic with $\omega^n$. 
 %%From this $A$ is homeomorphic with $\alpha$.
+
+\todo{Zapytać się kogoś z topologii/teorii mnogości}
+
+\begin{lemma}
+For two well ordered sets $A, B \subseteq \mathbb{R}$, with order types, respectively $\omega^n$ 
+and $\omega^m$, 
+such that $n < m$, we have that order type of $A \cup B$ is well defined and 
+equal to $\omega^m$.
+\end{lemma}
+\textbf{Proof.} \\
+
+From \ref{sum_lemma}, we know, that $A\cup B$ is well ordered. As such its order type is well 
+defined and equal to some ordeal number $\gamma$. \\
+
+We will show that $\gamma \leq \omega^m$ and $\gamma \geq \omega^m$, 
+thus showing that $\gamma = \omega^m$. \\
+
+$\bullet$ $\gamma \leq \omega^m$: \\
+
+
+
