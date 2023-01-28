@@ -9,22 +9,6 @@ use crate::backend_lib::ExWh::*;
 use crate::backend_lib::*;
 use crate::mathematics_lib::TwoDimentionalManifold::*;
 use crate::mathematics_lib::*;
-// use crate::searching_algorithm_lib::PointsOrder;
-
-// takes rational number and gives order of accumulation in base_manifold spectrum, as well as a signature confirming said order
-
-// pub enum PointsOrder {
-//     NonNegative {
-//         order: i64,
-//         instance: Vec<TwoDimentionalOrbifold>,
-//         pos_omm: bool, //if during some search i64 was overflowed, there is possibility that some result was ommited, its for possibly_ommited
-//     },
-//     Negative {
-//         order: i64,
-//         pos_omm: bool, //if during some search i64 was overflowed, there is possibility that some result was ommited, its for possibly_ommited
-//         reason: Vec<PosOmm> // reaason for possible ommision
-//     },
-// }
 
 #[derive(Debug)]
 pub struct PointsOrder {
@@ -264,12 +248,6 @@ pub fn points_orb(
         }
         _ => panic!("Adjusted p_q should be finite!"),
     };
-    // let p_q = match b_m {
-    //     Disk => TWO * p_q,
-    //     Sphere => p_q,
-    //     Genus(g) => p_q + 2 * g,
-    //     General { h, c_c, b_c } => p_q + 2 * h + c_c + b_c,
-    // };
     // counters[0] = 7312724677;
     // counters.push(405642);
     // counters.push(403);
@@ -295,13 +273,19 @@ pub fn points_orb(
                 panic!("Flag should not be left on 'Equal' at the main loop!");
             }
             Less => {
+                counters[pivot] = counters[pivot] + Whole(1);
                 match counters[pivot] {
                     ExWh::MInfty => panic!("Counters should not be equal to -♾️"),
-                    Whole(n) => {
-                        counters[pivot] = Whole(n + 1);
-                    }
+                    Whole(_) => {},
                     ExWh::Overflow => {
-                        panic!("Counters should not be left on the Overflow state after main loop!")
+                        // panic!("Counters should not be left on the Overflow state after main loop!")
+                        flag = Less;
+                        pivot += 1;
+                        if counters.len() <= pivot {
+                            counters.push(Whole(1));
+                        }
+                        omm_inf.insert(PosOmmRea::Overflow);
+                        continue;
                     }
 
                     ExWh::PInfty => todo!("Counter should not be qual to ♾️ in this place!"),
