@@ -16,20 +16,22 @@ pub const THREE: Rational64 = Rational64::new_raw(3, 1);
 pub const FOUR: Rational64 = Rational64::new_raw(4, 1);
 
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Clone, Copy)]
-pub enum ExWh {
+pub enum Extended<T> {
     MInfty,
-    Whole(i64),
+    Base(T),
     Overflow,
     PInfty,
 }
+pub type ExWh = Extended<i64>;
+pub type ExRa = Extended<Ratio<i64>>;
 
-impl std::fmt::Display for ExWh {
+impl<T: std::fmt::Display> std::fmt::Display for Extended<T> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            ExWh::MInfty => write!(f, "-♾️"),
-            ExWh::Whole(n) => write!(f, "{n}"),
-            ExWh::Overflow => write!(f, "Overflow"),
-            ExWh::PInfty => write!(f, "♾️"),
+            Extended::MInfty => write!(f, "-♾️"),
+            Extended::Base(n) => write!(f, "{n}"),
+            Extended::Overflow => write!(f, "Overflow"),
+            Extended::PInfty => write!(f, "♾️"),
         }
     }
 }
@@ -38,394 +40,219 @@ impl Into<ExRa> for ExWh {
     fn into(self) -> ExRa {
         match self {
             ExWh::MInfty => ExRa::MInfty,
-            ExWh::Whole(n) => ExRa::Rational(Rational64::from_integer(n)),
+            ExWh::Base(n) => ExRa::Base(Rational64::from_integer(n)),
             ExWh::Overflow => ExRa::Overflow,
             ExWh::PInfty => ExRa::PInfty,
         }
     }
 }
 
-impl std::ops::Add for ExWh {
+impl<T> std::ops::Add for Extended<T>
+where
+    T: num_traits::ops::checked::CheckedAdd,
+{
     type Output = Self;
 
     fn add(self, other: Self) -> Self {
         match (self, other) {
-            (ExWh::MInfty, ExWh::PInfty) => panic!("Adding ♾️ to -♾️ is ill defined!"),
-            (ExWh::PInfty, ExWh::MInfty) => panic!("Adding -♾️ to ♾️ is ill defined!"),
-            (ExWh::MInfty, _) => ExWh::MInfty,
-            (_, ExWh::MInfty) => ExWh::MInfty,
-            (ExWh::PInfty, _) => ExWh::PInfty,
-            (_, ExWh::PInfty) => ExWh::PInfty,
-            (ExWh::Overflow, _) => ExWh::Overflow,
-            (_, ExWh::Overflow) => ExWh::Overflow,
-            (ExWh::Whole(n1), ExWh::Whole(n2)) => {
-                let n3 = match i64::checked_add(n1, n2) {
+            (Extended::MInfty, Extended::PInfty) => panic!("Adding ♾️ to -♾️ is ill defined!"),
+            (Extended::PInfty, Extended::MInfty) => panic!("Adding -♾️ to ♾️ is ill defined!"),
+            (Extended::MInfty, _) => Extended::MInfty,
+            (_, Extended::MInfty) => Extended::MInfty,
+            (Extended::PInfty, _) => Extended::PInfty,
+            (_, Extended::PInfty) => Extended::PInfty,
+            (Extended::Overflow, _) => Extended::Overflow,
+            (_, Extended::Overflow) => Extended::Overflow,
+            (Extended::Base(n1), Extended::Base(n2)) => {
+                let n3 = match n1.checked_add(&n2) {
                     Some(n_t) => n_t,
-                    None => return ExWh::Overflow,
+                    None => return Extended::Overflow,
                 };
-                ExWh::Whole(n3)
+                Extended::Base(n3)
             }
         }
     }
 }
 
-impl std::ops::Sub for ExWh {
+impl<T> std::ops::Sub for Extended<T>
+where
+    T: num_traits::ops::checked::CheckedSub,
+{
     type Output = Self;
 
     fn sub(self, other: Self) -> Self {
         match (self, other) {
-            (ExWh::MInfty, ExWh::MInfty) => panic!("Substracting -♾️ from -♾️ is ill defined!"),
-            (ExWh::PInfty, ExWh::PInfty) => panic!("Substracting ♾️ from -♾️ is ill defined!"),
-            (ExWh::MInfty, _) => ExWh::MInfty,
-            (_, ExWh::MInfty) => ExWh::PInfty,
-            (ExWh::PInfty, _) => ExWh::PInfty,
-            (_, ExWh::PInfty) => ExWh::MInfty,
-            (ExWh::Overflow, _) => ExWh::Overflow,
-            (_, ExWh::Overflow) => ExWh::Overflow,
-            (ExWh::Whole(n1), ExWh::Whole(n2)) => {
-                let n3 = match i64::checked_sub(n1, n2) {
+            (Extended::MInfty, Extended::MInfty) => {
+                panic!("Substracting -♾️ from -♾️ is ill defined!")
+            }
+            (Extended::PInfty, Extended::PInfty) => {
+                panic!("Substracting ♾️ from -♾️ is ill defined!")
+            }
+            (Extended::MInfty, _) => Extended::MInfty,
+            (_, Extended::MInfty) => Extended::PInfty,
+            (Extended::PInfty, _) => Extended::PInfty,
+            (_, Extended::PInfty) => Extended::MInfty,
+            (Extended::Overflow, _) => Extended::Overflow,
+            (_, Extended::Overflow) => Extended::Overflow,
+            (Extended::Base(n1), Extended::Base(n2)) => {
+                let n3 = match n1.checked_sub(&n2) {
                     Some(n_t) => n_t,
-                    None => return ExWh::Overflow,
+                    None => return Extended::Overflow,
                 };
-                ExWh::Whole(n3)
+                Extended::Base(n3)
             }
         }
     }
 }
 
-impl std::ops::Mul for ExWh {
+impl<T> std::ops::Mul for Extended<T>
+where
+    T: num_traits::ops::checked::CheckedMul,
+    T: num_traits::identities::Zero,
+    T: num_traits::sign::Signed,
+{
     type Output = Self;
 
     fn mul(self, other: Self) -> Self {
         match (self, other) {
-            (ExWh::Whole(0), ExWh::MInfty) => panic!("Multiplying 0 by -♾️ is undefined!"),
-            (ExWh::MInfty, ExWh::Whole(0)) => panic!("Multiplying -♾️ by an 0 is undefined!"),
-            (ExWh::Whole(0), ExWh::PInfty) => panic!("Multiplying 0 by ♾️ is undefined!"),
-            (ExWh::PInfty, ExWh::Whole(0)) => panic!("Multiplying ♾️ by an 0 is undefined!"),
-            (ExWh::Whole(0), _) => ExWh::Whole(0),
-            (_, ExWh::Whole(0)) => ExWh::Whole(0),
-            (ExWh::MInfty, ExWh::PInfty) => ExWh::MInfty,
-            (ExWh::PInfty, ExWh::MInfty) => ExWh::MInfty,
-            (ExWh::PInfty, ExWh::PInfty) => ExWh::PInfty,
-            (ExWh::MInfty, ExWh::MInfty) => ExWh::PInfty,
-            (ExWh::MInfty, ExWh::Overflow) => {
+            (Extended::Base(n), Extended::MInfty) if n.is_zero() => {
+                panic!("Multiplying 0 by -♾️ is undefined!")
+            }
+            (Extended::MInfty, Extended::Base(n)) if n.is_zero() => {
+                panic!("Multiplying -♾️ by an 0 is undefined!")
+            }
+            (Extended::Base(n), Extended::PInfty) if n.is_zero() => {
+                panic!("Multiplying 0 by ♾️ is undefined!")
+            }
+            (Extended::PInfty, Extended::Base(n)) if n.is_zero() => {
+                panic!("Multiplying ♾️ by an 0 is undefined!")
+            }
+            (Extended::Base(n), _) if n.is_zero() => Extended::Base(T::zero()),
+            (_, Extended::Base(n)) if n.is_zero() => Extended::Base(T::zero()),
+            (Extended::MInfty, Extended::PInfty) => Extended::MInfty,
+            (Extended::PInfty, Extended::MInfty) => Extended::MInfty,
+            (Extended::PInfty, Extended::PInfty) => Extended::PInfty,
+            (Extended::MInfty, Extended::MInfty) => Extended::PInfty,
+            (Extended::MInfty, Extended::Overflow) => {
                 panic!("Sign of multiplying -♾️ by an overflow is undefined!")
             }
-            (ExWh::Overflow, ExWh::MInfty) => {
+            (Extended::Overflow, Extended::MInfty) => {
                 panic!("Sign of multiplying an overflow by -♾️ is undefined!")
             }
-            (ExWh::PInfty, ExWh::Overflow) => {
+            (Extended::PInfty, Extended::Overflow) => {
                 panic!("Sign of multiplying ♾️ by an overflow is undefined!")
             }
-            (ExWh::Overflow, ExWh::PInfty) => {
+            (Extended::Overflow, Extended::PInfty) => {
                 panic!("Sign of multiplying an overflow by ♾️ is undefined!")
             }
-            (ExWh::MInfty, ExWh::Whole(n)) => {
-                if n > 0 {
-                    ExWh::MInfty
+            (Extended::MInfty, Extended::Base(n)) => {
+                if n.is_positive() {
+                    Extended::MInfty
                 } else {
-                    ExWh::PInfty
+                    Extended::PInfty
                 }
             }
-            (ExWh::Whole(n), ExWh::MInfty) => {
-                if n > 0 {
-                    ExWh::MInfty
+            (Extended::Base(n), Extended::MInfty) => {
+                if n.is_positive() {
+                    Extended::MInfty
                 } else {
-                    ExWh::PInfty
+                    Extended::PInfty
                 }
             }
-            (ExWh::PInfty, ExWh::Whole(n)) => {
-                if n > 0 {
-                    ExWh::PInfty
+            (Extended::PInfty, Extended::Base(n)) => {
+                if n.is_positive() {
+                    Extended::PInfty
                 } else {
-                    ExWh::MInfty
+                    Extended::MInfty
                 }
             }
-            (ExWh::Whole(n), ExWh::PInfty) => {
-                if n > 0 {
-                    ExWh::PInfty
+            (Extended::Base(n), Extended::PInfty) => {
+                if n.is_positive() {
+                    Extended::PInfty
                 } else {
-                    ExWh::MInfty
+                    Extended::MInfty
                 }
             }
-            (ExWh::Overflow, _) => ExWh::Overflow,
-            (_, ExWh::Overflow) => ExWh::Overflow,
-            (ExWh::Whole(n1), ExWh::Whole(n2)) => {
-                let n3 = match i64::checked_mul(n1, n2) {
+            (Extended::Overflow, _) => Extended::Overflow,
+            (_, Extended::Overflow) => Extended::Overflow,
+            (Extended::Base(n1), Extended::Base(n2)) => {
+                let n3 = match n1.checked_mul(&n2) {
                     Some(n_t) => n_t,
-                    None => return ExWh::Overflow,
+                    None => return Extended::Overflow,
                 };
-                ExWh::Whole(n3)
+                Extended::Base(n3)
             }
         }
     }
 }
 
-impl std::ops::Div for ExWh {
+impl<T> std::ops::Div for Extended<T>
+where
+    T: num_traits::ops::checked::CheckedDiv,
+    T: num_traits::identities::Zero,
+    T: num_traits::sign::Signed,
+{
     type Output = Self;
 
     fn div(self, other: Self) -> Self {
         match (self, other) {
-            (ExWh::Whole(0), ExWh::Whole(0)) => panic!("Dividing 0 by 0 is undefined!"),
-            (ExWh::Whole(0), _) => ExWh::Whole(0),
-            (_, ExWh::Whole(0)) => panic!("Sign of dividing by 0 is undefined!"),
-            (ExWh::MInfty, ExWh::PInfty) => panic!("Dividing -♾️ by ♾️ is undefined!"),
-            (ExWh::PInfty, ExWh::MInfty) => panic!("Dividing ♾️ by -♾️ is undefined!"),
-            (ExWh::PInfty, ExWh::PInfty) => panic!("Dividing ♾️ by ♾️ is undefined!"),
-            (ExWh::MInfty, ExWh::MInfty) => panic!("Dividing -♾️ by -♾️ is undefined!"),
-            (ExWh::MInfty, ExWh::Overflow) => {
+            (Extended::Base(n), Extended::Base(m)) if n.is_zero() && m.is_zero() => {
+                panic!("Dividing 0 by 0 is undefined!")
+            }
+            (Extended::Base(n), _) if n.is_zero() => Extended::Base(T::zero()),
+            (_, Extended::Base(n)) if n.is_zero() => panic!("Sign of dividing by 0 is undefined!"),
+            (Extended::MInfty, Extended::PInfty) => panic!("Dividing -♾️ by ♾️ is undefined!"),
+            (Extended::PInfty, Extended::MInfty) => panic!("Dividing ♾️ by -♾️ is undefined!"),
+            (Extended::PInfty, Extended::PInfty) => panic!("Dividing ♾️ by ♾️ is undefined!"),
+            (Extended::MInfty, Extended::MInfty) => panic!("Dividing -♾️ by -♾️ is undefined!"),
+            (Extended::MInfty, Extended::Overflow) => {
                 panic!("Sign of dividing -♾️ by an overflow is undefined!")
             }
-            (ExWh::Overflow, ExWh::MInfty) => {
+            (Extended::Overflow, Extended::MInfty) => {
                 panic!("Sign of dividing an overflow by -♾️ is undefined!")
             }
-            (ExWh::PInfty, ExWh::Overflow) => {
+            (Extended::PInfty, Extended::Overflow) => {
                 panic!("Sign of dividing ♾️ by an overflow is undefined!")
             }
-            (ExWh::Overflow, ExWh::PInfty) => {
+            (Extended::Overflow, Extended::PInfty) => {
                 panic!("Sign of dividing an overflow by ♾️ is undefined!")
             }
-            (ExWh::MInfty, ExWh::Whole(n)) => {
-                if n > 0 {
-                    ExWh::MInfty
+            (Extended::MInfty, Extended::Base(n)) => {
+                if n.is_positive() {
+                    Extended::MInfty
                 } else {
-                    ExWh::PInfty
+                    Extended::PInfty
                 }
             }
-            (ExWh::Whole(n), ExWh::MInfty) => {
-                if n > 0 {
-                    ExWh::MInfty
+            (Extended::Base(n), Extended::MInfty) => {
+                if n.is_positive() {
+                    Extended::MInfty
                 } else {
-                    ExWh::PInfty
+                    Extended::PInfty
                 }
             }
-            (ExWh::PInfty, ExWh::Whole(n)) => {
-                if n > 0 {
-                    ExWh::PInfty
+            (Extended::PInfty, Extended::Base(n)) => {
+                if n.is_positive() {
+                    Extended::PInfty
                 } else {
-                    ExWh::MInfty
+                    Extended::MInfty
                 }
             }
-            (ExWh::Whole(n), ExWh::PInfty) => {
-                if n > 0 {
-                    ExWh::PInfty
+            (Extended::Base(n), Extended::PInfty) => {
+                if n.is_positive() {
+                    Extended::PInfty
                 } else {
-                    ExWh::MInfty
+                    Extended::MInfty
                 }
             }
-            (ExWh::Overflow, _) => ExWh::Overflow,
-            (_, ExWh::Overflow) => ExWh::Overflow,
-            (ExWh::Whole(n1), ExWh::Whole(n2)) => {
-                let n3 = match i64::checked_div(n1, n2) {
+            (Extended::Overflow, _) => Extended::Overflow,
+            (_, Extended::Overflow) => Extended::Overflow,
+            (Extended::Base(n1), Extended::Base(n2)) => {
+                let n3 = match n1.checked_div(&n2) {
                     Some(n_t) => n_t,
-                    None => return ExWh::Overflow,
+                    None => return Extended::Overflow,
                 };
-                ExWh::Whole(n3)
-            }
-        }
-    }
-}
-
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
-pub enum ExRa {
-    MInfty,
-    Rational(Rational64),
-    Overflow,
-    PInfty,
-}
-
-impl std::fmt::Display for ExRa {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ExRa::MInfty => write!(f, "-♾️"),
-            ExRa::Rational(pq) => write!(f, "{pq}"),
-            ExRa::Overflow => write!(f, "Overflow"),
-            ExRa::PInfty => write!(f, "♾️"),
-        }
-    }
-}
-
-impl std::ops::Add for ExRa {
-    type Output = Self;
-
-    fn add(self, other: Self) -> Self {
-        match (self, other) {
-            (ExRa::MInfty, ExRa::PInfty) => panic!("Adding ♾️ to -♾️ is ill defined!"),
-            (ExRa::PInfty, ExRa::MInfty) => panic!("Adding -♾️ to ♾️ is ill defined!"),
-            (ExRa::MInfty, _) => ExRa::MInfty,
-            (_, ExRa::MInfty) => ExRa::MInfty,
-            (ExRa::PInfty, _) => ExRa::PInfty,
-            (_, ExRa::PInfty) => ExRa::PInfty,
-            (ExRa::Overflow, _) => ExRa::Overflow,
-            (_, ExRa::Overflow) => ExRa::Overflow,
-            (ExRa::Rational(pq1), ExRa::Rational(pq2)) => {
-                let pq3 = match <Ratio<i64>>::checked_add(&pq1, &pq2) {
-                    Some(pq_t) => pq_t,
-                    None => return ExRa::Overflow,
-                };
-                ExRa::Rational(pq3)
-            }
-        }
-    }
-}
-
-impl std::ops::Sub for ExRa {
-    type Output = Self;
-
-    fn sub(self, other: Self) -> Self {
-        match (self, other) {
-            (ExRa::MInfty, ExRa::MInfty) => panic!("Substracting -♾️ from -♾️ is ill defined!"),
-            (ExRa::PInfty, ExRa::PInfty) => panic!("Substracting ♾️ from -♾️ is ill defined!"),
-            (ExRa::MInfty, _) => ExRa::MInfty,
-            (_, ExRa::MInfty) => ExRa::PInfty,
-            (ExRa::PInfty, _) => ExRa::PInfty,
-            (_, ExRa::PInfty) => ExRa::MInfty,
-            (ExRa::Overflow, _) => ExRa::Overflow,
-            (_, ExRa::Overflow) => ExRa::Overflow,
-            (ExRa::Rational(pq1), ExRa::Rational(pq2)) => {
-                let pq3 = match <Ratio<i64>>::checked_sub(&pq1, &pq2) {
-                    Some(pq_t) => pq_t,
-                    None => return ExRa::Overflow,
-                };
-                ExRa::Rational(pq3)
-            }
-        }
-    }
-}
-
-impl std::ops::Mul for ExRa {
-    type Output = Self;
-
-    fn mul(self, other: Self) -> Self {
-        match (self, other) {
-            (ExRa::MInfty, ExRa::Rational(pq)) => match pq.cmp(&ZERO) {
-                Less => ExRa::PInfty,
-                Equal => panic!("Multiplying -♾️ by an 0 is undefined!"),
-                Greater => ExRa::MInfty,
-            },
-            (ExRa::Rational(pq), ExRa::MInfty) => match pq.cmp(&ZERO) {
-                Less => ExRa::PInfty,
-                Equal => panic!("Multiplying ZERO by -♾️ is undefined!"),
-                Greater => ExRa::MInfty,
-            },
-            (ExRa::PInfty, ExRa::Rational(pq)) => match pq.cmp(&ZERO) {
-                Less => ExRa::MInfty,
-                Equal => panic!("Multiplying ♾️ by an 0 is undefined!"),
-                Greater => ExRa::PInfty,
-            },
-            (ExRa::Rational(pq), ExRa::PInfty) => match pq.cmp(&ZERO) {
-                Less => ExRa::PInfty,
-                Equal => panic!("Multiplying ZERO by ♾️ is undefined!"),
-                Greater => ExRa::MInfty,
-            },
-            (ExRa::Rational(pq), ExRa::Overflow) => {
-                if pq == ZERO {
-                    ExRa::Rational(ZERO)
-                } else {
-                    ExRa::Overflow
-                }
-            }
-            (ExRa::Overflow, ExRa::Rational(pq)) => {
-                if pq == ZERO {
-                    ExRa::Rational(ZERO)
-                } else {
-                    ExRa::Overflow
-                }
-            }
-            (ExRa::MInfty, ExRa::PInfty) => ExRa::MInfty,
-            (ExRa::PInfty, ExRa::MInfty) => ExRa::MInfty,
-            (ExRa::PInfty, ExRa::PInfty) => ExRa::PInfty,
-            (ExRa::MInfty, ExRa::MInfty) => ExRa::PInfty,
-            (ExRa::MInfty, ExRa::Overflow) => {
-                panic!("Sign of multiplying -♾️ by an overflow is undefined!")
-            }
-            (ExRa::Overflow, ExRa::MInfty) => {
-                panic!("Sign of multiplying an overflow by -♾️ is undefined!")
-            }
-            (ExRa::PInfty, ExRa::Overflow) => {
-                panic!("Sign of multiplying ♾️ by an overflow is undefined!")
-            }
-            (ExRa::Overflow, ExRa::PInfty) => {
-                panic!("Sign of multiplying an overflow by ♾️ is undefined!")
-            }
-
-            (ExRa::Overflow, ExRa::Overflow) => ExRa::Overflow,
-            (ExRa::Rational(pq1), ExRa::Rational(pq2)) => {
-                let pq3 = match <Ratio<i64>>::checked_mul(&pq1, &pq2) {
-                    Some(pq_t) => pq_t,
-                    None => return ExRa::Overflow,
-                };
-                ExRa::Rational(pq3)
-            }
-        }
-    }
-}
-
-impl std::ops::Div for ExRa {
-    type Output = Self;
-
-    fn div(self, other: Self) -> Self {
-        match (self, other) {
-            (ExRa::MInfty, ExRa::PInfty) => panic!("Dividing -♾️ by ♾️ is undefined!"),
-            (ExRa::PInfty, ExRa::MInfty) => panic!("Dividing ♾️ by -♾️ is undefined!"),
-            (ExRa::PInfty, ExRa::PInfty) => panic!("Dividing ♾️ by ♾️ is undefined!"),
-            (ExRa::MInfty, ExRa::MInfty) => panic!("Dividing -♾️ by -♾️ is undefined!"),
-            (ExRa::MInfty, ExRa::Overflow) => {
-                panic!("Sign of dividing -♾️ by an overflow is undefined!")
-            }
-            (ExRa::Overflow, ExRa::MInfty) => {
-                panic!("Sign of dividing an overflow by -♾️ is undefined!")
-            }
-            (ExRa::PInfty, ExRa::Overflow) => {
-                panic!("Sign of dividing ♾️ by an overflow is undefined!")
-            }
-            (ExRa::Overflow, ExRa::PInfty) => {
-                panic!("Sign of dividing an overflow by ♾️ is undefined!")
-            }
-            (ExRa::MInfty, ExRa::Rational(pq)) => match pq.cmp(&ZERO) {
-                Less => ExRa::PInfty,
-                Equal => panic!("Sign of dividing by 0 is undefined!"),
-                Greater => ExRa::MInfty,
-            },
-            (ExRa::Rational(pq), ExRa::MInfty) => match pq.cmp(&ZERO) {
-                Less => ExRa::PInfty,
-                Equal => ExRa::Rational(ZERO),
-                Greater => ExRa::MInfty,
-            },
-            (ExRa::PInfty, ExRa::Rational(pq)) => match pq.cmp(&ZERO) {
-                Less => ExRa::MInfty,
-                Equal => panic!("Sign of dividing by 0 is undefined!"),
-                Greater => ExRa::PInfty,
-            },
-            (ExRa::Rational(pq), ExRa::PInfty) => match pq.cmp(&ZERO) {
-                Less => ExRa::PInfty,
-                Equal => ExRa::Rational(ZERO),
-                Greater => ExRa::MInfty,
-            },
-            (ExRa::Rational(pq), ExRa::Overflow) => {
-                if pq == ZERO {
-                    ExRa::Rational(ZERO)
-                } else {
-                    ExRa::Overflow
-                }
-            }
-            (ExRa::Overflow, ExRa::Rational(pq)) => {
-                if pq == ZERO {
-                    panic!("Sign of dividing by 0 is undefined!")
-                } else {
-                    ExRa::Overflow
-                }
-            }
-            (ExRa::Overflow, ExRa::Overflow) => ExRa::Overflow,
-            (ExRa::Rational(pq1), ExRa::Rational(pq2)) => {
-                if self == ExRa::Rational(ZERO) && other == ExRa::Rational(ZERO) {
-                    panic!("Dividing 0 by 0 is undefined!")
-                }
-                let pq3 = match <Ratio<i64>>::checked_div(&pq1, &pq2) {
-                    Some(pq_t) => pq_t,
-                    None => return ExRa::Overflow,
-                };
-                ExRa::Rational(pq3)
+                Extended::Base(n3)
             }
         }
     }
