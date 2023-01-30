@@ -5,6 +5,7 @@ use mathematics_lib::TwoDimentionalManifold::*;
 use searching::*;
 use searching_algorithm_lib::*;
 fn main() -> ! {
+    let mut p_q = String::new();
     loop {
         // match read_config("points_order_and_occurences".to_string())
         //     as Result<PointsOrderAndOccurencesConfig, Box<dyn Error>>
@@ -24,11 +25,10 @@ fn main() -> ! {
         // };
         println!("Enter a rational number.");
 
-        let mut p_q = String::new();
         io::stdin()
             .read_line(&mut p_q)
             .expect("Failed to read the line");
-        
+
         let p_q: Vec<i64> = p_q
             .split('/')
             .map(|number_string| number_string.trim().parse().expect("Please type a number!"))
@@ -37,6 +37,7 @@ fn main() -> ! {
         let p_q = Rational64::new(p_q[0], p_q[1]);
         println!("{:?}", points_order(p_q, Disk));
         println!("{:?}", points_orb(p_q, Disk, 0, 0));
+        
         // let config: PointsOrderAndOccurencesConfig;
         // loop {
         //     config = match read_config("points_order_and_occurences".to_string()) {

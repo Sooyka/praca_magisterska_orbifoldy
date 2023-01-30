@@ -449,6 +449,6 @@ pub fn read_config<C: serde::de::DeserializeOwned>(lib: String) -> Result<C, Box
     Ok(u)
 }
 #[derive(Serialize, Deserialize)]
-pub enum Config {
-    A,
+pub struct Config {
+    
 }

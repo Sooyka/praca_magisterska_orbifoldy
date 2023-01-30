@@ -31,6 +31,8 @@ pub struct PointsOrbifolds {
     pub omm_inf: HashSet<PosOmmRea>, // some orbifolds were possibly ommited due too the overflow or limits provided
 }
 
+
+
 pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder {
     let mut counters: Vec<ExWh> = vec![];
     let mut order = -1; // order of point outside of the specturm is -1
