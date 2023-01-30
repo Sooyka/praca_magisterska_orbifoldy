@@ -30,8 +30,6 @@ pub struct PointsOrbifolds {
     pub omm_inf: HashSet<PosOmmRea>, // some orbifolds were possibly ommited due too the overflow or limits provided
 }
 
-
-
 pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder {
     let mut counters: Vec<ExWh> = vec![];
     let mut order = -1; // order of point outside of the specturm is -1
@@ -198,20 +196,20 @@ fn co_to_orb(counters: &Vec<ExWh>, b_m: TwoDimentionalManifold) -> TwoDimentiona
         General { h: _, c_c: _, b_c } => {
             if b_c == 0 {
                 TwoDimentionalOrbifold {
-                    b_m: b_m,
+                    b_m,
                     r: counters.clone(),
                     d: vec![],
                 }
             } else {
                 TwoDimentionalOrbifold {
-                    b_m: b_m,
+                    b_m,
                     r: vec![],
                     d: vec![counters.clone()],
                 }
             }
         }
         _ => TwoDimentionalOrbifold {
-            b_m: b_m,
+            b_m,
             r: counters.clone(),
             d: vec![],
         },
@@ -277,7 +275,7 @@ pub fn points_orb(
                 counters[pivot] = counters[pivot] + Base(1);
                 match counters[pivot] {
                     ExWh::MInfty => panic!("Counters should not be equal to -♾️"),
-                    Base(_) => {},
+                    Base(_) => {}
                     ExWh::Overflow => {
                         // panic!("Counters should not be left on the Overflow state after main loop!")
                         flag = Less;

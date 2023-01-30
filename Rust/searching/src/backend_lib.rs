@@ -1,5 +1,4 @@
 use num_rational::*;
-use num_traits::ops::checked::*;
 use serde::{Deserialize, Serialize};
 use std::cmp::Ordering::*;
 use std::error::Error;
@@ -25,6 +24,11 @@ pub enum Extended<T> {
 pub type ExWh = Extended<i64>;
 pub type ExRa = Extended<Ratio<i64>>;
 
+impl<T> From<T> for Extended<T> {
+    fn from(value: T) -> Self {
+        Self::Base(value)
+    }
+}
 impl<T: std::fmt::Display> std::fmt::Display for Extended<T> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
@@ -36,9 +40,9 @@ impl<T: std::fmt::Display> std::fmt::Display for Extended<T> {
     }
 }
 
-impl Into<ExRa> for ExWh {
-    fn into(self) -> ExRa {
-        match self {
+impl From<ExWh> for ExRa {
+    fn from(value: ExWh) -> Self {
+        match value {
             ExWh::MInfty => ExRa::MInfty,
             ExWh::Base(n) => ExRa::Base(Rational64::from_integer(n)),
             ExWh::Overflow => ExRa::Overflow,
@@ -276,6 +280,4 @@ pub fn read_config<C: serde::de::DeserializeOwned>(lib: String) -> Result<C, Box
     Ok(u)
 }
 #[derive(Serialize, Deserialize)]
-pub struct Config {
-    
-}
+pub struct Config {}

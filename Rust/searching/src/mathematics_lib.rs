@@ -54,8 +54,8 @@ pub fn per_chi_orb(periods: &Vec<ExWh>) -> ExRa {
     chi_orb
 }
 
-pub fn rot_per_dif(n: ExWh) -> ExRa {
-    match n {
+pub fn rot_per_dif<T:Into<ExWh>>(n: T) -> ExRa {
+    match n.into() {
         Extended::MInfty => panic!("Orbipoint can not have anorder equal to -♾️"),
         Base(0) => panic!("Orbipoint can not have an order equal to 0!"),
         Base(n_0) => match i64::checked_sub(n_0, 1) {
@@ -67,8 +67,8 @@ pub fn rot_per_dif(n: ExWh) -> ExRa {
     }
 }
 
-pub fn dih_per_dif(n: ExWh) -> ExRa {
-    match n {
+pub fn dih_per_dif<T:Into<ExWh>>(n: T) -> ExRa {
+    match n.into() {
         Extended::MInfty => panic!("Orbipoint can not have anorder equal to -♾️"),
         Base(0) => panic!("Orbipoint can not have an order equal to 0!"),
         Base(n_0) => {
