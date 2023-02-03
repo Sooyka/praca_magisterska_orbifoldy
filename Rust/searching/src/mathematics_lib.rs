@@ -1,10 +1,10 @@
-use crate::backend_lib::*;
 use crate::backend_lib::Extended::*;
+use crate::backend_lib::*;
 use crate::mathematics_lib::TwoDimentionalManifold::*;
 use num_rational::*;
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, PartialEq, Serialize, Deserialize, Clone, Copy)]
+#[derive(Debug, PartialEq, Eq, Serialize, Deserialize, Clone, Copy)]
 pub enum TwoDimentionalManifold {
     Disk,
     Sphere,
@@ -16,7 +16,7 @@ pub enum TwoDimentionalManifold {
     },
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize, Clone)]
+#[derive(Debug, PartialEq, Eq, Serialize, Deserialize, Clone)]
 pub struct TwoDimentionalOrbifold {
     pub b_m: TwoDimentionalManifold, // base manifold
     pub r: Vec<ExWh>,                // rotational points
@@ -27,8 +27,8 @@ pub fn chi(m: &TwoDimentionalManifold) -> ExWh {
     match m {
         Disk => Base(1),
         Sphere => Base(2),
-        Genus(g) => Base(2) - Base(2)*Base(*g),
-        General { h, c_c, b_c } =>  Base(2)-(Base(2)*Base(*h)+Base(*c_c)+Base(*b_c)),
+        Genus(g) => Base(2) - Base(2) * Base(*g),
+        General { h, c_c, b_c } => Base(2) - (Base(2) * Base(*h) + Base(*c_c) + Base(*b_c)),
     }
 }
 
@@ -54,7 +54,7 @@ pub fn per_chi_orb(periods: &Vec<ExWh>) -> ExRa {
     chi_orb
 }
 
-pub fn rot_per_dif<T:Into<ExWh>>(n: T) -> ExRa {
+pub fn rot_per_dif<T: Into<ExWh>>(n: T) -> ExRa {
     match n.into() {
         Extended::MInfty => panic!("Orbipoint can not have anorder equal to -♾️"),
         Base(0) => panic!("Orbipoint can not have an order equal to 0!"),
@@ -67,7 +67,7 @@ pub fn rot_per_dif<T:Into<ExWh>>(n: T) -> ExRa {
     }
 }
 
-pub fn dih_per_dif<T:Into<ExWh>>(n: T) -> ExRa {
+pub fn dih_per_dif<T: Into<ExWh>>(n: T) -> ExRa {
     match n.into() {
         Extended::MInfty => panic!("Orbipoint can not have anorder equal to -♾️"),
         Base(0) => panic!("Orbipoint can not have an order equal to 0!"),
