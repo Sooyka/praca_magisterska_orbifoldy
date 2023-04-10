@@ -1,21 +1,43 @@
 % mainfile: ../praca_magisterska_orbifoldy.tex
 \chapter{Counting occurrences} \label{counting occurrences}
-In this chapter we would care not only whether the pointis or is not in the spectrum -- we will 
-give a closer look of how many orbifolds have particular \Eoc. \\
-Our ultimate goal is to give the answer to the questions such as: \\
-- For a given $x \in \sigma$, how many orbifolds have $x$ as their \Eoc?\\
-- Why? Is there some underlying geometrical reason for that?\\
-- Can we characterise points $x \in \sigma$ that has the most orbifolds corresponding to them? \\
-- Is there any reasonable normalisation to counter the effect that there are 'more' 
-points as we go 
-to lesser values. (What we mean by 'more' was sted in) \\
-The first equstion we can tackle is steaming from the chapter \ref{order structure} 
-and it is -- Do $\speD$ and $\speS$ coincide? It is easy to answer that $\speD \neq \speS$ 
-(and we will do that along some harder questions in the moment), but do they coincide 
-starting from a sufficiently distant point? Or maybe, for every denominator, do they coincide 
-from a sufficiently distatn point? (Yes.) \\
-\todo{przenieść (przekopiować?) część może do futher direction}
-write about cyclic order
+%In this chapter we would care not only whether the pointis or is not in the spectrum -- we will 
+%give a closer look of how many orbifolds have particular \Eoc. \\
+%Our ultimate goal is to give the answer to the questions such as: \\
+%- For a given $x \in \sigma$, how many orbifolds have $x$ as their \Eoc?\\
+%- Why? Is there some underlying geometrical reason for that?\\
+%- Can we characterise points $x \in \sigma$ that has the most orbifolds corresponding to them? \\
+%- Is there any reasonable normalisation to counter the effect that there are 'more' 
+%points as we go 
+%to lesser values. (What we mean by 'more' was sted in) \\
+%The first equstion we can tackle is steaming from the chapter \ref{order structure} 
+%and it is -- Do $\speD$ and $\speS$ coincide? It is easy to answer that $\speD \neq \speS$ 
+%(and we will do that along some harder questions in the moment), but do they coincide 
+%starting from a sufficiently distant point? Or maybe, for every denominator, do they coincide 
+%from a sufficiently distatn point? (Yes.) \\
+%\todo{przenieść (przekopiować?) część może do futher direction}
+%write about cyclic order
+
+The central question of this section is: "given a rational number, how many orbifolds 
+have that \Eoc ?". The warning for this chapter is, that this question will remain unansweared, 
+however, we can provide some glimpse into the partial answear.
+
+%To answear this, we should 
+%first check, whether for any number, there are only fihis numer is always finite.
+%Secondly:
+In the first section, we will show that for any number, there are only finitely many 
+orbifolds with that \Eoc. 
+In sebsequent section, we will separate the problem of finding the exact number into 
+more arithmetical 
+part and one more combinatorial.
+
+%There are two aspects of counting occurensec
+%Even three.
+%One, we can state some finitness conditions -- this is useful, to sort out what questions 
+%are meaningfull
+%Then there are study of expressions of he form:
+%arithmetical expresions
+%and the study of cmbinatorics.
+
 \section{Finitenes}
 
 %Here we will show that for any $x \in \sigma$:
@@ -29,16 +51,17 @@ write about cyclic order
 For any $x \in \sigma$ and $n \in \mathbb{N}$ there are only finitely many orbifolds 
 with the \Eoc\ greater or equal to $x$ and all orbipoints of order at most $n$.
 \end{observation}
-\textbf{Proof:} \\
+\noindent\textbf{Proof:} 
+
 For a given $x$, there are only finitely many manifolds 
 with an Euler characteristic $y \geq x$. Only them can be 
 base manifolds for an orbifold with an \Eoc\ $y'\geq x$, as adding orbipoints always 
-decreases an \Eoc\ . \\
-It remains to proove then, that for any base manifold $M$, there are only finetly many orbifolds, 
-with: \\
--an \Eoc\ $y \geq x$, \\
--all orbipoints of order at most $n$ and\\  
--with $M$ as a base manifold. \\
+decreases an \Eoc. 
+
+It remains to prove then, that for any base manifold $M$, there are only finetly many orbifolds, 
+with $M$ as a base manifold, that have 
+ an \Eoc\ $y \geq x$, and all orbipoints of order at most $n$.
+
 We proceed now simmilarly to the proof of \ref{finiteness_lemma} -- 
 on the orbifold with an \Eoc\ $y \in [x,2]$, there can be at most 
 $\max \{\lfloor 4(1-x) \rfloor, \lfloor 2(2-x) \rfloor\}$ orbipoints. 
@@ -53,7 +76,8 @@ all orbipoints of order at most $n$ and $M$ as a base manifold.$_\square$
 For any $x \in \sigma$ there are only finitely many orbifolds 
 with the \Eoc\ equal to $x$.
 \end{theorem}
-\textbf{Proof:} \\
+\noindent\textbf{Proof:} 
+
 % Suppouse, that there exists an orbifold with an \Eoc\ qual to $x$. Then, 
 Let $x$ be a rational number. 
 Let $\mathcal{O}$ be the set of all orbifolds with 
@@ -62,15 +86,19 @@ Those orbifolds can have different base manifolds. However, the set of base mani
 orbifolds from $\mathcal{O}$ is finite, as there are only finitely many 
 two dimentional manifolds with an Euler characteristic greater or equal to $x$ and an 
 orbifold always has 
-an \Eoc\ less or equal to the Euler characteristic of its underlying manifold. \\
+an \Eoc\ less or equal to the Euler characteristic of its underlying manifold. 
+
 %We will now provide an argument that shows that for any base manifold $M$, the number 
 %of $M$ orbifolds with \Eoc\ equal to $x$ is finite. It will complete the proof of our theorem.\\
 It remains to proof, that for any base manifold $M$, the number of $M$ orbifolds 
-with \Eoc\ equal to $x$ is finite: \\
-Let $M$ be a two dimentional manifold. \\
+with \Eoc\ equal to $x$ is finite: 
+
+Let $M$ be a two dimentional manifold. 
+
 For the sake of contradiction, assume, that there exists an infinite set $\mathcal{O}_M$
-of $M$-orbifolds such that $\mathcal{O}_M \subseteq \mathcal{O}$. ($\ast$)\\ 
-Let $\mathcal{O}_M = \{O\}_{i \in I}$. 
+of $M$-orbifolds such that $\mathcal{O}_M \subseteq \mathcal{O}$ ($\ast$).
+
+Let $\mathcal{O}_M = \{O_i\}_{i \in I}$. 
 For each $i$, let $s_i = (I^0_i, \cdots, I^{k_i}_i; b^0_i, \cdots, b^{l_i}_i)$ be the signature 
 of $O_i$ written with decreasing orders of rotational orbipoints and decreasing orders of 
 dihedral points. So for each $i$ we have, that $I^0_i$ is 
@@ -85,24 +113,26 @@ by some $n \in \mathbb{N}$ it would mean, that $\mathcal{O}_M$ would be finite. 
 from ($\ast$) this is not the case, we know
 that the set $\{I^0_i\}_{i \in I} \cup \{b^0_i\}_{i \in I}$ is unbounded. 
 Let $\{i_n\}_{n\in \mathbb{N}} \subseteq I$ be a sequence of indeces such that
-$\{(I^0_{i_n}, b^0_{i_n})\}_{n\in \mathbb{N}}$ is strictly increasing on one cordinate 
-and non-decreasing on the other. \\
+$\{(I^0_{i_n}, b^0_{i_n})\}_{n\in \mathbb{N}}$ is strictly increasing on one coordinate 
+and non-decreasing on the other. 
+
 %Let $\{a_n\}$ be the sequence such that $a_n = \frac{m_n-1}{m_n} \end{cases}$ if point 
 %corresponding 
 %to $m_n$ is an rotational point and $a_n = \frac{m_n-1}{2m_n}$ if point corre 
-Let $\{x_n\}$ be the sequence such that $x_n = \Delta(I^0_{i_n},b^0_{i_n})$.
-Let $\{y_n\}$ be the sequence such that $y_n = \Delta(I^1_{i_n},\cdots,
+Let $\{a_n\}$ be the sequence such that $a_n = \Delta(I^0_{i_n},b^0_{i_n})$.
+Let $\{b_n\}$ be the sequence such that $b_n = \Delta(I^1_{i_n},\cdots,
 I^{k_{i_n}}_{i_n}, b^1_{i_n},
 \cdots, b^{l_{i_n}}_{i_n})$. 
-So for every $n$ we know $\cho{O_n} = \chi(M) + a_n + b_n$. As $\{(I^0_{i_n}, b^0_{i_n})\}$ 
+So for every $n$ we know $\cho{O_{i_n}} = \chi(M) + a_n + b_n$. As $\{(I^0_{i_n}, b^0_{i_n})\}$ 
 is strictly 
 increasing on one cordinate and non-decreasing on the other, we know 
-that $x_n$ is strictly decreasing, so $y_n$ must be strictly 
+that $a_n$ is strictly decreasing, so $b_n$ must be strictly 
 increasing,  
 %(*), 
-because $\cho{O_n}$ is constant for all $n$ (all $O_n$ 
-are from the family with \Eoc\ equal to $x$). \\ 
-But $\{y_n\} \subseteq \spebr{M} - \chi(M)$. 
+because $\cho{O_{i_n}}$ is constant for all $n$ (all $O_{i_n}$ 
+are from the family with \Eoc\ equal to $x$). 
+
+But $\{b_n\} \subseteq \spebr{M} - \chi(M)$. 
 From \ref{well_order} and \ref{times_two_fact} we know that $\spebr{M}$ has no infinite 
 strongly increasing sequences, so 
 $\spebr{M} - \chi(M)$ has no infinite strongly increasing sequences. That gives us a 
@@ -157,98 +187,80 @@ $_\square$
 %%\begin{observation}
 
 %%\end{observation}
-\section{$\speD$ and $\speS$}
-In this section we would like to 
-%develop the tools and 
-answer some questions about 
-%interrelationships
-relations between $\speD$ and $\speS$. \\
-The first, stated in \ref{} is that $2\speD=\speS$. 
-This tells us all about simmilarities of their topological structures -- namely, 
-they are the same, 
-but it does not directly answers questions about how they lie in $\mathbb{R}$, relative 
-to each other.
-%\subsubsection{Some preliminary observations}
-\todo{dopisać trochę inną motywację}
-\\[16pt]
-We now state some observations that will be usefull in this section.
-\begin{observation}
-If an \Eoc\ is an accumulation point of order $n$ in $\speD$ (respectively $\speS$), 
-there exist an $D^2$ (resp. $S^2$) 
-orbifold with $n$ dihedral (resp. rotational) points of that \Eoc. 
-\end{observation}
-prrof. from chapter 3. (todo: dopisać)
-\begin{observation}\label{adding_multiplied_differences}
-If $x \in \speD$ (respectively $\speS$), then $1-x$ (resp. $2-x$) is a difference in 
-\Eoc\ resulting 
-from some set of dihedral (resp. rotational) points. From that $1-n(1-x) \in \speD$ (resp. 
-$2-n(2-x)\in \speS$) 
-for all $n \in \mathbb{N}$. 
-\end{observation}
-\subsection{$-\frac{1}{84}$ and $-\frac{1}{42}$}
-//Why it is how it is//
-%\subsection{All the accumulation points of the $\speS$ are in $\speD$}
-\subsection{Accumulation points of the $\speS$}
+
+\section{Dividing the problem into an arithmetical and combinatorial parts}
+
+Given a number $x$, the question about how many orbifolds have $x$ as an \Eoc\ can be 
+partially expressed by asking the question how many of sums of the form:
+\begin{equation}
+1-\sum_{i=1}^n \frac{d_i-1}{2d_i}
+\end{equation} 
+and
+\begin{equation}
+2-\sum_{i=1}^n \frac{r_i-1}{r_i}
+\end{equation}
+with $n\in \mathbb{N}$ and $\forall_i\ d_i,r_i\in\mathbb{N}\cup\{\infty\}$, are equal to $x$. 
+
+It is a matter of convention (and then coherently translating this convention to the final result) 
+what sums are we treating as "the same". The convention we will take, is that a sum is determined 
+uniquly by the tuple $(d_1,\dots,d_n)$ \rba{or $(r_1,\dots,r_n)$} of orders 
+of orbipoints, ordered in deacreasing order, appearing in the sum. 
+
+This covers the arithmetics and combinatorics of the "orbifold" part of the problem. 
+In this sums there is a structure of what \Eoc\ orbipoints can produce. 
+The question "How many different sums (understood by above convention) are equal to a given $x$?" 
+will be the first part of the problem, the arithmetical part, adressed in 
+\ref{conting_arithmetical}. This will be the hard and unanswered part.
+
+This however, does not give us the full information. For once, without changing \Eoc\ some 
+orbipoints can be replaced by a features on a manifold such as handles, cross-cups and 
+boundry components. Secondly, when the orbipoints lie on the boundry components, their 
+order matters, and orbifolds with orbipoints on boundry components with different order 
+are not neccesery the same. 
+
+This gives us a question -- "How many different orbifolds produce the same sum?".
+This will be answeared in the section \ref{counting_combinatorics}.
+The other question is -- "How many manifold with some sums correspont to $x$?" and this will 
+be treated in \ref{conting_diff_man}. 
+
+\section{Arithmetical part}\label{conting_arithmetical}
+
+\subsection{Translating question to ones about Egyptian fractions}\label{Egyptian_fractions}
+p
+\subsection{Unboundeness of some number of occurences}
+We know, that for any $x$, there are only finetely many orbifolds with $x$ as an \Eoc . 
+However, we can ask about some boundness of number of these orbipoints. 
+In particular, we could ask, whether near any accumulation point, there will be $x$ with an 
+arbitrary large number of orbifolds corresponding to it. 
+The answer will be yes, and it can be formulated as such:
 \begin{theorem}
-All accumulation points of the $\speS$ are in $\speD$.
+For any neighbourhood $U$ of any accumulation point of $\speD$ of order at least $2$, for any 
+$n\in \mathbb{N}$, 
+there exists an $x\in U$ such that there are at least $n$ orbifolds with $x$ as their 
+\Eoc.
 \end{theorem}
-There are two proofs of this theorem showing nice correnpondence -- one arithmetical and 
-one geometrical. 
-\\
-\textbf{Proof I.}
-%\subsubsection{Arithmetical reason}
-\textbf{Arithmetical reason} \\
-We assume that $x \in \speS$ is an \apots\ $\speS$.\\
-%If $x \in \speS$, then $\frac{x}{2} \in \speD$. Then $1 - \frac{x}{2}$ 
-%is a difference in \Eoc\ resulting from some set of cone points. We can add to the disc twice as 
-%many cone points and resulting orbifold $\mathcal{O}$ will have an \Eoc\ equal to 
-%$1 - 2(1-\frac{x}{2}) = x - 1$. From \ref{third_order_lemma} for the thesis it is sufficient 
-%to $x - 1$ to be an \apots\ $\speD$ of order at least two. \\
-%%$2-x$ is a difference in \Eoc\ resulting from some set of gyration points. We can 
-%We asumed that $x \in \speS$ is an \apots\ $\speS$, so, 
-By \ref{times_two_fact} we have, that 
-$\frac{x}{2} \in \speD$ is an \apots\ $\speD$. From \ref{third_order_lemma} we have that 
-$\frac{x}{2} + \frac{1}{2} \in \speD$. From that, from \ref{adding_multiplied_differences} 
-we have, 
-that $1-\overbrace{2}^{\substack{"n"\rm\ from\ \\ 
-\rm \ref{adding_multiplied_differences}}} 
-(\ \overbrace{1-(\frac{x}{2}+\frac{1}{2})}^{\substack{"1-x"\rm\ 
-from\ \\ \rm \ref{adding_multiplied_differences}}}\ ) \in \speD$. But $1 - 2(1-(\frac{x}{2}+
-\frac{1}{2})) = x$, so $x \in \speD$. $_\square$
-% for some $y \in \speD$, so $\speD$.
-\\[2pt]
-\textbf{Proof II.}
-%\subsubsection{Geometrical reason}
-\textbf{Geometrical reason} \\
-We assume that $x \in \speS$ is an \apots\ $\speS$.\\
-%If $x \in \speS$
-From \ref{predescors} we know, that $x$ can be expressed as $y - 1$ for some $y \in \speS$. \\
-Let $\mathcal{O}$ be an orbifold with the base manifold $S^2$, such that $\cho{\mathcal{O}} 
-= y$. \\
-Let $\mathcal{O}_c$ be the orbifold created from $\mathcal{O}$ by adding one cusp. 
-Then $\cho{\mathcal{O}_c} = y - 1 = x$. Topologically $\mathcal{O}_c$ with the cusp point 
-removed (which do not change an orbicharacteristic) is $\mathbb{R}^2$. 
-We can compactify it with $S^1$. This will not change an \Eoc\ since $\cho{S^1} = 0$ and 
-\Eoc\ is additive.
-\\ What we get is an orbifold $\mathcal{O}_D$ with the base 
-manifold $D^2$ and the same 
-orbipoints as $\mathcal{O}$. Since orbipoints of $\mathcal{O}$ create a difference 
-in \Eoc\ equal to $2-y$, we have that $\cho{\mathcal{O}_D} = 1 - (2-y) = y - 1 = x$. 
-We can then move all orbipoints from the interior of $\mathcal{O}_D$ to its boundry 
-by doubling them, so $x \in \speD$. $_\square$
+\textbf{Proof.}\\
+This will follow from the theorem about the sums of egiptian fractions from \cite{Browning2011}.
+It states that for ...
+%Napisać, że dowolnie blisko każdego punktu skupienia da się znaleźć liczbę o dowolnie wielu 
+%odpowiadających jej orbifoldach.
 
-\section{Translating questions to ones about Egyptian fractions}\label{Egyptian_fractions}
-
-\section{Estimations of the number of occurences}
-Napisać, że dowolnie blisko każdego punktu skupienia da się znaleźć liczbę o dowolnie wielu 
-odpowiadających jej orbifoldach.
-
-\todo{dac jakieś źródła i ok}
+%\todo{dac jakieś źródła i ok}
 
 
 
+\section{Combinatorial part}\label{counting_combinatorics}
+This case is simple in 
 
+\section{Different manifolds}\label{conting_diff_man}
+The question about different manifolds can be changed for the question about order of 
+accumulation. 
 
+For a point $x$, if it is of order $n$, then all $x+1,...,x+n$ are also in the spcterum
+as such we can take differences
+
+all that n can go into manifold features.
+ 
 
 %\section{Deformations on orbifolds?}
 

@@ -362,9 +362,9 @@ which is open.$_\square$
 \todo{Zapytać się kogoś z topologii/teorii mnogości}
 
 \begin{lemma}
-For two well ordered sets $A, B \subseteq \mathbb{R}$, with order types, respectively $\omega^n$ 
-and $\omega^m$, 
-such that $n < m$, we have that order type of $A \cup B$ is well defined and 
+For two well ordered sets $A, B \subseteq \mathbb{R}$, with order types, respectively $\omega^m$ 
+and $\omega^n$, 
+such that $m < n$, and that $\exists_{b\in B}\forall_{a\in A}a<b$, we have that order type of $A \cup B$ is well defined and 
 equal to $\omega^m$.
 \end{lemma}
 \textbf{Proof.} \\
@@ -376,6 +376,52 @@ We will show that $\gamma \leq \omega^m$ and $\gamma \geq \omega^m$,
 thus showing that $\gamma = \omega^m$. \\
 
 $\bullet$ $\gamma \leq \omega^m$: \\
+
+\begin{lemma}\label{accumulation_points_and_order}
+Let $A \subseteq \mathbb{R}$ be a bounded, well ordered set. 
+Then $A$ has an accumulation point $a$ of order 
+$n \in \mathbb{N}$ (it may be that $a \notin A$) iff order type of $A$ is at least $\omega^n$. 
+\end{lemma}
+
+\textbf{Proof.}\\
+Inductive, with respect to $n$ in $\omega^n$.
+
+$\bullet$ $n=0$
+Let us suppouse, that $A$ has an accumulation point of order $0$.
+Having an accumulation point of order $0$ means that $A$ is non-empty. As that it has an order 
+type of at least $\omega^0 = 1$. \\
+
+Let us suppouse, that $A$ has order type at least $\omega^0=1$. Then it is non-empty, so it 
+has at least one accumulation point of order $0$. 
+
+$\bullet$ Induction step
+
+Let us suppouse that $A$ has an accumulation point $a$ of order $n+1$. This means that every 
+neighbourhood of $a$ we can find infinetely many accumulation points of $A$ of order $n$. 
+Let take one such neighbourhood and one such family $\{b_i\}_{i \in \mathbb{N}}$ 
+of accumulation points of order $n$. 
+Let us then take family of pairwise disjoint neibourhoods $\{U_i\}_{i\in\mathbb{N}}$ of 
+$\{b_i\}_{i \in \mathbb{N}}$. Let $A_i \coloneqq U_i\cap A$. 
+
+From the induction assumption for all $i$, we have that $A_i$ is of order type at least 
+$\omega^n$. As that, we managed to show an pairwise disjoint inclusions of countably many sets 
+of order type at least $\omega^n$ into $A$. As that we have the order preserving inclusion of 
+$\omega^{n+1}$ into $A$, so $A$ is of order type at least $\omega^{n+1}$. \\
+
+Let us now suppouse that $A$ has the order type of at least $\omega^{n+1}$. Then, we can find 
+a family $\{A_i\}_{i \in \mathbb{A}}$ 
+of pairwise disjoint subsets of $A$, each of order type $\omega^{n}$, with the property $(\ast)$, 
+that $\forall_{i,j\in\mathbb{N}}i<j \implies \forall_{x \in A_i,y\in A_j} x< y$. 
+
+From the inductive 
+assumption, for all $i$, we have that $A_i$ has an accumulation point of order $n$. Let 
+$\{b_i\}_{i\in\mathbb{N}}$ be the set of thouse accumulation points.
+Because of the property $(\ast)$, thouse accumulation points are pairwise distinc, between 
+$A_i, A_j$, with $i\neq j$. Since $A$ is bounded, we have that, the set $\{b_i\}_{i\in\mathbb{N}}$ 
+is bounded, so it has an accumulation point $a$. As an accumulation point of the accumulation 
+points of order $n$, it is an accumulation point of order $n+1$. $_\square$ 
+
+
 
 
 

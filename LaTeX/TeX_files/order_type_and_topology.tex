@@ -6,9 +6,11 @@
 %
 %1537/137
 %
+
 In this chapter we will discuss that both the order type and the topology 
-of the set of all possible Euler orbicharacteristics 
-of two-dimensional orbifolds are that of $\omega^\omega$. We will call this set $\spe$.
+of the set $\spe$ of all possible Euler orbicharacteristics 
+of two-dimensional orbifolds are that of $\omega^\omega$. 
+%We will call this set $\spe$.
 %We will see (in the observation \ref{boils_down}) that the problem of determining this boils
 % down to the 
 % analysis of all 
@@ -33,10 +35,11 @@ of two-dimensional orbifolds are that of $\omega^\omega$. We will call this set 
 %some questions about the spectrum are equivalent to some regarding Egyptian fractions. 
 %More on this connection is discussed in \ref{Egyptian_fractions}.
 \\[4pt]
-\textbf{Disclaimer}\\
-For now, until Chapter \ref{counting occurrences} named "Counting occurrences", 
+%\textbf{Disclaimer}\\
+For now, until chapter \ref{counting occurrences} named "Counting occurrences", 
 we will not pay attention 
-to how many orbifolds have the same Euler orbicharacteristic. 
+to how many orbifolds have the same Euler orbicharacteristic, only whether a particular 
+number is an \Eoc\ for at least one orbifold or not. 
 %Let us note, that 
 %Euler orbicharacteristic does not depend on the cyclic order of points on 
 %the components of the boundary. 
@@ -61,22 +64,33 @@ to how many orbifolds have the same Euler orbicharacteristic.
 %a particular cyclic order.  \\
 
 \section{Reductions of cases}
-Now we want to make some reductions to limit number of cases that we will be dealing with. \\ 
+In this section we want to make some reductions to 
+limit number of cases that we will be dealing with. 
+
 We aim to find a minimal set $B$ of base manifolds that "covers all the cases" i.e. $B$ 
 such that any for any $x \in \spe$ there 
 is an orbifold $O$ with a base manifold from $B$ such that $\cho{O} = x$.
 %We aim to limit the number of base manifolds as much as possible while keeping entire spectrum. 
-It will turn out it can be done such that we are left with $B = \{S^2, D^2\}$ and there is 
-no futher reduction possible. \\ 
+It will turn out that $B = \{S^2, D^2\}$ and there are
+% it can be done such that we are left with $B = \{S^2, D^2\}$ and there is 
+no futher reductions possible. 
+
 %For this chapter we will consider orbifolds according to a definition from 
 %(\ref{Disk_and_sphere_with_defects}). \\
-Given an orbifold $O_1$, we want to perform some operations from \ref{Operations} on it such that the resulting orbifold 
+Given an orbifold $O_1$, we want to perform some operations from \ref{Operations} on it, such that the resulting orbifold 
 $O_2$ will have the same Euler orbicharactristic, but the base manifold of $O_2$ would have as 
-big Euler characteristic as possible. \\ 
+big Euler characteristic as possible. 
+
 The Euler orbicharacteristic of base manifold depends only on the number of handles, cross caps 
-and boundry components. And, as stated in \ref{E_orb} it is: \\ 
+and boundry components. And, as stated in \ref{E_orb} it is: 
+\begin{equation}
+2-2h-c-b
+\end{equation}
+\smalltodoII{opisać i wybrać oznaczenia}
+
 For ever such a manifold feature we want to find an orbifold features with the same 
-Euler orbicharacteristic delta.  \\
+Euler orbicharacteristic delta.  
+
 %To do this we want to eliminate handles 
 %Let us observe, that:
 One of the ways to do that is by observing that:
@@ -86,7 +100,6 @@ One of the ways to do that is by observing that:
 \hspace{3cm}\Delta(\times) =& \hspace{-1cm} &-1& \hspace{-1cm} &= \Delta((^\ast 2)^4)
 \end{align}
 So we see that from any orbifold we can eradicate handles ....       
-
 \begin{align}
 \hspace{3cm}\Delta(n) =& \hspace{-1cm} &\frac{n-1}{n}& \hspace{-1cm} 
 &= \Delta((^\ast n)^2)\label{third_reduction}
@@ -101,8 +114,8 @@ From this we can conclude that every Euler orbicharacteristic can be obtained
 by an orbifold with base manifold $S^2$ or $D^2$. 
 Examples of rational numbers from $\speS \setminus \speD$ and $\speD \setminus \speS$ are:
 We will provide examples 
-Futher examination of connections between $\speD$ and $\speS$ is performed in 
-\ref{counting_occurences}
+Futher examination of connections between $\speD$ and $\speS$ is performed in \ref{D_and_S}.
+%\ref{counting_occurences}
 
 %From this we can conclude, that every Euler orbicharacteristic can be obtained 
 %by an orbifold of signature of a type ($n$ and $m$ are arbitrary):
@@ -127,6 +140,8 @@ Futher examination of connections between $\speD$ and $\speS$ is performed in
 %and multiplying by $2$ is the order preserving homeomorphism of $\mathbb{R}$. \\[16pt]
 
 %Now we can make aforementioned observation:
+The result of our reductions, can be expressed as:
+
 In the terms of set relations:
 \begin{observation}
 If two-dimentional manifold $M$ has no boundry, then
@@ -188,16 +203,24 @@ and
 \begin{equation}
 1 - \sum_{j=1}^m \frac{b_j-1}{2b_j},
 \end{equation}
-with $I_i$ and $b_j$ ranging over $\mathbb{N}_{>0}\cup \{\infty\}$. 
+with $I_i$ and $b_j$ ranging over $\mathbb{N}_{>0}\cup \{\infty\}$.
+%, with a convention 
+%that $\varphi(\infty) \coloneqq \lim\limits_{k\to \infty} \varphi(k)$. 
 \end{observation}
 As stated in \ref{cusp_reduction} we can perform futher reductions to have an orbifold with 
 particular orbicharacteristic without cusps (if needed) and then (after these reductions) 
 we can analyse only expressions with $I_i$ and $b_j$ ranging over $\mathbb{N}_{>0}$ and 
-they will still give us full spectrum. \\ 
+they will still give us full spectrum. 
+
 However, as stated later, it will be more convenient to us to include orbifolds with cusps 
-so we are stating above remark only for readers information. \\ 
- The fact that it agrees with the definition of the \Eoc\ on the geometrical terms was 
-addressed in \ref{extended_Euler_orbicharacteristic}. 
+so we are stating above remark only for readers information. 
+
+The fact that it agrees with the definition of the \Eoc\ on the geometrical terms was 
+addressed in \ref{extended_Euler_orbicharacteristic}. \\
+
+To determine order type and topology of $\spe$ we will first study how $\speD$ looks like. 
+Then, remembering that 
+$\spe = \speS \cup \speD$ and $\speS = 2\speD$ we will make an argument for $\spe$. 
 
 %We also have shown that all possible \Eoc s are achieved without using cusps. As such, 
 %we will use 
@@ -224,14 +247,13 @@ addressed in \ref{extended_Euler_orbicharacteristic}.
 
 
 \section{Order type and topology of $\speD$}
-To determine order type and topology of $\spe$ we will first study how $\speD$ looks like. 
-Then, remembering that 
-$\spe = \speS \cup \speD$ and $\speS = 2\speD$ we will make an argument for $\spe$. \\
+
+
 In this section we will also describe precisely where accumulation points of $\speD$ lie and of 
  which order 
 (see below \ref{accumulation_points_definitions}) they are. Analysis of locations of those 
 accumulation points, as interesting as it is alone will also be necessery for providing 
-our argument about order type and topology of $\speD$. \\
+our argument about order type and topology of $\speD$. 
 \subsection{Definition and properties of order of accumulation points}
 \label{accumulation_points_definitions} 
 %We start with one technical definition of "transitive order" that will be almost what we want
@@ -293,7 +315,8 @@ of above definitions, that is, an accumulation point of order at least one.
 \subsection{Analysis of locations of accumulation points of $\speD$ with respect to their order}
 %\subsubsection{Some preliminary observations}
 We want to determine where exactly are accumulation points of the set $\speD$ with 
-respect to their orders. \\
+respect to their orders. 
+
 For this we will use  
 a handful of observations and lemmas. 
 \begin{observation}\label{accumulation_points_are_in_the_spectrum}
@@ -315,11 +338,13 @@ many Euler orbicharacteristics
 in the interval $[x,1] \cap \speD$ of orbifolds that have points of order equal 
 at most $n$. 
 \end{lemma}
-\textbf{Proof.} \\
+\textbf{Proof.} 
+
 Let $x \in (-\infty, 1]$. There can be at most $\lfloor 4(1-x) \rfloor$ orbipoints on the 
 $D^2$ orbifold 
 with an \Eoc\ $y \in [x,1]$ since each orbipoint decreases an \Eoc\ by at least $\frac{1}{4}$ 
-and the Euler characteristic of $D^2$ is $1$. \\
+and the Euler characteristic of $D^2$ is $1$. 
+
 There are only $(n-1)^{\lfloor 4(1-x) \rfloor}$ possible sets of $\lfloor 4(1-x) \rfloor$ 
 orbipoints' orders that are less or equal than $n$. Hence, there are only at most 
 $(n-1)^{\lfloor 4(1-x) \rfloor}$ possible \Eoc s.
@@ -329,13 +354,15 @@ $(n-1)^{\lfloor 4(1-x) \rfloor}$ possible \Eoc s.
 If $x$ is an acccumulation point of the set $\speD$ of order $n$, then $x-\frac{1}{2}$ is a
  accumulation point of the set $\speD$ of order at least $n+1$. 
 \end{lemma}
-\textbf{Proof.} \\
-Inductive. \\
+\noindent\textbf{Proof.} \\
+Inductive. 
+
 $\bullet$ $n = 0$: If $x$ is an isolated point of the set $\speD$, then $x \in \speD$. 
 From that, we 
 have, that points $x - \frac{k-1}{2k}$ are in $\speD$ for all $k \geq 1$, from that, that 
 $x-\frac{1}{2}$ is a 
-accumulation point of $\speD$. \\
+accumulation point of $\speD$. 
+
 $\bullet$ inductive step: Let $x$ be an acccumulation point of the set $\speD$ of an order 
 $n > 0$. 
 Let $a_k$ be a sequence of accumulation points of order $n-1$ convergent to $x$. From the 
@@ -348,7 +375,8 @@ If $x$ is an acccumulation point of the set $\speD$ of order $n$, then $x+\frac{
 an acccumulation point of the set $\speD$ of order at least $n-1$.  
 \end{lemma}
 \noindent\textbf{Proof.} \\  
-Inductive \\
+Inductive 
+
 $\bullet$ $n = 1$: We assume, that $x$ is an acccumulation point of isolated points of the set 
 $\speD$. 
 %Let us observe
@@ -381,13 +409,15 @@ If $x$ is an acccumulation point of the set $\speD$ of order $n+1$, then \\
 $x - \frac{1}{2}$ is an acccumulation point of the set $\speD$ of order $n+2$ and \\
 $x + \frac{1}{2}$ is an acccumulation point of the set $\speD$ of order $n$. 
 \end{lemma}
-\noindent\textbf{Proof.} \\
+\noindent\textbf{Proof.} 
+
 Let $x$ be an acccumulation point of the set $\speD$ of order $n+1$. From the lemma 
  \ref{first_order_lemma} we know, that $x - \frac{1}{2}$ is an acccumulation point of the set 
  $\speD$ of order at least $n+2$. Now let us assume (for a contradiction), that $x - \frac{1}{2}$ 
  is an \apots $\speD$ of order $k>n+2$. But then from the lemma \ref{second_order_lemma} 
  we have that $x$ is an acccumulation point of the set $\speD$ of order at least $n+2$ and that 
- is a contradiction. \\
+ is a contradiction. 
+ 
 Analogously, from the lemma \ref{second_order_lemma} we know, that $x + \frac{1}{2}$ is a 
 accumulation point of the set $\speD$ of order at least $n$. Let us assume (for a contradiction), 
 that $x+ \frac{1}{2}$ is an acccumulation point of the set $\speD$ of order $k>n$. But then 
@@ -398,9 +428,11 @@ of order at least $n+2$ and that is a contradiction. $_\square$
 For all $n \in \mathbb{N}$ all accumulation points of the set $\speD$ of order $n$ are in $\speD$.
 \end{lemma}
 \noindent\textbf{Proof.} \\
-Inductive \\
-$\bullet$ $n=0$: Clear, as they are isolated points of $\speD$. \\
-$\bullet$ inductive step: Let $x$ be a \apots  $\speD$ of order $n>0$. From the lemma 
+Inductive 
+
+$\bullet$ $n=0$: Clear, as they are isolated points of $\speD$. 
+
+$\bullet$ inductive step: Let $x$ be a \apots\  $\speD$ of order $n>0$. From the lemma 
 \ref{third_order_lemma} point $x+\frac{1}{2}$ is an acccumulation point of the set $\speD$  
 of order $n-1$. From the inductive assumption $x+\frac{1}{2} \in \speD$. Then, 
 from \ref{accumulation_points_are_in_the_spectrum}, we have that $x \in \speD$. 
@@ -410,8 +442,10 @@ $_\square$
 The greatest \apots\ $\speD$ of order $n$ is $1-\frac{n}{2}$.
 \end{theorem}
 \noindent\textbf{Proof.}\\
-Inductive \\
-$\bullet$ $n=0$: We know, that $1\in \speD$ and $1$ is the greatest element of $\speD$. \\
+Inductive 
+
+$\bullet$ $n=0$: We know, that $1\in \speD$ and $1$ is the greatest element of $\speD$. 
+
 $\bullet$ an inductive step: From the inductive assumption we know that $1-\frac{n}{2}$ is 
 the greatest \apots\ $\speD$ of order $n$. From the lemma \ref{third_order_lemma} we have then 
 that $1-\frac{n+1}{2}$ is a \apots\ $\speD$ of order $n+1$. Let us assume (for a contradiction), 
@@ -439,7 +473,9 @@ From the above discussion we can also formulate following corollary that will be
 Let $x \in \speD$. Then:
 \begin{itemize}
 \item there exists $n_1 \in \mathbb{N}$ such that $x + \frac{n_1}{2} \in \speD$ 
-but $x+\frac{n_1+1}{2} \not\in \speD$. \\ In other words, there exist $y \in \speD$ and 
+but $x+\frac{n_1+1}{2} \not\in \speD$. 
+
+In other words, there exist $y \in \speD$ and 
 $n_1 \in \mathbb{N}$ such that 
 $y + \frac{1}{2} \not\in \speD$ and such that $x = y - \frac{n_1}{2}$;
 \item there exists $n_2 \in \mathbb{N}$ such that $x$ is an \apots\ $\speD$ of 
@@ -455,7 +491,7 @@ and $n_1 = n_2$.
 Let $B_0 = \{1\}$.
 For an $n \in \mathbb{N}_{>0}$, let $B_n$ be the set of all possible \Eoc\ realised 
 by orbifolds of type 
-$*b_1, \cdots, b_n$. For a given $n$ these are 
+$*^*b_1, \cdots, ^*b_n$. For a given $n$ these are 
 $D^2$ orbifolds with precisely $n$ non trivial orbipoits on their boundry.
 \end{definition}
 
@@ -488,10 +524,15 @@ For any given $n \in \mathbb{N}$ the set $B_n$ is a subset of the interval
 $[1-\frac{n}{2}, 1-\frac{n}{4}]$.
 \end{lemma}
 \textbf{Proof.} \\
+Take $x \in B_n$. There exists an orbifold $O$ with signature $\ast ^*b_1, \cdots, ^*b_n$, 
+such that $\cho{O} = x$. We have that $\forall_i -\frac{1}{2} \leq \Delta(^*b_i) \leq 
+-\frac{1}{4}$. From this $-\frac{n}{2} \leq \Delta(^*b_1, \cdots, ^*b_n) \leq -\frac{n}{4}$, 
+so $\cho{O} \in [1-\frac{n}{2}, 1-\frac{n}{4}]$. $_\square$
 
 \begin{observation}\label{ascending_in_B_n}
 From \ref{recursive_relation} and \ref{two_sets_lemma}, we have that $B_n$ do not have 
-infinite ascending sequence for all $n$. \\
+infinite ascending sequence for all $n$. 
+
 Further, from \ref{sum_lemma} we conclude, 
 that $\bigcup\limits_{n=0}^N B_n$ do not have infinite ascending sequence for all $N$.
 \end{observation}
@@ -504,7 +545,8 @@ In $\speD$ there are no infinite strictly ascending sequences, hence, it is well
 For the sake of contradiction lets assume that $c_n$ is an infinite strictly ascending sequence in 
 $\speD$. As $c_n$ is bounded from below by $c_0$ and whole $\speD$ is bounded from above 
 by $1$, all elements of $c_n$ are in the interval $[c_0, 1]$. 
-From \ref{form_of_a_spectrum} we have, that $\speD = \bigcup\limits^\infty_{n=0}B_n$. \\
+From \ref{form_of_a_spectrum} we have, that $\speD = \bigcup\limits^\infty_{n=0}B_n$. 
+
 Lemma 
 \ref{fixed_number_of_orbipoints} says that for all $n$ we
 have $B_n \subset [1-\frac{n}{2}, 1 - \frac{n}{4}]$. From this, we know, that for any 
@@ -527,31 +569,64 @@ But this contradicts \ref{ascending_in_B_n}.  $_\square$
 
 
 \subsection{Proof that order structure and topology of $\speD$ are those of $\omega^\omega$}
-\smalltodoII{rozbić to na dwa?} 
+%\smalltodoII{rozbić to na dwa?} 
 \begin{theorem}\label{speD_order_type}
-Order type of $\speD$ is $\omega^\omega$. 
+Order type and topology of $\speD$ is $\omega^\omega$. 
 \end{theorem}
-\textbf{Proof.} \\
+\textbf{Proof.} 
 %that order type of $\speD$ is $\omega^\omega$: \\
-- proof that it is at least $\omega^\omega$ \\
-suppouse that it is less than $\omega^\omega$\\
-then it is smaller than $\omega^n$ for some $n$. \\
-but for sufficiently distant have accumulation point. \\
-done \\
-- proof that it is at most $\omega^\omega$\\
-suppouse it is bigger \\
-then there is a point before which there is omega omega order \\
-wooo, but it cant be since first with accumulation is at something spmething \\
-done \\
-ok, so how to give convincing correspondence between accumulation points and $\omega^n$??
-Lemma \\
-there cant be order of type \\
-i wish I can cite this from somewhere \\ 
+%- proof that it is at least $\omega^\omega$ \\
+
+We will first prove, that the order type of $\speD$ is $\omega^\omega$.
+
+$\bullet$ Order type of $\speD$ is at least $\omega^\omega$.
+
+%For the sake of contradiction, let us suppouse that the order type $\eta$ of $\speD$ 
+%is less than $\omega^\omega$. Then $\eta$ is smaller than $\omega^n$ for some $n$. 
+%However, 
+From \ref{greatest \apots} we know, that for every $n\in \mathbb{N}$, in $\speD$ there are 
+accumulation points of order $n$. From this, and from \ref{accumulation_points_and_order} 
+we know that $\speD$ has an order type at least $\omega^n$, for all $n\in \mathbb{N}$. 
+The smallest ordinal number qual at least $\omega^n$, for all $n \in \mathbb{N}$ is 
+$\omega^\omega$. Thus, the order type of $\speD$ is at least $\omega^\omega$.\\
+% but for sufficiently distant have accumulation point. \\
+%done \\
+
+$\bullet$ Order type of $\speD$ is at most $\omega^\omega$.
+
+%- proof that it is at most $\omega^\omega$\\
+For the sake of contradiction, let us suppouse, that the order type $\eta$ of $\speD$ is 
+strictly greater than $\omega^\omega$. Then, $\speD$ has a set $A$ of an order type 
+$\omega^\omega$ as it's prefix. The set $A$ is bounded, as the $\omega^\omega+1$st element of 
+$\speD$ is greater than any alement of $A$. 
+Let $n$, be such that $1-\frac{n}{2}$ is smaller than any lement of $A$. 
+As $A$ is of order type $\omega^\omega$ it has a prefix $B$ of order type $\omega^n$.
+From \ref{accumulation_points_and_order} we know, that $B$ has an accumulation point $b$ 
+of order $n$. This gives us a contradiction, as $b > 1-\frac{n}{2}$, and from \ref{greatest \apots} 
+we know, that $1-\frac{n}{2}$ is the greatest accumulation point of order $n$ in $\speD$. \\
+
+%suppouse it is bigger \\
+%then there is a point before which there is omega omega order \\
+%wooo, but it cant be since first with accumulation is at something spmething \\
+%done \\
+%ok, so how to give convincing correspondence between accumulation points and $\omega^n$??
+%Lemma \\
+%there cant be order of type \\
+%i wish I can cite this from somewhere \\ 
 %
 %\newpage
 %
 
-From the lemma \ref{order_preserving_homeomorphism_theorem} and ... we have that 
+Now, we will prove, that the topology of $\speD$ is that of $\omega^\omega$.
+
+From \ref{accumulation_points_of_the_set} we know that every accumulation point 
+of $\speD$ is in $\speD$. 
+%We just showed, that the order type of $\speD$ is $\omega^\omega$.
+Thus, $\speD$ satisfies the assumtions of the lemma \ref{order_preserving_homeomorphism_theorem} 
+and 
+%\ref{accumulation_points_of_the_set} and the first part of the proof, that just showed, 
+%that the order type 
+we have that 
 the topology of $\speD$ is $\omega^\omega$. 
 
 
@@ -560,10 +635,68 @@ the topology of $\speD$ is $\omega^\omega$.
 
 
 \section{Order type and topology of $\spebr{M}$}\label{all_spectra_are_isomorphic}
-Ok, all isomorphic with $\speD$ \\
-here write about it \\
-Tell me about it!
 
+\begin{observation}
+For every two dimentional manifold $M$, we have that $\spe(M)$ is homeomorphic to $\speS$. 
+For $M$ with $h$ handles, $c$ cross-cups and $b$ boundary components, this homeomorphism is: \\
+$\bullet$ for $b \neq 0$:
+\begin{equation}
+\spe(M) = \speD - 2h - c - (b - 1), 
+\end{equation}
+$\bullet$ for $b = 0$:
+\begin{equation}
+\spe(M) = 2\speD - 2h - c.
+\end{equation}  
+\end{observation}
+
+%Ok, all isomorphic with $\speD$ \\
+%here write about it \\
+%Tell me about it!
+\textbf{Proof.} \\
+For a manifold $M$ with $h$ handles, $c$ cross-cups and $b$ boundary components, it's 
+Euler characteristic is given by:
+\begin{equation}
+\chi(M) = 2-2h-c-b.
+\end{equation}
+The possible $\Delta$ for possible orbifold features are:\\
+$\bullet$ for $b\neq 0$:
+\begin{equation}
+\{-\frac{n-1}{2n}\ \big|\ n\in\mathbb{N}_{>0}\cup \{\infty\}\}
+\end{equation}
+$\bullet$ for $b = 0$:
+\begin{equation}
+\{-\frac{n-1}{n}\ \big|\ n\in\mathbb{N}_{>0}\cup \{\infty\}\}.
+\end{equation} 
+%with the convention, that $\varphi(\infty) \coloneqq \lim\limits_{k\to \infty} \varphi(k)$.
+
+Thus, we have that:\\
+$\bullet$ for $b\neq 0$: 
+\begin{equation}
+\spe(M) = 2-2h-c-b - \left\{\sum\limits_{i=1}^n\frac{d_i-1}{2d_i}\ 
+\big|\ n\in\mathbb{N}_0,\ d_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}
+\end{equation}
+$\bullet$ for $b = 0$:
+\begin{equation}
+\spe(M) = 2-2h-c - \left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
+r_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}.
+\end{equation} 
+
+On the other hand, we have that:
+\begin{equation}
+\speD = 1-\left\{\sum\limits_{i=1}^n\frac{d_i-1}{2d_i}\ 
+\big|\ n\in\mathbb{N}_0,\ d_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}
+\end{equation}
+\begin{equation}
+\speS = 2 - \left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
+r_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}
+\end{equation}
+and
+\begin{equation}
+\speS = 2\speD.
+\end{equation}
+From this, the observation follows immedietly. $_\square$
+
+%In short, for every manifold it either have 
 
 \section{Order type and topology of $\spe$}
 \begin{theorem}
@@ -583,7 +716,7 @@ dopisać w apendiksie, że jak wysumuję dwa o różnym typie porządkowym, to w
 %For homeomorphicity, the proof of theorem \ref{speD_theorem} works as well in this case.
 %$_\square$ \\[4pt]
 
-\section{Order type and topology of some subsets of $\spe$ and $\spe(M)$} 
+\section{Order type and topology of "order-$n$" accumulation points subsets of $\spe$}\label{spe_M} 
 $\spe_n$ \\
 taking limit points is the order type of $\omega^\omega$ but not homeomorphic anymore. 
 
@@ -597,22 +730,26 @@ taking limit points is the order type of $\omega^\omega$ but not homeomorphic an
 %belong to $\spe$ based on the knowlegde of other points belonging there. \\
 
 
-\section{More about how this $\omega^\omega$ lies in $\mathbb{R}$}
+\section{More about how this $\spe \simeq \omega^\omega$ lies in $\mathbb{R}$}
 %\todo{movve to some other section maybe}
 \begin{observation}
 The first (greatest) negative \apots\ of $\spe$ is 
 $-\frac{1}{12}$. It is the accumulation point of order $1$. 
 \end{observation}
-\noindent\textbf{Proof.} \\
+\noindent\textbf{Proof.} 
+
 We will show, that $-\frac{1}{12}$ is the greatest negative accumulation point of the set $\speD$. 
 From this we will obtain the thesis, as the set of all possible Euler orbicharacteristics 
 of two-dimensional orbifolds is equal to $\speS \cup \speD$ and $\speS = 2\speD$, so 
 the greatest negative point of the set $\speS$ is smaller than the greatest negative accumulation 
-point of the set $\speD$. \\
+point of the set $\speD$. 
+
 $\bullet$ $-\frac{1}{12}=\chi^{orb}((2,3))-\frac{1}{2}$, from this we have that $-\frac{1}{12}$ 
-an acccumulation point of the set $\speD$ of order at least $1$. \\
+an acccumulation point of the set $\speD$ of order at least $1$. 
+
 $\bullet$ Let us assume (for a contradiction), that there exist bigger, negative 
-accumulation point of the set $\speD$ of order at least $1$. Let us denote it by $x$. \\
+accumulation point of the set $\speD$ of order at least $1$. Let us denote it by $x$. 
+
 However, then, from the lemma \ref{third_order_lemma} point $x+\frac{1}{2}$ is the accumulation 
 point of the set $\speD$. What is more, since $x\in (0, -\frac{1}{12})$, then $x+\frac{1}{2} 
 \in (\frac{1}{2}, \frac{5}{12}$. From the lemma \ref{accumulation_points_of_the_set} we 
@@ -620,15 +757,106 @@ have that $x$ is in $\speD$. But orbifolds of the type $\ast b_1$ can have \Eoc 
 equal $\frac{1}{2}$. Orbifolds of the type $\ast b_1b_2$ can only have \Eoc $\frac{1}{2}$, 
 $\frac{5}{12}$ and some smaller. Orbifolds of the type $\ast b_1b_2b_3\cdots$ can have \Eoc only 
 lower than $\frac{1}{4}$. This analysis of the cases leads us to the conclusion, that 
-$(\frac{1}{2},\frac{5}{12})\cap \speD=\emptyset$ and to the contradiction. \\
+$(\frac{1}{2},\frac{5}{12})\cap \speD=\emptyset$ and to the contradiction. 
+
 $\bullet$ Above analysis of the cases leads us also to the conclusion, that $\frac{5}{12}$ 
 is 
 an isolated point of the set $\speD$, from this $-\frac{1}{12}$ is an acccumulation point 
 of order $1$ of the set $\speD$. $_\square$ \\ 
  
+\subsection{$\speD$ and $\speS$}\label{D_and_S}
+In this section we would like to 
+%develop the tools and 
+answer some questions about 
+%interrelationships
+relations between $\speD$ and $\speS$. 
+
+The first, stated in \ref{} is that $2\speD=\speS$. 
+This tells us all about simmilarities of their topological structures -- namely, 
+they are the same, 
+but it does not directly answers questions about how they lie in $\mathbb{R}$, relative 
+to each other.
+%\subsubsection{Some preliminary observations}
+\todo{dopisać trochę inną motywację}
+\\[16pt]
+We now state some observations that will be usefull in this section.
+\begin{observation}
+If an \Eoc\ is an accumulation point of order $n$ in $\speD$ \rba{respectively $\speS$}, 
+there exist an $D^2$ \rba{resp. $S^2$} 
+orbifold with $n$ dihedral \rba{resp. rotational} points of that \Eoc. 
+\end{observation}
+prrof. from chapter 3. (todo: dopisać)
+\begin{observation}\label{adding_multiplied_differences}
+If $x \in \speD$ \rba{respectively $\speS$}, then $1-x$ \rba{resp. $2-x$} is 
+a difference in 
+\Eoc\ resulting 
+from some set of dihedral \rba{resp. rotational} points. From that $1-n(1-x) \in \speD$ \rba{resp. 
+$2-n(2-x)\in \speS$}
+for all $n \in \mathbb{N}$. 
+\end{observation}
+\subsubsection{$-\frac{1}{84}$ and $-\frac{1}{42}$}
+//Why it is how it is//
+%\subsection{All the accumulation points of the $\speS$ are in $\speD$}
+\subsubsection{Accumulation points of the $\speS$}
+\begin{theorem}
+All accumulation points of the $\speS$ are in $\speD$.
+\end{theorem}
+There are two proofs of this theorem showing nice correnpondence -- one arithmetical and 
+one geometrical. 
+\\
+\textbf{Proof I.}
+%\subsubsection{Arithmetical reason}
+\textbf{Arithmetical reason} \\
+We assume that $x \in \speS$ is an \apots\ $\speS$.\\
+%If $x \in \speS$, then $\frac{x}{2} \in \speD$. Then $1 - \frac{x}{2}$ 
+%is a difference in \Eoc\ resulting from some set of cone points. We can add to the disc twice as 
+%many cone points and resulting orbifold $\mathcal{O}$ will have an \Eoc\ equal to 
+%$1 - 2(1-\frac{x}{2}) = x - 1$. From \ref{third_order_lemma} for the thesis it is sufficient 
+%to $x - 1$ to be an \apots\ $\speD$ of order at least two. \\
+%%$2-x$ is a difference in \Eoc\ resulting from some set of gyration points. We can 
+%We asumed that $x \in \speS$ is an \apots\ $\speS$, so, 
+By \ref{times_two_fact} we have, that 
+$\frac{x}{2} \in \speD$ is an \apots\ $\speD$. From \ref{third_order_lemma} we have that 
+$\frac{x}{2} + \frac{1}{2} \in \speD$. From that, from \ref{adding_multiplied_differences} 
+we have, 
+that \begin{equation}
+1-\overbrace{2}^{\substack{"n"\rm\ from\ \\ 
+\rm \ref{adding_multiplied_differences}}} 
+(\ \overbrace{1-(\frac{x}{2}+\frac{1}{2})}^{\substack{"1-x"\rm\ 
+from\ \\ \rm \ref{adding_multiplied_differences}}}\ ) \in \speD.
+\end{equation} 
+But $1 - 2(1-(\frac{x}{2}+
+\frac{1}{2})) = x$, so $x \in \speD$. $_\square$
+% for some $y \in \speD$, so $\speD$.
+\\[2pt]
+\textbf{Proof II.}
+%\subsubsection{Geometrical reason}
+\textbf{Geometrical reason} \\
+We assume that $x \in \speS$ is an \apots\ $\speS$.\\
+%If $x \in \speS$
+From \ref{predescors} we know, that $x$ can be expressed as $y - 1$ for some $y \in \speS$. \\
+Let $\mathcal{O}$ be an orbifold with the base manifold $S^2$, such that $\cho{\mathcal{O}} 
+= y$. \\
+Let $\mathcal{O}_c$ be the orbifold created from $\mathcal{O}$ by adding one cusp. 
+Then $\cho{\mathcal{O}_c} = y - 1 = x$. Topologically $\mathcal{O}_c$ with the cusp point 
+removed (which do not change an orbicharacteristic) is $\mathbb{R}^2$. 
+We can compactify it with $S^1$. This will not change an \Eoc\ since $\cho{S^1} = 0$ and 
+\Eoc\ is additive.
+\\ What we get is an orbifold $\mathcal{O}_D$ with the base 
+manifold $D^2$ and the same 
+orbipoints as $\mathcal{O}$. Since orbipoints of $\mathcal{O}$ create a difference 
+in \Eoc\ equal to $2-y$, we have that $\cho{\mathcal{O}_D} = 1 - (2-y) = y - 1 = x$. 
+We can then move all orbipoints from the interior of $\mathcal{O}_D$ to its boundry 
+by doubling them, so $x \in \speD$. $_\square$\\
 
 
 
+%The first equstion we can tackle is steaming from the chapter \ref{order structure} 
+%and it is -- 
+Do $\speD$ and $\speS$ coincide? It is easy to answer that $\speD \neq \speS$ 
+(and we will do that along some harder questions in the moment), but do they coincide 
+starting from a sufficiently distant point? Or maybe, for every denominator, do they coincide 
+from a sufficiently distatn point? (Yes.) \\
 
 
 
