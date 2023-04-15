@@ -4,8 +4,7 @@ use std::collections::HashSet;
 use std::hash::Hash;
 use Ordering::*;
 
-use crate::backend_lib::ExRa::*;
-use crate::backend_lib::ExWh::*;
+use crate::backend_lib::Extended::*;
 use crate::backend_lib::*;
 use crate::mathematics_lib::TwoDimentionalManifold::*;
 use crate::mathematics_lib::*;
@@ -31,16 +30,14 @@ pub struct PointsOrbifolds {
     pub omm_inf: HashSet<PosOmmRea>, // some orbifolds were possibly ommited due too the overflow or limits provided
 }
 
-
-
 pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder {
     let mut counters: Vec<ExWh> = vec![];
     let mut order = -1; // order of point outside of the specturm is -1
 
     let mut omm_inf: HashSet<PosOmmRea> = HashSet::new();
     let p_q = match adj_for_b_m(p_q, b_m) {
-        Rational(p_q_0) => p_q_0,
-        ExRa::Overflow => {
+        Base(p_q_0) => p_q_0,
+        Overflow => {
             omm_inf.insert(PosOmmRea::Overflow);
             return PointsOrder {
                 order,
@@ -79,10 +76,10 @@ pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder
                 ();
             }
             1 => {
-                counters.push(Whole(2));
+                counters.push(Base(2));
             }
             -1 => {
-                counters.push(Whole(2));
+                counters.push(Base(2));
             }
             _ => panic!("Residue from dividing by 2 must be 0, 1 or -1!"),
         }
@@ -170,17 +167,17 @@ pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder
 fn adj_for_b_m(p_q: Rational64, b_m: TwoDimentionalManifold) -> ExRa {
     let chi = chi(&b_m);
     match chi {
-        Whole(_) => match b_m {
-            Disk => Rational(TWO) * Rational(p_q),
-            Sphere => Rational(p_q),
-            Genus(_) => Rational(p_q) + (Rational(TWO) - chi.into()),
+        Base(_) => match b_m {
+            Disk => Base(TWO) * Base(p_q),
+            Sphere => Base(p_q),
+            Genus(_) => Base(p_q) + (Base(TWO) - chi.into()),
             General { h: _, c_c: _, b_c } => {
                 if b_c == 0 {
-                    // Rational(p_q + (2 - chi))
-                    Rational(p_q) + (Rational(TWO) - chi.into())
+                    // Base(p_q + (2 - chi))
+                    Base(p_q) + (Base(TWO) - chi.into())
                 } else {
-                    // Rational(TWO * (p_q + (1 - chi)))
-                    Rational(TWO) * (Rational(p_q) + (Rational(ONE) - chi.into()))
+                    // Base(TWO * (p_q + (1 - chi)))
+                    Base(TWO) * (Base(p_q) + (Base(ONE) - chi.into()))
                 }
             }
         },
@@ -199,20 +196,20 @@ fn co_to_orb(counters: &Vec<ExWh>, b_m: TwoDimentionalManifold) -> TwoDimentiona
         General { h: _, c_c: _, b_c } => {
             if b_c == 0 {
                 TwoDimentionalOrbifold {
-                    b_m: b_m,
+                    b_m,
                     r: counters.clone(),
                     d: vec![],
                 }
             } else {
                 TwoDimentionalOrbifold {
-                    b_m: b_m,
+                    b_m,
                     r: vec![],
                     d: vec![counters.clone()],
                 }
             }
         }
         _ => TwoDimentionalOrbifold {
-            b_m: b_m,
+            b_m,
             r: counters.clone(),
             d: vec![],
         },
@@ -228,11 +225,11 @@ pub fn points_orb(
     _deg_lim: i64,               // degree limit, zero for no limit
 ) -> PointsOrbifolds {
     let mut occurences: Vec<Vec<ExWh>> = vec![];
-    let mut counters: Vec<ExWh> = vec![Whole(1)];
+    let mut counters: Vec<ExWh> = vec![Base(1)];
     let mut occ_co: i64 = 0; //occurences count
     let mut pivot = 0;
     let mut omm_inf = HashSet::new();
-    let mut flag = if let Rational(chi_orb) = per_chi_orb(&counters) {
+    let mut flag = if let Base(chi_orb) = per_chi_orb(&counters) {
         chi_orb
     } else {
         panic!("After initialising Euler orbicharacteristic should be equal to 1.")
@@ -240,7 +237,7 @@ pub fn points_orb(
     .cmp(&p_q);
 
     let p_q = match adj_for_b_m(p_q, b_m) {
-        Rational(p_q_0) => p_q_0,
+        Base(p_q_0) => p_q_0,
         ExRa::Overflow => {
             omm_inf.insert(PosOmmRea::Overflow);
             return PointsOrbifolds {
@@ -275,16 +272,16 @@ pub fn points_orb(
                 panic!("Flag should not be left on 'Equal' at the main loop!");
             }
             Less => {
-                counters[pivot] = counters[pivot] + Whole(1);
+                counters[pivot] = counters[pivot] + Base(1);
                 match counters[pivot] {
                     ExWh::MInfty => panic!("Counters should not be equal to -♾️"),
-                    Whole(_) => {},
+                    Base(_) => {}
                     ExWh::Overflow => {
                         // panic!("Counters should not be left on the Overflow state after main loop!")
                         flag = Less;
                         pivot += 1;
                         if counters.len() <= pivot {
-                            counters.push(Whole(1));
+                            counters.push(Base(1));
                         }
                         omm_inf.insert(PosOmmRea::Overflow);
                         continue;
@@ -300,12 +297,12 @@ pub fn points_orb(
                 }
                 level_to_pivot(&mut counters, pivot);
                 let chi_orb_0 = match per_chi_orb(&counters) {
-                    Rational(chi_orb) => chi_orb,
+                    Base(chi_orb) => chi_orb,
                     ExRa::Overflow => {
                         flag = Less;
                         pivot += 1;
                         if counters.len() <= pivot {
-                            counters.push(Whole(1));
+                            counters.push(Base(1));
                         }
                         omm_inf.insert(PosOmmRea::Overflow);
                         continue;
@@ -326,7 +323,7 @@ pub fn points_orb(
                             flag = Less;
                             pivot += 1;
                             if counters.len() <= pivot {
-                                counters.push(Whole(1));
+                                counters.push(Base(1));
                             }
                             continue;
                         }
@@ -335,7 +332,7 @@ pub fn points_orb(
                         flag = Less;
                         pivot += 1;
                         if counters.len() <= pivot {
-                            counters.push(Whole(1));
+                            counters.push(Base(1));
                         }
                         continue;
                     }
@@ -349,7 +346,7 @@ pub fn points_orb(
             Greater => {
                 counters[pivot] = ExWh::PInfty;
                 let chi_orb_0 = match per_chi_orb(&counters) {
-                    Rational(chi_orb) => chi_orb,
+                    Base(chi_orb) => chi_orb,
                     ExRa::Overflow => {
                         omm_inf.insert(PosOmmRea::Overflow);
                         return PointsOrbifolds {
@@ -373,7 +370,7 @@ pub fn points_orb(
                             flag = Less;
                             pivot += 1;
                             if counters.len() <= pivot {
-                                counters.push(Whole(1));
+                                counters.push(Base(1));
                             }
                             continue;
                         }
@@ -383,14 +380,14 @@ pub fn points_orb(
                         let b_c = b_c_value(current_chi_orb, p_q); // smallest b_c such that Euler orbicharacterictic would be smaller or equal p/q
                         match b_c {
                             ExWh::MInfty => panic!("Counters value should not be equal to -♾️"),
-                            Whole(_) => {
+                            Base(_) => {
                                 counters[pivot] = b_c;
                             }
                             ExWh::Overflow => {
                                 flag = Less;
                                 pivot += 1;
                                 if counters.len() <= pivot {
-                                    counters.push(Whole(1));
+                                    counters.push(Base(1));
                                 }
                                 omm_inf.insert(PosOmmRea::Overflow);
                                 continue;
@@ -400,12 +397,12 @@ pub fn points_orb(
                             }
                         }
                         let chi_orb_0 = match per_chi_orb(&counters) {
-                            Rational(chi_orb) => chi_orb,
+                            Base(chi_orb) => chi_orb,
                             ExRa::Overflow => {
                                 flag = Less;
                                 pivot += 1;
                                 if counters.len() <= pivot {
-                                    counters.push(Whole(1));
+                                    counters.push(Base(1));
                                 }
                                 omm_inf.insert(PosOmmRea::Overflow);
                                 continue;
@@ -426,19 +423,19 @@ pub fn points_orb(
                                 // the following lines are not here on purpose:
                                 // pivot += 1;
                                 // if counters.len() <= pivot {
-                                //     counters.push(Whole(1));
+                                //     counters.push(Base(1));
                                 // }
                                 continue;
                             }
                         }
                         level_to_pivot(&mut counters, pivot);
                         let chi_orb_0 = match per_chi_orb(&counters) {
-                            Rational(chi_orb) => chi_orb,
+                            Base(chi_orb) => chi_orb,
                             ExRa::Overflow => {
                                 flag = Less;
                                 pivot += 1;
                                 if counters.len() <= pivot {
-                                    counters.push(Whole(1));
+                                    counters.push(Base(1));
                                 }
                                 omm_inf.insert(PosOmmRea::Overflow);
                                 continue;
@@ -459,7 +456,7 @@ pub fn points_orb(
                                     flag = Less;
                                     pivot += 1;
                                     if counters.len() <= pivot {
-                                        counters.push(Whole(1));
+                                        counters.push(Base(1));
                                     }
                                     continue;
                                 }
@@ -468,7 +465,7 @@ pub fn points_orb(
                                 flag = Less;
                                 pivot += 1;
                                 if counters.len() <= pivot {
-                                    counters.push(Whole(1));
+                                    counters.push(Base(1));
                                 }
                                 continue;
                             }
@@ -484,7 +481,7 @@ pub fn points_orb(
                         pivot += 1;
                         if counters.len() <= pivot {
                             // panic!("Pivot should not reach end of counters at the greater loop!");
-                            counters.push(Whole(1));
+                            counters.push(Base(1));
                         }
                         continue;
                     }
@@ -511,7 +508,7 @@ fn break_condition(counters: &Vec<ExWh>, pivot: usize) -> bool {
         if i > pivot {
             break;
         }
-        if *counter != Whole(2) {
+        if *counter != Base(2) {
             break_condition = false;
         }
     }
@@ -529,14 +526,14 @@ fn level_to_pivot(counters: &mut Vec<ExWh>, pivot: usize) {
 }
 
 fn b_c_value(old_chi_orb: Rational64, p_q: Rational64) -> ExWh {
-    let mut b_c = Whole(2);
+    let mut b_c = Base(2);
     let mut a = b_c;
     let mut chi_orb_value;
-    match Rational(old_chi_orb) - rot_per_dif(b_c) {
+    match Base(old_chi_orb) - rot_per_dif(b_c) {
         ExRa::Overflow => {
             return ExWh::Overflow;
         }
-        Rational(pq) => {
+        Base(pq) => {
             chi_orb_value = pq;
         }
         _ => {
@@ -545,12 +542,12 @@ fn b_c_value(old_chi_orb: Rational64, p_q: Rational64) -> ExWh {
     }
     while chi_orb_value > p_q {
         a = b_c;
-        b_c = Whole(2) * b_c;
-        match Rational(old_chi_orb) - rot_per_dif(b_c) {
+        b_c = Base(2) * b_c;
+        match Base(old_chi_orb) - rot_per_dif(b_c) {
             ExRa::Overflow => {
                 return ExWh::Overflow;
             }
-            Rational(pq) => {
+            Base(pq) => {
                 chi_orb_value = pq;
             }
             _ => {
@@ -559,20 +556,20 @@ fn b_c_value(old_chi_orb: Rational64, p_q: Rational64) -> ExWh {
         }
     }
     let mut b = b_c;
-    if Rational(old_chi_orb) - rot_per_dif(b_c) == Rational(p_q) {
+    if Base(old_chi_orb) - rot_per_dif(b_c) == Base(p_q) {
         return b_c;
     }
     if a == b {
         return b_c;
     }
     loop {
-        let diff = (b - a) / Whole(2);
+        let diff = (b - a) / Base(2);
         b_c = a + diff;
-        match Rational(old_chi_orb) - rot_per_dif(b_c) {
+        match Base(old_chi_orb) - rot_per_dif(b_c) {
             ExRa::Overflow => {
                 return ExWh::Overflow;
             }
-            Rational(pq) => {
+            Base(pq) => {
                 chi_orb_value = pq;
             }
             _ => {
@@ -584,14 +581,14 @@ fn b_c_value(old_chi_orb: Rational64, p_q: Rational64) -> ExWh {
                 return b_c;
             }
             Less => {
-                if diff == Whole(1) {
+                if diff == Base(1) {
                     return b_c;
                 }
                 b = b_c;
                 continue;
             }
             Greater => {
-                if diff == Whole(0) {
+                if diff == Base(0) {
                     return b;
                 }
                 a = b_c;
