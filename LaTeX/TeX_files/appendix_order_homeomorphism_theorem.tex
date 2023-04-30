@@ -359,31 +359,14 @@ which is open.$_\square$
 %%we have that $A \cap [1,1-\frac{n}{2})$ is homeomorphic with $\omega^n$. 
 %%From this $A$ is homeomorphic with $\alpha$.
 
-\todo{Zapytać się kogoś z topologii/teorii mnogości}
-
-\begin{lemma}
-For two well ordered sets $A, B \subseteq \mathbb{R}$, with order types, respectively $\omega^m$ 
-and $\omega^n$, 
-such that $m < n$, and that $\exists_{b\in B}\forall_{a\in A}a<b$, we have that order type of $A \cup B$ is well defined and 
-equal to $\omega^m$.
-\end{lemma}
-\textbf{Proof.} \\
-
-From \ref{sum_lemma}, we know, that $A\cup B$ is well ordered. As such its order type is well 
-defined and equal to some ordeal number $\gamma$. \\
-
-We will show that $\gamma \leq \omega^m$ and $\gamma \geq \omega^m$, 
-thus showing that $\gamma = \omega^m$. \\
-
-$\bullet$ $\gamma \leq \omega^m$: \\
-
 \begin{lemma}\label{accumulation_points_and_order}
 Let $A \subseteq \mathbb{R}$ be a bounded, well ordered set. 
 Then $A$ has an accumulation point $a$ of order 
 $n \in \mathbb{N}$ (it may be that $a \notin A$) iff order type of $A$ is at least $\omega^n$. 
 \end{lemma}
 
-\textbf{Proof.}\\
+\textbf{Proof.} 
+
 Inductive, with respect to $n$ in $\omega^n$.
 
 $\bullet$ $n=0$
@@ -420,6 +403,50 @@ Because of the property $(\ast)$, thouse accumulation points are pairwise distin
 $A_i, A_j$, with $i\neq j$. Since $A$ is bounded, we have that, the set $\{b_i\}_{i\in\mathbb{N}}$ 
 is bounded, so it has an accumulation point $a$. As an accumulation point of the accumulation 
 points of order $n$, it is an accumulation point of order $n+1$. $_\square$ 
+
+
+
+
+%\todo{Zapytać się kogoś z topologii/teorii mnogości}
+
+\begin{lemma}
+For two well ordered sets $A, B \subseteq \mathbb{R}$, with order types, respectively 
+$\omega^m + 1$ 
+and $\omega^n + 1$, 
+such that $m < n$, and that $\exists_{b\in B}\forall_{a\in A}a<b$, we have that order type of $A \cup B$ is well defined and 
+equal to $\omega^n + 1$.
+\end{lemma}
+\textbf{Proof.} \\
+
+From \ref{sum_lemma}, we know, that $A\cup B$ is well ordered. As such its order type is well 
+defined and equal to some ordeal number $\gamma$. 
+
+We will show that $\gamma \leq \omega^n$ and $\gamma \geq \omega^n$, 
+thus showing that $\gamma = \omega^n$. \\
+
+Let $f : \omega^n \to B$ and $g : A \cup B \to \gamma$ be order preserving bijections.
+
+$\bullet$ $\omega^n \leq \gamma$: 
+
+%Let us assume for the sake of contradiction, that $\gamma < \omega^m$. Then, we have an one-to-one 
+%function that preserves the order from a strictly greater ordinal $\omega^m$ to a strictly 
+%smaller one $\gamma$, which is a contradiction.  
+We have that  
+$g\circ f : \omega^n \to \gamma$ 
+is an order preserving injection, thus, $\omega^n \leq \gamma$. 
+
+$\bullet$ $\omega^n \geq \gamma$: 
+
+For the sake of contradiction, let us assume that $\omega^n < \gamma$. But then, 
+there is some proper prefix of $\gamma$ with order type $\omega^n$. Let us name this 
+prefix $C$.  
+%so there is some $x \in \mathbb{R}$, 
+%such that $\exists_{b\in B} x<b$ and that $C \coloneqq (A\cup B)\cap (-\infty, x)$ 
+%has an order type $\omega^n$.
+Let $b_0 \in \mathbb{B}$ and $\epsilon > 0$ be such that $\forall_{c \in C}\ c<b_0-\epsilon$. 
+From \ref{accumulation_points_and_order} we know, that 
+$C$ has an accumulation point of order $n$. This gives us a contradiction with \ref{} though, as 
+the only accumulation point of order $n$ in $B$ is greater than $a$
 
 
 
