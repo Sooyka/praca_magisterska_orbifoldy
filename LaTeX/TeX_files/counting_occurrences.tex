@@ -69,9 +69,7 @@ Thus, for a given manifold $M$ and a given $x$ and $n$, there can be at most
 $(n-1)^{\max \{\lfloor 4(1-x) \rfloor, \lfloor 2(2-x) \rfloor\}}$ orbifolds with an \Eoc\ 
 $y \geq x$, 
 all orbipoints of order at most $n$ and $M$ as a base manifold.$_\square$ 
- 
 
-\todo{napisać lepszy dowód}
 \begin{theorem}\label{second_finiteness_theorem}
 For any $x \in \sigma$ there are only finitely many orbifolds 
 with the \Eoc\ equal to $x$.
@@ -98,45 +96,59 @@ Let $M$ be a two dimentional manifold.
 For the sake of contradiction, assume, that there exists an infinite set $\mathcal{O}_M$
 of $M$-orbifolds such that $\mathcal{O}_M \subseteq \mathcal{O}$ ($\ast$).
 
+If $M$ has some boundary, orbifolds in $\mathcal{O}_M$ 
+can have both rotational and dihedral orbipoints. 
+For the simplicity of the following part of the proof we want now to reduce this case 
+to a case 
+where only one type of the orbipoints is present. 
+
+Let us observe, that every rotational orbipoint can be replaced by two dihedral orbipoints 
+of the same order without changing the \Eoc. Thus, if there would be infinitely many 
+obifolds in $\mathcal{O}_M$ having both rotational and dihedral orbipoints, there would be 
+also infinitely many orbifolds in $\mathcal{O}_M$ having only dihedral orbipoints. 
+Thus it is sufficient to prove that there are finetly many orbifolds in $\mathcal{O}_M$ 
+that have only one type of the orbipoints. 
+
+We will now perform the proof of above statement in the case of dihedral orbipoints.
+The proof for rotational orbipoints is completely analogous. 
+
+Let us call the subset of $\mathcal{O}_M$ 
+that consists only of orbifolds with only dihedral orbipoints by $\mathcal{O}_M^d$.
+
 Let $\mathcal{O}_M = \{O_i\}_{i \in I}$. 
-For each $i$, let $s_i = (I^0_i, \cdots, I^{k_i}_i; b^0_i, \cdots, b^{l_i}_i)$ be the signature 
-of $O_i$ written with decreasing orders of rotational orbipoints and decreasing orders of 
-dihedral points. So for each $i$ we have, that $I^0_i$ is 
-the order of the orbipoint with the highest order of all the rotational orbipoints of 
-$\mathcal{O}_i$ and $b^0_i$ is 
+For each $i$, let $s_i = (b^0_i, \cdots, b^{l_i}_i)$ be the signature 
+of $O_i$ written with decreasing orders of 
+dihedral points. So for each $i$ we have, that $b^0_i$ is 
 the order of the orbipoint with the highest order of all the dihedral orbipoints of 
-$\mathcal{O}_i$. 
-By \ref{first_finiteness_theorem} we know that if the set $\{I^0_i\}_{i \in I} \cup 
-\{b^0_i\}_{i \in I}$ 
+$O_i$. 
+By \ref{first_finiteness_theorem} we know that if the set $\{b^0_i\}_{i \in I}$ 
 would be bounded 
-by some $n \in \mathbb{N}$ it would mean, that $\mathcal{O}_M$ would be finite. As 
+by some $n \in \mathbb{N}$ it would mean, that $\mathcal{O}_M^d$ would be finite. As 
 from ($\ast$) this is not the case, we know
-that the set $\{I^0_i\}_{i \in I} \cup \{b^0_i\}_{i \in I}$ is unbounded. 
+that the set $\{b^0_i\}_{i \in I}$ is unbounded. 
 Let $\{i_n\}_{n\in \mathbb{N}} \subseteq I$ be a sequence of indeces such that
-$\{(I^0_{i_n}, b^0_{i_n})\}_{n\in \mathbb{N}}$ is strictly increasing on one coordinate 
-and non-decreasing on the other. 
+$\{b^0_{i_n}\}_{n\in \mathbb{N}}$ is strictly increasing. 
 
 %Let $\{a_n\}$ be the sequence such that $a_n = \frac{m_n-1}{m_n} \end{cases}$ if point 
 %corresponding 
 %to $m_n$ is an rotational point and $a_n = \frac{m_n-1}{2m_n}$ if point corre 
-Let $\{a_n\}$ be the sequence such that $a_n = \Delta(I^0_{i_n},b^0_{i_n})$.
-Let $\{b_n\}$ be the sequence such that $b_n = \Delta(I^1_{i_n},\cdots,
-I^{k_{i_n}}_{i_n}, b^1_{i_n},
+Let $\{x_n\}$ be the sequence such that $x_n = \Delta(b^0_{i_n})$.
+Let $\{y_n\}$ be the sequence such that $y_n = \Delta(b^1_{i_n},
 \cdots, b^{l_{i_n}}_{i_n})$. 
-So for every $n$ we know $\cho{O_{i_n}} = \chi(M) + a_n + b_n$. As $\{(I^0_{i_n}, b^0_{i_n})\}$ 
+So for every $n$ we know that $\cho{O_{i_n}} = \chi(M) + a_n + b_n$. As $\{b^0_{i_n}\}$ 
 is strictly 
-increasing on one cordinate and non-decreasing on the other, we know 
+increasing, we know 
 that $a_n$ is strictly decreasing, so $b_n$ must be strictly 
-increasing,  
+increasing  
 %(*), 
-because $\cho{O_{i_n}}$ is constant for all $n$ (all $O_{i_n}$ 
+(we have that $\cho{O_{i_n}}$ is constant for all $n$, since all $O_{i_n}$ 
 are from the family with \Eoc\ equal to $x$). 
 
 But $\{b_n\} \subseteq \spebr{M} - \chi(M)$. 
 From \ref{well_order} and \ref{times_two_fact} we know that $\spebr{M}$ has no infinite 
 strongly increasing sequences, so 
 $\spebr{M} - \chi(M)$ has no infinite strongly increasing sequences. That gives us a 
-contradiction.
+contradiction. 
 %*. 
 %\Lightning 
 $_\square$ 
@@ -209,19 +221,20 @@ of orbipoints, ordered in deacreasing order, appearing in the sum.
 This covers the arithmetics and combinatorics of the "orbifold" part of the problem. 
 In this sums there is a structure of what \Eoc\ orbipoints can produce. 
 The question "How many different sums (understood by above convention) are equal to a given $x$?" 
-will be the first part of the problem, the arithmetical part, adressed in 
+will be the first part of the problem -- the arithmetical part, adressed in 
 \ref{conting_arithmetical}. This will be the hard and unanswered part.
 
 This however, does not give us the full information. For once, without changing \Eoc\ some 
 orbipoints can be replaced by a features on a manifold such as handles, cross-cups and 
-boundry components. Secondly, when the orbipoints lie on the boundry components, their 
+boundry components, giving orbifold of the same \Eoc, but different base manifold. 
+Secondly, when the orbipoints lie on the boundry components, their 
 order matters, and orbifolds with orbipoints on boundry components with different order 
 are not neccesery the same. 
 
 This gives us a question -- "How many different orbifolds produce the same sum?".
 This will be answeared in the section \ref{counting_combinatorics}.
 The other question is -- "How many manifold with some sums correspont to $x$?" and this will 
-be treated in \ref{conting_diff_man}. 
+be treated in \ref{conting_diff_man} together with more precise notions of these questions. 
 
 \section{Arithmetical part}\label{conting_arithmetical}
 
