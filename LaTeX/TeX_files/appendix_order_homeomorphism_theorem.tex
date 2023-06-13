@@ -1,5 +1,8 @@
 % mainfile: ../praca_magisterska_orbifoldy.tex
-\chapter{Appendix about well orders}
+\chapter{Appendix about well orders, accumulation points and Canor-Bendixon derivatives}
+
+\todo{Not e between equivalence of being accumulation point and being in Cantor bendixon derivative}
+
 \section{Lemmas}
 \begin{lemma}\label{two_sets_lemma}
 If $A, B \subseteq \mathbb{R}$ have no infinite strictly ascending sequences, then set 
@@ -455,11 +458,29 @@ $(A \cup B) \cap (U_1 \cap U_2)$ there are only accumulation points of order at 
 $A \cup B$. This means that $r$ is an accumulation point of order at most $n$ of $A\cup B$. 
 $_\square$   
 
-\begin{lemma}
+%colorally
+%coloraly
+%corolary
+%corollary
+
+\begin{corollary}\label{derivative and sum is commutative}
+For every $n\in\mathbb{N}$ we have that $(A\cup B)^{(n)} = A^{(n)}\cup B^{(n)}$.
+\end{corollary}
+\textbf{Proof.} \\
+
+%````````````````````````````````````````````````````````````````````````````````````````````````````
+
+Every accumulation point of either $A$ or $B$ is also an accumulation point of $A\cup B$, so 
+$(A\cup B)^{(n)} \supseteq A^{(n)}\cup B^{(n)}$.
+
+From \ref{The order does not grow lemma} we know, that for any point $r\in \mathbb{R}$, if 
+$r \in (A\cup B)^{(n)}$, then $r \in  A^{(n)}\cup B^{(n)}$. $_\square$
+
+\begin{lemma}\label{key_lemma}
 For two bounded, well ordered sets $A, B \subseteq \mathbb{R}$, with order types, respectively 
 $\omega^m$ 
 and $\omega^n$, 
-such that $m < n$, and that $\exists_{b_0\in B}\forall_{a\in A}a<b_0$, we have 
+such that $m < n$, and that $\forall_{a\!\!\!b\in A\cup B}\exists_{b\in B}a\!\!\!b<b$, we have 
 that order type of $A \cup B$ is well defined and 
 equal to $\omega^n$.
 \end{lemma}
@@ -486,13 +507,14 @@ $\bullet$ $\omega^n \geq \gamma$:
 
 From \ref{that_important_corollary} we know, that $B$ has exactly one accumulation point $b'$ of 
 order $n$. This point has the propertie that $\forall_{b\in B}\ b<b'$.
-From the assumptions, we know that there exists $b_0 \in B$, such that $\forall_{a\in A}\ a<b_0$. 
-From this, we know that $(A\cup B) \cap (b_0,\infty) = B \cap (b_0, \infty)$. 
-Let us name the suffix $(A\cup B) \cap (b_0,\infty)$ of $A\cup B$ as $S$.
-From this we have, that $b'$ is an accumulation point od order $n$ also for $A \cup B$. 
-As for the given point, the property of being an accumulation point od order $n$ of 
-some set depends on the arbitrary small neighbourhood of that point, and $B$ and $A\cup B$ 
-does not differ on the neighbourhood $S$ of $b'$. As $b'$ is the only accumulation point of 
+%From the assumptions, we know that there exists $b_0 \in B$, such that $\forall_{a\in A}\ a<b_0$. 
+%From this, we know that $(A\cup B) \cap (b_0,\infty) = B \cap (b_0, \infty)$. 
+%Let us name the suffix $(A\cup B) \cap (b_0,\infty)$ of $A\cup B$ as $S$.
+%As for the given point, the property of being an accumulation point od order $n$ of 
+%some set depends on the arbitrary small neighbourhood of that point, and $B$ and $A\cup B$ 
+%does not differ on the neighbourhood $S$ of $b'$, 
+%we have, that $b'$ is an accumulation point od order $n$ also for $A \cup B$. 
+As $b'$ is the only accumulation point of 
 order $n$ for $B$ and from \ref{that_important_corollary} we know also that 
 $A$ has no accumulation points of order $n$, from \ref{The order does not grow lemma} we know, 
 that $A\cup B$ has exactly one accumulation point of order $n$, namely $b'$. 
@@ -517,8 +539,10 @@ $P$ has an accumulation point $p'$ of order $n$.
 %such that $\exists_{b\in B} x<b$ and that $C \coloneqq (A\cup B)\cap (-\infty, x)$ 
 %has an order type $\omega^n$.
 Let $b_1 \in B$ be such that $\forall_{p \in P}\ p<b_1$. Such $b_1$ exists, because $P$ is 
-a proper prefix of $A\cup B$ and $(A\cup B) \cap (b_0,\infty) = B \cap (b_0, \infty)$, so 
-$\forall_{x \in A\cup B}\exists_{b \in B} x < b$.
+a proper prefix of $A\cup B$, so $\exists_{a\!\!\!b\in A\cup B}\forall{p\in P} p < a\!\!\!b$, and 
+%and $(A\cup B) \cap (b_0,\infty) = B \cap (b_0, \infty)$, so 
+from the assumptions of the lemma we have that 
+$\forall_{a\!\!\!b \in A\cup B}\exists_{b \in B} a\!\!\!b < b$.
 We have that $p' \leq b_1$. But we have also that $b_1 < b'$, so $p' \neq b'$. This gives us the 
 contradiction, as $b'$ is the only accumulation point of order $n$ in $A\cup B$. $_\square$
 

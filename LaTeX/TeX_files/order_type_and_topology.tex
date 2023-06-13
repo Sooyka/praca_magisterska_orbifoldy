@@ -140,10 +140,12 @@ Futher examination of connections between $\speD$ and $\speS$ is performed in \r
 %and multiplying by $2$ is the order preserving homeomorphism of $\mathbb{R}$. \\[16pt]
 
 %Now we can make aforementioned observation:
+\todo{dopisać to czytelniej}
+w szeczgólności żeby było jasne jaką redukcję robimy
 The result of our reductions, can be expressed as:
 
 In the terms of set relations:
-\begin{observation}
+\begin{observation}\label{sum of spectras}
 If two-dimentional manifold $M$ has no boundry, then
 %\begin{equation} 
 %\spe{M} = \chi(M) - (\speS - 2) 
@@ -192,6 +194,7 @@ If two-dimentional manifold  $M$ has a boundry, then
 %\end{observation}
 
 In the terms of arithmetical expressions:
+\todo{sums are the form od sped and spes}
 \begin{observation}\label{boils_down}
 From above reductions we can conclued that our problem boiles down to the analysis of all
  the possible 
@@ -216,7 +219,9 @@ However, as stated later, it will be more convenient to us to include orbifolds 
 so we are stating above remark only for readers information. 
 
 The fact that it agrees with the definition of the \Eoc\ on the geometrical terms was 
-addressed in \ref{extended_Euler_orbicharacteristic}. \\
+addressed in \ref{extended_Euler_orbicharacteristic}. 
+
+
 
 To determine order type and topology of $\spe$ we will first study how $\speD$ looks like. 
 Then, remembering that 
@@ -635,7 +640,14 @@ the topology of $\speD$ is $\omega^\omega$.
 
 
 
-\section{Order type and topology of $\spebr{M}$}\label{all_spectra_are_isomorphic}
+\section{Order type and topology of $\spebr{M}$}\label{all_spectra_are_isomorphic}\label{spe_M}
+
+\begin{observation}\label{2times homeomerphism}
+We have that $\speS = 2\speD$.
+\end{observation}
+\textbf{Proof.}\\
+
+Indeed, since: \todo{write the sums}
 
 \begin{observation}
 For every two dimentional manifold $M$, we have that $\spe(M)$ is homeomorphic to $\speS$. 
@@ -704,8 +716,49 @@ From this, the observation follows immedietly. $_\square$
 The order type of the set of possible Euler orbicharacteristics of two-dimensional orbifolds 
 $\spe$ is $\omega^\omega$. 
 \end{theorem}
-\todo{tutaj też dopisać dowód}
-dopisać w apendiksie, że jak wysumuję dwa o różnym typie porządkowym, to wychodzi większy równy
+\textbf{Proof.} \\
+From \ref{sum of spectras} we know, that $\spe = \speD \cup \speS$.
+
+From \ref{speD_order_type} and \ref{2times homeomerphism}, we have that order types and 
+topologies of $\speD$ and $\speS$ both are $\omega^\omega$ and that $\speS = 2\speD$.  
+
+We will now prove that the order type of $\spe$ is $\omega^\omega$.
+
+From \ref{greatest \apots} we know, that the largest \apots\ $\speD$\ of order $n$ is 
+$1-\frac{n}{2}$. From, this and from the fact that $\speS = 2\speD$ we know that 
+that the largest \apots\ $\speS$\ of order $n$ is 
+$2-n$. From this, we have, that for every $m \in \mathbb{N}_{>0}$, order type of 
+$(-m, \infty) \cap \speD$ is $\omega^{2m+2}$ and that order type 
+of $(-m, \infty) \cap \speS$ is $\omega^{m+2}$. 
+%So, for every $m \in \mathbb{N}_{>0}$, the order type of $\speD$ is strictly greater than 
+%th
+Thus, for every $m \in \mathbb{N}_{>0}$, we have that $(-m, \infty) \cap \speD$ and 
+$(-m, \infty) \cap \speS$ satisfies assumtions of \ref{key_lemma}, thus, we have that 
+$(-m, \infty) \cap (\speD\cup\speS)$ have an order type $\omega^{2m+2}$. 
+
+From this we have that 
+\begin{equation}
+\spe = \speD \cup \speS = 
+\bigcup\limits_{m=1}^\infty \left( (-m, \infty) \cap (\speD\cup\speS) \right)
+\end{equation} 
+have an order type $\omega^\omega$.
+
+Now we will prove, that the topology of $\spe$ is that of $\omega^\omega$ too.
+
+We have that for $\speD$ \rba{$\speS$} that every accumulation point of 
+$\speD$ \rba{$\speS$} is in $\speD$ \rba{$\speS$}. From this and from 
+\ref{derivative and sum is commutative} we have, that all accumulations points of $\spe$ 
+are in $\spe$. From this, from lemma \ref{order_preserving_homeomorphism_theorem} we have 
+that the topology of $\spe$ is $\omega^\omega$. $_\square$ 
+
+%powiedziec, że wtedy zletmatu suma będzie też taka
+
+%powiedzieć że w takim razie calosć będzie taka
+
+%there are no new accumulation points -- all accumulations points are in sigma -- topology is ok
+
+%and 
+%dopisać w apendiksie, że jak wysumuję dwa o różnym typie porządkowym, to wychodzi większy równy
 %Provide some argument about being homeomorphic 
 %\noindent\textbf{Proof.} \\
 %From \ref{speD_theorem} we know, that $\speD$ is homeomorphic with $\omega^\omega$. From 
@@ -717,7 +770,7 @@ dopisać w apendiksie, że jak wysumuję dwa o różnym typie porządkowym, to w
 %For homeomorphicity, the proof of theorem \ref{speD_theorem} works as well in this case.
 %$_\square$ \\[4pt]
 
-\section{Order type and topology of "order-$n$" accumulation points subsets of $\spe$}\label{spe_M} 
+\section{Order type and topology of n-th cantor bendixon derivative of $\spe$} 
 $\spe_n$ \\
 taking limit points is the order type of $\omega^\omega$ but not homeomorphic anymore. 
 
@@ -731,7 +784,7 @@ taking limit points is the order type of $\omega^\omega$ but not homeomorphic an
 %belong to $\spe$ based on the knowlegde of other points belonging there. \\
 
 
-\section{More about how this $\spe \simeq \omega^\omega$ lies in $\mathbb{R}$}
+\section{More about how this $\spe$, $\speD$ and $\speS$ lie in $\mathbb{R}$}
 %\todo{movve to some other section maybe}
 \begin{observation}
 The first (greatest) negative \apots\ of $\spe$ is 
@@ -765,7 +818,7 @@ is
 an isolated point of the set $\speD$, from this $-\frac{1}{12}$ is an acccumulation point 
 of order $1$ of the set $\speD$. $_\square$ \\ 
  
-\subsection{$\speD$ and $\speS$}\label{D_and_S}
+\subsection{Connections between $\speD$ and $\speS$}\label{D_and_S}
 In this section we would like to 
 %develop the tools and 
 answer some questions about 
