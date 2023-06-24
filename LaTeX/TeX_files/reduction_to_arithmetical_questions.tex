@@ -1,0 +1,370 @@
+% mainfile: ../praca_magisterska_orbifoldy.tex
+\chapter{Reduction to arithmetical questions}\label{reduction_to_arithmetical}
+Reductions presented in this chapter will be more in the spirit of chapter \ref{order structure}, 
+in the sense that 
+%We will see (in the observation \ref{boils_down}) that the problem of determining this boils
+% down to the 
+% analysis of all 
+%the possible 
+%values of the expressions:
+%\begin{equation}
+%2 - \sum_{i=1}^n \frac{I_i-1}{I_i}
+%\end{equation}
+%and 
+%\begin{equation}
+%1 - \sum_{j=1}^m \frac{b_j-1}{2b_j},
+%\end{equation}
+%where $I_i, b_j$ varies over $\mathbb{N}_{>0} \cup \{\infty\}$. \\
+%As
+%\begin{equation}
+%2 - \sum_{i=1}^n \frac{I_i-1}{I_i} = 2 - n + \sum_{i=1}^n \frac{1}{I_i}
+%\end{equation}
+%and 
+%\begin{equation}
+%1 - \sum_{j=1}^m \frac{b_j-1}{2b_j} = 1 - m + \sum_{j=1}^m \frac{1}{2b_j},
+%\end{equation}
+%some questions about the spectrum are equivalent to some regarding Egyptian fractions. 
+%More on this connection is discussed in \ref{Egyptian_fractions}.
+%\\[4pt]
+%\textbf{Disclaimer}\\
+for now, until chapter \ref{counting occurrences} 
+%named "Counting occurrences" 
+, we will not pay attention 
+to how many orbifolds have the same Euler orbicharacteristic, only whether a particular 
+number is an \Eoc\ for at least one orbifold or not. 
+
+In chapter \ref{counting occurrences} we will explain how these reductions will be relevant 
+to the discussion holded there. 
+%Let us note, that 
+%Euler orbicharacteristic does not depend on the cyclic order of points on 
+%the components of the boundary. 
+%Because of that and since Euler orbicharacteristic does not depend on the cyclic order 
+%of points on the components of the boundary we introduce an extension of a notation from 
+%\cite{Conway2008}. 
+
+%%We will write $\ast \{a,b,c,d,\cdots\}$ to denote not a particular orbifold, but a type 
+%%of orbifold that have a dihedral points on a component of the boundry of orders 
+%$a,b,c,d,\cdots$, but 
+%%in any order. \\ 
+
+%We will write $\ast \{a,b,c,d,\cdots\}$ to denote a type of a boundary (of an orbifold) that have 
+%kaleidoscopic points of periods $a,b,c,d,\cdots$, but in any order. \\
+
+
+%From what we wrote above (that Euler orbicharacteristic does not depend on the cyclic order 
+%of points on the components of the boundary), we can see that Euler 
+%orbicharacteristic is well defined 
+%%on such types of orbifolds. \\ 
+%when we specify only such a type of the components of the boundary of an orbifold and not 
+%a particular cyclic order.  \\
+
+\section{Reductions of cases}
+The aim of following reductions is to make it easier to answear the question of which 
+points lie in $\spe$ and which not. 
+
+The first problem with the structure of $\spe$ is that it is the sum of $\spebr{M}$, for 
+every two dimentional manifold $M$. 
+\begin{equation}
+\spe = \bigcup_{M\textrm{ : 2d manifold}} \spebr{M}.
+\end{equation}
+
+%In this section we want to make some reductions to 
+%limit number of cases that we will be dealing with. 
+
+We aim to find a minimal set $\mathcal{M}$ of base manifolds 
+%that "covers all the cases" i.e.  
+such that:
+\begin{equation}\label{minimal calM}
+\spe = \bigcup_{M\in\mathcal{M}}\spebr{M}.
+\end{equation}
+
+% any for any $x \in \spe$ there 
+%is an orbifold $O$ with a base manifold from $B$ such that $\cho{O} = x$.
+%We aim to limit the number of base manifolds as much as possible while keeping entire spectrum. 
+It will turn out that $\mathcal{M} = \{S^2, D^2\}$ satisfies \ref{minimal calM} and 
+that both $S^2$ and $D^2$ are neccesery. 
+%there are
+% it can be done such that we are left with $B = \{S^2, D^2\}$ and there is 
+%no futher reductions possible. 
+
+%For this chapter we will consider orbifolds according to a definition from 
+%(\ref{Disk_and_sphere_with_defects}). \\
+
+\section{Sufficiency of $S^2$ and $D^2$}\label{sufficiency of D2 and S2}
+
+Given an orbifold $O_1$, we want to perform some operations from \ref{Operations} on it, 
+such that the resulting orbifold 
+$O_2$ will have the same Euler orbicharactristic, but the base manifold of $O_2$ would 
+be $S^2$ or $D^2$. We would then say, that $O_1$ got reduced to $O_2$.
+In following subsection, we allow only such operations, that do not 
+change \Eoc. When writing that we "can" do something we mean that there is 
+possible one of the operations from \ref{Operations}.  %have as 
+%big Euler characteristic as possible. 
+
+The Euler characteristic of base manifold depends only on the number of handles, cross caps 
+and boundry components. And, as stated in \ref{E_orb} it is: 
+\begin{equation}
+2-2h-c-b,
+\end{equation}
+%\smalltodoII{opisać i wybrać oznaczenia}
+for $h$ - number of handles, $c$ - number of cross-caps, $b$ - number of boundary components. 
+
+For every such a manifold feature we want to find an orbifold features with the same 
+Euler orbicharacteristic delta. 
+
+We will take to approuches, depending on whether the orbifold in question has a boundary or not.
+
+%To do this we want to eliminate handles 
+%Let us observe, that:
+\subsection{Orbifold without boundary}
+We can observe that:
+\begin{align}
+\hspace{3cm}\Delta(\circ) =& \hspace{-1cm} &-2& \hspace{-1cm} &= \Delta(2^4) \\
+\hspace{3cm}\Delta(\times) =& \hspace{-1cm} &-1& \hspace{-1cm} &= \Delta(2^2)
+\end{align}
+From this we can see that we can remove handles and cross-caps from any orbifold without 
+the boundary. 
+After such reductions we are left with a $S^2$ orbifold with all orbipoints being rotational 
+in the interior.
+
+\subsection{Orbifold with boundary}7\label{orbifold_with_boundary}
+We can observe that:
+\begin{align}
+\hspace{3cm}\Delta(\circ) =& \hspace{-1cm} &-2& \hspace{-1cm} &= \Delta((^\ast 2)^8) \\
+\hspace{3cm}\Delta(\ast) =& \hspace{-1cm} &-1& \hspace{-1cm} &= \Delta((^\ast 2)^4) \\
+\hspace{3cm}\Delta(\times) =& \hspace{-1cm} &-1& \hspace{-1cm} &= \Delta((^\ast 2)^4)
+\end{align}
+From this we can see that we can remove handles and cross-caps 
+from any orbifold with a boundary. 
+We can also remove all boundary components exept one.         
+We can further observe that:
+\begin{align}
+\hspace{3cm}\Delta(n) =& \hspace{-1cm} &\frac{n-1}{n}& \hspace{-1cm} 
+&= 2\frac{n-1}{2n} &= \Delta((^\ast n)^2)\label{third_reduction}
+\end{align}
+From this we see that we can remove all the rotational orbipoints in favor for 
+dihedral orbipoints.
+After such reductions we are left with a $D^2$ orbifold with all orbipoints being dihedral on 
+the boundary or being reflectional on the boundary.
+%\smalltodoII{reflectional?}
+
+As a fact not necessary for our reductions, but interestung on its own, we can furthermore, 
+observe that:
+\begin{observation}
+If $O_1$ has not $S^2$ as its base manifold it can be reduced to a $D^2$-orbifold.
+\end{observation}
+\textbf{Proof.} \\
+If $O_1$ has not $S^2$ as its base manifold $M$, then $M$ has at least one handle or a cross-cup. We can observe that:
+\begin{align}
+\hspace{3cm}\Delta(\circ) =& \hspace{-1cm} &-2& \hspace{-1cm} &= \Delta(\ast (^*2)^4) \\
+\hspace{3cm}\Delta(\times) =& \hspace{-1cm} &-1& \hspace{-1cm} &= \Delta(\ast).
+\end{align}
+From this we have that the handle or the cross-cap can be replaced by a boundary component  
+and some number of boundary orbipoints. After this reduction, we can proceed with all the 
+other reductions from the \ref{orbifold_with_boundary} and obtain an $D^2$-orbifold 
+with the same \Eoc as the original one. $_\square$
+
+%\begin{align}
+%\Delta(n) =& &\frac{n-1}{n}&  
+%&= \Delta((^\ast n)^2)\label{third_reduction}
+%\end{align}
+
+%From this we can conclude that every Euler orbicharacteristic can be obtained 
+%by an orbifold with base manifold $S^2$ or $D^2$. 
+%Examples of rational numbers from $\speS \setminus \speD$ and $\speD \setminus \speS$ are:
+%We will provide examples 
+%
+%\ref{counting_occurences}
+
+%From this we can conclude, that every Euler orbicharacteristic can be obtained 
+%by an orbifold of signature of a type ($n$ and $m$ are arbitrary):
+
+%\begin{align*}
+%I_1I_2\cdots I_n & \textrm{\ or} \\
+%\ast b_1b_2\cdots b_m &.
+%\end{align*}
+
+%Let us denote the set of all possible Euler orbicharacteristics of orbifolds of the form 
+%$I_1I_2\cdots I_n$ by $\speS$ and the set 
+%of all possible Euler orbicharacteristics of orbifolds of the form $\ast b_1b_2\cdots b_m$ 
+%as $\speD$. 
+%So we have that $\spe = \speD \cup \speS$. \\
+%% Let us denote the set of all possible \Eoc s of two-dimentional orbifolds as $\spe$. \\
+%Let us also observe that the order type and topology of $\speS$ and $\speD$ are 
+%the same since 
+
+%\begin{equation}\label{times_two_fact}
+%2\speD=\speS
+%\end{equation}
+%and multiplying by $2$ is the order preserving homeomorphism of $\mathbb{R}$. \\[16pt]
+
+%Now we can make aforementioned observation:
+%\todo{dopisać to czytelniej}
+%w szeczgólności żeby było jasne jaką redukcję robimy
+
+The results of our reductions, can be summarised as:
+%In the terms of set relations:
+\begin{observation}\label{sum of spectras}
+If two-dimentional manifold $M$ has no boundry, then
+%\begin{equation} 
+%\spe{M} = \chi(M) - (\speS - 2) 
+%\end{equation}
+%and
+\begin{equation} 
+\spebr{M} \subseteq \speS 
+\end{equation} 
+
+If, in addition, $M \neq S^2$, then 
+\begin{equation} 
+\spebr{M} \subseteq \speD. 
+\end{equation}
+
+\end{observation}
+%\textbf{Proof} \\
+%Let $M$ be a two-dimentional manifold with no boundry, from \ref{\Eoc_as_a_sum} we have, that: 
+%\begin{equation}
+%\spe{M} = \{\chi(M) - \sum_{i=1}^n 
+%\frac{I_i-1}{I_i}\ |\ n \in \mathbb{N} \land \forall_i I_i \in \mathbb{N} \cup \infty\}.
+%\end{equation}
+%And from 
+%$\chi(M) - (\speS - 2)$
+\begin{observation}
+If two-dimentional manifold  $M$ has a boundry, then 
+%\begin{equation}
+%\spe{M} = \chi(M) + (\speD - 1)
+%\end{equation}
+%and 
+\begin{equation}
+\spebr{M} \subseteq \speD
+\end{equation}
+\end{observation}
+%\textbf{Proof} \\
+%\begin{equation}
+%\{\chi(M) - \sum_{j=1}^m 
+%\frac{b_j-1}{2b_j}\ |\ m \in \mathbb{N} \land \forall_j b_j \in \mathbb{N} \cup \infty\} 
+%\end{equation}
+%\begin{observation}
+%If two-dimentional manifold  $M$ has no boundry, then $\spe{M} \subseteq \speS$. 
+%If, in addition, $M \neq S^2$, then 
+%$\spe{M} \subseteq \speD$.
+%\end{observation}
+%\begin{observation}
+%If two-dimentional manifold  $M$ has a boundry, then $\spe{M} \subseteq \speD$.
+%\end{observation}
+
+%In the terms of arithmetical expressions:
+%\todo{sums are the form od sped and spes}
+
+\begin{corollary}
+We have that $\spe = \speS \cup \speD$.
+\end{corollary}
+
+We will postpone our discussion of neccessity of both $S^2$ and $D^2$ to 
+\ref{neccessity of d2 and s2}, after 
+the 
+section \ref{Reduction to arithmetical questions section} which will provide us 
+with more convenient language. 
+
+\section{Reduction to arithmetical questions}\label{Reduction to arithmetical questions section}
+As written in \ref{\Eoc on 2d}, we can express an \Eoc of a $M$-orbifold $O$ as:
+\begin{equation}
+\cho{O} = \chi (M) - \sum_{i=1}^n \frac{r_i-1}{r_i} - \sum_{j=1}^m \frac{d_j-1}{2d_j},
+\end{equation}
+where $r_i$ and $d_j$ are degrees of the, respectively, rotational and diheadral orbipoints 
+of $O$.
+
+From this we can express $\spebr{M}$ as:
+\begin{align}
+\spe(M) = \chi (M) &-\left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
+r_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}+ \\
+&- \left\{\sum\limits_{j=1}^m\frac{d_j-1}{2d_j}\ 
+\big|\ m\in\mathbb{N}_0,\ d_j\in\mathbb{N}_{>0}\cup \{\infty\}\right\} .
+\end{align}
+
+As from \ref{sufficiency of D2 and S2} we know that $\spe = \speS \cup \speD$, and that 
+$\chi (S^2) = 2$ and $\chi (D^2) = 1$, we can expresss $\spe$ as a sum ($\cup$) of two sets:
+\begin{equation}
+2 -\left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
+r_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\} = \spe(S^2)
+\end{equation}
+and
+\begin{equation}
+1 - \left\{\sum\limits_{j=1}^m\frac{d_j-1}{2d_j}\ 
+\big|\ m\in\mathbb{N}_0,\ d_j\in\mathbb{N}_{>0}\cup \{\infty\}\right\} = \spe(D^2) .
+\end{equation}
+
+From this we see, that the core of understanding $\spe$ through arithmetical viewpoint 
+is to understand possible values of expression:
+%We now know, that $\spe = \speS \cup \speD$. To determin 
+
+%\begin{observation}\label{boils_down}
+%From above reductions we can conclued that our problem boiles down to the analysis of all
+% the possible 
+%values of the expressions:
+\begin{equation}\label{S2_sum}
+2 - \sum_{i=1}^n \frac{r_i-1}{r_i}
+\end{equation}
+and 
+\begin{equation}
+1 - \sum_{j=1}^m \frac{d_j-1}{2d_j},
+\end{equation}
+with $r_i$ and $d_j$ ranging over $\mathbb{N}_{>0}\cup \{\infty\}$.
+%, with a convention 
+%that $\varphi(\infty) \coloneqq \lim\limits_{k\to \infty} \varphi(k)$. 
+%\end{observation}
+
+As stated in \ref{cusp_reduction} we can perform futher reductions to have an orbifold with 
+particular orbicharacteristic without cusps (if needed) and then (after these reductions) 
+we can analyse only expressions with $r_i$ and $d_j$ ranging over $\mathbb{N}_{>0}$ and 
+they will still give us full spectrum. 
+However, as stated later, it will be more convenient to us to include orbifolds with cusps 
+so we are stating this observation only as a side remark.
+%for readers information. 
+%The fact that this agrees with the definition of the \Eoc\ on the geometrical terms was 
+%addressed in \ref{extended_Euler_orbicharacteristic}. 
+\begin{observation}\label{2times homeomorphism}
+We have that $\speS = 2\speD$.
+\end{observation}
+\textbf{Proof.}\\
+
+Indeed, since: 
+\begin{align}
+\spe(S^2) = 2 -\left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
+r_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}
+\end{align}
+and 
+\begin{align}
+\spe(D^2) = 1 - \left\{\sum\limits_{j=1}^m\frac{d_j-1}{2d_j}\ 
+\big|\ m\in\mathbb{N}_0,\ d_j\in\mathbb{N}_{>0}\cup \{\infty\}\right\}._\square
+\end{align}
+
+\section{Neccessity of $S^2$ and $D^2$}\label{neccessity of d2 and s2}
+As we know from \ref{Operations} adding an orbipoint to a manifold decreases it's 
+orbicharacteristic. As $S^2$ has the highest Euler characteristic - $2$ of all 
+two dimentional manifolds, there is no other orbifold with \Eoc\ equal to $2$. 
+$S^2$ is then necesery to include $2$. 
+
+As known from \cite{największy orbifold}, the number $-\frac{1}{84}\in\speD$ and it is 
+the greatest negative 
+\Eoc any two dimensional orbifold can have. We will now show, that 
+$-\frac{1}{84} \not\in \speS$. For the sake of contradiction let us assume, that 
+$-\frac{1}{84} \in \speS$, then, from \ref{2times homeomorphism} we know, that 
+$\frac{1}{2}\left(-\frac{1}{84}\right)\in \speD$. This is a contradiction as 
+$0 > \frac{1}{2}\left(-\frac{1}{84}\right) > -\frac{1}{84}$. $_\square$  
+
+Futher examination of connections between $\speD$ and $\speS$ is performed in \ref{D_and_S}.
+
+\section{Translating questions to ones about Egyptian fractions}\label{Egyptian_fractions}
+The term in the sums can be expressed as $1- \frac{1}{I_i}$, then the sums become:
+$2 - n + \sum_{i=1}^n \frac{1}{I_i}$. This is very simmilar in notion to the egyptian franction, 
+which is a rational number that can be expressed as a sum of a fractions with numerator $1$ and 
+different denominators. Sometimes the "distinc denominators" condition is dropped and we will 
+follow that convention here. 
+The particular interest is in translating questions related to spectra to the questions 
+of egyptian franctions. 
+What the data of the spectra imposes is the number of fractions to be summed.  
+
+
+
+
+

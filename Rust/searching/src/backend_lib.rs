@@ -280,4 +280,6 @@ pub fn read_config<C: serde::de::DeserializeOwned>(lib: String) -> Result<C, Box
     Ok(u)
 }
 #[derive(Serialize, Deserialize)]
-pub struct Config {}
+pub struct Config {
+    
+}

@@ -480,7 +480,7 @@ $r \in (A\cup B)^{(n)}$, then $r \in  A^{(n)}\cup B^{(n)}$. $_\square$
 For two bounded, well ordered sets $A, B \subseteq \mathbb{R}$, with order types, respectively 
 $\omega^m$ 
 and $\omega^n$, 
-such that $m < n$, and that $\forall_{a\!\!\!b\in A\cup B}\exists_{b\in B}a\!\!\!b<b$, we have 
+such that $m < n$, and that $\forall_{x\in A\cup B}\exists_{b\in B}x<b$, we have 
 that order type of $A \cup B$ is well defined and 
 equal to $\omega^n$.
 \end{lemma}
@@ -489,7 +489,7 @@ From \ref{sum_lemma}, we know, that $A\cup B$ is well ordered. As such its order
 defined and equal to some ordeal number $\gamma$. 
 
 We will show that $\gamma \leq \omega^n$ and $\gamma \geq \omega^n$, 
-thus showing that $\gamma = \omega^n$. \\
+thus showing that $\gamma = \omega^n$.
 
 Let $f : \omega^n \to B$ and $g : A \cup B \to \gamma$ be order preserving bijections. 
 %Through this proof when we will write "corresponding" in regards of some subset of $\omega^n$
@@ -539,10 +539,10 @@ $P$ has an accumulation point $p'$ of order $n$.
 %such that $\exists_{b\in B} x<b$ and that $C \coloneqq (A\cup B)\cap (-\infty, x)$ 
 %has an order type $\omega^n$.
 Let $b_1 \in B$ be such that $\forall_{p \in P}\ p<b_1$. Such $b_1$ exists, because $P$ is 
-a proper prefix of $A\cup B$, so $\exists_{a\!\!\!b\in A\cup B}\forall{p\in P} p < a\!\!\!b$, and 
+a proper prefix of $A\cup B$, so $\exists_{x\in A\cup B}\forall{p\in P} p < x$, and 
 %and $(A\cup B) \cap (b_0,\infty) = B \cap (b_0, \infty)$, so 
 from the assumptions of the lemma we have that 
-$\forall_{a\!\!\!b \in A\cup B}\exists_{b \in B} a\!\!\!b < b$.
+$\forall_{x \in A\cup B}\exists_{b \in B} x < b$.
 We have that $p' \leq b_1$. But we have also that $b_1 < b'$, so $p' \neq b'$. This gives us the 
 contradiction, as $b'$ is the only accumulation point of order $n$ in $A\cup B$. $_\square$
 

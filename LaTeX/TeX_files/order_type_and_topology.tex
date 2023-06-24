@@ -11,215 +11,6 @@ In this chapter we will discuss that both the order type and the topology
 of the set $\spe$ of all possible Euler orbicharacteristics 
 of two-dimensional orbifolds are that of $\omega^\omega$. 
 %We will call this set $\spe$.
-%We will see (in the observation \ref{boils_down}) that the problem of determining this boils
-% down to the 
-% analysis of all 
-%the possible 
-%values of the expressions:
-%\begin{equation}
-%2 - \sum_{i=1}^n \frac{I_i-1}{I_i}
-%\end{equation}
-%and 
-%\begin{equation}
-%1 - \sum_{j=1}^m \frac{b_j-1}{2b_j},
-%\end{equation}
-%where $I_i, b_j$ varies over $\mathbb{N}_{>0} \cup \{\infty\}$. \\
-%As
-%\begin{equation}
-%2 - \sum_{i=1}^n \frac{I_i-1}{I_i} = 2 - n + \sum_{i=1}^n \frac{1}{I_i}
-%\end{equation}
-%and 
-%\begin{equation}
-%1 - \sum_{j=1}^m \frac{b_j-1}{2b_j} = 1 - m + \sum_{j=1}^m \frac{1}{2b_j},
-%\end{equation}
-%some questions about the spectrum are equivalent to some regarding Egyptian fractions. 
-%More on this connection is discussed in \ref{Egyptian_fractions}.
-\\[4pt]
-%\textbf{Disclaimer}\\
-For now, until chapter \ref{counting occurrences} named "Counting occurrences", 
-we will not pay attention 
-to how many orbifolds have the same Euler orbicharacteristic, only whether a particular 
-number is an \Eoc\ for at least one orbifold or not. 
-%Let us note, that 
-%Euler orbicharacteristic does not depend on the cyclic order of points on 
-%the components of the boundary. 
-%Because of that and since Euler orbicharacteristic does not depend on the cyclic order 
-%of points on the components of the boundary we introduce an extension of a notation from 
-%\cite{Conway2008}. 
-
-%%We will write $\ast \{a,b,c,d,\cdots\}$ to denote not a particular orbifold, but a type 
-%%of orbifold that have a dihedral points on a component of the boundry of orders 
-%$a,b,c,d,\cdots$, but 
-%%in any order. \\ 
-
-%We will write $\ast \{a,b,c,d,\cdots\}$ to denote a type of a boundary (of an orbifold) that have 
-%kaleidoscopic points of periods $a,b,c,d,\cdots$, but in any order. \\
-
-
-%From what we wrote above (that Euler orbicharacteristic does not depend on the cyclic order 
-%of points on the components of the boundary), we can see that Euler 
-%orbicharacteristic is well defined 
-%%on such types of orbifolds. \\ 
-%when we specify only such a type of the components of the boundary of an orbifold and not 
-%a particular cyclic order.  \\
-
-\section{Reductions of cases}
-In this section we want to make some reductions to 
-limit number of cases that we will be dealing with. 
-
-We aim to find a minimal set $B$ of base manifolds that "covers all the cases" i.e. $B$ 
-such that any for any $x \in \spe$ there 
-is an orbifold $O$ with a base manifold from $B$ such that $\cho{O} = x$.
-%We aim to limit the number of base manifolds as much as possible while keeping entire spectrum. 
-It will turn out that $B = \{S^2, D^2\}$ and there are
-% it can be done such that we are left with $B = \{S^2, D^2\}$ and there is 
-no futher reductions possible. 
-
-%For this chapter we will consider orbifolds according to a definition from 
-%(\ref{Disk_and_sphere_with_defects}). \\
-Given an orbifold $O_1$, we want to perform some operations from \ref{Operations} on it, such that the resulting orbifold 
-$O_2$ will have the same Euler orbicharactristic, but the base manifold of $O_2$ would have as 
-big Euler characteristic as possible. 
-
-The Euler orbicharacteristic of base manifold depends only on the number of handles, cross caps 
-and boundry components. And, as stated in \ref{E_orb} it is: 
-\begin{equation}
-2-2h-c-b
-\end{equation}
-\smalltodoII{opisać i wybrać oznaczenia}
-
-For ever such a manifold feature we want to find an orbifold features with the same 
-Euler orbicharacteristic delta.  
-
-%To do this we want to eliminate handles 
-%Let us observe, that:
-One of the ways to do that is by observing that:
-\begin{align}
-\hspace{3cm}\Delta(\circ) =& \hspace{-1cm} &-2& \hspace{-1cm} &= \Delta(\ast (^\ast 2)^4) \\
-\hspace{3cm}\Delta(\ast) =& \hspace{-1cm} &-1& \hspace{-1cm} &= \Delta((^\ast 2)^4) \\
-\hspace{3cm}\Delta(\times) =& \hspace{-1cm} &-1& \hspace{-1cm} &= \Delta((^\ast 2)^4)
-\end{align}
-So we see that from any orbifold we can eradicate handles ....       
-\begin{align}
-\hspace{3cm}\Delta(n) =& \hspace{-1cm} &\frac{n-1}{n}& \hspace{-1cm} 
-&= \Delta((^\ast n)^2)\label{third_reduction}
-\end{align}
-
-%\begin{align}
-%\Delta(n) =& &\frac{n-1}{n}&  
-%&= \Delta((^\ast n)^2)\label{third_reduction}
-%\end{align}
-
-From this we can conclude that every Euler orbicharacteristic can be obtained 
-by an orbifold with base manifold $S^2$ or $D^2$. 
-Examples of rational numbers from $\speS \setminus \speD$ and $\speD \setminus \speS$ are:
-We will provide examples 
-Futher examination of connections between $\speD$ and $\speS$ is performed in \ref{D_and_S}.
-%\ref{counting_occurences}
-
-%From this we can conclude, that every Euler orbicharacteristic can be obtained 
-%by an orbifold of signature of a type ($n$ and $m$ are arbitrary):
-
-%\begin{align*}
-%I_1I_2\cdots I_n & \textrm{\ or} \\
-%\ast b_1b_2\cdots b_m &.
-%\end{align*}
-
-%Let us denote the set of all possible Euler orbicharacteristics of orbifolds of the form 
-%$I_1I_2\cdots I_n$ by $\speS$ and the set 
-%of all possible Euler orbicharacteristics of orbifolds of the form $\ast b_1b_2\cdots b_m$ 
-%as $\speD$. 
-%So we have that $\spe = \speD \cup \speS$. \\
-%% Let us denote the set of all possible \Eoc s of two-dimentional orbifolds as $\spe$. \\
-%Let us also observe that the order type and topology of $\speS$ and $\speD$ are 
-%the same since 
-
-%\begin{equation}\label{times_two_fact}
-%2\speD=\speS
-%\end{equation}
-%and multiplying by $2$ is the order preserving homeomorphism of $\mathbb{R}$. \\[16pt]
-
-%Now we can make aforementioned observation:
-\todo{dopisać to czytelniej}
-w szeczgólności żeby było jasne jaką redukcję robimy
-The result of our reductions, can be expressed as:
-
-In the terms of set relations:
-\begin{observation}\label{sum of spectras}
-If two-dimentional manifold $M$ has no boundry, then
-%\begin{equation} 
-%\spe{M} = \chi(M) - (\speS - 2) 
-%\end{equation}
-%and
-\begin{equation} 
-\spebr{M} \subseteq \speS 
-\end{equation} 
-
-If, in addition, $M \neq S^2$, then 
-\begin{equation} 
-\spebr{M} \subseteq \speD. 
-\end{equation}
-
-\end{observation}
-%\textbf{Proof} \\
-%Let $M$ be a two-dimentional manifold with no boundry, from \ref{\Eoc_as_a_sum} we have, that: 
-%\begin{equation}
-%\spe{M} = \{\chi(M) - \sum_{i=1}^n 
-%\frac{I_i-1}{I_i}\ |\ n \in \mathbb{N} \land \forall_i I_i \in \mathbb{N} \cup \infty\}.
-%\end{equation}
-%And from 
-%$\chi(M) - (\speS - 2)$
-\begin{observation}
-If two-dimentional manifold  $M$ has a boundry, then 
-%\begin{equation}
-%\spe{M} = \chi(M) + (\speD - 1)
-%\end{equation}
-%and 
-\begin{equation}
-\spebr{M} \subseteq \speD
-\end{equation}
-\end{observation}
-%\textbf{Proof} \\
-%\begin{equation}
-%\{\chi(M) - \sum_{j=1}^m 
-%\frac{b_j-1}{2b_j}\ |\ m \in \mathbb{N} \land \forall_j b_j \in \mathbb{N} \cup \infty\} 
-%\end{equation}
-%\begin{observation}
-%If two-dimentional manifold  $M$ has no boundry, then $\spe{M} \subseteq \speS$. 
-%If, in addition, $M \neq S^2$, then 
-%$\spe{M} \subseteq \speD$.
-%\end{observation}
-%\begin{observation}
-%If two-dimentional manifold  $M$ has a boundry, then $\spe{M} \subseteq \speD$.
-%\end{observation}
-
-In the terms of arithmetical expressions:
-\todo{sums are the form od sped and spes}
-\begin{observation}\label{boils_down}
-From above reductions we can conclued that our problem boiles down to the analysis of all
- the possible 
-values of the expressions:
-\begin{equation}\label{S2_sum}
-2 - \sum_{i=1}^n \frac{I_i-1}{I_i}
-\end{equation}
-and 
-\begin{equation}
-1 - \sum_{j=1}^m \frac{b_j-1}{2b_j},
-\end{equation}
-with $I_i$ and $b_j$ ranging over $\mathbb{N}_{>0}\cup \{\infty\}$.
-%, with a convention 
-%that $\varphi(\infty) \coloneqq \lim\limits_{k\to \infty} \varphi(k)$. 
-\end{observation}
-As stated in \ref{cusp_reduction} we can perform futher reductions to have an orbifold with 
-particular orbicharacteristic without cusps (if needed) and then (after these reductions) 
-we can analyse only expressions with $I_i$ and $b_j$ ranging over $\mathbb{N}_{>0}$ and 
-they will still give us full spectrum. 
-
-However, as stated later, it will be more convenient to us to include orbifolds with cusps 
-so we are stating above remark only for readers information. 
-
-The fact that it agrees with the definition of the \Eoc\ on the geometrical terms was 
-addressed in \ref{extended_Euler_orbicharacteristic}. 
 
 
 
@@ -256,12 +47,13 @@ $\spe = \speS \cup \speD$ and $\speS = 2\speD$ we will make an argument for $\sp
 
 In this section we will also describe precisely where accumulation points of $\speD$ lie and of 
  which order 
-(see below \ref{accumulation_points_definitions}) they are. Analysis of locations of those 
+(see below \ref{accumulation_points_definitions repetition} or 
+\ref{accumulation_points_definitions}) they are. Analysis of locations of those 
 accumulation points, as interesting as it is alone will also be necessery for providing 
 our argument about order type and topology of $\speD$. 
 \subsection{Definition and properties of order of accumulation points}
-\label{accumulation_points_definitions} 
-\todo{zmienić to wszystko na rangę cantora bendiksona}
+\label{accumulation_points_definitions repetition} 
+%\todo{zmienić to wszystko na rangę cantora bendiksona}
 %We start with one technical definition of "transitive order" that will be almost what we want
 %and then, there will be the the definition of "order", which is the definition that we need.
 %\begin{definition}
@@ -285,6 +77,9 @@ our argument about order type and topology of $\speD$.
 %$n$ we say that 
 %the  point is an acccumulation point of order $\omega$.
 %\end{definition}
+These definitions are exactly the same as from \ref{accumulation_points_definitions} and 
+are repeated here only for the readers convenience.
+
 We start with definition of being "at least of order $n$" that will be almost what we want
 and then, there will be the definition of being "order", which is the definition that we need. \\
 For a given set we define as follows:
@@ -315,9 +110,9 @@ When we will say that a point is an accumulation point of some set without speci
 then we will mean being an accumulation point in the ussual sense; from the point of view 
 of above definitions, that is, an accumulation point of order at least one.
 %\todo{dopisać notację do punktów skupienia różnego stopnia}
-\begin{lemma}
+%\begin{lemma}
 
-\end{lemma}
+%\end{lemma}
 \subsection{Analysis of locations of accumulation points of $\speD$ with respect to their order}
 %\subsubsection{Some preliminary observations}
 We want to determine where exactly are accumulation points of the set $\speD$ with 
@@ -420,7 +215,7 @@ $x + \frac{1}{2}$ is an acccumulation point of the set $\speD$ of order $n$.
 Let $x$ be an acccumulation point of the set $\speD$ of order $n+1$. From the lemma 
  \ref{first_order_lemma} we know, that $x - \frac{1}{2}$ is an acccumulation point of the set 
  $\speD$ of order at least $n+2$. Now let us assume (for a contradiction), that $x - \frac{1}{2}$ 
- is an \apots $\speD$ of order $k>n+2$. But then from the lemma \ref{second_order_lemma} 
+ is an \apots\ $\speD$ of order $k>n+2$. But then from the lemma \ref{second_order_lemma} 
  we have that $x$ is an acccumulation point of the set $\speD$ of order at least $n+2$ and that 
  is a contradiction. 
  
@@ -642,12 +437,7 @@ the topology of $\speD$ is $\omega^\omega$.
 
 \section{Order type and topology of $\spebr{M}$}\label{all_spectra_are_isomorphic}\label{spe_M}
 
-\begin{observation}\label{2times homeomerphism}
-We have that $\speS = 2\speD$.
-\end{observation}
-\textbf{Proof.}\\
 
-Indeed, since: \todo{write the sums}
 
 \begin{observation}
 For every two dimentional manifold $M$, we have that $\spe(M)$ is homeomorphic to $\speS$. 
@@ -773,6 +563,7 @@ that the topology of $\spe$ is $\omega^\omega$. $_\square$
 \section{Order type and topology of n-th cantor bendixon derivative of $\spe$} 
 $\spe_n$ \\
 taking limit points is the order type of $\omega^\omega$ but not homeomorphic anymore. 
+\todo{lemat o braku nowych punktów}
 
 
 
@@ -825,11 +616,11 @@ answer some questions about
 %interrelationships
 relations between $\speD$ and $\speS$. 
 
-The first, stated in \ref{} is that $2\speD=\speS$. 
-This tells us all about simmilarities of their topological structures -- namely, 
-they are the same, 
-but it does not directly answers questions about how they lie in $\mathbb{R}$, relative 
-to each other.
+%The first, stated in \ref{} is that $2\speD=\speS$. 
+%This tells us all about simmilarities of their topological structures -- namely, 
+%they are the same, 
+%but it does not directly answers questions about how they lie in $\mathbb{R}$, relative 
+%to each other.
 %\subsubsection{Some preliminary observations}
 \todo{dopisać trochę inną motywację}
 \\[16pt]
