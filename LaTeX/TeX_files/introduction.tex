@@ -6,7 +6,11 @@ Quotiens by a groups
 
 Praca o ujemnym ale z najwyzszą orbicharakterystyką
 
-\section{Definitions}
+\section{Technical introductions}
+Now, we will proceed to give technical introductions about orbifolds, \Eoc and the 
+technics we will use in this thesis, alongside with some definitions and notation and 
+naming conventions.  
+\section{Orbifolds}
 \todo{jak sie juz wszystko zbierze co ma tu być, to to dopisać}
 The definition of the orbifold is taken from Thurston \cite{Thurston1979} (chapter 13). 
 We briefly recall the concept, but for full discussion we refer to \cite{Thurston1979}. \\
@@ -57,6 +61,19 @@ as we will treat manifolds as orbifolds we will always refer
 we will 
 
 from of \Eoc on two dim orbifolds\label{\Eoc on 2d}
+
+\subsection{\Eoc}
+\begin{equation}\label{chi orb expression}
+\cho{O} = \chi (M) - \sum_{i=1}^n \frac{r_i-1}{r_i} - \sum_{j=1}^m \frac{d_j-1}{2d_j}
+\end{equation}
+For $O$ with only rotational orbipoints:
+\begin{equation}\label{chi orb expression rotational}
+\cho{O} = \chi (M) - \sum_{i=1}^n \frac{r_i-1}{r_i}
+\end{equation}
+For $O$ with only dihedral orbipoints:
+\begin{equation}\label{chi orb expression dihedral}
+\cho{O} = \chi (M) - \sum_{j=1}^m \frac{d_j-1}{2d_j}
+\end{equation}
 \subsection{Classification of orbifolds with non-negative Euler orbicharacteristic}
 The list of all orbifolds with non-negative Euler orbicharacteristic
 Powiedzieć coś o tym, że orbicharatkeryttyka odpowiada polom (Gauss Bonett itd.)
@@ -66,10 +83,8 @@ Write about cusp as a limit.
 Write about isomorphism of all spectra
 
 $M$ - orbifold
-\subsection{Spectra}
-This will be the main interest of this thesis. $\spe$. dadada
 
-\subsection{Definition and properties of order of accumulation points}
+\section{Definition and properties of order of accumulation points}
 \label{accumulation_points_definitions} 
 %\todo{zmienić to wszystko na rangę cantora bendiksona}
 %We start with one technical definition of "transitive order" that will be almost what we want
@@ -128,8 +143,184 @@ then we will mean being an accumulation point in the ussual sense; from the poin
 of above definitions, that is, an accumulation point of order at least one.
 %\todo{dopisać notację do punktów skupienia różnego stopnia}
 
+
 \section{Uniformisation theorem (formulation)}
 \todo{twierdzenie o klasyfikacji powierzchni}
+
+\section{Spectra}
+This will be the main interest of this thesis. $\spe$. dadada
+\begin{observation}\label{2times homeomorphism}
+We have that $\speS = 2\speD$.
+\end{observation}
+\textbf{Proof.}\\
+
+Indeed, since: 
+\begin{align}
+\spe(S^2) = 2 -\left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
+r_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}
+\end{align}
+and 
+\begin{align}
+\spe(D^2) = 1 - \left\{\sum\limits_{j=1}^m\frac{d_j-1}{2d_j}\ 
+\big|\ m\in\mathbb{N}_0,\ d_j\in\mathbb{N}_{>0}\cup \{\infty\}\right\}._\square
+\end{align}
+
+\begin{observation}\label{all_spectra_are_isomorphic}\label{spe_M}
+For every two dimentional manifold $M$, we have that $\spe(M)$ is homeomorphic to $\speD$. 
+For $M$ with $h$ handles, $c$ cross-cups and $b$ boundary components, this homeomorphism is: \\
+$\bullet$ for $b \neq 0$:
+\begin{equation}
+\spe(M) = \speD - 2h - c - (b - 1), 
+\end{equation}
+$\bullet$ for $b = 0$:
+\begin{equation}
+\spe(M) = 2\speD - 2h - c.
+\end{equation}  
+\end{observation}
+
+%Ok, all isomorphic with $\speD$ \\
+%here write about it \\
+%Tell me about it!
+\textbf{Proof.} \\
+For a manifold $M$ with $h$ handles, $c$ cross-cups and $b$ boundary components, it's 
+Euler characteristic is given by:
+\begin{equation}
+\chi(M) = 2-2h-c-b.
+\end{equation}
+The possible $\Delta$ for possible orbifold features are:\\
+$\bullet$ for $b\neq 0$:
+\begin{equation}
+\{-\frac{n-1}{2n}\ \big|\ n\in\mathbb{N}_{>0}\cup \{\infty\}\}
+\end{equation}
+$\bullet$ for $b = 0$:
+\begin{equation}
+\{-\frac{n-1}{n}\ \big|\ n\in\mathbb{N}_{>0}\cup \{\infty\}\}.
+\end{equation} 
+%with the convention, that $\varphi(\infty) \coloneqq \lim\limits_{k\to \infty} \varphi(k)$.
+
+Thus, we have that:\\
+$\bullet$ for $b\neq 0$: 
+\begin{equation}
+\spe(M) = 2-2h-c-b - \left\{\sum\limits_{i=1}^n\frac{d_i-1}{2d_i}\ 
+\big|\ n\in\mathbb{N}_0,\ d_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}
+\end{equation}
+$\bullet$ for $b = 0$:
+\begin{equation}
+\spe(M) = 2-2h-c - \left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
+r_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}.
+\end{equation} 
+
+On the other hand, we have that:
+\begin{equation}
+\speD = 1-\left\{\sum\limits_{i=1}^n\frac{d_i-1}{2d_i}\ 
+\big|\ n\in\mathbb{N}_0,\ d_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}
+\end{equation}
+\begin{equation}
+\speS = 2 - \left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
+r_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}
+\end{equation}
+and
+\begin{equation}
+\speS = 2\speD.
+\end{equation}
+From this, the observation follows immedietly. $_\square$
+
+\section{Egyptian franctions}
+Egyptian frantion is a finite sum of fractions, all with numerators one. 
+Most of the time it is also required, that the fractions in the sum have pairwise distinct 
+denominators. We will however take less usual convention and will drop that requirement, 
+calling an egyptian fraction any sum of unitary fractions. 
+%\section{Translating questions to ones about Egyptian fractions}\label{Egyptian_fractions}
+\section{Connection between spectra and Egyptian fractions}\label{Egyptian_fractions}
+The terms $-\frac{r_i-1}{r_i}$ in the sum \ref{chi orb expression rotational} 
+can be expressed as $-1+ \frac{1}{r_i}$ 
+and the term $-\frac{d_j-1}{2d_j}$ in the sum \ref{chi orb expression dihedral} can be expressed as 
+$-\frac{1}{2} + \frac{1}{2d_j}$. 
+Then the sums become:
+\begin{equation}\label{Egyptian S2 sum}
+\chi(M) - n + \sum_{i=1}^n \frac{1}{r_i}
+\end{equation}
+and
+\begin{equation}\label{Egyptian D2 sum}
+\chi(M) - \frac{m}{2} + \frac{1}{2}\sum_{j=1}^m \frac{1}{d_j}.
+\end{equation}
+
+In expressions 
+%This is very simmilar to the notion of the egyptian franction, 
+%which is a rational number expressed as a sum of a fractions with numerator $1$ and 
+%different denominators. Sometimes the "distinct denominators" condition is dropped and we are 
+%following that convention in this thesis. 
+
+The $-n$ and $-\frac{m}{2}$ terms provide constraints on the number of fractions that 
+can apprear in the sum.
+%The particular interest is in translating questions related to spectra to the questions 
+%of egyptian franctions. 
+%What the data of the spectra imposes is the number of fractions to be summed. 
+
+%We are interested in translating 
+We will now translate the questions of being in the spectrum 
+to the questions of being expressable as egyptian fraction with the particular number 
+of summands. It will be used in \ref{saturation theorem} and \ref{unboundness}.
+
+%We can make following corollaries:
+%\begin{corollary}\label{from Egyptian fractions}
+%If $x$ can be expressed as an egyptian fraction with $n$ summands, then 
+%\begin{equation}
+%2 - n + x \in \speS
+%\end{equation}
+%and
+%\begin{equation}
+%1 - \frac{n}{2} + \frac{x}{2} \in \speD.
+%\end{equation}
+%\end{corollary}
+%\begin{corollary}
+%If $y \in \speS$ as an \Eoc of an orbifold which all orbipoints are $n$ rotational orbipoints, 
+%then 
+%\begin{equation}
+%y + n - 2
+%\end{equation} 
+%can be expressed as an egyptian fraction with $n$ 
+%(not nessecerely distincs) summands. 
+%
+%If $y \in \speD$ as an \Eoc of an orbifold which all orbipoints are $m$ rotational orbipoints, 
+%then \begin{equation}
+%2y + \frac{m}{2} - 1
+%\end{equation}
+%can be expressed as an egyptian fraction with $m$ 
+%(not nessecerely distincs) summands. 
+%\end{corollary}
+%We may now expand our corollaries about egyptian fractions to arbitrary $M$:
+\begin{theorem}\label{from Egyptian fractions M}
+If $x$ can be expressed as an egyptian fraction with $n$ summands, then for any two dimensional 
+manifold $M$ we have: 
+\begin{equation}
+\chi(M) - n + x \in \spebr{M}
+\end{equation}
+and, if $M$ has at least one boundary component also:
+\begin{equation}
+\chi(M) - \frac{n}{2} + \frac{x}{2} \in \spebr{M}.
+\end{equation}
+\end{theorem}
+\begin{theorem}\label{to egyptian fractions M}
+If for some two dimensional manifold $M$ we have that $y \in \spebr{M}$ as an \Eoc\ of 
+an orbifold which has $n$ rotational orbipoints and not any other, 
+then 
+\begin{equation}
+y + n - \chi(M)
+\end{equation} 
+can be expressed as an egyptian fraction with $n$ 
+(not nessecerely distincs) summands. 
+
+If for some two dimensional manifold $M$ with at least one boundary component 
+we have that $y \in \spebr{M}$ as an \Eoc of an orbifold which all orbipoints 
+are $m$ rotational orbipoints, 
+then \begin{equation}
+2y + \frac{m}{2} - \chi(M)
+\end{equation}
+can be expressed as an egyptian fraction with $m$ 
+(not nessecerely distincs) summands. 
+\end{theorem}
+
 \section{Operations and constructions on orbifolds}\label{Operations}
 Write about the general operations we are interested in i.e. taking any number of features (handles 
 cross caps, parts of boundry components with orbipoints on it, orbipoints in the interior) and
@@ -138,7 +329,7 @@ replacing it by any other feauters
 Write about operations nesseserie for reduction of cases
 write that every operation reduces \Eoc.
 
-
+\label{moving from interior to boundary}
 \section{Notation}
 
 "feature"

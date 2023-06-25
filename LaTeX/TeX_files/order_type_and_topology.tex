@@ -435,69 +435,12 @@ the topology of $\speD$ is $\omega^\omega$.
 
 
 
-\section{Order type and topology of $\spebr{M}$}\label{all_spectra_are_isomorphic}\label{spe_M}
+%\section{Order type and topology of $\spebr{M}$}\label{all_spectra_are_isomorphic}\label{spe_M}
 
 
 
-\begin{observation}
-For every two dimentional manifold $M$, we have that $\spe(M)$ is homeomorphic to $\speS$. 
-For $M$ with $h$ handles, $c$ cross-cups and $b$ boundary components, this homeomorphism is: \\
-$\bullet$ for $b \neq 0$:
-\begin{equation}
-\spe(M) = \speD - 2h - c - (b - 1), 
-\end{equation}
-$\bullet$ for $b = 0$:
-\begin{equation}
-\spe(M) = 2\speD - 2h - c.
-\end{equation}  
-\end{observation}
 
-%Ok, all isomorphic with $\speD$ \\
-%here write about it \\
-%Tell me about it!
-\textbf{Proof.} \\
-For a manifold $M$ with $h$ handles, $c$ cross-cups and $b$ boundary components, it's 
-Euler characteristic is given by:
-\begin{equation}
-\chi(M) = 2-2h-c-b.
-\end{equation}
-The possible $\Delta$ for possible orbifold features are:\\
-$\bullet$ for $b\neq 0$:
-\begin{equation}
-\{-\frac{n-1}{2n}\ \big|\ n\in\mathbb{N}_{>0}\cup \{\infty\}\}
-\end{equation}
-$\bullet$ for $b = 0$:
-\begin{equation}
-\{-\frac{n-1}{n}\ \big|\ n\in\mathbb{N}_{>0}\cup \{\infty\}\}.
-\end{equation} 
-%with the convention, that $\varphi(\infty) \coloneqq \lim\limits_{k\to \infty} \varphi(k)$.
 
-Thus, we have that:\\
-$\bullet$ for $b\neq 0$: 
-\begin{equation}
-\spe(M) = 2-2h-c-b - \left\{\sum\limits_{i=1}^n\frac{d_i-1}{2d_i}\ 
-\big|\ n\in\mathbb{N}_0,\ d_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}
-\end{equation}
-$\bullet$ for $b = 0$:
-\begin{equation}
-\spe(M) = 2-2h-c - \left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
-r_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}.
-\end{equation} 
-
-On the other hand, we have that:
-\begin{equation}
-\speD = 1-\left\{\sum\limits_{i=1}^n\frac{d_i-1}{2d_i}\ 
-\big|\ n\in\mathbb{N}_0,\ d_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}
-\end{equation}
-\begin{equation}
-\speS = 2 - \left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
-r_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}
-\end{equation}
-and
-\begin{equation}
-\speS = 2\speD.
-\end{equation}
-From this, the observation follows immedietly. $_\square$
 
 %In short, for every manifold it either have 
 
@@ -507,9 +450,11 @@ The order type of the set of possible Euler orbicharacteristics of two-dimension
 $\spe$ is $\omega^\omega$. 
 \end{theorem}
 \textbf{Proof.} \\
-From \ref{sum of spectras} we know, that $\spe = \speD \cup \speS$.
+From \ref{sufficiency of D2 and S2}
+%\ref{sum of spectras} 
+we know, that $\spe = \speD \cup \speS$.
 
-From \ref{speD_order_type} and \ref{2times homeomerphism}, we have that order types and 
+From \ref{speD_order_type} and \ref{2times homeomorphism}, we have that order types and 
 topologies of $\speD$ and $\speS$ both are $\omega^\omega$ and that $\speS = 2\speD$.  
 
 We will now prove that the order type of $\spe$ is $\omega^\omega$.
@@ -517,11 +462,17 @@ We will now prove that the order type of $\spe$ is $\omega^\omega$.
 From \ref{greatest \apots} we know, that the largest \apots\ $\speD$\ of order $n$ is 
 $1-\frac{n}{2}$. From, this and from the fact that $\speS = 2\speD$ we know that 
 that the largest \apots\ $\speS$\ of order $n$ is 
-$2-n$. From this, we have, that for every $m \in \mathbb{N}_{>0}$, order type of 
+$2-n$. 
+
+From this, we have, that for every $m \in \mathbb{N}_{>0}$, order type of 
 $(-m, \infty) \cap \speD$ is $\omega^{2m+2}$ and that order type 
-of $(-m, \infty) \cap \speS$ is $\omega^{m+2}$. 
+of $(-m, \infty) \cap \speS$ is $\omega^{m+2}$ (if $-m = 1-\frac{n}{2}$, then 
+$n = 2m + 2$ and 
+%simmilarly 
+if $-m = 2 - n$, then $n = m + 2$). 
 %So, for every $m \in \mathbb{N}_{>0}$, the order type of $\speD$ is strictly greater than 
 %th
+
 Thus, for every $m \in \mathbb{N}_{>0}$, we have that $(-m, \infty) \cap \speD$ and 
 $(-m, \infty) \cap \speS$ satisfies assumtions of \ref{key_lemma}, thus, we have that 
 $(-m, \infty) \cap (\speD\cup\speS)$ have an order type $\omega^{2m+2}$. 
@@ -560,8 +511,8 @@ that the topology of $\spe$ is $\omega^\omega$. $_\square$
 %For homeomorphicity, the proof of theorem \ref{speD_theorem} works as well in this case.
 %$_\square$ \\[4pt]
 
-\section{Order type and topology of n-th cantor bendixon derivative of $\spe$} 
-$\spe_n$ \\
+\section{Order type and topology of n-th cantor bendixon derivative of $\spe$ and $\spebr{M}$} 
+$\spe^{(n)}$ \\
 taking limit points is the order type of $\omega^\omega$ but not homeomorphic anymore. 
 \todo{lemat o braku nowych punktów}
 
@@ -575,7 +526,9 @@ taking limit points is the order type of $\omega^\omega$ but not homeomorphic an
 %belong to $\spe$ based on the knowlegde of other points belonging there. \\
 
 
-\section{More about how this $\spe$, $\speD$ and $\speS$ lie in $\mathbb{R}$}
+\section{More about how this $\spe$, $\speS$ and $\speD$ lie in $\mathbb{R}$}
+This section consists of rather loose assempbly of remarks and observations about some 
+relations between $\spe$, $\speS$, $\speD$ and how they all lie in $\mathbb{R}$.
 %\todo{movve to some other section maybe}
 \begin{observation}
 The first (greatest) negative \apots\ of $\spe$ is 
@@ -607,14 +560,58 @@ $(\frac{1}{2},\frac{5}{12})\cap \speD=\emptyset$ and to the contradiction.
 $\bullet$ Above analysis of the cases leads us also to the conclusion, that $\frac{5}{12}$ 
 is 
 an isolated point of the set $\speD$, from this $-\frac{1}{12}$ is an acccumulation point 
-of order $1$ of the set $\speD$. $_\square$ \\ 
- 
-\subsection{Connections between $\speD$ and $\speS$}\label{D_and_S}
+of order $1$ of the set $\speD$. $_\square$ 
+
+\subsection{Saturation theorem}
+\begin{theorem}\label{saturation theorem}
+For any rational number $\frac{p}{q}$, for any two dimensional manifold $M$
+there exists a $N\in\mathbb{N}$ such that 
+for all $n > N$, we have that $\frac{p}{q} - n \in \spebr{M}$.
+\end{theorem}
+\textbf{Proof.}
+Let us take $\frac{p}{q} \in \mathbb{Q}$. 
+From \ref{Egyptian_fractions}, after \cite{every number is expressible 
+as an egyptian fraction} we know that every rational number is expressable as an egyptian 
+fraction. Let us name the number of summends in some egyptian fraction of $\frac{p}{q}$ 
+as $k$. From \ref{from Egyptian fractions} we know that then 
+$\chi(M) - $ $_\square$
+%\begin{corolarry}
+%The following theorem tells us that for any denumerator, from a sufficiently distant 
+%point all rational number with this denumerator are in $\speS$.
+%\begin{corollary}
+%For any $d \in \mathbb{N}_{>0}$, there exists an $a_d \in \mathbb{R}$, such that for 
+%any $\frac{w}{d} < a_d$, where $w \in \mathbb{Z}$, we have that $\frac{w}{d} \in \speS$.
+%\end{corollary}
+%\textbf{Proof.}
+%$_\square$
+%The following theorem tells us, that modulo $1$, every rational number is in $\speS$.
+%\begin{theorem}
+%For any rational number $\frac{p}{q}$, there exist $w \in \mathbb{Z}$ such that 
+%$\frac{p}{q} + w \in \speS$.
+%\end{theorem}
+%\textbf{Proof.}
+%From \ref{Egyptian_fractions}, we know that \cite{every number is expressible 
+%as an egyptian fraction}
+%$_\square$
+
+\begin{corollary}\label{Saturation theorem corollary}
+For any finite set of rational numbers $\{(\frac{p}{q})_i\}_{i=1}^k$, for any 
+finite set of two dimensional manifolds $\{M_j\}_{j=0}^l$, there exists 
+a $N\in\mathbb{N}$ such that 
+for all $n > N$, for all $i\in \{1 \dots k\}$, 
+for all $j\in\{1\dots l\}$ we have that  $(\frac{p}{q})_i - n \in \spebr{M_j}$.
+\end{corollary}
+\textbf{Proof.}
+For each pair of $(\frac{p}{q})_i$ and $M_j$ we apply \ref{saturation theorem}, 
+obtaining $N_{i,j}$. 
+we take $N$ as a minimal from $\{N_{i,j}\}_{i\in\{1\dots k\}, j\in \{1\dots l\}}$. $_\square$ 
+
+\subsection{Connections between $\speS$ and $\speD$}\label{D_and_S}
 In this section we would like to 
 %develop the tools and 
 answer some questions about 
 %interrelationships
-relations between $\speD$ and $\speS$. 
+relations between $\speS$ and $\speD$. 
 
 %The first, stated in \ref{} is that $2\speD=\speS$. 
 %This tells us all about simmilarities of their topological structures -- namely, 
@@ -622,13 +619,43 @@ relations between $\speD$ and $\speS$.
 %but it does not directly answers questions about how they lie in $\mathbb{R}$, relative 
 %to each other.
 %\subsubsection{Some preliminary observations}
-\todo{dopisać trochę inną motywację}
-\\[16pt]
-We now state some observations that will be usefull in this section.
+%\todo{dopisać trochę inną motywację}
+%\\[16pt]
+From \ref{neccessity of d2 and s2} we know that both $\speS$ and $\speD$ are neccessery 
+in expressing $\spe = \speS \cup \speD$. It is shown by giving examples of two points 
+one from $\speS \setminus \speD \ni 2$ and one from $\speD \setminus \speS \ni -\frac{1}{84}$.
+We found it interesting to ask further questions about the sets  
+$\speS \setminus \speD$ and $\speD \setminus \speS$ such as what points 
+exactly lie in one of $\speS$ and $\speD$ and not in the other, does it have 
+any connection to the previously described order and topological structure 
+or if the $\speS$ and $\speD$ 
+overlap from some sufficiently distant point. This subsection is an meager attempt to 
+answer some of these questions.
+\subsubsection{$-\frac{1}{84}$ and $-\frac{1}{42}$}
+%//Why it is how it is//
+As described in \cite{greatest negative orbifold} we know that $-\frac{1}{84}$ is 
+the greatest possible negative \Eoc for an two dimensional orbifolds. 
+As described in \ref{neccessity of d2 and s2} 
+we know that because of that $-\frac{1}{84}$ can't be in $\speS$. 
+This provides us an example of a point that is in $\speD$ but not in $\speS$, showing that 
+including $\speD$ in the statement $\spe = \speS \cup \speD$ is neccessery.
+\begin{corollary}
+From \ref{Saturation theorem corollary} it follows that $\speS$ and $\speD$ coincide 
+from a sufficiently distant point on any set of the form $A-n$, where $A$ is a 
+finite set of rational numbers, and $n\in\mathbb{N}$. 
+\end{corollary}
+
+
+
+
+%We can ask further questions 
+%\subsection{All the accumulation points of the $\speS$ are in $\speD$}
+\subsubsection{Accumulation points of the $\speS$}
+We will first state some observations that will be usefull in this subsubsection.
 \begin{observation}
 If an \Eoc\ is an accumulation point of order $n$ in $\speD$ \rba{respectively $\speS$}, 
-there exist an $D^2$ \rba{resp. $S^2$} 
-orbifold with $n$ dihedral \rba{resp. rotational} points of that \Eoc. 
+then there exist an $D^2$ \rba{resp. $S^2$} 
+orbifold with $n$ dihedral \rba{resp. rotational} points with that \Eoc. 
 \end{observation}
 prrof. from chapter 3. (todo: dopisać)
 \begin{observation}\label{adding_multiplied_differences}
@@ -639,10 +666,6 @@ from some set of dihedral \rba{resp. rotational} points. From that $1-n(1-x) \in
 $2-n(2-x)\in \speS$}
 for all $n \in \mathbb{N}$. 
 \end{observation}
-\subsubsection{$-\frac{1}{84}$ and $-\frac{1}{42}$}
-//Why it is how it is//
-%\subsection{All the accumulation points of the $\speS$ are in $\speD$}
-\subsubsection{Accumulation points of the $\speS$}
 \begin{theorem}
 All accumulation points of the $\speS$ are in $\speD$.
 \end{theorem}
@@ -691,17 +714,19 @@ We can compactify it with $S^1$. This will not change an \Eoc\ since $\cho{S^1} 
 manifold $D^2$ and the same 
 orbipoints as $\mathcal{O}$. Since orbipoints of $\mathcal{O}$ create a difference 
 in \Eoc\ equal to $2-y$, we have that $\cho{\mathcal{O}_D} = 1 - (2-y) = y - 1 = x$. 
-We can then move all orbipoints from the interior of $\mathcal{O}_D$ to its boundry 
-by doubling them, so $x \in \speD$. $_\square$\\
+We can then replace all orbipoints from the interior of $\mathcal{O}_D$ by twice as many 
+of the same degrees on its boundry \ref{moving from interior to boundary}, 
+so $x \in \speD$. $_\square$\\
+
 
 
 
 %The first equstion we can tackle is steaming from the chapter \ref{order structure} 
 %and it is -- 
-Do $\speD$ and $\speS$ coincide? It is easy to answer that $\speD \neq \speS$ 
-(and we will do that along some harder questions in the moment), but do they coincide 
-starting from a sufficiently distant point? Or maybe, for every denominator, do they coincide 
-from a sufficiently distatn point? (Yes.) \\
+%Do $\speD$ and $\speS$ coincide? It is easy to answer that $\speD \neq \speS$ 
+%(and we will do that along some harder questions in the moment), but do they coincide 
+%starting from a sufficiently distant point? Or maybe, for every denominator, do they coincide 
+%from a sufficiently distatn point? (Yes.) \\
 
 
 
