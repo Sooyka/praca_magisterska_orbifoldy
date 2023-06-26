@@ -110,8 +110,9 @@ $M$ - orbifold
 %$n$ we say that 
 %the  point is an acccumulation point of order $\omega$.
 %\end{definition}
-Corespondence between accumulation points and cantor bendixon derivative are describen 
-in appendix \smalltodoII{link to appendix}. 
+
+%Corespondence between accumulation points and cantor bendixon derivative are describen 
+%in appendix \smalltodoII{link to appendix}. 
 We start with definition of being "at least of order $n$" that will be almost what we want
 and then, there will be the definition of being "order", which is the definition that we need. \\
 For a given set we define as follows:
@@ -147,8 +148,64 @@ of above definitions, that is, an accumulation point of order at least one.
 \section{Uniformisation theorem (formulation)}
 \todo{twierdzenie o klasyfikacji powierzchni}
 
+\section{Notation}
+
+"feature"
+
+We treat manifolds and orbifolds as a sphere with some features added by the operations.
+
+dać na sferę $\varepsilon$ słowo puste.
+We will regard parts of that notation not only as features on an orbifold but also as an operations 
+on orbifolds transforming one to another by adding particular feature. \\
+We will denote the difference in Euler characteristic which is made by modifying 
+an orbifold by such a feature as $\Delta(modification)$.
+\todo{rozwinąć} 
+dopisać, że w Conwayowej >= 2
+
+If not stated othewise, in the expressions containing $\infty$ symbol, their value is understood 
+as $\varphi(\infty) \coloneqq \lim\limits_{n\to \infty}\varphi(n)$.
+\todo{}
+Addition of sets and numbers.
+
+Warning throught the whole thesis we will consider only two dimensional manifolds and 
+orbifolds, because of that words "two-dimensional" will be usually omited 
+
+delta
+h c b
+
 \section{Spectra}
 This will be the main interest of this thesis. $\spe$. dadada
+The form of the spectrum of two dimensional $M$ orbifold is:
+For a manifold $M$ with $h$ handles, $c$ cross-cups and $b$ boundary components, it's 
+Euler characteristic is given by:
+\begin{equation}
+\chi(M) = 2-2h-c-b.
+\end{equation}
+The possible $\Delta$ for possible orbifold features are:\\
+$\bullet$ for $b\neq 0$:
+\begin{equation}
+\{-\frac{n-1}{2n}\ \big|\ n\in\mathbb{N}_{>0}\cup \{\infty\}\}
+\end{equation}
+$\bullet$ for $b = 0$:
+\begin{equation}
+\{-\frac{n-1}{n}\ \big|\ n\in\mathbb{N}_{>0}\cup \{\infty\}\}.
+\end{equation} 
+%with the convention, that $\varphi(\infty) \coloneqq \lim\limits_{k\to \infty} \varphi(k)$.
+
+Thus, we have that:\\
+$\bullet$ for $b\neq 0$: 
+\begin{equation}
+\spe(M) = 2-2h-c-b - \left\{\sum\limits_{i=1}^n\frac{d_i-1}{2d_i}\ 
+\big|\ n\in\mathbb{N}_0,\ d_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}
+\end{equation}
+$\bullet$ for $b = 0$:
+\begin{equation}
+\spe(M) = 2-2h-c - \left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
+r_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}.
+\end{equation} 
+\label{two dim manifold spectrum}
+
+
 \begin{observation}\label{2times homeomorphism}
 We have that $\speS = 2\speD$.
 \end{observation}
@@ -183,22 +240,7 @@ $\bullet$ for $b = 0$:
 %Tell me about it!
 \textbf{Proof.} \\
 For a manifold $M$ with $h$ handles, $c$ cross-cups and $b$ boundary components, it's 
-Euler characteristic is given by:
-\begin{equation}
-\chi(M) = 2-2h-c-b.
-\end{equation}
-The possible $\Delta$ for possible orbifold features are:\\
-$\bullet$ for $b\neq 0$:
-\begin{equation}
-\{-\frac{n-1}{2n}\ \big|\ n\in\mathbb{N}_{>0}\cup \{\infty\}\}
-\end{equation}
-$\bullet$ for $b = 0$:
-\begin{equation}
-\{-\frac{n-1}{n}\ \big|\ n\in\mathbb{N}_{>0}\cup \{\infty\}\}.
-\end{equation} 
-%with the convention, that $\varphi(\infty) \coloneqq \lim\limits_{k\to \infty} \varphi(k)$.
-
-Thus, we have that:\\
+$\spebr{M}$ is given by:\\
 $\bullet$ for $b\neq 0$: 
 \begin{equation}
 \spe(M) = 2-2h-c-b - \left\{\sum\limits_{i=1}^n\frac{d_i-1}{2d_i}\ 
@@ -238,14 +280,19 @@ and the term $-\frac{d_j-1}{2d_j}$ in the sum \ref{chi orb expression dihedral} 
 $-\frac{1}{2} + \frac{1}{2d_j}$. 
 Then the sums become:
 \begin{equation}\label{Egyptian S2 sum}
-\chi(M) - n + \sum_{i=1}^n \frac{1}{r_i}
+\chi(M) - n + \underbrace{\sum_{i=1}^n \frac{1}{r_i}}_{
+\substack{\textrm{Egyptian} \\ \textrm{fraction}}}
 \end{equation}
 and
 \begin{equation}\label{Egyptian D2 sum}
-\chi(M) - \frac{m}{2} + \frac{1}{2}\sum_{j=1}^m \frac{1}{d_j}.
+\chi(M) - \frac{m}{2} + \frac{1}{2}
+\underbrace{\sum_{j=1}^m \frac{1}{d_j}}_{
+\substack{\textrm{Egyptian} \\\textrm{fraction}}}.
 \end{equation}
 
-In expressions 
+%In expressions there are 
+In this form, the egyptian fractions are explicitly present in expresions of 
+points in $\spebr{M}$.
 %This is very simmilar to the notion of the egyptian franction, 
 %which is a rational number expressed as a sum of a fractions with numerator $1$ and 
 %different denominators. Sometimes the "distinct denominators" condition is dropped and we are 
@@ -290,7 +337,11 @@ of summands. It will be used in \ref{saturation theorem} and \ref{unboundness}.
 %(not nessecerely distincs) summands. 
 %\end{corollary}
 %We may now expand our corollaries about egyptian fractions to arbitrary $M$:
-\begin{theorem}\label{from Egyptian fractions M}
+
+We will now state two corrolaries that follows immediately from the 
+form of expressions \ref{Egyptian S2 sum} and \ref{Egyptian D2 sum}, and from 
+\ref{two dim manifold spectrum}.
+\begin{corollary}\label{from Egyptian fractions M}
 If $x$ can be expressed as an egyptian fraction with $n$ summands, then for any two dimensional 
 manifold $M$ we have: 
 \begin{equation}
@@ -298,10 +349,10 @@ manifold $M$ we have:
 \end{equation}
 and, if $M$ has at least one boundary component also:
 \begin{equation}
-\chi(M) - \frac{n}{2} + \frac{x}{2} \in \spebr{M}.
+\chi(M) - \frac{n}{2} + \frac{1}{2}x \in \spebr{M}.
 \end{equation}
-\end{theorem}
-\begin{theorem}\label{to egyptian fractions M}
+\end{corollary}
+\begin{corollary}\label{to egyptian fractions M}
 If for some two dimensional manifold $M$ we have that $y \in \spebr{M}$ as an \Eoc\ of 
 an orbifold which has $n$ rotational orbipoints and not any other, 
 then 
@@ -316,11 +367,11 @@ we have that $y \in \spebr{M}$ as an \Eoc of an orbifold which has $m$ dihedral 
 not any other, 
 then 
 \begin{equation}
-2y + \frac{m}{2} - \chi(M)
+2y + \frac{m}{2} - 2\chi(M)
 \end{equation}
 can be expressed as an egyptian fraction with $m$ 
 (not nessecerely distincs) summands. 
-\end{theorem}
+\end{corollary}
 
 \section{Operations and constructions on orbifolds}\label{Operations}
 Write about the general operations we are interested in i.e. taking any number of features (handles 
@@ -331,30 +382,7 @@ Write about operations nesseserie for reduction of cases
 write that every operation reduces \Eoc.
 
 \label{moving from interior to boundary}
-\section{Notation}
 
-"feature"
-
-We treat manifolds and orbifolds as a sphere with some features added by the operations.
-
-dać na sferę $\varepsilon$ słowo puste.
-We will regard parts of that notation not only as features on an orbifold but also as an operations 
-on orbifolds transforming one to another by adding particular feature. \\
-We will denote the difference in Euler characteristic which is made by modifying 
-an orbifold by such a feature as $\Delta(modification)$.
-\todo{rozwinąć} 
-dopisać, że w Conwayowej >= 2
-
-If not stated othewise, in the expressions containing $\infty$ symbol, their value is understood 
-as $\varphi(\infty) \coloneqq \lim\limits_{n\to \infty}\varphi(n)$.
-\todo{}
-Addition of sets and numbers.
-
-Warning throught the whole thesis we will consider only two dimensional manifolds and 
-orbifolds, because of that words "two-dimensional" will be usually omited 
-
-delta
-h c b
 
 \section{Questions asked}
 There will be two main parts of question: 

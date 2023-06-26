@@ -1,7 +1,7 @@
 % mainfile: ../praca_magisterska_orbifoldy.tex
-\chapter{Appendix about well orders, accumulation points and Canor-Bendixon derivatives}
-
-\todo{Not e between equivalence of being accumulation point and being in Cantor bendixon derivative}
+\chapter{Appendix about well orders and accumulation points}
+% and Canor-Bendixon derivatives
+%\todo{Not e between equivalence of being accumulation point and being in Cantor bendixon derivative}
 
 \section{Lemmas}
 \begin{lemma}\label{two_sets_lemma}
@@ -43,7 +43,7 @@ Let $A \subseteq \mathbb{R}$ has an order type $\alpha$.
 Let $A$ be such that every accumulation point of $A$ belong to $A$. Then $A$ has not only an
 order type $\alpha$ but is also homeomorphic to $\alpha$. 
 \end{lemma}
-\todo{dopisać, że to równoważność}
+%\todo{dopisać, że to równoważność}
 \textbf{Proof.} \\
 %Let us observe, that $\alpha$ must be countable -- as $A$ is well ordered we can assign to every 
 %element $a_1 \in A$ an non-empty open interval, between $a_1$ and it's succesor $a_2$. 
@@ -123,7 +123,9 @@ f[\{\eta\ |\ \nu<\eta\}] = \{r\ |\ f(\nu)<r\} \cap A,
 \end{align*}
 which is open.$_\square$
 
-
+\textbf{Remark.} 
+The reverse is also true: If $A\subseteqq \mathbb{R}$ is homeomorphic to $\alpha$, then 
+every accumulation point of $A$ belongs to $A$. 
 
 
 
@@ -438,7 +440,7 @@ Case where $\bar{a} > a'$ is completly analogous. $_\square$
 
 \begin{lemma}\label{The order does not grow lemma}
 For $A, B \subseteq \mathbb{R}$, if $r \in \mathbb{R}$ is an accumulation point 
-of order at most $m$ for $A$ and at most $n$ for $B$ and $m \leq n$, then $r$ 
+of order $m$ for $A$ and $n$ for $B$ and $m \leq n$, then $r$ 
 is an accumulation point of order at most $n$ for $A \cup B$.  
 \end{lemma}%\todo{Zapytać się kogoś z topologii/teorii mnogości}
 \textbf{Proof.}\\
@@ -451,11 +453,19 @@ So $r$ is an isolated point of $A \cup B$.
 
 $\bullet$ Inductive step. Let us suppouse that for all $k < n$, the statement holds. Let $r$ 
 be an accumulation point of order $n$ of $B$ and order $m$ of A, where $m \leq n$. From this 
-we have that there exists $U_1, U_2$ such that in $B\cap U_1$ there are only accumulation points 
-of $B$ of order at most $n-1$ and in $A \cup B_2$ there are only accumulation points of $A$ 
+we have that there exists $U_1, U_2 \ni r$ 
+such that in $B\cap U_1$ there are only accumulation points 
+of $B$ of order at most $n-1$ and in $A \cup U_2$ there are only accumulation points of $A$ 
 of order at most $m-1$. From this, from the inductive assumption we have that in 
 $(A \cup B) \cap (U_1 \cap U_2)$ there are only accumulation points of order at most $n-1$ of 
-$A \cup B$. This means that $r$ is an accumulation point of order at most $n$ of $A\cup B$. 
+$A \cup B$.  
+This means that $r$ is an accumulation point of order at most $n$ of $A\cup B$. 
+
+We also know that, in every $U_1, U_2 \ni r$, there are accumulation points of order exactly $n-1$ 
+of $B$ and exatly $m-1$ for $A$. From the inductive assumption we have then, that in 
+$(A \cup B) \cap (U_1 \cap U_2)$ there are accumulation points of order $n-1$ of $A\cup B$. 
+This means that $r$ is an accumulation point of order exactly $n$ of $A\cup B$.
+%This means 
 $_\square$   
 
 %colorally
@@ -464,12 +474,11 @@ $_\square$
 %corollary
 
 \begin{corollary}\label{derivative and sum is commutative}
-For every $n\in\mathbb{N}$ we have that $(A\cup B)^{(n)} = A^{(n)}\cup B^{(n)}$.
+Let $A^{(n)}$ be the set of all accumulations point of order $n$ of $A$. Then
+for every $n\in\mathbb{N}$ we have that $(A\cup B)^{(n)} = A^{(n)}\cup B^{(n)}$.
 \end{corollary}
 \textbf{Proof.} \\
-
 %````````````````````````````````````````````````````````````````````````````````````````````````````
-
 Every accumulation point of either $A$ or $B$ is also an accumulation point of $A\cup B$, so 
 $(A\cup B)^{(n)} \supseteq A^{(n)}\cup B^{(n)}$.
 

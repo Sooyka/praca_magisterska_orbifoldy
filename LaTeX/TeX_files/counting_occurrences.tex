@@ -228,11 +228,12 @@ It states that for ...
 
 Given a number $x$, the question about how many orbifolds have $x$ as an \Eoc\ can be 
 partially expressed by asking the question how many of sums of the form:
-\begin{equation}
-1-\sum_{i=1}^n \frac{d_i-1}{2d_i}
+\begin{equation}\label{counting D2}
+1-\sum_{i=1}^m \frac{d_j-1}{2d_j} 
+%-\sum_{i=1}^n \frac{r_i-1}{r_i}
 \end{equation} 
 and
-\begin{equation}
+\begin{equation}\label{counting S2}
 2-\sum_{i=1}^n \frac{r_i-1}{r_i}
 \end{equation}
 with $n\in \mathbb{N}$ and $\forall_i\ d_i,r_i\in\mathbb{N}\cup\{\infty\}$, are equal to $x$. 
@@ -242,24 +243,34 @@ what sums are we treating as "the same". The convention we will take, is that a 
 uniquly by the tuple $(d_1,\dots,d_n)$ \rba{or $(r_1,\dots,r_n)$} of orders 
 of orbipoints, ordered in deacreasing order, appearing in the sum. 
 
-This covers the arithmetics and combinatorics of the "orbifold" part of the problem. 
+%This covers the "arithmetical" 
+%and combinatorics 
+%of the "orbifold" 
+%part of the problem. 
 In this sums there is a structure of what \Eoc\ orbipoints can produce. 
 The question "How many different sums (understood by above convention) are equal to a given $x$?" 
-will be the first part of the problem -- the arithmetical part, adressed in 
-\ref{conting_arithmetical}. This will be the hard and unanswered part.
+will is the first part of the problem -- the arithmetical part, 
+%adressed in 
+%\ref{conting_arithmetical}. 
+This is the hard and only partially answered part.
 
 This however, does not give us the full information. For once, without changing \Eoc\ some 
-orbipoints can be replaced by a features on a manifold such as handles, cross-cups and 
+orbipoints can be replaced 
+by orbipoints of a different type or 
+by a features on a manifold such as handles, cross-cups and 
 boundry components, giving orbifold of the same \Eoc, but different base manifold. 
 Secondly, when the orbipoints lie on the boundry components, their 
 order matters, and orbifolds with orbipoints on boundry components with different order 
 are not neccesery the same. 
 
-This gives us a question -- "How many different orbifolds produce the same sum?".
-This will be answeared in the section \ref{counting_combinatorics}.
-The other question is -- "How many manifold with some sums correspont to $x$?" and this will 
-be treated in \ref{conting_diff_man} together with more precise notions of these questions. 
-
+This is a combinatorical part. Here we would make an assumption that we know 
+the answear to the arithmetical question -- given $x$ how many sums of the form 
+\ref{counting D2} and \ref{counting S2} are equal to $x$. Then we will derive from 
+this the proper number of orbifolds of a given \Eoc\ $x$. 
+%This gives us a question -- "How many different orbifolds produce the same sum?".
+%This will be answeared in the section \ref{counting_combinatorics}.
+%The other question is -- "How many manifold with some sums correspont to $x$?" and this will 
+%be treated in \ref{conting_diff_man} together with more precise notions of these questions. 
 \section{Different manifolds}\label{conting_diff_man}
 The question about different manifolds can be changed for the question about order of 
 accumulation. 
@@ -273,9 +284,18 @@ all that n can go into manifold features.
 %\section{Deformations on orbifolds?}
 
 \section{Arithmetical part}\label{conting_arithmetical}
+This is the part of unansweared question --
 
+However in \ref{algorithm} we provide and algorithm to compute.
 
+Algorithm that is proved to stop is a very elaborated equation. 
+We treat the problem as partialy solved however as it does not gives any particular glimpse 
+into the structure
+of why it is such a number. 
+It is however computable.
+How much sums correspond also is reducible to $D^2$.
 
+The result will hav emore algorithmical nature
 
 \section{Combinatorial part}\label{counting_combinatorics}
 This case is simple in 
