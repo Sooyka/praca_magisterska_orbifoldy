@@ -1,0 +1,245 @@
+% mainfile: ../praca_magisterska_orbifoldy.tex
+\chapter{Algorithms for searching in the spectrum}
+
+In this chapter we will show that the question "For a given rational number, is it in $\spe$?" 
+is computable.
+
+ 
+
+Algorithmical approunch to questions from chapter 3 are only possible after gfiniteness 
+part of chapter four.
+
+Using results from previous chapters, we can now prove, that some computational problems related 
+to spectra are solvable.
+
+We will do it in a constructive way, by writing explicitly the algorithms and proving their 
+correctness and properties.
+
+We will also be able to compute sufficiently small examples of the unansweared question 
+
+The questions we will provide algorithms to answear here are: 
+For a given rational number $r$ and manifold $M$:
+\begin{itemize}
+\item How many $M$ orbifolds with $r$ as their \Eoc\ are there?
+\item The accumulation point of what degree is $r$ in $\spe(M)$?
+\end{itemize}
+
+
+We start with $\frac{p}{q}$, where $p \in \mathbb{Z}$, $q \in \mathbb{N}_{>0}$ and a manifold $M$. 
+%\section{Reductions and special cases}
+
+%\section{Decidability}
+%\todo{oj dokończyć}
+%Here we will show the proof that the problem of "deciding whether a given rational number is in an 
+%Euler orbicharacteristic's spectrum or not" is decidable by showing algorithm for doing this. 
+%Later, our algorithm will have a bonus property of determining of which order of condensation 
+%is given point if it is in fact in $\sigma$. \\
+%\smalltodoII{Może od razu postawić pełny problem}
+%%It fill get also a performance enhancement by this added property. \\
+%First stated algorithm is also very inefficient and is presented, because the idea is the most 
+%clear in it. Right after it there is stated an algorithm with two enhancements: 
+%\begin{itemize}
+%\item determining an accumulation point of which order is a given point, if it is in fact in the 
+%spectrum (this enhancement gives also a performance boost)
+%\item faster searching, because some cases do not need to be checked. 
+%\end{itemize}
+%\subsection{The algorithm}
+%and $\textrm{gcd}(p,q)$. \\ 
+\section{Reduction from arbitrary $M$ do $D^2$}
+Note, that this is a different reduction than the one in \ref{}/
+
+Using \ref{spe_M} we conclude that the problem of deciding whether $\frac{p}{q}$ is in $\spe(M)$
+is eqiavalent to deciding whether $some expresion$ is in $\sbD$. 
+
+Considering this fact, from this point, WLOG we will assume that $M = D^2$ and we will 
+be conserned only with dihedral orbipoints.
+
+%\subsection{Arithmetic formulation}
+We want to determine whether there exists $b_1,b_2,\dots,b_k$, such that $\chi^{orb}(*b_1\dots b_k) 
+= 
+\frac{p}{q}$. 
+
+\section{Special cases}
+In the case that $\frac{p}{q}$ is of the form $l\frac{1}{4}$, for some whole $l$ 
+% $q = 4$ 
+we can give the answer right away. For $l > 4$ we have that $l\frac{1}{4}$ is not in the set 
+and for $l \leq 4$ it is. 
+
+Moreover for an even $l$ it is a condensation point of order 
+$\frac{4-l}{2}$ (see \ref{biggest \apots})
+and for an odd $l$ it is a condensation point of order $\frac{3-l}{2}$ (see \ref{predescors}). 
+
+In the case, where $\frac{p}{q} > 1$, we also can give answer rigth away and this answr is "no". 
+
+Now we will consider only cases when $\frac{p}{q}$ is not of the form $l\frac{1}{4}$ and is 
+$\leq 1$.
+%\section{General case}
+
+\section{Simpler version of the question}
+
+To present the idea of searching the spectrum for the orbifolds with a given \Eoc, we will 
+first present the algorithm that answears a little easier question, namely: 
+
+\textit{For a given rational number $r$ and manifold $M$, is there at least one 
+$M$ orbifold with $r$ as their \Eoc?}
+
+This algorithm will mirror what we are focused on in \ref{chapter_three}, giving us the 
+computational tool for deciding whether a given number is in the spectrum or no. 
+
+%The first approach of the searching algorithm is of this form: \\
+
+%%We start with the 
+%We use: 
+%\begin{itemize}
+%$\mathbb{N}$ counters $b_1b_2\dots$ 
+%(with values ranging from $1$, through all natural numbers, to infinity 
+%(with infinity included)) set to $1$. Each counter correspond to one cone point 
+%on the boundry of the disk of period equal to the value of the counter (with the note, that 
+%if counter is set to $1$ it means a trivial cone point - namely a none cone point, a normal point). 
+%Every state of the counters during runtime of the algorith will have only finitely many 
+%counters with value non-$1$. Moreover every state in the rutime of the algorithm 
+%will have values on consequtive counters ordered in weakly decreasing order. From now we will 
+%consider only such states. \\
+%The state $b_1b_2\dots$ correspond to the orbifold of 
+%\Eoc equal $\chi^{orb}(*b_1b_2\dots)$ (where the trailing $1$ are trunkated). \\ 
+%%There is also a pivot pointing on one counter at any time.  
+
+We use: 
+\begin{itemize}
+\item $\mathbb{N}_{>0}$ counters $b_1b_2\dots$ 
+with values ranging from $\mathbb{N}_{>0}\cup\{\infty\}$.
+%$1$, through all natural numbers, to infinity 
+%(with infinity included). 
+Each counter correspond to one cone point 
+on the boundry of the disk of period equal to the value of the counter (with the note, that 
+if counter is set to $1$ it means a trivial cone point - namely a none cone point, a normal point). 
+\item a pivot pointing at some counter 
+% at any time
+\item a flag that can be set to "Greater" or "Less" corresponding to what was 
+the outcome of comparing \Eoc\ of the orbifold corresponding to counters' state and 
+$\frac{p}{q}$.  
+\end{itemize}
+
+We start with:
+\begin{itemize}
+\item all counters set to $1$. 
+\item pivot pointing at the first counter
+\item flag set to "Greater"
+\end{itemize}
+%If $\frac{p}{q}$ is of form $\frac{k}{4}$, where $k \in (-\infty,8] \cap \mathbb{Z}$ we give 
+%the answear "yes" and end the whole algorithm. If $\frac{p}{q} > 2$ we give the answear "no" and end the whole algorithmBecauseof this, below we assume, that \\
+We will do our computation such that:
+\begin{itemize}
+\item every state of the counters during runtime of the algorithm will have only finitely many 
+counters with value non-$1$. 
+\item every state in the rutime of the algorithm 
+will have values on consequtive counters ordered in weakly decreasing order.
+\end{itemize}
+From now we will 
+consider only such states. 
+
+%There is also a pivot pointing on one counter at any time.  
+The state of the counters $b_1b_2\dots$ correspond to the orbifold of 
+\Eoc\ equal $\chi^{orb}(*b_1b_2\dots)$ (where the trailing $1$ are trunkated). 
+
+When the algorithm is in the state: 
+\begin{itemize}
+\item counters: $b_1b_2\dots$
+\item pivot: at the counter $b_c$
+\item flag: set to the value $flag\_value$,
+\end{itemize}
+we procced as follows 
+%(the term "We continue." means, that we start the following procedure from the beginning)
+:
+\begin{lstlisting}[firstnumber=1,consecutivenumbers=true]
+In the case, the flag is set to: 
+{
+    "Less", then 
+    {
+        We increase the pivot counter by one ($b_c \coloneqq b_c + 1$).
+        If $b_c = 2$ and the values of all the counters 
+        on the left are also equal 2 then 
+        {
+            We end the whole algorithm with the answer "no".
+        }
+        We set the value of all counters on the left to $b_c$
+        If $\chi^{orb}(*b_1b_2b_3\dots)=\frac{p}{q}$ then
+        {
+            We found an orbifold and we are ending the whole
+            algorithm with answer "yes, $*b_1b_2\dots$".
+        }
+        If $\chi^{orb}(*b_1b_2b_3\dots)>\frac{p}{q}$ then  
+        {
+            We set the flag to "Greater".
+            We put the pivot on the first counter. 
+            We go to the line 1..
+        } 
+        If $\chi^{orb}(*b_1b_2b_3\dots)<\frac{p}{q}$ then
+        {
+            We set the flag to "Less".
+            We put pivot to the $c+1$ counter.
+            We go to the line 1..
+        } 
+    }
+
+    "Greater", then
+    {
+        If $\chi^{orb}(*b_1\dots b_{c-1}\infty b_{c+1}\dots)=\frac{p}{q}$ then
+        {
+            We found an orbifold and we are ending the whole
+            algorithm with answer "yes, $*b_1\dots b_{c-1}\infty b_{c+1}\dots$".
+        } 
+        If $\chi^{orb}(*b_1\dots b_{c-1}\infty b_{c+1}\dots)>\frac{p}{q}$ then
+        {
+            We set $b_c$ to $\infty$.
+            We set the flag to "Greater".
+            We move pivot to the $c+1$ counter.
+            We go to the line 1..
+        }  
+        If $\chi^{orb}(*b_1\dots b_{c-1}\infty b_{c+1}\dots)<\frac{p}{q}$ then
+        {
+            We search for value $b_c'$ of the $c$ counter 
+            such that $\chi^{orb}(*b_1\dots b_{c-1}b_c'b_{c+1}\dots)\leq\frac{p}{q}$ 
+            and $\chi^{orb}(*b_1\dots b_{c-1}(b_c'-1)b_{c+1}\dots)>\frac{p}{q}$.
+            // More on how we search for it will be told later, 
+            // for now we can think that we search one by one,
+            // starting from $b_c$ and going up till $b_c'$.
+            We set $b_c$ to $b_c'$.
+            if $\chi^{orb}(*b_1b_2b_3\dots)=\frac{p}{q}$ then 
+            {
+                We found an orbifold and we are ending the whole
+                algorithm with answer "yes, $*b_1b_2\dots$".
+            }
+            We set all the counters to the left to value $b_c$.
+            if $\chi^{orb}(*b_1b_2b_3\dots)=\frac{p}{q}$ then 
+            {
+                We found an orbifold and we are ending the whole
+                algorithm with answer "yes, $*b_1b_2\dots$".
+            }
+            If $\chi^{orb}(*b_1b_2b_3\dots)<\frac{p}{q}$ then 
+            {
+                We set flag to "Less".
+                We move the pivot to the column $c+1$.
+                We go to the line 1..
+            }
+            If $\chi^{orb}(*b_1b_2b_3\dots)>\frac{p}{q}$ then 
+            {
+                We set the flag to "Greater".
+                We move the pivot to the first counter.
+                We go to the line 1..
+            }
+        }  
+    }
+}
+\end{lstlisting}
+\subsection{Why this works}
+
+%\begin{enumerate}
+%    \item if the pivot is on the zeroth column ($c = 0$), then 
+%    \begin{enumerate}[label*=\arabic*.]
+%        \item 
+%        \item
+%    \end{enumerate}
+%    \item abcd
+%\end{enumerate}
+%\section{Improvements}
