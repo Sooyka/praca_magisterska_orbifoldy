@@ -45,7 +45,7 @@ pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder
                 omm_inf,
             };
         }
-        _ => panic!("Adjusted p_q should be finite!"),
+        _ => panic!("Adjusted p_q should be finite!"), 
     };
 
     // we want to handle p_q = k/2 case
@@ -163,7 +163,7 @@ pub fn points_order(p_q: Rational64, b_m: TwoDimentionalManifold) -> PointsOrder
     };
 }
 
-// add that this is sphere based, change name to naormalise to sphere add function normalising to given manifold
+// add that this is sphere based, change name to normalise to sphere add function normalising to given manifold
 fn adj_for_b_m(p_q: Rational64, b_m: TwoDimentionalManifold) -> ExRa {
     let chi = chi(&b_m);
     match chi {

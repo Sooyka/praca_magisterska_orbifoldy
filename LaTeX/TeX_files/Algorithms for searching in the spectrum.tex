@@ -1,31 +1,50 @@
 % mainfile: ../praca_magisterska_orbifoldy.tex
 \chapter{Algorithms for searching in the spectrum}
 
-In this chapter we will show that the question "For a given rational number, is it in $\spe$?" 
-is computable.
+In the previous chapter we answeared the questions about how $\spe$ looks like -- in particular 
+what is it's order type and topology. In this chapter we would like to develop a 
+methods for answearing the 
+following question: 
+%In the previous chapter the main question was about which rational numbers are in $\spe$. 
+%We can ask, how to answear the question 
 
- 
+%In this chapter we will show that the question 
+"For a given rational number, is it in $\spe$?" 
+%is computable.
 
-Algorithmical approunch to questions from chapter 3 are only possible after gfiniteness 
-part of chapter four.
+%In this chapter, we will provide the best answear we could find. 
 
-Using results from previous chapters, we can now prove, that some computational problems related 
-to spectra are solvable.
+%Turns aout that the number is in the specturm iff the following procedute says "yes". 
 
-We will do it in a constructive way, by writing explicitly the algorithms and proving their 
-correctness and properties.
+%It turns aout that the question for any number is answearable  
 
-We will also be able to compute sufficiently small examples of the unansweared question 
+%Algorithmical approunch to questions from chapter 3 are only possible after gfiniteness 
+%part of chapter four.
 
-The questions we will provide algorithms to answear here are: 
-For a given rational number $r$ and manifold $M$:
-\begin{itemize}
-\item How many $M$ orbifolds with $r$ as their \Eoc\ are there?
-\item The accumulation point of what degree is $r$ in $\spe(M)$?
-\end{itemize}
+What we can show, is that this question is computable -- i.e. there exists an algorithm 
+that answears this question. 
+%Using results from previous chapters, we can now prove, that some computational problems related 
+%to spectra are solvable.
+We will do it in a constructive way, by writing explicitly the algorithm and proving its
+correctness.
+% and properties.
 
+%We will also be able to actually compute sufficiently small examples of the 
+%question.
+%unansweared question 
 
-We start with $\frac{p}{q}$, where $p \in \mathbb{Z}$, $q \in \mathbb{N}_{>0}$ and a manifold $M$. 
+The exact question we will provide algorithm to answear here is: 
+
+\textit{For a given rational number $r$ and manifold $M$, is there at least one 
+$M$ orbifold with $r$ as its \Eoc?}
+
+%For a given rational number $r$ and manifold $M$:
+%\begin{itemize}
+%\item How many $M$ orbifolds with $r$ as their \Eoc\ are there?
+%\item The accumulation point of what degree is $r$ in $\spe(M)$?
+%\end{itemize}
+
+We start with $r=\frac{p}{q}$, where $p \in \mathbb{Z}$, $q \in \mathbb{N}_{>0}$ and a manifold $M$. 
 %\section{Reductions and special cases}
 
 %\section{Decidability}
@@ -40,22 +59,36 @@ We start with $\frac{p}{q}$, where $p \in \mathbb{Z}$, $q \in \mathbb{N}_{>0}$ a
 %clear in it. Right after it there is stated an algorithm with two enhancements: 
 %\begin{itemize}
 %\item determining an accumulation point of which order is a given point, if it is in fact in the 
-%spectrum (this enhancement gives also a performance boost)
+%spectrum (this enhancement gives also a performance boost) 
 %\item faster searching, because some cases do not need to be checked. 
 %\end{itemize}
 %\subsection{The algorithm}
 %and $\textrm{gcd}(p,q)$. \\ 
 \section{Reduction from arbitrary $M$ do $D^2$}
-Note, that this is a different reduction than the one in \ref{}/
+This reduction is based on \ref{spe_M}.
+Note, that this is a different reduction than the one in \ref{reduction_to_arithmetical}. 
+In \ref{reduction_to_arithmetical} we are saying that for any $M$, we have $\spebr{M} 
+\subseteq \speS \cup \speD$. In \ref{spe_M} on the other hand we have, that 
+for any $M$: \\
+for $b \neq 0$:
+\begin{equation}
+\spe(M) = \speD - 2h - c - (b - 1)
+\end{equation}
+and for $b = 0$:
+\begin{equation}
+\spe(M) = 2\speD - 2h - c.
+\end{equation}  
 
-Using \ref{spe_M} we conclude that the problem of deciding whether $\frac{p}{q}$ is in $\spe(M)$
-is eqiavalent to deciding whether $some expresion$ is in $\sbD$. 
+
+Using \ref{spe_M} and \ref{}
+we conclude that the problem of deciding whether $\frac{p}{q}$ is in $\spe(M)$
+is equivalent to deciding whether $some expresion$ is in $\sdD$. 
 
 Considering this fact, from this point, WLOG we will assume that $M = D^2$ and we will 
 be conserned only with dihedral orbipoints.
 
 %\subsection{Arithmetic formulation}
-We want to determine whether there exists $b_1,b_2,\dots,b_k$, such that $\chi^{orb}(*b_1\dots b_k) 
+We want to determine whether there exists $d_1,d_2,\cdots,d_k$, such that $\chi^{orb}(*d_1\dots d_k) 
 = 
 \frac{p}{q}$. 
 
@@ -65,7 +98,7 @@ In the case that $\frac{p}{q}$ is of the form $l\frac{1}{4}$, for some whole $l$
 we can give the answer right away. For $l > 4$ we have that $l\frac{1}{4}$ is not in the set 
 and for $l \leq 4$ it is. 
 
-Moreover for an even $l$ it is a condensation point of order 
+Moreover for an even $l$ we have that $l\frac{1}{4}$ is a condensation point of order 
 $\frac{4-l}{2}$ (see \ref{biggest \apots})
 and for an odd $l$ it is a condensation point of order $\frac{3-l}{2}$ (see \ref{predescors}). 
 
@@ -75,7 +108,7 @@ Now we will consider only cases when $\frac{p}{q}$ is not of the form $l\frac{1}
 $\leq 1$.
 %\section{General case}
 
-\section{Simpler version of the question}
+%\section{Simpler version of the question}
 
 To present the idea of searching the spectrum for the orbifolds with a given \Eoc, we will 
 first present the algorithm that answears a little easier question, namely: 
