@@ -10,6 +10,18 @@ following question:
 
 %In this chapter we will show that the question 
 "For a given rational number, is it in $\spe$?" 
+
+We have some sort of answear to this question -- an algorithm.
+%a very long equation that 
+%commonly is refered to as an algorithm. 
+
+It is not an ideal answear as it gives little insight of what is a general structure 
+of the spectrum. Nethertheless it is a constructive and computable answear. 
+%What's more, 
+%later, in implementation chapter we discuss that for numbers with denominators of a reasonable 
+%size and in reasonable distance from zero this algorithm can be run successfully on a 
+%personal computer.
+
 %is computable.
 
 %In this chapter, we will provide the best answear we could find. 
@@ -21,12 +33,15 @@ following question:
 %Algorithmical approunch to questions from chapter 3 are only possible after gfiniteness 
 %part of chapter four.
 
-What we can show, is that this question is computable -- i.e. there exists an algorithm 
-that answears this question. 
+%What we can show, is that this question is computable -- i.e. there exists an algorithm 
+%that answears this question. 
+
 %Using results from previous chapters, we can now prove, that some computational problems related 
 %to spectra are solvable.
-We will do it in a constructive way, by writing explicitly the algorithm and proving its
-correctness.
+
+%We will do it in a constructive way, by writing explicitly the algorithm and proving its
+%correctness.
+
 % and properties.
 
 %We will also be able to actually compute sufficiently small examples of the 
@@ -310,19 +325,25 @@ of states of counters after truncation of trailing 1's
 with the counters to the right being more significant. 
 
 \begin{observation}
-In general it is NOT true that if $C^1 \preceq C^2$ then 
-$\cho{*C^1} \leq \cho{*C^2}$.
+In general it is not true that if $C^1 \preceq C^2$ then 
+$\cho{*C^1} \leq \cho{*C^2}$ nor that if $C^1 \preceq C^2$ then 
+$\cho{*C^1} \geq \cho{*C^2}$.
 \end{observation}
 
 \begin{observation}
 Since $\preceq$ is a lexicographical order it is a good order. 
 \end{observation}
 
-\begin{observation}
-Let $C^2$ be the successor of $C^1$ in $\preceq$. Then $\cho{*C^1} \leq \cho{*C^2}$.
+\begin{observation}\label{Successor lemma}
+Let $C^2$ be the successor of $C^1$ in $\preceq$. Then $\cho{*C^1} > \cho{*C^2}$.
 \end{observation}
 \textbf{Proof.}
+The successor of $d_1d_2\dots$ is $(d_1+1)d_2\dots$. Increasing the order of the orbipoint  
+decreases \Eoc. $_\square$
 
+\begin{lemma}
+
+\end{lemma}
 
 \begin{lemma}
 The state of the counters in the algorithm is weakly increasing with respect to order $\preceq$. 
@@ -333,12 +354,37 @@ the counter with the gretest index of all changed counters increases in value, s
 the resulting state is bigger with respect to order $\preceq$. $_\square$
 
 \subsection{Basic idea}
-The basic idea of the algorithm is to search through all the states of the counters  
+The basic idea of the algorithm is to search through all the states of the counters going 
+from the smallest (in the sense of $\preceq$) state of counters, which will be when all counters 
+are set to $1$, up to some upper limit beyond which we are sure that no configuration of 
+counters will yield the \Eoc\ that we are looking for. 
 
-However this can't be done directly as there are infinite ascending sequences in $\preceq$. 
-\subsection{}
- 
-\section{Why this works}
+Now we will go through several obstacles of how to do so and solutions for them, answearing for 
+example the 
+questions how we go through all the states and what can be this upper limit. 
+
+%More on the upper limit will be addre
+
+%However this can't be done directly as there are infinite ascending sequences in $\preceq$. 
+\subsection{Checking all the states}
+This can't be done directly as there are infinite ascending sequences in $\preceq$. 
+
+However, by \ref{Successor lemma} we know, that for every ascending sequence $\{a_n\}$ 
+in $\preceq$, such 
+that for all $n$, we have that $a_{n+1}$ is the succesor of $a_n$, we have that the sequence 
+$\{\cho{*a_n}\}$ is strictly descending. 
+
+Thanks to this, 
+when we are searching through the infinite ascending sequence of consequtive 
+states of counters once we get to the state $a$ for which $\cho{*a} < \frac{p}{q}$, we now 
+that no state $a'$ greater than $a$ in $\preceq$ can have $\frac{p}{q}$ as an 
+\Eoc\ and we can disregard whole sequence. 
+
+There is, however, another problem, namely, that when we are searching through 
+the infinite ascending sequence of consequtive 
+states of counters, initialy, we don't now, whether there will be any state $a$ in it, that 
+will have $\cho{*a} \leq \frac{p}{q}$. However, 
+\section{Proof of the correctness of the algorithm}
 Firstly, let us observe, that algorithm gives the answear on lines 8, 14-15, 35-36, 55-56, 
 62-63 and 
 always ends immedietly after giving the answear. Thus, it will always give at most one answear.
@@ -369,7 +415,8 @@ $\bullet$ That the algorithm always ends in a finite number of steps (Guaranteed
 \subsection{No false positives}
 Algorithm gives answear "yes" at lines 14, 35, 55, 62. At each of these places, 
 the answear contains the example of an orbifold with \Eoc\ equal to $\frac{p}{q}$ that was 
-explicitly checked for correctness just before giving the answear (see lines 12, 33, 53, 60).     
+explicitly checked for correctness just before giving the answear (see lines 12, 33, 53, 60). 
+$_\square$    
 \subsection{No false negatives}
 Let $\cho{*d_1d_2\dots} = \frac{p}{q}$. 
 
@@ -381,18 +428,23 @@ Let $\cho{*d_1d_2\dots} = \frac{p}{q}$.
 We will show that the algorithm will never 
 go beyond $d_1d_2\dots$ counter state in $\preceq$ order. 
 
-Going beyond $d_1d_2\dots$ counter state 
-could happen only in lines 10-11, 40 or 58-59, while pivot would be 
-%lovely
-on the rightmost counter that is differrent from $d_1d_2\dots$. 
-This is because these are the only lines where the counters are changed and while changing, 
+Let us observe that lines 10-11, 40 and 58-59 are the only lines where 
+the counters are changed and while changing, 
 only counters 
 at pivot and to the left of the pivot are changed. 
 
+Because of that, going beyond $d_1d_2\dots$ counter state 
+could happen only in lines 10-11, 40 or 58-59, while pivot would be 
+%lovely
+on the rightmost counter that is differrent from $d_1d_2\dots$. 
+%This is because these are the only lines where the counters are changed and while changing, 
+%only counters 
+%at pivot and to the left of the pivot are changed. 
+
 We will now eliminate all three options case by case. 
-\subsubsection{}
-\subsubsection{}
-\subsubsection{}
+\subsubsection{Lines 10-11}
+\subsubsection{Line 40}
+\subsubsection{Lines 58-59}
 
 \subsection{Guaranteed termination}
 
