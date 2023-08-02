@@ -309,8 +309,20 @@ This is a lexicographical order
 of states of counters after truncation of trailing 1's 
 with the counters to the right being more significant. 
 
-Note that in general it is NOT true that if $C^1 \preceq C^2$ then 
+\begin{observation}
+In general it is NOT true that if $C^1 \preceq C^2$ then 
 $\cho{*C^1} \leq \cho{*C^2}$.
+\end{observation}
+
+\begin{observation}
+Since $\preceq$ is a lexicographical order it is a good order. 
+\end{observation}
+
+\begin{observation}
+Let $C^2$ be the successor of $C^1$ in $\preceq$. Then $\cho{*C^1} \leq \cho{*C^2}$.
+\end{observation}
+\textbf{Proof.}
+
 
 \begin{lemma}
 The state of the counters in the algorithm is weakly increasing with respect to order $\preceq$. 
@@ -322,6 +334,9 @@ the resulting state is bigger with respect to order $\preceq$. $_\square$
 
 \subsection{Basic idea}
 The basic idea of the algorithm is to search through all the states of the counters  
+
+However this can't be done directly as there are infinite ascending sequences in $\preceq$. 
+\subsection{}
  
 \section{Why this works}
 Firstly, let us observe, that algorithm gives the answear on lines 8, 14-15, 35-36, 55-56, 
