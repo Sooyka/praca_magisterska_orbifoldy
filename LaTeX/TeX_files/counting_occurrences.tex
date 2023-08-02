@@ -227,7 +227,7 @@ It states that for ...
 \section{Dividing the problem into an arithmetical and combinatorial parts}
 
 Given a number $x$, the question about how many orbifolds have $x$ as an \Eoc\ can be 
-partially expressed by asking the question how many of sums of the form:
+partially answeared by asking the question how many of sums of the form:
 \begin{equation}\label{counting D2}
 1-\sum_{i=1}^m \frac{d_j-1}{2d_j} 
 %-\sum_{i=1}^n \frac{r_i-1}{r_i}
@@ -252,15 +252,15 @@ The question "How many different sums (understood by above convention) are equal
 will is the first part of the problem -- the arithmetical part, 
 %adressed in 
 %\ref{conting_arithmetical}. 
-This is the hard and only partially answered part.
+%This is the hard and only partially answered part.
 
 This however, does not give us the full information. For once, without changing \Eoc\ some 
 orbipoints can be replaced 
-by orbipoints of a different type or 
+by orbipoints of a different type; or 
 by a features on a manifold such as handles, cross-cups and 
 boundry components, giving orbifold of the same \Eoc, but different base manifold. 
 Secondly, when the orbipoints lie on the boundry components, their 
-order matters, and orbifolds with orbipoints on boundry components with different order 
+order of placement around the boundary component matters as orbifolds with orbipoints on boundry components with different order 
 are not neccesery the same. 
 
 This is a combinatorical part. Here we would make an assumption that we know 
@@ -271,6 +271,9 @@ this the proper number of orbifolds of a given \Eoc\ $x$.
 %This will be answeared in the section \ref{counting_combinatorics}.
 %The other question is -- "How many manifold with some sums correspont to $x$?" and this will 
 %be treated in \ref{conting_diff_man} together with more precise notions of these questions. 
+
+\todo{Write reductions first to separately computing for different manifolds}
+
 \section{Different manifolds}\label{conting_diff_man}
 The question about different manifolds can be changed for the question about order of 
 accumulation. 
@@ -280,25 +283,28 @@ as such we can take differences
 
 all that n can go into manifold features.
  
+To answear the question how much 
 
 %\section{Deformations on orbifolds?}
 
 \section{Arithmetical part}\label{conting_arithmetical}
-This is the part of unansweared question --
+%This is the part of unansweared question --
 
-However in \ref{algorithm} we provide and algorithm to compute.
 
-Algorithm that is proved to stop is a very elaborated equation. 
-We treat the problem as partialy solved however as it does not gives any particular glimpse 
-into the structure
-of why it is such a number. 
-It is however computable.
-How much sums correspond also is reducible to $D^2$.
 
-The result will hav emore algorithmical nature
+In \ref{algorithm} we provide and algorithm to compute.
+
+%Algorithm that is proved to stop is a very elaborated equation. 
+%We treat the problem as partialy solved however as it does not gives any particular glimpse 
+%into the structure
+%of why it is such a number. 
+%It is however computable.
+%How much sums correspond also is reducible to $D^2$.
+
+%The result will hav emore algorithmical nature
 
 \section{Combinatorial part}\label{counting_combinatorics}
-This case is simple in 
+%This case is simple in 
 
 
 
