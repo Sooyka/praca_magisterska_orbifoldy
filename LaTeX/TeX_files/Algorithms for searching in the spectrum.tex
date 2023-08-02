@@ -295,7 +295,8 @@ In the case, the flag is set to:
 \section{The idea of the algorithm}
 We will now present in more detail what the algorithm is intented to do. 
 To do this and for the later sections, we will introduce an order on the states 
-of counters satisfying \ref{valid state of counters}: 
+of counters satisfying \ref{valid state of counters} (as mentioned in 
+\ref{valid state of counters} we will consider only such states): 
 \begin{definition}
 We define a linear order $\preceq$ on the states of counters as follows:
 
@@ -319,8 +320,8 @@ The state of the counters is changed in lines 10-11, 40, 58-59. In each of these
 the counter with the gretest index of all changed counters increases in value, so 
 the resulting state is bigger with respect to order $\preceq$. $_\square$
 
-\subsection{}
-The algorithm is 
+\subsection{Basic idea}
+The basic idea of the algorithm is to search through all the states of the counters  
  
 \section{Why this works}
 Firstly, let us observe, that algorithm gives the answear on lines 8, 14-15, 35-36, 55-56, 
