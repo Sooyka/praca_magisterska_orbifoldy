@@ -249,19 +249,21 @@ of orbipoints, ordered in deacreasing order, appearing in the sum.
 %part of the problem. 
 In this sums there is a structure of what \Eoc\ orbipoints can produce. 
 The question "How many different sums (understood by above convention) are equal to a given $x$?" 
-will is the first part of the problem -- the arithmetical part, 
+This is the first part of the problem -- the arithmetical part, 
 %adressed in 
 %\ref{conting_arithmetical}. 
 %This is the hard and only partially answered part.
-
-This however, does not give us the full information. For once, without changing \Eoc\ some 
+%This however, does not give us the full information. 
+%It gives an aswear to the question "How many $S^2$ orbifolds have an \Eoc\ equal to $x$" and 
+%"How many $D^2$ orbifolds have an \Eoc\ equal to $x$"
+For once, without changing \Eoc\ some 
 orbipoints can be replaced 
-by orbipoints of a different type; or 
+by orbipoints of a different type giving orbifolds with both rotational and dihedral orbipoints; or 
 by a features on a manifold such as handles, cross-cups and 
 boundry components, giving orbifold of the same \Eoc, but different base manifold. 
 Secondly, when the orbipoints lie on the boundry components, their 
 order of placement around the boundary component matters as orbifolds with orbipoints on boundry components with different order 
-are not neccesery the same. 
+are not neccesery the same.  
 
 This is a combinatorical part. Here we would make an assumption that we know 
 the answear to the arithmetical question -- given $x$ how many sums of the form 
@@ -275,8 +277,21 @@ this the proper number of orbifolds of a given \Eoc\ $x$.
 \todo{Write reductions first to separately computing for different manifolds}
 
 \section{Different manifolds}\label{conting_diff_man}
-The question about different manifolds can be changed for the question about order of 
+When answearing the question "Given number $x$, how namy orbifolds have $x$ as their \Eoc?" we will first 
+divide it into the series of questions with specified base manifold each. 
+
+For each manifold $M$, we will answear the question:
+"Given number $x$, how namy $M$-orbifolds have $x$ as their \Eoc?" 
+Note, that for $M$ such that $\chi(M) < x$, the answear is always $0$, since 
+orbifolds have smaller \Eoc\ than their base manifolds 
+(\ref{orbifolds have smaller Eoc than their base manifolds}).
+
+This question about different manifolds can be changed to the question about order of 
 accumulation. 
+
+\begin{lemma}
+
+\end{lemma}
 
 For a point $x$, if it is of order $n$, then all $x+1,...,x+n$ are also in the spcterum
 as such we can take differences
