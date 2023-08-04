@@ -228,8 +228,10 @@ It states that for ...
 
 \section{Dividing the problem into an arithmetical and combinatorial parts}
 \label{dividing the problem}
-We will divide the question "Given the number $x$, how many orbifolds have $x$ as an \Eoc?" 
-into two parts.
+Here will divide the question "Given the number $x$, how many orbifolds have $x$ as an \Eoc?" 
+into two parts. The answears to these partial questions will be given in \ref{algorithm} and 
+\ref{}.   
+% Below in section \ref{arithmeticla part} and \ref{combinatorical} 
 \section{Arithmetical part}\label{arithmetical part}
 %Given a number $x$, the question about how many orbifolds have $x$ as an \Eoc\ can be 
 %partially 
@@ -258,6 +260,7 @@ to the disk changes their \Eoc.
 %In the second part we will build on the assumption that we can
 %answear this question. 
 In the second part we will use the answear from this part.
+%The answear to this question will take the whole chapter \ref{}
 %This covers the "arithmetical" 
 %and combinatorics 
 %of the "orbifold" 
@@ -271,7 +274,7 @@ In the second part we will use the answear from this part.
 %This however, does not give us the full information. 
 %It gives an aswear to the question "How many $S^2$ orbifolds have an \Eoc\ equal to $x$" and 
 %"How many $D^2$ orbifolds have an \Eoc\ equal to $x$"
-\section{Combinatorial part}\label{combinatorial part}
+\section{Combinatorical part}\label{combinatorical part}
 We will take following steps:
 \begin{enumerate}
 \item First we divide the question "Given number $x$, how namy orbifolds have $x$ as their \Eoc?" 
@@ -294,6 +297,7 @@ $\bullet$ if $M$ has no boundary:
 
 "How namy sums of the form?".
 
+Here we consider the sums to be "the same" in the same way as in \ref{arithmetical part}.
 This we can do, since these questions are equivalent to asking respective questions 
 from arithmetical 
 part \ref{arithmetical part} for $x + \chi(M)$. 
@@ -301,21 +305,34 @@ In the case where $M$ has no boundary this gives us our result, since \ref{samen
 \item Finally we take into account two remaining things concerning the case 
 where $M$ has a boundary:
 \begin{enumerate}
-\item For now we only considered orbifolds with either rotational or dihedral orbipoints. 
-When $M$ has a boundary, $M$-orbifold can have both of these types of points.  
+\item For now we only considered sums coresponding to 
+orbifolds with either rotational or dihedral orbipoints. 
+When $M$ has a boundary, $M$-orbifold can have both of these types of points. 
+Fortunatelly, to take this into account, be don't have to answear the 
+arithmetical question concerning the sums coresponding to both types 
+of orbipoints. It is possible to reduce (in the sense discussed in \ref{})
 
-\item
+\item When the orbipoints lie on the boundry components, their 
+order of placement around the boundary component matters as orbifolds 
+with orbipoints on boundry components with different order 
+are not neccesery the same (see \ref{sameness}). 
 \end{enumerate}
+This are the two , 
+that each orbifold correspond to only one sum from the point 2., but in the case 
+where $M$ has a boundary, multiple orbifolds correspond to the same sum. 
+This gives us that the total number 
 \end{enumerate}
 %The second part is to 
 %Secondly, assuming that we know the aswear to the arithmetical part, we will 
 %For once, without changing \Eoc\ some 
 %orbipoints can be replaced 
-%by orbipoints of a different type giving orbifolds with both rotational and dihedral orbipoints; or 
+%by orbipoints of a different type giving orbifolds with both rotational 
+%and dihedral orbipoints; or 
 %by a features on a manifold such as handles, cross-cups and 
 %boundry components, giving orbifold of the same \Eoc, but different base manifold. 
 %Secondly, when the orbipoints lie on the boundry components, their 
-%order of placement around the boundary component matters as orbifolds with orbipoints on boundry components with different order 
+%order of placement around the boundary component matters as orbifolds 
+%with orbipoints on boundry components with different order 
 %are not neccesery the same.  
 
 %This is a combinatorical part. Here we would make an assumption that we know 
