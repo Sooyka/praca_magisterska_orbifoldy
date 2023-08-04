@@ -1,5 +1,5 @@
 % mainfile: ../praca_magisterska_orbifoldy.tex
-\chapter{Counting orbifolds -- arithmetical part}\label{algorithm}
+\chapter{Counting orbifolds -- arithmetical part}\label{Counting orbifolds -- arithmetical part}
 
 
 %\section{Arithmetical part}
@@ -7,12 +7,15 @@
 %We want to determine this $n$. If $n = 0$, then $\frac{p}{q}$ is not in $\sigma$. 
 %If $n > 0$, then $$
 %\subsection{Deciding number of occurences}
-Searching for all occurences 
+%Searching for all occurences 
 
-The difficulty here is to carefully step other an occurence. 
+%The difficulty here is to carefully step other an occurence. 
 
-Compared to the previous version, we also use an occurance counter, starting with it set to 0 
-and with the list of orbifolds, wich is empty at the start.
+%Compared to the previous version, we also use an occurance counter, starting with it set to 0 
+%and with the list of orbifolds, wich is empty at the start.
+
+This will be an extention of the algorithm from \ref{}. 
+
 \begin{lstlisting}[firstnumber=1,consecutivenumbers=true]
 In the case, the flag is set to: 
 {
@@ -108,30 +111,7 @@ In the case, the flag is set to:
 
 \section{Why this works}
 
-\section{Deciding the order}
-Let $m \in \mathbb{N}$ be such that $\frac{p}{q} \in (1-\frac{m}{2},1-
-\frac{m+1}{2})$
-Let us denote by $r \coloneqq \frac{p}{q} - (1-\frac{m}{2})$. \\ 
-
-We will searching in $\sigma$ as such: \\
-
-If $\frac{p}{q} \in \sigma$, then, from the corollary \ref{predescors} we know, that there 
-exist some $n \in \mathbb{N}$, such that $\frac{p}{q} + \frac{n}{2} \in \sigma$ but 
-$\frac{p}{q} + \frac{n}{2} \not\in \sigma$. \\
-
-We will be consequently checking points from $1+r$, through $1+r-\frac{l}{2}$, for 
-$0 \leq l \leq m$, to the $\frac{p}{q}$. We stop at the first found point. 
-If one of these point is in the spectrum, then all smaller (so also $\frac{p}{q}$) are in 
-the spectrum and $\frac{p}{q}$ is the accumulation point of the spectrum of order $m-l$ 
-(from this, 
-we can see some heuristic, that the points that have smaller order will be generally 
-harder to find in some sense). If none of this points are in in the spectrum, then $\frac{p}{q}$ 
-is not. \\
-
-
-
-
-\section{Implementation}
+\section{Implementation}\label{implementation}
 As an appendix in the separate document, there is a source of a program with implementation 
 of this algorithm 
 with full  
@@ -141,5 +121,9 @@ this thesis.
 %It is in the separate file, as it would take too much space in this 
 %document and wouldn't be readable. 
 
+\subsection{Optimisations}
+Binary search
 
+\subsection{Limitations}
+i64
 
