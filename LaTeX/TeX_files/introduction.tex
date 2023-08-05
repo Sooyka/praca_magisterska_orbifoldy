@@ -186,14 +186,23 @@ h c b
 $\srS, \sdD$ 
 
 \section{Spectra}
-This will be the main interest of this thesis. $\spe$. dadada
-The form of the spectrum of two dimensional $M$ orbifold is:
+We will call the set of all possible \Eoc\ of a manifold $M$, the spectrum of $M$ and 
+we will denote it by $\spebr{M}$. 
+
+We will also denote the sum of spectra of all two dimentional manifolds by:
+\begin{equation}
+\spe \coloneqq \bigcup_{M\textrm{ : 2d manifold}} \spebr{M}.
+\end{equation}
+This will be the main interest of this thesis. 
+%$\spe$. dadada
+
+Now we want to derive the form of the $\spebr{M}$.
 For a manifold $M$ with $h$ handles, $c$ cross-cups and $b$ boundary components, it's 
 Euler characteristic is given by:
 \begin{equation}
 \chi(M) = 2-2h-c-b.
 \end{equation}
-The possible $\Delta$ for possible orbifold features are:\\
+The set of $\Delta$ for possible orbifold features are:\\
 $\bullet$ for $b\neq 0$:
 \begin{equation}
 \{-\frac{n-1}{2n}\ \big|\ n\in\mathbb{N}_{>0}\cup \{\infty\}\}
@@ -204,7 +213,7 @@ $\bullet$ for $b = 0$:
 \end{equation} 
 %with the convention, that $\varphi(\infty) \coloneqq \lim\limits_{k\to \infty} \varphi(k)$.
 
-Thus, we have that:\\
+Thus, we have that the form of the spectrum of two dimensional manifold $M$ is:\\
 $\bullet$ for $b\neq 0$: 
 \begin{equation}
 \spe(M) = 2-2h-c-b - \left\{\sum\limits_{i=1}^n\frac{d_i-1}{2d_i}\ 
@@ -279,7 +288,11 @@ and
 \end{equation}
 From this, the observation follows immedietly. $_\square$
 
-\todo{dopisać, że spectrum jest poniżejchi rozmaitości}
+\begin{observation}
+For every manifold $M$, for every $x \in \spebr{M}$, we have that $x \leq \chi(M)$.
+\end{observation}
+
+%\todo{dopisać, że spectrum jest poniżejchi rozmaitości}
 
 \section{Egyptian franctions}
 Egyptian frantion is a finite sum of fractions, all with numerators one. 
@@ -355,7 +368,7 @@ of summands. It will be used in \ref{saturation theorem} and \ref{unboundness}.
 We will now state two corrolaries that follows immediately from the 
 form of expressions \ref{Egyptian S2 sum} and \ref{Egyptian D2 sum}, and from 
 \ref{two dim manifold spectrum}.
-\begin{corollary}\label{from Egyptian fractions M}
+\begin{corollary}\label{from Egyptian fractions}
 If $x$ can be expressed as an egyptian fraction with $n$ summands, then for any two dimensional 
 manifold $M$ we have: 
 \begin{equation}
@@ -366,7 +379,7 @@ and, if $M$ has at least one boundary component also:
 \chi(M) - \frac{n}{2} + \frac{1}{2}x \in \spebr{M}.
 \end{equation}
 \end{corollary}
-\begin{corollary}\label{to egyptian fractions M}
+\begin{corollary}\label{to egyptian fractions}
 If for some two dimensional manifold $M$ we have that $y \in \spebr{M}$ as an \Eoc\ of 
 an orbifold which has $n$ rotational orbipoints and not any other, 
 then 

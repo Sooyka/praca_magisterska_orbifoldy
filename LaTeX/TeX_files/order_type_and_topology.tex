@@ -567,8 +567,8 @@ of order $1$ of the set $\speD$. $_\square$
 \subsection{Saturation theorem}
 \begin{theorem}\label{saturation theorem}
 For any rational number $\frac{p}{q}$, for any two dimensional manifold $M$
-there exists a $N\in\mathbb{N}$ such that 
-for all $n > N$, we have that $\frac{p}{q} - n \in \spebr{M}$.
+there exists $N\in\mathbb{N}_0$ such that 
+for all $n \geq N$, we have that $\frac{p}{q} - n \in \spebr{M}$.
 \end{theorem}
 \textbf{Proof.}
 Let us take $\frac{p}{q} \in \mathbb{Q}$. 
@@ -576,7 +576,8 @@ From \ref{Egyptian_fractions}, after \cite{every number is expressible
 as an egyptian fraction} we know that every rational number is expressable as an egyptian 
 fraction. Let us name the number of summends in some egyptian fraction of $\frac{p}{q}$ 
 as $k$. From \ref{from Egyptian fractions} we know that then 
-$\chi(M) - $ $_\square$
+$\chi(M) - k + \frac{p}{q} \in \spebr{M}$.  $_\square$
+\todo{dokończyć}
 %\begin{corolarry}
 %The following theorem tells us that for any denumerator, from a sufficiently distant 
 %point all rational number with this denumerator are in $\speS$.
@@ -599,8 +600,8 @@ $\chi(M) - $ $_\square$
 \begin{corollary}\label{Saturation theorem corollary}
 For any finite set of rational numbers $\{(\frac{p}{q})_i\}_{i=1}^k$, for any 
 finite set of two dimensional manifolds $\{M_j\}_{j=0}^l$, there exists 
-a $N\in\mathbb{N}$ such that 
-for all $n > N$, for all $i\in \{1 \dots k\}$, 
+a $N\in\mathbb{N}_0$ such that 
+for all $n \geq N$, for all $i\in \{1 \dots k\}$, 
 for all $j\in\{1\dots l\}$ we have that  $(\frac{p}{q})_i - n \in \spebr{M_j}$.
 \end{corollary}
 \textbf{Proof.}
@@ -638,7 +639,7 @@ answer some of these questions.
 %from a sufficiently distant point on any set of the form $A-n$, where $A$ is a 
 %finite set of rational numbers, and $n\in\mathbb{N}$. 
 %\end{corollary}
-\subsubsection{$-\frac{1}{84}$ and $-\frac{1}{42}$}
+\subsubsection{Importance of $-\frac{1}{84}$ and $-\frac{1}{42}$}
 %//Why it is how it is//
 As described in \cite{greatest negative orbifold} we know that $-\frac{1}{84}$ is 
 the greatest possible negative \Eoc for an two dimensional orbifolds. 

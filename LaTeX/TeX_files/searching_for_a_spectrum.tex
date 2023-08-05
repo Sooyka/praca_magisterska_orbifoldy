@@ -1,5 +1,5 @@
 % mainfile: ../praca_magisterska_orbifoldy.tex
-\chapter{Algorithms for searching in the spectrum}
+\chapter{Algorithm for searching for the spectrum}
 
 In the previous chapter we answeared the questions about how $\spe$ looks like -- in particular 
 what is it's order type and topology. In this chapter we would like to develop a 
@@ -156,7 +156,7 @@ $\leq 1$.
 %(with infinity included)) set to $1$. Each counter correspond to one cone point 
 %on the boundry of the disk of period equal to the value of the counter (with the note, that 
 %if counter is set to $1$ it means a trivial cone point - namely a none cone point, a normal 
-point). 
+%point). 
 %Every state of the counters during runtime of the algorith will have only finitely many 
 %counters with value non-$1$. Moreover every state in the rutime of the algorithm 
 %will have values on consequtive counters ordered in weakly decreasing order. From now we will 
@@ -227,7 +227,7 @@ we procced as follows
 %(the term "We continue." means, that we start the following procedure from the beginning)
 :
 \begin{lstlisting}[firstnumber=1,consecutivenumbers=true]
-In the case, the flag is set to: 
+In the case, the $flag\_value$ is: 
 {
     "Less", then 
     {
@@ -238,22 +238,25 @@ In the case, the flag is set to:
         }
         We increase $c_p$ by one ($d_p \coloneqq d_p + 1$) and
         we set the value of all counters on the left of $c_p$ to $d_p$.
-        If $\chi^{orb}(*d_1d_2\dots)=\frac{p}{q}$ then
+        If $\chi^{orb}(*d_1d_2d_3\dots)=\frac{p}{q}$ then
         {
             We found an orbifold and we are ending the whole
             algorithm with answer "yes, $*d_1d_2\dots$".
+            
+            
+            
         }
         If $\chi^{orb}(*d_1d_2d_3\dots)>\frac{p}{q}$ then  
         {
             We set the flag to "Greater".
-            We put the pivot on the $c_1$. 
+            We put the pivot at the $c_1$. 
             We go to the 1st line.
         } 
         If $\chi^{orb}(*d_1d_2d_3\dots)<\frac{p}{q}$ then
         {
             We set the flag to "Less".
-            We put pivot on the $c_{p+1}$.
-            We go to the 1sts line.
+            We put the pivot at the $c_{p+1}$.
+            We go to the 1st line.
         } 
     }
 
@@ -263,12 +266,15 @@ In the case, the flag is set to:
         {
             We found an orbifold and we are ending the whole
             algorithm with answer "yes, $*d_1\dots d_{p-1}\infty d_{p+1}\dots$".
+            
+            
+            
         } 
         If $\chi^{orb}(*d_1\dots d_{p-1}\infty d_{p+1}\dots)>\frac{p}{q}$ then
         {
             We set $d_p$ to $\infty$.
             We set the flag to "Greater".
-            We move pivot on the $c_{p+1}$.
+            We put the pivot at the $c_{p+1}$.
             We go to the 1st line.
         }  
         If $\chi^{orb}(*d_1\dots d_{p-1}\infty d_{p+1}\dots)<\frac{p}{q}$ then
@@ -283,24 +289,29 @@ In the case, the flag is set to:
             {
                 We found an orbifold and we are ending the whole
                 algorithm with answer "yes, $*d_1\dots d_{p-1}d_p'd_{p+1}\dots$".
+                
+                
             }
-            We set $d_p$ and  values of all the counters 
+            We set $d_p$ and values of all the counters 
             to the left of $c_p$ to the value $d_p'$.
             if $\chi^{orb}(*d_1d_2d_3\dots)=\frac{p}{q}$ then 
             {
                 We found an orbifold and we are ending the whole
                 algorithm with answer "yes, $*d_1d_2\dots$".
+                
+                
+                
             }
             If $\chi^{orb}(*d_1d_2d_3\dots)<\frac{p}{q}$ then 
             {
-                We set flag to "Less".
-                We move the pivot to the column $c+1$.
+                We set the flag to "Less".
+                We put the pivot at the $c_{p+1}$.
                 We go to the 1st line.
             }
             If $\chi^{orb}(*d_1d_2d_3\dots)>\frac{p}{q}$ then 
             {
                 We set the flag to "Greater".
-                We move the pivot to the $c_1$.
+                We put the pivot at the $c_1$.
                 We go to the 1st line.
             }
         }  
@@ -341,9 +352,9 @@ Let $C^2$ be the successor of $C^1$ in $\preceq$. Then $\cho{*C^1} > \cho{*C^2}$
 The successor of $d_1d_2\dots$ is $(d_1+1)d_2\dots$. Increasing the order of the orbipoint  
 decreases \Eoc. $_\square$
 
-\begin{lemma}
+%\begin{lemma}
 
-\end{lemma}
+%\end{lemma}
 
 \begin{lemma}
 The state of the counters in the algorithm is weakly increasing with respect to order $\preceq$. 
@@ -388,7 +399,8 @@ will have $\cho{*a} \leq \frac{p}{q}$. However,
 Firstly, let us observe, that algorithm gives the answear on lines 8, 14-15, 35-36, 55-56, 
 62-63 and 
 always ends immedietly after giving the answear. Thus, it will always give at most one answear.
-Furthermore let us observe that these are the only places where the algorithm terminates.
+Furthermore let us observe that these are the only places where the algorithm terminates, 
+so if it terminates it will give at least one answear.
  
 There are three things to be checked: \\
 $\bullet$ That the algorithm never answears "yes" if there is no orbifold of the \Eoc\ 
