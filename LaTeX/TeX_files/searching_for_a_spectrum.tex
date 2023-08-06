@@ -338,9 +338,10 @@ In the case, the $flag\_value$ is equal to:
 \end{lstlisting}
 \section{The idea of the algorithm}\label{the idea of the algorithm}
 We will now present in more detail what the algorithm is intented to do. 
-To do this and for the later sections, we will introduce an order on the states 
+To do this and for the later sections, we will first introduce an order on the states 
 of counters satisfying \ref{valid state of counters} (as mentioned in 
-\ref{valid state of counters} we will consider only such states): 
+\ref{valid state of counters} we will consider only such states) and prove several lemmas about it. 
+\subsection{Order on the space of states of the counters}
 \begin{definition}
 We define a linear order $\preceq$ on the states of counters as follows:
 
@@ -405,10 +406,13 @@ For any state $D$, the successor of $D$ is a finite state.
 \begin{definition}
 We will call the ascending sequence $\{D_n\}$ 
 in $\preceq$, such 
-that for all $n$, we have that $D_{n+1}$ is the succesor of $D_n$, a connected sequence in 
+that for all $n$, we have that $D_{n+1}$ is the succesor of $D_n$, a \textbf{connected} sequence in 
 $\preceq$.   
 \end{definition}
-
+\begin{observation}
+Every connected sequence of the finite states is of the form $\{(d_1+n)d_2d_3\cdots\}$, 
+where all $d_n$ are different from $\infty$.
+\end{observation}
 \begin{observation}\label{Successor lemma}
 Let $D_1$ and $D_2$ be finite states and let $D_2$ be the successor of $D_1$ in 
 $\preceq$. Then $\cho{*D_1} > \cho{*D_2}$.
@@ -425,8 +429,9 @@ The sequence $\{\cho{*D_n}\}$ is descending for every connected sequence
 of finite states $\{D_n\}$ in $\preceq$. 
 \end{corollary}
 \begin{lemma}\label{chi supp functoriality}
-Let $d_1$ be different form $\infty$. 
-The supremum of the connected sequence $\{(d_1+n)d_2d_3\cdots\}$ is $\infty d_2d_3\cdots$, and 
+%Let $d_1$ be different form $\infty$. 
+The supremum of the connected sequence 
+of finite states $\{(d_1+n)d_2d_3\cdots\}$ is $\infty d_2d_3\cdots$, and 
 %the following diagram commutes:
 the infimum of the corresponding sequence $\{\chi(*(d_1+n)d_2d_3\cdots)\}$ is  
 $\chi(*\infty d_2d_3\cdots)$.
@@ -436,7 +441,7 @@ $\chi(*\infty d_2d_3\cdots)$.
 %sup
 
 For every $n$ we have that $(d_1+n)d_2d_3\cdots\preceq\infty d_2d_3\cdots$. Furthermore for 
-every $d_1'd_2'd_3'\cdots$ suck that $d_1'd_2'd_3'\cdots\preceq \infty d_2d_3\cdots$, there 
+every $d_1'd_2'd_3'\cdots$ such that $d_1'd_2'd_3'\cdots\preceq \infty d_2d_3\cdots$, there 
 exists $n$, such that $d_1'd_2'd_3' \cdots\preceq(d_1+n)d_2d_3\cdots$. Thus, $\infty d_2d_3\cdots$ 
 is the supremum of $\{(d_1+n)d_2d_3\cdots\}$.
 
@@ -478,28 +483,45 @@ questions how we go through all the states and what can be this upper limit.
 %However this can't be done directly as there are infinite ascending sequences in $\preceq$. 
 \subsection{Checking all the states}
 This can't be done directly as there are infinite ascending sequences in $\preceq$. 
+However, it can be done with some use of the properties we derived in the previous subsection.
+\subsubsection{Checking infinite connected sequences of finite states in finitely many steps}
+We will now present the method how to check any infinite connected sequence of finite 
+states for solutions in finite number of steps.
 
 %However, by \ref{Successor lemma} we know, that for every ascending sequence $\{a_n\}$ 
 %in $\preceq$, such 
 %that for all $n$, we have that $a_{n+1}$ is the succesor of $a_n$, we have that the sequence 
 %$\{\cho{*a_n}\}$ is strictly descending. 
 
-However, thanks to \ref{connected sequences corollary}, 
-when we are searching through the infinite connected sequence in 
-$\preceq$, once we get to the state $D_n$ for which $\cho{*D_n} < \frac{p}{q}$, we now 
+First, let us observe that thanks to \ref{connected sequences corollary}, 
+when we are searching through the infinite connected sequence of finite states in 
+$\preceq$, once we get (without fiding any solution) 
+to the state $D_n$ for which $\cho{*D_n} < \frac{p}{q}$, we know 
 that no state $D_m$ with $m>n$ can have $\cho{*D_m} = \frac{p}{q}$ 
 and we can disregard whole sequence. 
 
 There is, however, another problem, namely, that when we are searching through 
-the infinite connected sequence, 
+the infinite connected sequence of the finite state, 
 %of consequtive 
 %states of counters, 
 initialy, we don't now, whether there will be any state 
-$D = d_1d_2d_3\cdots$ in it, that 
-will have $\cho{*d_1d_2d_3\cdots} \leq \frac{p}{q}$. 
+$D_k = (d_1+k)d_2d_3\cdots$ in it, that 
+will have $\cho{*(d_1+k)d_2d_3\cdots} \leq \frac{p}{q}$. 
 However, thanks to \ref{chi supp functoriality} 
-we can check for this, by first comparing $\frac{p}{q}$ with 
+we can check for this, by first comparing $\frac{p}{q}$ with $\chi(*\infty d_2d_3\cdots)$. 
+Since from \ref{chi supp functoriality}, we have that 
+$\chi(*\infty d_2d_3\cdots)$ is the infimum of $\{*(d_1+n)d_2d_3\cdots\}$, 
+we have that if $\chi(*\infty d_2d_3\cdots) < \frac{p}{q}$, then
+there must be state $(d_1+n)d_2d_3\cdots$ such that $\chi(*(d_1+n)d_2d_3\cdots) < \frac{p}{q}$, 
+for some $n$ and we can proceed to look for it one by one through the sequence.
 
+One case that is left, is when $\chi(*\infty d_2d_3\cdots) > \frac{p}{q}$, but then we can 
+disregard the whole sequence right away, since 
+$\chi(*\infty d_2d_3\cdots)$ is the infimum of $\{*(d_1+n)d_2d_3\cdots\}$.
+
+
+%From this we have the method to check any infinite connected sequence of finite states in finitely 
+%many steps.
 \subsection{Three "modes" of the algorithm}
 The algorithm has three distinct fragments: 
 \begin{itemize}
