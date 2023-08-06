@@ -400,7 +400,7 @@ $d_1$ being different from (resp. being equal to) $\infty$.
 %\begin{observation}
 
 %\end{observation}
-\begin{observation}
+\begin{observation}\label{finiteness of the successor}
 For any state $D$, the successor of $D$ is a finite state.
 \end{observation}
 \begin{definition}
@@ -484,14 +484,29 @@ questions how we go through all the states and what can be this upper limit.
 \subsection{Checking all the states}
 This can't be done directly as there are infinite ascending sequences in $\preceq$. 
 However, it can be done with some use of the properties we derived in the previous subsection.
-\subsubsection{Checking infinite connected sequences of finite states in finitely many steps}
-We will now present the method how to check any infinite connected sequence of finite 
-states for solutions in finite number of steps.
+\subsubsection{Checking infinite connected sequences in finitely many steps}
+We will now present the method how to check any infinite connected sequence for solutions 
+in finite number of steps.
 
 %However, by \ref{Successor lemma} we know, that for every ascending sequence $\{a_n\}$ 
 %in $\preceq$, such 
 %that for all $n$, we have that $a_{n+1}$ is the succesor of $a_n$, we have that the sequence 
 %$\{\cho{*a_n}\}$ is strictly descending. 
+
+First, we will perform a reduction from 
+arbitrary infinite connected sequence to the inifite connected sequence of finite states. 
+
+Let us observe, that, by \ref{finiteness of the successor}, 
+there can be at most one infinite state in 
+any connected sequence, and if it is present it must be the first one. If such state 
+$D_0$ is present, 
+we can chceck it whether $\chi(*D_0))$ is equal to $\frac{p}{q}$ or not (one step), 
+and then all states that are left to be checked are finite and form infinite 
+connected sequence of finite states, thus ending our reduction. 
+%separately from the rest of the sequence 
+
+As this from this point we will present a method or checking for solutions any 
+infinite connected sequence of finite states.
 
 First, let us observe that thanks to \ref{connected sequences corollary}, 
 when we are searching through the infinite connected sequence of finite states in 
