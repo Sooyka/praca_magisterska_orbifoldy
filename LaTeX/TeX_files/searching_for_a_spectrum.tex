@@ -116,7 +116,7 @@ be conserned only with dihedral orbipoints.
 
 %\subsection{Arithmetic formulation}
 %We want to determine whether there exists $d_1,d_2,\cdots,d_k$, such that 
-%$\chi^{orb}(*d_1\dots d_k) = \frac{p}{q}$. 
+%$\chi^{orb}(*d_1\cdots d_k) = \frac{p}{q}$. 
 
 \section{Special cases}
 In the case that $\frac{p}{q}$ is of the form $l\frac{1}{4}$, for some whole $l$ 
@@ -151,7 +151,7 @@ $\leq 1$.
 %%We start with the 
 %We use: 
 %\begin{itemize}
-%$\mathbb{N}$ counters $d_1d_2\dots$ 
+%$\mathbb{N}$ counters $d_1d_2\cdots$ 
 %(with values ranging from $1$, through all natural numbers, to infinity 
 %(with infinity included)) set to $1$. Each counter correspond to one cone point 
 %on the boundry of the disk of period equal to the value of the counter (with the note, that 
@@ -161,13 +161,16 @@ $\leq 1$.
 %counters with value non-$1$. Moreover every state in the rutime of the algorithm 
 %will have values on consequtive counters ordered in weakly decreasing order. From now we will 
 %consider only such states. \\
-%The state $d_1d_2\dots$ correspond to the orbifold of 
-%\Eoc equal $\chi^{orb}(*d_1d_2\dots)$ (where the trailing $1$ are trunkated). \\ 
+%The state $d_1d_2\cdots$ correspond to the orbifold of 
+%\Eoc equal $\chi^{orb}(*d_1d_2\cdots)$ (where the trailing $1$ are trunkated). \\ 
 %%There is also a pivot pointing on one counter at any time.  
 \section{Regular cases}
+First we will describe what we use in the algorithm, giving the brief semantics. 
+The detailed semantics are given in \ref{idea of the algorithm}.
+\subsection{What we use}
 We use: 
 \begin{itemize}
-\item $\mathbb{N}_{>0}$ counters $c_1, c_2, \dots$ 
+\item $\mathbb{N}_{>0}$ counters $c_1, c_2, \cdots$ 
 with values ranging on $\mathbb{N}_{>0}\cup\{\infty\}$.
 %$1$, through all natural numbers, to infinity 
 %(with infinity included). 
@@ -180,16 +183,20 @@ We will write the state of the counters without commas, using the letter $d$.
 Note that with this convention, $c_i$ will refer to the $i$-th counter and $d_i$ will 
 refet to the value of the $i$-th counter. 
 
+So the state of the counters $d_1d_2\cdots$ correspond to the orbifold 
+$*d_1d_2\cdots$ (where the trailing $1$'s are trunkated).
+
 We will refer to the counters being "to the left" or "to the right" of each other, as 
 the numbering would go from left to right.
 
 \item a pivot pointing at some counter 
 % at any time
-\item a flag that can be set to "Greater" or "Less" corresponding to what was 
+\item a flag that can be set to: "Greater", "Searching" or "Less" corresponding to what was 
 the outcome of comparing \Eoc\ of the orbifold corresponding to counters' state and 
-$\frac{p}{q}$.  
+$\frac{p}{q}$ or to the fact, that there is a need for a search of the next state of counters 
+to compare with $\frac{p}{q}$.  
 \end{itemize}
-
+\subsection{What state are we starting our algorithm with}
 We start with:
 \begin{itemize}
 \item all counters set to $1$. 
@@ -199,7 +206,11 @@ We start with:
 %If $\frac{p}{q}$ is of form $\frac{k}{4}$, where $k \in (-\infty,8] \cap \mathbb{Z}$ we give 
 %the answear "yes" and end the whole algorithm. If $\frac{p}{q} > 2$ we give the answear "no" and 
 %end the whole algorithmBecauseof this, below we assume, that \\
-
+\subsection{Invariants claims}
+Now we will state the claims of what properties the state of the counters will maintain 
+during all the execution of the algorithm. The proof, that this is indeed the case will 
+be performed in 
+\ref{memory state proof}
 \begin{claim}\label{valid state of counters}
 We will do our computation such that:
 \begin{itemize}
@@ -213,22 +224,86 @@ From now we will
 consider only such states. 
 
 %There is also a pivot pointing on one counter at any time.  
-The state of the counters $d_1d_2\dots$ correspond to the orbifold 
-%of \Eoc\ equal $\chi^{orb}(*d_1d_2\dots)$
-$*d_1d_2\dots$ (where the trailing $1$'s are trunkated). 
-
+%The state of the counters $d_1d_2\cdots$ correspond to the orbifold 
+%%of \Eoc\ equal $\chi^{orb}(*d_1d_2\cdots)$
+%$*d_1d_2\cdots$ (where the trailing $1$'s are trunkated). 
+\subsection{The algorithem for searching for a spectrum}
 When the algorithm is in the state: 
 \begin{itemize}
-\item counters with values: $d_1d_2\dots$
+\item counters with values: $d_1d_2\cdots$
 \item pivot: at the counter $c_p$
 \item flag: set to the value $flag\_value$,
 \end{itemize}
 we procced as follows 
 %(the term "We continue." means, that we start the following procedure from the beginning)
 :
+%// More on how we search for it will be told later, 
+%        // for now we can think that we search one by one,
+%        // starting from $d_p$ and going up till $d_p'$.
 \begin{lstlisting}[firstnumber=1,consecutivenumbers=true]
-In the case, the $flag\_value$ is: 
+In the case, the $flag\_value$ is equal to: 
 {
+    "Greater", then
+    {
+        If $\chi^{orb}(*d_1\cdots d_{p-1}\infty d_{p+1}\cdots)=\frac{p}{q}$ then
+        {
+            We found an orbifold and we are ending the whole
+            algorithm with answer "yes, $*d_1\cdots d_{p-1}\infty d_{p+1}\cdots$".
+            
+            
+            
+        } 
+        If $\chi^{orb}(*d_1\cdots d_{p-1}\infty d_{p+1}\cdots)>\frac{p}{q}$ then
+        {
+            We set $d_p$ to $\infty$.
+            We set the flag to "Greater".
+            We put the pivot at the $c_{p+1}$.
+            We go to the 1st line.
+        }  
+        If $\chi^{orb}(*d_1\cdots d_{p-1}\infty d_{p+1}\cdots)<\frac{p}{q}$ then
+        {
+            We set the flag to "Searching".
+            We go to the 1st line.
+        }  
+    }
+    
+    "Searching", then
+    {
+        We search one by one 
+        for the value $d_p'$ of the $c_p$ such that
+        $\chi^{orb}(*d_1\cdots d_{p-1}d_p'd_{p+1}\cdots)\leq\frac{p}{q}$ and
+        $\chi^{orb}(*d_1\cdots d_{p-1}(d_p'-1)d_{p+1}\cdots)>\frac{p}{q}$.
+        if $\chi^{orb}(*d_1\cdots d_{p-1}d_p'd_{p+1}\cdots)=\frac{p}{q}$ then 
+        {
+            We found an orbifold and we are ending the whole
+            algorithm with answer "yes, $*d_1\cdots d_{p-1}d_p'd_{p+1}\cdots$".
+            
+            
+        }
+        We set $d_p$ and values of all the counters 
+        to the left of $c_p$ to the value $d_p'$.
+        if $\chi^{orb}(*d_1d_2d_3\cdots)=\frac{p}{q}$ then 
+        {
+            We found an orbifold and we are ending the whole
+            algorithm with answer "yes, $*d_1d_2\cdots$".
+            
+            
+            
+        }
+        If $\chi^{orb}(*d_1d_2d_3\cdots)<\frac{p}{q}$ then 
+        {
+            We set the flag to "Less".
+            We put the pivot at the $c_{p+1}$.
+            We go to the 1st line.
+        }
+        If $\chi^{orb}(*d_1d_2d_3\cdots)>\frac{p}{q}$ then 
+        {
+            We set the flag to "Greater".
+            We put the pivot at the $c_1$.
+            We go to the 1st line.
+        }
+    }
+    
     "Less", then 
     {
         If $d_p = 1$ and the values of all the counters 
@@ -238,87 +313,30 @@ In the case, the $flag\_value$ is:
         }
         We increase $c_p$ by one ($d_p \coloneqq d_p + 1$) and
         we set the value of all counters on the left of $c_p$ to $d_p$.
-        If $\chi^{orb}(*d_1d_2d_3\dots)=\frac{p}{q}$ then
+        If $\chi^{orb}(*d_1d_2d_3\cdots)=\frac{p}{q}$ then
         {
             We found an orbifold and we are ending the whole
-            algorithm with answer "yes, $*d_1d_2\dots$".
+            algorithm with answer "yes, $*d_1d_2\cdots$".
             
             
             
         }
-        If $\chi^{orb}(*d_1d_2d_3\dots)>\frac{p}{q}$ then  
+        If $\chi^{orb}(*d_1d_2d_3\cdots)>\frac{p}{q}$ then  
         {
             We set the flag to "Greater".
             We put the pivot at the $c_1$. 
             We go to the 1st line.
         } 
-        If $\chi^{orb}(*d_1d_2d_3\dots)<\frac{p}{q}$ then
+        If $\chi^{orb}(*d_1d_2d_3\cdots)<\frac{p}{q}$ then
         {
             We set the flag to "Less".
             We put the pivot at the $c_{p+1}$.
             We go to the 1st line.
         } 
     }
-
-    "Greater", then
-    {
-        If $\chi^{orb}(*d_1\dots d_{p-1}\infty d_{p+1}\dots)=\frac{p}{q}$ then
-        {
-            We found an orbifold and we are ending the whole
-            algorithm with answer "yes, $*d_1\dots d_{p-1}\infty d_{p+1}\dots$".
-            
-            
-            
-        } 
-        If $\chi^{orb}(*d_1\dots d_{p-1}\infty d_{p+1}\dots)>\frac{p}{q}$ then
-        {
-            We set $d_p$ to $\infty$.
-            We set the flag to "Greater".
-            We put the pivot at the $c_{p+1}$.
-            We go to the 1st line.
-        }  
-        If $\chi^{orb}(*d_1\dots d_{p-1}\infty d_{p+1}\dots)<\frac{p}{q}$ then
-        {
-            We search for value $d_p'$ of the $c_p$ 
-            such that $\chi^{orb}(*d_1\dots d_{p-1}d_p'd_{p+1}\dots)\leq\frac{p}{q}$ 
-            and $\chi^{orb}(*d_1\dots d_{p-1}(d_p'-1)d_{p+1}\dots)>\frac{p}{q}$.
-            // More on how we search for it will be told later, 
-            // for now we can think that we search one by one,
-            // starting from $d_p$ and going up till $d_p'$.
-            if $\chi^{orb}(*d_1\dots d_{p-1}d_p'd_{p+1}\dots)=\frac{p}{q}$ then 
-            {
-                We found an orbifold and we are ending the whole
-                algorithm with answer "yes, $*d_1\dots d_{p-1}d_p'd_{p+1}\dots$".
-                
-                
-            }
-            We set $d_p$ and values of all the counters 
-            to the left of $c_p$ to the value $d_p'$.
-            if $\chi^{orb}(*d_1d_2d_3\dots)=\frac{p}{q}$ then 
-            {
-                We found an orbifold and we are ending the whole
-                algorithm with answer "yes, $*d_1d_2\dots$".
-                
-                
-                
-            }
-            If $\chi^{orb}(*d_1d_2d_3\dots)<\frac{p}{q}$ then 
-            {
-                We set the flag to "Less".
-                We put the pivot at the $c_{p+1}$.
-                We go to the 1st line.
-            }
-            If $\chi^{orb}(*d_1d_2d_3\dots)>\frac{p}{q}$ then 
-            {
-                We set the flag to "Greater".
-                We put the pivot at the $c_1$.
-                We go to the 1st line.
-            }
-        }  
-    }
 }
 \end{lstlisting}
-\section{The idea of the algorithm}
+\section{The idea of the algorithm}\label{the idea of the algorithm}
 We will now present in more detail what the algorithm is intented to do. 
 To do this and for the later sections, we will introduce an order on the states 
 of counters satisfying \ref{valid state of counters} (as mentioned in 
@@ -326,41 +344,122 @@ of counters satisfying \ref{valid state of counters} (as mentioned in
 \begin{definition}
 We define a linear order $\preceq$ on the states of counters as follows:
 
-Let $C^1$ be a state of counters equal to $d_1^1d_2^1\dots$ and $C^2$ be a state of counters 
-equal to $d_1^2d_2^2\dots$. Let $i$ be the greatest index where $C^1$ and $C^2$ differ, then:\\
-$bullet$ If $d_i^1 \leq d_i^2$ then $C^1 \preceq C^2$. 
+Let $D_1$ be a state of counters equal to $d_1^1d_2^1\cdots$ and $D_2$ be a state of counters 
+equal to $d_1^2d_2^2\cdots$. Let $i$ be the greatest index where $D_1$ and $D_2$ differ, then:\\
+$bullet$ If $d_i^1 \leq d_i^2$ then $D_1 \preceq D_2$. 
 \end{definition}
 
-This is a lexicographical order 
+This is a suborder of the lexicographical order 
 of states of counters after truncation of trailing 1's 
 with the counters to the right being more significant. 
 
 \begin{observation}
-In general it is not true that if $C^1 \preceq C^2$ then 
-$\cho{*C^1} \leq \cho{*C^2}$ nor that if $C^1 \preceq C^2$ then 
-$\cho{*C^1} \geq \cho{*C^2}$.
+In general it is not true that if $D_1 \preceq D_2$ then 
+$\cho{*D_1} \leq \cho{*D_2}$ nor that if $D_1 \preceq D_2$ then 
+$\cho{*D_1} \geq \cho{*D_2}$.
 \end{observation}
 
-\begin{observation}
-Since $\preceq$ is a lexicographical order it is a good order. 
+\begin{observation}\label{good lexicographical order}
+Since $\preceq$ is a suborder of a lexicographical order it is a good order. 
 \end{observation}
+
+We can explicitly write the form of the successor of any state $d_1d_2d_3\cdots$ in $\preceq$:
+%(Quotation marks around the counters' states in the following 
+%lemma are added here only for readability 
+%and they bare no particular meaning.)
+\begin{observation}\label{form of the successor}
+The successor of 
+the state $d_1d_2d_3\cdots$, of the form
+\begin{equation}
+\underbrace{\infty\infty\cdots\infty}_{k-1 \rm\ times} d_kd_{k+1}d_{k+2}\cdots,
+\end{equation}
+where $k$ is 
+such that $c_k$ is the first counter 
+from the left that is not set to $\infty$,
+% in the state $d_1d_2d_3\cdots$, 
+is
+\begin{equation} 
+\underbrace{(d_k+1)(d_k+1)\cdots(d_k+1)}_{k-1\rm\ times}(d_k+1)d_{k+1}d_{k+2}\cdots,
+\end{equation}
+
+\end{observation}
+%\textbf{Proof.}
+\begin{definition}
+We will call the state $d_1d_2d_3\cdots$, such that no $d_k$ is equal to $\infty$ a 
+\textbf{finite} state. 
+
+We will call the state $d_1d_2d_3\cdots$, such that at least one of $d_k$ is equal to $\infty$ 
+an \textbf{infinite} state.  
+\end{definition}
+\begin{observation}
+Using \ref{valid state of counters} we have that 
+for the state $d_1d_2d_3\cdots$ to be finite (resp. infinite), it is equivalent to 
+$d_1$ being different from (resp. being equal to) $\infty$. 
+\end{observation}
+%\begin{observation}
+
+%\end{observation}
+\begin{observation}
+For any state $D$, the successor of $D$ is a finite state.
+\end{observation}
+\begin{definition}
+We will call the ascending sequence $\{D_n\}$ 
+in $\preceq$, such 
+that for all $n$, we have that $D_{n+1}$ is the succesor of $D_n$, a connected sequence in 
+$\preceq$.   
+\end{definition}
 
 \begin{observation}\label{Successor lemma}
-Let $C^2$ be the successor of $C^1$ in $\preceq$. Then $\cho{*C^1} > \cho{*C^2}$.
+Let $D_1$ and $D_2$ be finite states and let $D_2$ be the successor of $D_1$ in 
+$\preceq$. Then $\cho{*D_1} > \cho{*D_2}$.
 \end{observation}
 \textbf{Proof.}
-The successor of $d_1d_2\dots$ is $(d_1+1)d_2\dots$. Increasing the order of the orbipoint  
+From \ref{form of the successor} we know, that taking the successor 
+of the finite state always chages  
+only first counter and it is changing it by increasing it by 1. 
+Increasing the order of the orbipoint  
 decreases \Eoc. $_\square$
 
-%\begin{lemma}
+\begin{corollary}\label{connected sequences corollary}
+The sequence $\{\cho{*D_n}\}$ is descending for every connected sequence 
+of finite states $\{D_n\}$ in $\preceq$. 
+\end{corollary}
+\begin{lemma}\label{chi supp functoriality}
+Let $d_1$ be different form $\infty$. 
+The supremum of the connected sequence $\{(d_1+n)d_2d_3\cdots\}$ is $\infty d_2d_3\cdots$, and 
+%the following diagram commutes:
+the infimum of the corresponding sequence $\{\chi(*(d_1+n)d_2d_3\cdots)\}$ is  
+$\chi(*\infty d_2d_3\cdots)$.
+\end{lemma}
+\textbf{Proof.} 
+%From \ref{good lexicographical order} we know, that every bounded sequence in $\preceq$ have 
+%sup
 
-%\end{lemma}
+For every $n$ we have that $(d_1+n)d_2d_3\cdots\preceq\infty d_2d_3\cdots$. Furthermore for 
+every $d_1'd_2'd_3'\cdots$ suck that $d_1'd_2'd_3'\cdots\preceq \infty d_2d_3\cdots$, there 
+exists $n$, such that $d_1'd_2'd_3' \cdots\preceq(d_1+n)d_2d_3\cdots$. Thus, $\infty d_2d_3\cdots$ 
+is the supremum of $\{(d_1+n)d_2d_3\cdots\}$.
+
+For every $n$ we have that: 
+\begin{align}
+\chi(*(d_1+n)d_2d_3\cdots) &= \chi(*d_1d_2d_3\cdots) 
+- \frac{(d_1+n)-1}{2(d_1+n)} + \frac{d_1-1}{2d_1} \notag\\ 
+&= \chi(*d_1d_2d_3\cdots) - \frac{1}{2d_1} + \frac{1}{2(d_1+n)}
+\end{align}
+We also have that:
+\begin{align}
+\chi(*\infty d_2d_3\cdots) &= \chi(*d_1d_2d_3\cdots) 
+- \frac{1}{2} + \frac{d_1-1}{2d_1} \notag\\ 
+&= \chi(*d_1d_2d_3\cdots) - \frac{1}{2d_1} + 0.
+\end{align}
+Thus $\chi(*\infty d_2d_3\cdots)$ is the infimum of $\{\chi(*(d_1+n)d_2d_3\cdots)\}$.
+$_\square$
 
 \begin{lemma}
 The state of the counters in the algorithm is weakly increasing with respect to order $\preceq$. 
 \end{lemma}
 \textbf{Proof.} \\
-The state of the counters is changed in lines 10-11, 40, 58-59. In each of these lines 
+The state of the counters is changed in lines 10-11, 46, 66-67. In each of these lines 
 the counter with the gretest index of all changed counters increases in value, so 
 the resulting state is bigger with respect to order $\preceq$. $_\square$
 
@@ -380,21 +479,37 @@ questions how we go through all the states and what can be this upper limit.
 \subsection{Checking all the states}
 This can't be done directly as there are infinite ascending sequences in $\preceq$. 
 
-However, by \ref{Successor lemma} we know, that for every ascending sequence $\{a_n\}$ 
-in $\preceq$, such 
-that for all $n$, we have that $a_{n+1}$ is the succesor of $a_n$, we have that the sequence 
-$\{\cho{*a_n}\}$ is strictly descending. 
+%However, by \ref{Successor lemma} we know, that for every ascending sequence $\{a_n\}$ 
+%in $\preceq$, such 
+%that for all $n$, we have that $a_{n+1}$ is the succesor of $a_n$, we have that the sequence 
+%$\{\cho{*a_n}\}$ is strictly descending. 
 
-Thanks to this, 
-when we are searching through the infinite ascending sequence of consequtive 
-states of counters once we get to the state $a$ for which $\cho{*a} < \frac{p}{q}$, we now 
-that no state $a'$ greater than $a$ in $\preceq$ can have $\frac{p}{q}$ as an 
-\Eoc\ and we can disregard whole sequence. 
+However, thanks to \ref{connected sequences corollary}, 
+when we are searching through the infinite connected sequence in 
+$\preceq$, once we get to the state $D_n$ for which $\cho{*D_n} < \frac{p}{q}$, we now 
+that no state $D_m$ with $m>n$ can have $\cho{*D_m} = \frac{p}{q}$ 
+and we can disregard whole sequence. 
 
 There is, however, another problem, namely, that when we are searching through 
-the infinite ascending sequence of consequtive 
-states of counters, initialy, we don't now, whether there will be any state $a$ in it, that 
-will have $\cho{*a} \leq \frac{p}{q}$. However, 
+the infinite connected sequence, 
+%of consequtive 
+%states of counters, 
+initialy, we don't now, whether there will be any state 
+$D = d_1d_2d_3\cdots$ in it, that 
+will have $\cho{*d_1d_2d_3\cdots} \leq \frac{p}{q}$. 
+However, thanks to \ref{chi supp functoriality} 
+we can check for this, by first comparing $\frac{p}{q}$ with 
+
+\subsection{Three "modes" of the algorithm}
+The algorithm has three distinct fragments: 
+\begin{itemize}
+\item fragment in the lines 3-35. that will be called the "Greater" part,
+\item fragment in the lines 27-62, that will be called the "Searching" part,
+\item fragment in the lines 64-93, that will be called the "Less" part.
+\end{itemize}
+%The graph of the control flow of these parts looks like this:
+
+
 \section{Proof of the correctness of the algorithm}
 Firstly, let us observe, that algorithm gives the answear on lines 8, 14-15, 35-36, 55-56, 
 62-63 and 
@@ -414,49 +529,49 @@ $\bullet$ That the algorithm always ends in a finite number of steps (Guaranteed
 
 
 
-\begin{lemma}
+%\begin{lemma}
 
-\end{lemma}
-\textbf{Proof.} \\
+%\end{lemma}
+%\textbf{Proof.} \\
 
-\begin{lemma}
+%\begin{lemma}
 
-\end{lemma}
-\textbf{Proof.} \\
+%\end{lemma}
+%\textbf{Proof.} \\
 
 \subsection{No false positives}
-Algorithm gives answear "yes" at lines 14, 35, 55, 62. At each of these places, 
+Algorithm gives answear "yes" at lines 7-8, 35-36, 44-45, 75-76. At each of these places, 
 the answear contains the example of an orbifold with \Eoc\ equal to $\frac{p}{q}$ that was 
-explicitly checked for correctness just before giving the answear (see lines 12, 33, 53, 60). 
+explicitly checked for correctness just before giving the answear (see lines 5, 33, 42, 73). 
 $_\square$    
 \subsection{No false negatives}
-Let $\cho{*d_1d_2\dots} = \frac{p}{q}$. 
+Let $\cho{*d_1d_2\cdots} = \frac{p}{q}$. 
 
 %Let us assume for a contradiction, that algorithm started with $\frac{p}{q}$ answered "no". 
 %
 %We will show that this is impossible, by showing, that the algorithm will never 
-%go beyond $d_1d_2\dots$ in $\preceq$ order. 
+%go beyond $d_1d_2\cdots$ in $\preceq$ order. 
 
 We will show that the algorithm will never 
-go beyond $d_1d_2\dots$ counter state in $\preceq$ order. 
+go beyond $d_1d_2\cdots$ counter state in $\preceq$ order. 
 
-Let us observe that lines 10-11, 40 and 58-59 are the only lines where 
-the counters are changed and while changing, 
+Let us observe that the only lines where 
+the counters are changed are lines 15, 40-41 and 71-72, and while changing, 
 only counters 
 at pivot and to the left of the pivot are changed. 
 
-Because of that, going beyond $d_1d_2\dots$ counter state 
+Because of that, going beyond $d_1d_2\cdots$ counter state 
 could happen only in lines 10-11, 40 or 58-59, while pivot would be 
 %lovely
-on the rightmost counter that is differrent from $d_1d_2\dots$. 
+on the rightmost counter that is differrent from $d_1d_2\cdots$. 
 %This is because these are the only lines where the counters are changed and while changing, 
 %only counters 
 %at pivot and to the left of the pivot are changed. 
 
 We will now eliminate all three options case by case. 
-\subsubsection{Lines 10-11}
-\subsubsection{Line 40}
-\subsubsection{Lines 58-59}
+\subsubsection{Line 15}
+\subsubsection{Lines 40-41}
+\subsubsection{Lines 71-72}
 
 \subsection{Guaranteed termination}
 
@@ -471,7 +586,7 @@ We will now eliminate all three options case by case.
 %\section{Improvements}
 
 \section{Another questions the algorithm can answear}
-\subsection{Deciding the order}
+\subsection{Deciding the order of accumulation}
 Let $m \in \mathbb{N}$ be such that $\frac{p}{q} \in (1-\frac{m}{2},1-
 \frac{m+1}{2})$
 Let us denote by $r \coloneqq \frac{p}{q} - (1-\frac{m}{2})$. \\ 

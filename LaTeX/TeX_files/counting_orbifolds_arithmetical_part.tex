@@ -17,8 +17,69 @@
 This will be an extention of the algorithm from \ref{}. 
 
 \begin{lstlisting}[firstnumber=1,consecutivenumbers=true]
-In the case, the $flag\_value$ is: 
+In the case, the $flag\_value$ is equal to: 
 {
+    "Greater", then
+    {
+        If $\chi^{orb}(*d_1\dots d_{p-1}\infty d_{p+1}\dots)=\frac{p}{q}$ then
+        {
+            We found an orbifold, we add it to a list 
+            and increase the occurence counter by 1. 
+            We set the flag to "Less".
+            We put pivot to the $c_{p+1}$ counter.
+            We go to the 1st line.
+        } 
+        If $\chi^{orb}(*d_1\dots d_{p-1}\infty d_{p+1}\dots)>\frac{p}{q}$ then
+        {
+            We set $d_p$ to $\infty$.
+            We set the flag to "Greater".
+            We put the pivot at the $c_{p+1}$.
+            We go to the 1st line.
+        }  
+        If $\chi^{orb}(*d_1\dots d_{p-1}\infty d_{p+1}\dots)<\frac{p}{q}$ then
+        {
+            We set the flag to "Searching".
+            We go to the 1st line.
+        }  
+    }
+    
+    "Searching", then
+    {
+        We search one by one 
+        for the value $d_p'$ of the $c_p$ such that 
+        $\chi^{orb}(*d_1\dots d_{p-1}d_p'd_{p+1}\dots)\leq\frac{p}{q}$ and 
+        $\chi^{orb}(*d_1\dots d_{p-1}(d_p'-1)d_{p+1}\dots)>\frac{p}{q}$.
+        if $\chi^{orb}(*d_1\dots d_{p-1}d_p'd_{p+1}\dots)=\frac{p}{q}$ then 
+        {
+            We found an orbifold, we add it to a list 
+            and increase the occurence counter by 1. 
+            We set flag to "Less".
+            We go to the 1st line.
+        }
+        We set $d_p$ and values of all the counters 
+        to the left of $c_p$ to the value $d_p'$.
+        if $\chi^{orb}(*d_1d_2d_3\dots)=\frac{p}{q}$ then 
+        {
+            We found an orbifold, we add it to a list 
+            and increase the occurence counter by 1. 
+            We set the flag to "Less".
+            We put the pivot at the $c_{p+1}$.
+            We go to the 1st line.
+        }
+        If $\chi^{orb}(*d_1d_2d_3\dots)<\frac{p}{q}$ then 
+        {
+            We set the flag to "Less".
+            We put the pivot at the $c_{p+1}$.
+            We go to the 1st line.
+        }
+        If $\chi^{orb}(*d_1d_2d_3\dots)>\frac{p}{q}$ then 
+        {
+            We set the flag to "Greater".
+            We put the pivot at the $c_1$.
+            We go to the 1st line.
+        }
+    }
+    
     "Less", then 
     {
         If $d_p = 1$ and the values of all the counters 
@@ -48,63 +109,6 @@ In the case, the $flag\_value$ is:
             We put pivot at the $c_{p+1}$.
             We go to the 1st line.
         } 
-    }
-
-    "Greater", then
-    {
-        If $\chi^{orb}(*d_1\dots d_{p-1}\infty d_{p+1}\dots)=\frac{p}{q}$ then
-        {
-            We found an orbifold, we add it to a list 
-            and increase the occurence counter by 1. 
-            We set the flag to "Less".
-            We put pivot to the $c_{p+1}$ counter.
-            We go to the 1st line.
-        } 
-        If $\chi^{orb}(*d_1\dots d_{p-1}\infty d_{p+1}\dots)>\frac{p}{q}$ then
-        {
-            We set $d_p$ to $\infty$.
-            We set the flag to "Greater".
-            We put the pivot at the $c_{p+1}$.
-            We go to the 1st line.
-        }  
-        If $\chi^{orb}(*d_1\dots d_{p-1}\infty d_{p+1}\dots)<\frac{p}{q}$ then
-        {
-            We search for value $d_p'$ of the $c_p$ 
-            such that $\chi^{orb}(*d_1\dots d_{p-1}d_p'd_{p+1}\dots)\leq\frac{p}{q}$ 
-            and $\chi^{orb}(*d_1\dots d_{p-1}(d_p'-1)d_{p+1}\dots)>\frac{p}{q}$.
-            // More on how we search for it will be told later, 
-            // for now we can think that we search one by one,
-            // starting from $d_p$ and going up till $d_p'$.
-            if $\chi^{orb}(*d_1\dots d_{p-1}d_p'd_{p+1}\dots)=\frac{p}{q}$ then 
-            {
-                We found an orbifold, we add it to a list 
-                and increase the occurence counter by 1. 
-                We set flag to "Less".
-                We go to the 1st line.
-            }
-            We set $d_p$ and values of all the counters 
-            to the left of $c_p$ to the value $d_p'$.
-            if $\chi^{orb}(*d_1d_2d_3\dots)=\frac{p}{q}$ then 
-            {
-                We found an orbifold, we add it to a list 
-                and increase the occurence counter by 1. 
-                We set the flag to "Less".
-                We put the pivot at the $c_{p+1}$.
-                We go to the 1st line.
-            }
-            If $\chi^{orb}(*d_1d_2d_3\dots)<\frac{p}{q}$ then 
-            {
-                We set the flag to "Less".
-                We put the pivot at the $c_{p+1}$.
-                We go to the 1st line.
-            }
-            If $\chi^{orb}(*d_1d_2d_3\dots)>\frac{p}{q}$ then 
-            {
-                We set the flag to "Greater".
-                We put the pivot at the $c_1$.
-                We go to the 1st line.
-            }
-        }  
     }
 }
 \end{lstlisting}
