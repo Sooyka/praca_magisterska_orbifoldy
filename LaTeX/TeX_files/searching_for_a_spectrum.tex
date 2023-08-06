@@ -582,25 +582,25 @@ the answear contains the example of an orbifold with \Eoc\ equal to $\frac{p}{q}
 explicitly checked for correctness just before giving the answear (see lines 5, 33, 42, 73). 
 $_\square$    
 \subsection{No false negatives}
-Let $\cho{*d_1d_2\cdots} = \frac{p}{q}$. 
+Let $d_1d_2d_3\cdots$ be such that $\cho{*d_1d_2d_3\cdots} = \frac{p}{q}$. 
 
 %Let us assume for a contradiction, that algorithm started with $\frac{p}{q}$ answered "no". 
 %
 %We will show that this is impossible, by showing, that the algorithm will never 
 %go beyond $d_1d_2\cdots$ in $\preceq$ order. 
 
-We will show that the algorithm will never 
-go beyond $d_1d_2\cdots$ counter state in $\preceq$ order. 
+First, we will show that the algorithm will never 
+go beyond $d_1d_2d_3\cdots$ counter state in $\preceq$ order. 
 
 Let us observe that the only lines where 
 the counters are changed are lines 15, 40-41 and 71-72, and while changing, 
 only counters 
 at pivot and to the left of the pivot are changed. 
 
-Because of that, going beyond $d_1d_2\cdots$ counter state 
-could happen only in lines 10-11, 40 or 58-59, while pivot would be 
+Because of that, going beyond $d_1d_2d_3\cdots$ counter state 
+could happen only in lines 15, 40-41 or 71-72, while pivot would be 
 %lovely
-on the rightmost counter that is differrent from $d_1d_2\cdots$. 
+on the rightmost counter that is differrent from $d_1d_2d_3\cdots$. 
 %This is because these are the only lines where the counters are changed and while changing, 
 %only counters 
 %at pivot and to the left of the pivot are changed. 
@@ -611,7 +611,8 @@ We will now eliminate all three options case by case.
 \subsubsection{Lines 71-72}
 
 \subsection{Guaranteed termination}
-
+Let us assume that for some input $M$ and $\frac{p}{q}$ the algorithm does not anwear "yes". 
+We will show, that then it will answear "no" in finite number of steps.
 %\begin{enumerate}
 %    \item if the pivot is on the zeroth column ($c = 0$), then 
 %    \begin{enumerate}[label*=\arabic*.]
