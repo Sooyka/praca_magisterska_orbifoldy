@@ -7,11 +7,13 @@ Quotiens by a groups
 Praca o ujemnym ale z najwyzszą orbicharakterystyką
 
 \section{Technical introductions}
-Now, we will proceed to give technical introductions about orbifolds, \Eoc and the 
+Now, we will proceed to give technical introductions about orbifolds, \Eoc\ and the 
 technics we will use in this thesis, alongside with some definitions and notation and 
-naming conventions.  
+naming conventions. 
+ 
 \section{Orbifolds}
-\todo{jak sie juz wszystko zbierze co ma tu być, to to dopisać}
+%\todo{jak sie juz wszystko zbierze co ma tu być, to to dopisać}
+\subsection{Definition}
 The definition of the orbifold is taken from Thurston \cite{Thurston1979} (chapter 13). 
 We briefly recall the concept, but for full discussion we refer to \cite{Thurston1979}. \\
 An orbifold is a generalisation of a manifold. One allows more variety of local behaviour. 
@@ -23,30 +25,31 @@ and a quotient map for any such open set.
 
 Above definition says that an orbifold is locally homeomorphic do the quotient of $\mathbb{R}^n$ 
 by some finite group. 
-
+\subsection{Good and bad orbifolds}
 When an orbifold as a whole is quotient of some finite group acting on a manifold we say, that 
 it is 'good'. Otherwise we say, that it is 'bad'. 
 
-We are also adopting notation from \cite{Thurston1979}. 
+For this subsection we will also adopting notation from \cite{Thurston1979}. 
 
 In two dimentions there are only four types of bad orbifolds, namely: \\
-- $S^2(n)$ \\
-- $D^2(;n)$ \\
-- $S^2(n_1,n_2)$ for $n_1 < n_2$ \\
-- $D^2(;n_1,n_2)$ for $n_1 < n_2$. \\
-All other orbifolds are good.
-As manifolds are special case of orbifolds with all ...
+\indent\indent - $S^2(n)$ \\
+\indent\indent - $D^2(;n)$ \\
+\indent\indent - $S^2(n_1,n_2)$ for $n_1 < n_2$ \\
+\indent\indent - $D^2(;n_1,n_2)$ for $n_1 < n_2$. \\
+All other orbifolds are good ~\cite{}.
+%As manifolds are special case of orbifolds with all ...
 We differ from Thurston in the terms of naming points with maps with non-trivial groups. 
-We call them orbipoints. If the group acts as the group of rotations (so a 
-cyclic group) we call them rotational points. If the group is a dihedreal group we call them 
-dihedreal points. And if it is point on the boundry that stabilises relfecition it is a 
+We will call them orbipoints. If the group acts as the group of rotations (so a 
+cyclic group) we will call them rotational points. If the group is a dihedreal group we will 
+call them 
+dihedreal points. And if the point is on the boundry that stabilises reflection we will call it a 
 reflection point.
 
-quotiens of groups 
-
+%quotiens of groups 
+\subsection{Maps between orbifolds}
 Map between orbifolds can be defined as follows:
-\cite{kleiner2014geometrization}
-\subsection{Sameness}\label{sameness}
+%\cite{kleiner2014geometrization}
+\subsection{Equivalence}\label{sameness}
 From this we can treat that and that orbifolds as the same.
 
 Without boundary -- uniquely determined by orbipoints list. 
@@ -55,8 +58,8 @@ With boundary -- in general not.
 
 \section{Euler (orbi)characteristic}\label{E_orb}
 \label{\Eoc_as_a_sum}
-\todo{dać cytowanie do charakterystyki}
-quotiens
+%\todo{dać cytowanie do charakterystyki}
+%quotiens
 \subsection{Euler characteristic}
 We can define Euler characteristic as additive topological invariant defined 
 normalised on symplexes.
@@ -84,82 +87,31 @@ For $O$ with only dihedral orbipoints:
 An $M$-orbifold that is different than $M$ always have strictly smaller \Eoc\ than $M$. 
 \end{observation}
 
+\subsection{Extended Euler orbicharacteristic}\label{extended_Euler_orbicharacteristic} (with cusps)
+Write about cusp as a limit.
+\subsection{Volumes}
+
 \subsection{Classification of orbifolds with non-negative Euler orbicharacteristic}
 The list of all orbifolds with non-negative Euler orbicharacteristic
 Powiedzieć coś o tym, że orbicharatkeryttyka odpowiada polom (Gauss Bonett itd.)
-\subsection{Extended Euler orbicharacteristic}\label{extended_Euler_orbicharacteristic} (with cusps)
-Write about cusp as a limit.
+\cite{}
 
-Write about isomorphism of all spectra
 
-$M$ - orbifold
+%Write about isomorphism of all spectra
 
-\section{Definition and properties of order of accumulation points}
-\label{accumulation_points_definitions} 
-%\todo{zmienić to wszystko na rangę cantora bendiksona}
-%We start with one technical definition of "transitive order" that will be almost what we want
-%and then, there will be the the definition of "order", which is the definition that we need.
-%\begin{definition}
-%(Inductive). 
-%%We say, that the point $a$  from the topological space $X$ is an acccumulation 
-%%point of the transitive order 0, when
-%We say that the point is an acccumulation point of a transitive order $0$, when it is 
-%an isolated point. 
-%We say that the point is an acccumulation point of a transitive order $n + 1$, when it is 
-%an acccumulation point (in the usual sense) of the accumulation points of the transitive 
-%order $n$. 
-%\end{definition}  
-%The only issue of the above definition is that the point of the transitive order $n$ 
-%is also a point 
-%of the transitive order $k$, for all $0< k \leq n$. We want a definition of order such that 
-%for any point, there is at most one integer that is its order. So we define:
-%\begin{definition}
-%We say that the point is an acccumulation point of order $n$ iff it is an acccumulation point 
-%of the transitive order $n$ and it is not an acccumulation point of the transitive order $n+1$. 
-%If the point is an acccumulation point of the transitive order for an arbitrary large 
-%$n$ we say that 
-%the  point is an acccumulation point of order $\omega$.
-%\end{definition}
-
-%Corespondence between accumulation points and cantor bendixon derivative are describen 
-%in appendix \smalltodoII{link to appendix}. 
-We start with definition of being "at least of order $n$" that will be almost what we want
-and then, there will be the definition of being "order", which is the definition that we need. \\
-For a given set we define as follows:
-\begin{definition}
-(Inductive). 
-%We say, that the point $a$  from the topological space $X$ is an acccumulation 
-%point of the transitive order 0, when
-We say that the point $x$ is an acccumulation point of a set $X$ 
-of order at least $0$, when it belongs to the set $X$. 
-We say that the point $x$ is an acccumulation point of a set 
-of order at least $n + 1$, when it is 
-an acccumulation point (in the usual sense) of the accumulation points each of order at least 
-$n$ i.e. in every neighbourhood of $x$ there is at least one accumulation point of a set $X$ 
-of order at least $n$, distincs from $x$. 
-\end{definition}  
-%The only issue of the above definition is that the point of the transitive order $n$ 
-%is also a point 
-%of the transitive order $k$, for all $0< k \leq n$. We want a definition of order such that 
-%for any point, there is at most one integer that is its order. So we define:
-\begin{definition}
-We say that the point is an acccumulation point of order $n$ iff it is an acccumulation point 
-of order at least $n$ and it is not an acccumulation point of order at least $n+1$. 
-If the point is an acccumulation point of order at least $n$ for an arbitrary large 
-$n$ we say that 
-the point is an acccumulation point of order $\omega$.
-\end{definition}
-When we will say that a point is an accumulation point of some set without specifying an order 
-then we will mean being an accumulation point in the ussual sense; from the point of view 
-of above definitions, that is, an accumulation point of order at least one.
-%\todo{dopisać notację do punktów skupienia różnego stopnia}
-
+%$M$ - orbifold
 
 \section{Uniformisation theorem (formulation)}
-\todo{twierdzenie o klasyfikacji powierzchni}
+%\todo{twierdzenie o klasyfikacji powierzchni}
+In this thesis we aim to better recognise possible two dimensional orbifolds. 
+The fundament that we are relaying on is the classification of two dimensional manifolds. 
+
+It is phrased as a well known theorem:
+\cite{}
 
 \section{Notation}
 
+For the rest of this thesis we will adopt notation from \cite{}.
 "feature"
 
 We treat manifolds and orbifolds as a sphere with some features added by the operations.
@@ -397,10 +349,11 @@ then
 2y + \frac{m}{2} - 2\chi(M)
 \end{equation}
 can be expressed as an egyptian fraction with $m$ 
-(not nessecerely distincs) summands. 
+(not nessecerely distinct) summands. 
 \end{corollary}
 
 \section{Operations and constructions on orbifolds}\label{Operations}
+
 Write about the general operations we are interested in i.e. taking any number of features (handles 
 cross caps, parts of boundry components with orbipoints on it, orbipoints in the interior) and
 replacing it by any other feauters

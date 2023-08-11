@@ -2,6 +2,70 @@
 \chapter{Appendix about good orders and accumulation points}
 % and Canor-Bendixon derivatives
 %\todo{Not e between equivalence of being accumulation point and being in Cantor bendixon derivative}
+\section{Definition of order of accumulation points}
+\label{accumulation_points_definitions} 
+%\todo{zmienić to wszystko na rangę cantora bendiksona}
+%We start with one technical definition of "transitive order" that will be almost what we want
+%and then, there will be the the definition of "order", which is the definition that we need.
+%\begin{definition}
+%(Inductive). 
+%%We say, that the point $a$  from the topological space $X$ is an acccumulation 
+%%point of the transitive order 0, when
+%We say that the point is an acccumulation point of a transitive order $0$, when it is 
+%an isolated point. 
+%We say that the point is an acccumulation point of a transitive order $n + 1$, when it is 
+%an acccumulation point (in the usual sense) of the accumulation points of the transitive 
+%order $n$. 
+%\end{definition}  
+%The only issue of the above definition is that the point of the transitive order $n$ 
+%is also a point 
+%of the transitive order $k$, for all $0< k \leq n$. We want a definition of order such that 
+%for any point, there is at most one integer that is its order. So we define:
+%\begin{definition}
+%We say that the point is an acccumulation point of order $n$ iff it is an acccumulation point 
+%of the transitive order $n$ and it is not an acccumulation point of the transitive order $n+1$. 
+%If the point is an acccumulation point of the transitive order for an arbitrary large 
+%$n$ we say that 
+%the  point is an acccumulation point of order $\omega$.
+%\end{definition}
+
+%Corespondence between accumulation points and cantor bendixon derivative are describen 
+%in appendix \smalltodoII{link to appendix}. 
+This definitions is usefull for us in chapter \ref{order structure}, the exact same copy 
+of it is included there \ref{accumulation_points_definitions repetition} 
+as well for a readers convenience .
+
+We start with definition of being "at least of order $n$" that will be almost what we want
+and then, there will be the definition of being "order", which is the definition that we need. \\
+For a given set we define as follows:
+\begin{definition}
+(Inductive). 
+%We say, that the point $a$  from the topological space $X$ is an acccumulation 
+%point of the transitive order 0, when
+We say that the point $x$ is an acccumulation point of a set $X$ 
+of order at least $0$, when it belongs to the set $X$. 
+We say that the point $x$ is an acccumulation point of a set 
+of order at least $n + 1$, when it is 
+an acccumulation point (in the usual sense) of the accumulation points each of order at least 
+$n$ i.e. in every neighbourhood of $x$ there is at least one accumulation point of a set $X$ 
+of order at least $n$, distincs from $x$. 
+\end{definition}  
+%The only issue of the above definition is that the point of the transitive order $n$ 
+%is also a point 
+%of the transitive order $k$, for all $0< k \leq n$. We want a definition of order such that 
+%for any point, there is at most one integer that is its order. So we define:
+\begin{definition}
+We say that the point is an acccumulation point of order $n$ iff it is an acccumulation point 
+of order at least $n$ and it is not an acccumulation point of order at least $n+1$. 
+If the point is an acccumulation point of order at least $n$ for an arbitrary large 
+$n$ we say that 
+the point is an acccumulation point of order $\omega$.
+\end{definition}
+When we will say that a point is an accumulation point of some set without specifying an order 
+then we will mean being an accumulation point in the ussual sense; from the point of view 
+of above definitions, that is, an accumulation point of order at least one.
+%\todo{dopisać notację do punktów skupienia różnego stopnia}
+
 
 \section{Lemmas}
 \begin{lemma}\label{two_sets_lemma}
