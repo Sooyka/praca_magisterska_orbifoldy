@@ -14,41 +14,132 @@ naming conventions.
 \section{Orbifolds}
 %\todo{jak sie juz wszystko zbierze co ma tu być, to to dopisać}
 \subsection{Definition}
-The definition of the orbifold is taken from Thurston \cite{Thurston1979} (chapter 13). 
-We briefly recall the concept, but for full discussion we refer to \cite{Thurston1979}. \\
-An orbifold is a generalisation of a manifold. One allows more variety of local behaviour. 
+The definition of the orbifold is taken from Thurston \cite{Thurston1979} (chapter 13), 
+with slight modification described in \ref{compactness}. 
+We briefly recall the concept, but for full discussion we refer to \cite{Thurston1979}. 
+
+An orbifold is a generalisation of a manifold. As manifold, it consists of a Hausdorf space 
+with some additional structure. 
+Compared to manifolds, one allows more variety of local behaviour. 
 On a manifold a map is a homeomorphism between $\mathbb{R}^n$ and some open set on a manifold. 
 On an orbifold a map is a homeomorphism between a quotient of $\mathbb{R}^n$ by some 
 finite group and some open set on an orbifold. 
 In addition to that, the orbifold structure consist the informations about that finite group 
 and a quotient map for any such open set. 
 
+We can make an observation, that since in dimension 2, quatient of $\mathbb{R}^2$ by a finite 
+group is topologically always either $\mathbb{R}^2$ or $\mathbb{R}\times\mathbb{R}_{\geq 0}$, 
+we have that in dimension 2, the underlying Hausdorf space of any orbifold is a topological 
+manifold (possibly with a boundary). For an orbifold $O$ we will call this underlying manifold $M$
+a base manifold of $O$ and we will call $O$ an $M$-orbifold.  
+
+\subsection{Good and bad orbifolds}
 Above definition says that an orbifold is locally homeomorphic do the quotient of $\mathbb{R}^n$ 
 by some finite group. 
-\subsection{Good and bad orbifolds}
+
 When an orbifold as a whole is quotient of some finite group acting on a manifold we say, that 
 it is 'good'. Otherwise we say, that it is 'bad'. 
 
-For this subsection we will also adopting notation from \cite{Thurston1979}. 
+%For this subsection we will also adopting notation from \cite{Thurston1979}. 
 
-In two dimentions there are only four types of bad orbifolds, namely: \\
-\indent\indent - $S^2(n)$ \\
-\indent\indent - $D^2(;n)$ \\
-\indent\indent - $S^2(n_1,n_2)$ for $n_1 < n_2$ \\
-\indent\indent - $D^2(;n_1,n_2)$ for $n_1 < n_2$. \\
-All other orbifolds are good ~\cite{}.
+In two dimentions there are only four types of bad orbifolds, namely
+(adopting notation from \cite{Thurston1979}): 
+\begin{itemize}
+\item $S^2(n)$ 
+\item $D^2(;n)$ 
+\item $S^2(n_1,n_2)$ for $n_1 < n_2$ 
+\item $D^2(;n_1,n_2)$ for $n_1 < n_2$. 
+\end{itemize}
+All other orbifolds are good -- \cite{Thurston1979} (theorem 13.3.6).
 %As manifolds are special case of orbifolds with all ...
+%Write about isomorphism of all spectra
+
+%$M$ - orbifold
+
+Manifolds without boundary can be treated as orbifolds with trivial group for every map and will. 
+Manifolds with boundary can be treated as orbifolds with trivial group on all maps from the 
+interior and with group $\mathbb{Z}_2$ on the boundary, as described in \cite{Thurston1979} 
+(example 13.2.2.).
+
+\subsection{Therminology}
 We differ from Thurston in the terms of naming points with maps with non-trivial groups. 
 We will call them orbipoints. If the group acts as the group of rotations (so a 
 cyclic group) we will call them rotational points. If the group is a dihedreal group we will 
 call them 
 dihedreal points. And if the point is on the boundry that stabilises reflection we will call it a 
-reflection point.
+reflection point. 
 
+If a group associated to the orbipoint has degree $n$, we will say that tha orbipoint is 
+of degree $n$. 
+\subsection{Finite number of orbipoints}\label{finite number of orbipoints}
+In this thesis we will consider only orbifolds with finitely many orbipoints and all orbifolds 
+mentioned from this point are meant as such without further notice. Reason for this 
+choice will be described in \ref{Eoc}.  
+
+\subsection{Compactness}\label{compactness}
+Orbifold as a topological space is the same as its base manifold.
+We, would like to restrict our interest only to compact orbifolds. 
+However, noncompact orbifolds, such as ones from \cite{Conway2016} (chapter 18) 
+which are quotients 
+of a group action of an infinite group acting on $\mathbb{R}^2$ (that will 
+be also frequently interpreted in this setting as a hyperbolic plane $\mathbb{H}^2$), 
+also interests us. We would like to accomodate some of noncompact orbifolds that 
+will satisfy the condition simmilar to the \ref{finite number of orbipoints}. 
+To do this we will slightly expand our definition of an orbifold. 
+
+Let us start with a following construction.
+
+For an noncompact orbifold $O$, let us take it's one point compactification. 
+Let the compactification point be named $x_O$.  
+For some set $X$, let $\#(X)$ be the number of connected components of $X$.
+Now let us consider some connected open set $U \ni x_O$. The set $U\setminus\{x_O\}$ is 
+not neccesserly connected.
+ 
+Let 
+\begin{equation}
+C(O) \coloneqq \sup\limits_{\substack{U \ni x_O \\ \rm connected, \\ \rm open }} 
+\#(U\setminus\{x_O\}).
+\end{equation}
+We will be interested only in the case, when $C(O)$ is finite.
+If $C(O)$ is finite, we take some $U$ that realise the supremum and compactify each of 
+connected components of $U\setminus\{x_O\}$ with a separate point. We will call these points 
+"cusps". If for some cusp $x$, in every $U \ni x$ there are points from the boundary of $O$, 
+we will call it a cusp on a boundary. In the other case, we will call it a cusp in the interior.
+
+The result is a compact topological space. We will treat it as an orbifold, with 
+cusps as orbipoits in extended definition. 
+We extend the definition as such, that the map from the compactification of 
+some open subset consisting point $x$ can go to the quationt of compactification of 
+$\mathbb{H}^2$ by $S^1$. The group, we will take to act on $\mathbb{H}^2$ will 
+be:
+\begin{itemize} 
+\item in the case of $x$ being in the interior -- infinite cyclic group $\mathbb{Z}$, 
+where the generator acts as translation by 1 
+in the half-plane model of hyperbolic plane   
+\item in the case of $x$ being on the boundary -- infinite dihedral group $D_\infty$, where 
+generators will be reflections with respect to vertical lines spaced by 1 in a half-plane 
+model on a hyperbolic plane.
+\end{itemize}
+
+Note that in both cases, the is exactly one point in the compactification of $\mathbb{H}$, that is 
+fixed for every elemnt of the acting group -- point from the compactification at 
+the infinity on the top of the plane. This point is will be always mapped to the orbipoint $x$. 
+
+%Further implications of this extention of the definition will be 
+%the group associated with a map of 
+%a compactification  of a cusp is $\mathbb{Z}$ acting 
+
+%However, there 
+%is a class of noncompact orbifolds that interests us and we would like 
+%to accomodate them. Noncompact orbifolds interests us that are quotiens 
+%of a group action of an infinite group acting on $\mathbb{R}^2$ (that will 
+%be also frequently interpreted in this setting as a hyperbolic plane $\mathbb{H}^2$). 
+%Examples can be found in \cite{Conway}.
+%welcome it in our discussion.
 %quotiens of groups 
-\subsection{Maps between orbifolds}
-Map between orbifolds can be defined as follows:
-%\cite{kleiner2014geometrization}
+%\subsection{Maps between orbifolds}
+%Map between orbifolds can be defined as follows:
+%%\cite{kleiner2014geometrization}
 \subsection{Equivalence}\label{sameness}
 From this we can treat that and that orbifolds as the same.
 
@@ -70,7 +161,8 @@ we will
 
 from of \Eoc on two dim orbifolds\label{\Eoc on 2d}
 
-\subsection{\Eoc}
+\subsection{\Eoc}\label{Eoc}
+
 \begin{equation}\label{chi orb expression}
 \cho{O} = \chi (M) - \sum_{i=1}^n \frac{r_i-1}{r_i} - \sum_{j=1}^m \frac{d_j-1}{2d_j}
 \end{equation}
@@ -82,24 +174,24 @@ For $O$ with only dihedral orbipoints:
 \begin{equation}\label{chi orb expression dihedral}
 \cho{O} = \chi (M) - \sum_{j=1}^m \frac{d_j-1}{2d_j}
 \end{equation}
-
+From these formulas we can see, that as number of orbipoints diverges to infinity, the \Eoc\ 
+diverges to minus infinity. For this reason, we restric ourselves only to orbifolds 
+with finitely many orbipoints.
 \begin{observation}\label{orbifolds have smaller Eoc than their base manifolds}
 An $M$-orbifold that is different than $M$ always have strictly smaller \Eoc\ than $M$. 
 \end{observation}
 
 \subsection{Extended Euler orbicharacteristic}\label{extended_Euler_orbicharacteristic} (with cusps)
 Write about cusp as a limit.
-\subsection{Volumes}
+\section{Volumes}
+\subsection{Metric structure on the orbifolds}
 
-\subsection{Classification of orbifolds with non-negative Euler orbicharacteristic}
+\section{Classification of orbifolds}
 The list of all orbifolds with non-negative Euler orbicharacteristic
 Powiedzieć coś o tym, że orbicharatkeryttyka odpowiada polom (Gauss Bonett itd.)
 \cite{}
+\subsection{Non-negative \Eoc}
 
-
-%Write about isomorphism of all spectra
-
-%$M$ - orbifold
 
 \section{Uniformisation theorem (formulation)}
 %\todo{twierdzenie o klasyfikacji powierzchni}
