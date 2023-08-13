@@ -1,5 +1,5 @@
 % mainfile: ../praca_magisterska_orbifoldy.tex
-\chapter{Algorithm for searching for the spectrum}
+\chapter{Algorithm for searching for the spectrum}\label{Searching the spectrum}
 
 In the previous chapter we answeared the questions about how $\spe$ looks like -- in particular 
 what is it's order type and topology. In this chapter we would like to develop a 
@@ -79,7 +79,7 @@ We start with $r=\frac{p}{q}$, where $p \in \mathbb{Z}$, $q \in \mathbb{N}_{>0}$
 %\end{itemize}
 %\subsection{The algorithm}
 %and $\textrm{gcd}(p,q)$. \\ 
-\section{Reduction from arbitrary $M$ do $D^2$}
+\section{Reduction from arbitrary $M$ to $D^2$}
 This reduction is based on \ref{spe_M}.
 Note, that this is a different reduction than the one in \ref{reduction_to_arithmetical}. 
 In \ref{reduction_to_arithmetical} we are saying that for any $M$, we have $\spebr{M} 
@@ -87,26 +87,26 @@ In \ref{reduction_to_arithmetical} we are saying that for any $M$, we have $\spe
 for a manifold $M$ with $h$ handles, $c$ crosscaps and $b$ boundary components: \\
 for $b \neq 0$:
 \begin{equation}
-\spe(M) = \speD - 2h - c - (b - 1)
+\spe(M) = \speD + \chi(M) -1 = \speD - 2h - c - (b - 1)
 \end{equation}
 and for $b = 0$:
 \begin{equation}
-\spe(M) = 2\speD - 2h - c.
+\spe(M) = 2\speD + \chi(M) - 2 = 2\speD - 2h - c.
 \end{equation}  
 
 
-Using \ref{spe_M} 
+%Using \ref{spe_M} 
 %and \ref{} 
-we conclude that the problem of deciding whether $\frac{p}{q}$ is in $\spe(M)$
+We conclude that the problem of deciding whether $\frac{p}{q}$ is in $\spe(M)$
 is equivalent to deciding: \\
 for $b \neq 0$ if:
-\begin{equation}
-\frac{p}{q} + 2h + c + (b-1) 
+\begin{equation}\label{translation with b not 0}
+\frac{p}{q} - \chi(M) + 1 = \frac{p}{q} + 2h + c + (b-1) 
 \end{equation} 
 is in $\sdD$; \\
 for $b = 0$ if:
-\begin{equation}
-\frac{1}{2}\frac{p}{q}+h+\frac{c}{2}
+\begin{equation}\label{translation with b 0}
+\frac{1}{2}\frac{p}{q} + \chi(M) + 2 = \frac{1}{2}\frac{p}{q}+h+\frac{c}{2}
 \end{equation}
 is in $\sdD$.
 
@@ -384,7 +384,7 @@ is
 \end{equation}
 
 \end{observation}
-%\textbf{Proof.}
+%\subsubsection{Proof.}
 \begin{definition}
 We will call the state $d_1d_2d_3\cdots$, such that no $d_k$ is equal to $\infty$ a 
 \textbf{finite} state. 
@@ -417,7 +417,7 @@ where all $d_n$ are different from $\infty$.
 Let $D_1$ and $D_2$ be finite states and let $D_2$ be the successor of $D_1$ in 
 $\preceq$. Then $\cho{*D_1} > \cho{*D_2}$.
 \end{observation}
-\textbf{Proof.}
+\subsubsection{Proof.}
 From \ref{form of the successor} we know, that taking the successor 
 of the finite state always chages  
 only first counter and it is changing it by increasing it by 1. 
@@ -436,7 +436,7 @@ of finite states $\{(d_1+n)d_2d_3\cdots\}$ is $\infty d_2d_3\cdots$, and
 the infimum of the corresponding sequence $\{\chi(*(d_1+n)d_2d_3\cdots)\}$ is  
 $\chi(*\infty d_2d_3\cdots)$.
 \end{lemma}
-\textbf{Proof.} 
+\subsubsection{Proof.} 
 %From \ref{good lexicographical order} we know, that every bounded sequence in $\preceq$ have 
 %sup
 
@@ -463,7 +463,7 @@ $_\square$
 \begin{lemma}
 The state of the counters in the algorithm is weakly increasing with respect to order $\preceq$. 
 \end{lemma}
-\textbf{Proof.} \\
+\subsubsection{Proof.}
 The state of the counters is changed in lines 10-11, 46, 66-67. In each of these lines 
 the counter with the gretest index of all changed counters increases in value, so 
 the resulting state is bigger with respect to order $\preceq$. $_\square$
@@ -570,12 +570,12 @@ $\bullet$ That the algorithm always ends in a finite number of steps (Guaranteed
 %\begin{lemma}
 
 %\end{lemma}
-%\textbf{Proof.} \\
+%\subsubsection{Proof.}
 
 %\begin{lemma}
 
 %\end{lemma}
-%\textbf{Proof.} \\
+%\subsubsection{Proof.}
 
 \subsection{No false positives}
 Algorithm gives answear "yes" at lines 7-8, 35-36, 44-45, 75-76. At each of these places, 

@@ -19,6 +19,7 @@ with slight modification described in \ref{compactness}.
 We briefly recall the concept, but for full discussion we refer to \cite{Thurston1979}. 
 
 An orbifold is a generalisation of a manifold. As manifold, it consists of a Hausdorf space 
+(which we will call a base space)
 with some additional structure. 
 Compared to manifolds, one allows more variety of local behaviour. 
 On a manifold a map is a homeomorphism between $\mathbb{R}^n$ and some open set on a manifold. 
@@ -124,6 +125,7 @@ model on a hyperbolic plane.
 Note that in both cases, the is exactly one point in the compactification of $\mathbb{H}$, that is 
 fixed for every elemnt of the acting group -- point from the compactification at 
 the infinity on the top of the plane. This point is will be always mapped to the orbipoint $x$. 
+We will call $x$ an, respectively, rotational, or dihedral orbipoint of infinite degree.
 
 %Further implications of this extention of the definition will be 
 %the group associated with a map of 
@@ -141,59 +143,144 @@ the infinity on the top of the plane. This point is will be always mapped to the
 %Map between orbifolds can be defined as follows:
 %%\cite{kleiner2014geometrization}
 \subsection{Equivalence}\label{sameness}
-From this we can treat that and that orbifolds as the same.
+As stated in \cite{Conway16} (chapter 18) two two-dimensional orbifolds are the same iff they have:
+\begin{itemize}
+\item the same base manifold, 
+\item the same number of orbipoints for each type and degree 
+\item orbipoints on the boundaries 
+in the pairwise same cyclic orders (up to orientation if the base manifold is non-orientable).
+\end{itemize}
+%From this we can treat that and that orbifolds as the same.
 
-Without boundary -- uniquely determined by orbipoints list. 
+%Without boundary -- uniquely determined by orbipoints list. 
 
-With boundary -- in general not. 
+%With boundary -- in general not. 
 
 \section{Euler (orbi)characteristic}\label{E_orb}
 \label{\Eoc_as_a_sum}
 %\todo{dać cytowanie do charakterystyki}
 %quotiens
 \subsection{Euler characteristic}
-We can define Euler characteristic as additive topological invariant defined 
+On CW-complexes we can define Euler characteristic as additive topological invariant 
 normalised on symplexes.
 
-we will treat 
-as we will treat manifolds as orbifolds we will always refer 
-we will 
-
-from of \Eoc on two dim orbifolds\label{\Eoc on 2d}
-
-\subsection{\Eoc}\label{Eoc}
-
-\begin{equation}\label{chi orb expression}
-\cho{O} = \chi (M) - \sum_{i=1}^n \frac{r_i-1}{r_i} - \sum_{j=1}^m \frac{d_j-1}{2d_j}
+On a CW-complex it is then an alternating sum of numbers of cells in 
+a consecutive dimentions: 
+\begin{equation}
+\chi(C) = \sum_{d = 0}^n (-1)^d k_d^C
 \end{equation}
+
+Among other properties we have that if a compact manifold $N$ is a quotient of a compact 
+manifold $M$, 
+by the action of a finite group $G$, that acts properly discontinuously and freely on $M$, then
+\begin{equation}
+\chi(N) = \frac{\chi(M)}{|G|}
+\end{equation}   
+%we will treat 
+%as we will treat manifolds as orbifolds we will always refer 
+%we will 
+
+%from of \Eoc on two dim orbifolds\label{\Eoc on 2d}
+
+\subsection{\Eoc}\label{Eoc}\label{extended_Euler_orbicharacteristic}
+We would like to extend the definition of Euler characteristic to orbifolds in a way 
+that will reflect on their structre. 
+We will call the resulting additive topological invariant the Euler orbicharacteristic 
+and denote it by $\chi^{\rm orb}$.
+
+%For spaces where Euler characteristic is already defined \Eoc\ will be the same as 
+%Euler characteristic. 
+
+Following \cite{Thurston1979} (definition 13.3.3.), but extending 
+definition to orbifolds with cusps, we will define it as follows:
+\begin{definition}
+When an orbifold $O$ has a cell-division of the base space $X$, such that for each
+open cell the group associated to
+the interior points of a cell is constant, then the Euler number $\cho{O}$ is defined by
+the formula:
+\begin{equation}
+\cho{O} \coloneqq \sum_{c_i} (-1)^{ \mathrm{dim}(c_i)}\frac{1}{|\Gamma(c_i)|},
+\end{equation}
+where $c_i$ ranges over all cells and $|\Gamma(c_i)|$ is the order of the group $\Gamma(c_i)$ 
+associated to each cell, if $c_i$ is a cusp and $|\Gamma(c_i)| = \infty$ we put 
+$\frac{1}{|\Gamma(c_i)|} = 0$. We will call $\frac{1}{|\Gamma(c_i)|}$ a weight of a cell $c_i$.
+\end{definition} 
+
+This definition results in the propertie, that if an orbifold $O_2$ is a quotient 
+of a orbifold $O_1$, by the action of the finite group $G$, that acts properly 
+discontinuosly, but not neceserly freely on $O_1$, then:
+\begin{equation}
+\cho{O_2} = \frac{\chi(O_1)}{|G|}.
+\end{equation}
+For a two dimentional orbifolds, the possible cells with weights different than $1$ are 
+only in dimensions $0$ and $1$. In dimention 0 they are rotational and dihedral 
+orbipoints. In dimention 1 they are fragments of the boundary that stabilises reflections. 
+The weights of these cells are (with the convention that $\frac{1}{\infty} = 0$):
+\begin{itemize}
+\item for a rotational point of degree $n$, the weight is $\frac{1}{n}$,
+\item for a dihedral point of degree $n$, the weight is $\frac{1}{2n}$,
+\item for a reflection line, the weight is $\frac{1}{2}$.
+\end{itemize}
+We can see that weights of rotational and dihedral orbipoints are monotonously decrising 
+and converges to $0$, as degree diverges to infinity. Moreover, the 
+cusps -- rbipoints of an inifinte degree, 
+that are stabilised by a groups of infinite degree, has weight $0$.
+
+From this we will obtain the formula for an Euler orbicharacteristic of a two dimensional 
+orbifold with rotational points of degrees $r_1, r_2, \cdots, r_n$ and dihedral points 
+of degrees $d_1, d_2, \cdots, d_m$:
+\begin{align}\label{chi orb expression}
+\cho{O} &= \chi (M) - n + \sum_{i=1}^n \frac{1}{r_i} - \frac{m}{2} + \sum_{j=1}^m \frac{1}{2d_j} \\
+&= \chi (M) - \sum_{i=1}^n \frac{r_i-1}{r_i} - \sum_{j=1}^m \frac{d_j-1}{2d_j}
+\end{align}
 For $O$ with only rotational orbipoints:
 \begin{equation}\label{chi orb expression rotational}
-\cho{O} = \chi (M) - \sum_{i=1}^n \frac{r_i-1}{r_i}
+\cho{O} = \chi (M) - \sum_{i=1}^n \frac{r_i-1}{r_i}.
 \end{equation}
 For $O$ with only dihedral orbipoints:
 \begin{equation}\label{chi orb expression dihedral}
-\cho{O} = \chi (M) - \sum_{j=1}^m \frac{d_j-1}{2d_j}
+\cho{O} = \chi (M) - \sum_{j=1}^m \frac{d_j-1}{2d_j}.
 \end{equation}
+
 From these formulas we can see, that as number of orbipoints diverges to infinity, the \Eoc\ 
 diverges to minus infinity. For this reason, we restric ourselves only to orbifolds 
 with finitely many orbipoints.
 \begin{observation}\label{orbifolds have smaller Eoc than their base manifolds}
-An $M$-orbifold that is different than $M$ always have strictly smaller \Eoc\ than $M$. 
+A $M$-orbifold that is different than $M$ always have strictly smaller \Eoc\ than $M$. 
 \end{observation}
 
-\subsection{Extended Euler orbicharacteristic}\label{extended_Euler_orbicharacteristic} (with cusps)
-Write about cusp as a limit.
-\section{Volumes}
-\subsection{Metric structure on the orbifolds}
+%\subsection{Extended Euler orbicharacteristic}\label{extended_Euler_orbicharacteristic} 
+%%(with cusps)
+%%Write about cusp as a limit.
+%We can extent our definition of \Eoc\ to orbifolds with cusps. 
 
-\section{Classification of orbifolds}
-The list of all orbifolds with non-negative Euler orbicharacteristic
-Powiedzieć coś o tym, że orbicharatkeryttyka odpowiada polom (Gauss Bonett itd.)
-\cite{}
-\subsection{Non-negative \Eoc}
+\section{Metric structures on the orbifolds and volumes of the orbifolds}
+%\subsection{Metric structure on the orbifolds}
+As described and proved in \cite{Thurston1979} (13.3.6.) all good orbifolds have either:
+\begin{itemize}
+\item Elliptic structure, if $\cho{O} > 0$,
+\item Parabollic structure, if $\cho{O} = 0$,
+\item Hyperbolic structure, if $\cho{O} < 0$.
+\end{itemize}
+With an elliptic or a hyperbollic metric structre, we can meassure the volume of the orbifold as 
+\begin{equation}
+V(O) = |\int_O K dA|
+\end{equation} 
+Also, as stated in \cite{Thurston} (13.3.5.), the Gauss-Bonnet theorem works also for orbifolds 
+and we have that:
+\begin{equation}
+\int_O K dA = 2\pi|\cho{O}|,
+\end{equation}
+thus having that 
+\begin{equation}\label{volume to chi}
+V(O) = 2\pi|\cho{O}|.
+\end{equation}
+Our main goal in this thesis is to describe possible volumes of two dimensional orbifolds, 
+especially thouse with negative \Eoc. As from \ref{volume to chi} we have direct correspondence 
+between volumes and \Eoc s, and with \Eoc, we can restrict ourselves to rational numbers, 
+we will try to describe possible \Eoc\ of two dimensional orbifolds.  
 
-
-\section{Uniformisation theorem (formulation)}
+\section{Classification of two dimensional manifolds}\label{2 dim manifolds}
 %\todo{twierdzenie o klasyfikacji powierzchni}
 In this thesis we aim to better recognise possible two dimensional orbifolds. 
 The fundament that we are relaying on is the classification of two dimensional manifolds. 
@@ -201,37 +288,79 @@ The fundament that we are relaying on is the classification of two dimensional m
 It is phrased as a well known theorem:
 \cite{}
 
-\section{Notation}
 
-For the rest of this thesis we will adopt notation from \cite{}.
-"feature"
+%\section{Classification of orbifolds}
+%The list of all orbifolds with non-negative Euler orbicharacteristic
+%%Powiedzieć coś o tym, że orbicharatkeryttyka odpowiada polom (Gauss Bonett itd.)
+%\cite{}
+%\subsection{Non-negative \Eoc}
 
-We treat manifolds and orbifolds as a sphere with some features added by the operations.
 
-dać na sferę $\varepsilon$ słowo puste.
-We will regard parts of that notation not only as features on an orbifold but also as an operations 
-on orbifolds transforming one to another by adding particular feature. \\
+
+\section{Therminology and notation}\label{therminology and notation}
+\subsection{Orbifold notation}
+For the rest of this thesis we will use slightly modified notation from \cite{Conway2016}.
+%"feature"
+%Write about manifold Euler characterestic
+%We treat manifolds and orbifolds as a sphere with some features added by the operations.
+As we know from \ref{sameness}, two dimentional orbifold can be defined 
+by specifying:
+\begin{itemize} 
+\item its base manifold, 
+\item the list of degrees of rotational points (we will 
+always write them in the decreasing order) 
+\item the list of the lists of dihedral points for each boundary component
+\end{itemize}
+Furthermore from \ref{2 dim manifolds} we know, two dimensional manifold 
+can be 
+defined, by specifying:
+\begin{itemize}
+\item how many boundary components it has,
+\item how many handles it has,
+\item how many cross-caps it has.
+\end{itemize} 
+
+
+When we will write $\Delta(feature)$ we would mean the difference in \Eoc
+
+%dać na sferę $\varepsilon$ słowo puste.
+%We will regard parts of that notation not only as features on an orbifold but also as 
+%an operations 
+%on orbifolds transforming one to another by adding particular feature. \\
 We will denote the difference in Euler characteristic which is made by modifying 
 an orbifold by such a feature as $\Delta(modification)$.
-\todo{rozwinąć} 
-dopisać, że w Conwayowej >= 2
+%\todo{rozwinąć} 
+%dopisać, że w Conwayowej >= 2
 
+\subsection{Expressions involving $\infty$}
 If not stated othewise, in the expressions containing $\infty$ symbol, their value is understood 
-as $\varphi(\infty) \coloneqq \lim\limits_{n\to \infty}\varphi(n)$.
-\todo{}
-Addition of sets and numbers.
+as $\varphi(\infty) \coloneqq \lim\limits_{n\to \infty}\varphi(n)$. Only expressions 
+where such limits exists will occour without futther notice.
+%\todo{}
 
-Warning throught the whole thesis we will consider only two dimensional manifolds and 
-orbifolds, because of that words "two-dimensional" will be usually omited 
+\subsection{Addition of sets and numbers}
+For $A, B \subseteqq \mathbb{R}$, we define 
+\begin{equation}
+A+B \coloneqq \{a+b\ |\ a \in A, b\in B\}.
+\end{equation}
 
-delta
-h c b
+\subsection{Two dimensionality}
+From this point, throught the whole thesis we will consider only two dimensional manifolds and 
+orbifolds, for this reason words "two-dimensional" will be sometimes ommited, nevertheless 
+from this poinnt we will always mean only two dimensional manifolds and orbifolds.  
 
-$\srS, \sdD$ 
+%delta
+%h c b
+
+%$\srS, \sdD$ ???
 
 \section{Spectra}
-We will call the set of all possible \Eoc\ of a manifold $M$, the spectrum of $M$ and 
-we will denote it by $\spebr{M}$. 
+We will call the set of all possible \Eoc\ of a $M$-orbifolds, the spectrum of $M$ and 
+we will denote it by $\spebr{M}$. We will denote the set of all possible \Eoc\ of a $M$-orbifolds 
+that have only rotational orbipoints by $\spe^r(M)$. 
+We would denote the set of all possible \Eoc\ of a $M$-orbifolds 
+that have only dihedral orbipoints by $\spe^d(M)$, but from this section, it follows that 
+we always have $\spe^d(M) = \spebr{M}$. 
 
 We will also denote the sum of spectra of all two dimentional manifolds by:
 \begin{equation}
@@ -260,12 +389,12 @@ $\bullet$ for $b = 0$:
 Thus, we have that the form of the spectrum of two dimensional manifold $M$ is:\\
 $\bullet$ for $b\neq 0$: 
 \begin{equation}
-\spe(M) = 2-2h-c-b - \left\{\sum\limits_{i=1}^n\frac{d_i-1}{2d_i}\ 
+\spe(M) = \chi(M) - \left\{\sum\limits_{i=1}^n\frac{d_i-1}{2d_i}\ 
 \big|\ n\in\mathbb{N}_0,\ d_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}
 \end{equation}
 $\bullet$ for $b = 0$:
 \begin{equation}
-\spe(M) = 2-2h-c - \left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
+\spe(M) = \chi(M) - \left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
 r_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}.
 \end{equation} 
 \label{two dim manifold spectrum}
@@ -274,7 +403,7 @@ r_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}.
 \begin{observation}\label{2times homeomorphism}
 We have that $\speS = 2\speD$.
 \end{observation}
-\textbf{Proof.}\\
+\subsubsection{Proof.}
 
 Indeed, since: 
 \begin{align}
@@ -289,31 +418,32 @@ and
 
 \begin{observation}\label{all_spectra_are_isomorphic}\label{spe_M}
 For every two dimentional manifold $M$, we have that $\spe(M)$ is homeomorphic to $\speD$. 
-For $M$ with $h$ handles, $c$ cross-cups and $b$ boundary components, this homeomorphism is: \\
+%For $M$ with $h$ handles, $c$ cross-cups and $b$ boundary components, 
+This homeomorphism is: \\
 $\bullet$ for $b \neq 0$:
 \begin{equation}
-\spe(M) = \speD - 2h - c - (b - 1), 
+\spe(M) = \speD + \chi(M) - 1, 
 \end{equation}
 $\bullet$ for $b = 0$:
 \begin{equation}
-\spe(M) = 2\speD - 2h - c.
+\spe(M) = 2\speD + \chi(M) - 2.
 \end{equation}  
 \end{observation}
 
 %Ok, all isomorphic with $\speD$ \\
 %here write about it \\
 %Tell me about it!
-\textbf{Proof.} \\
+\subsubsection{Proof.}
 For a manifold $M$ with $h$ handles, $c$ cross-cups and $b$ boundary components, it's 
 $\spebr{M}$ is given by:\\
 $\bullet$ for $b\neq 0$: 
 \begin{equation}
-\spe(M) = 2-2h-c-b - \left\{\sum\limits_{i=1}^n\frac{d_i-1}{2d_i}\ 
+\spe(M) = \chi(M) - \left\{\sum\limits_{i=1}^n\frac{d_i-1}{2d_i}\ 
 \big|\ n\in\mathbb{N}_0,\ d_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}
 \end{equation}
 $\bullet$ for $b = 0$:
 \begin{equation}
-\spe(M) = 2-2h-c - \left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
+\spe(M) = \chi(M) - \left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
 r_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}.
 \end{equation} 
 
@@ -344,7 +474,7 @@ Most of the time it is also required, that the fractions in the sum have pairwis
 denominators. We will however take less usual convention and will drop that requirement, 
 calling an egyptian fraction any sum of unitary fractions. 
 %\section{Translating questions to ones about Egyptian fractions}\label{Egyptian_fractions}
-\section{Connection between spectra and Egyptian fractions}\label{Egyptian_fractions}
+\subsection{Connection between spectra and Egyptian fractions}\label{Egyptian_fractions}
 The terms $-\frac{r_i-1}{r_i}$ in the sum \ref{chi orb expression rotational} 
 can be expressed as $-1+ \frac{1}{r_i}$ 
 and the term $-\frac{d_j-1}{2d_j}$ in the sum \ref{chi orb expression dihedral} can be expressed as 
@@ -444,14 +574,35 @@ can be expressed as an egyptian fraction with $m$
 (not nessecerely distinct) summands. 
 \end{corollary}
 
-\section{Operations and constructions on orbifolds}\label{Operations}
+\section{Operations on orbifolds}\label{Operations}
+As stated in \ref{therminology and notation} we will often see two dimentional orbifold 
+as a sphere $S^2$ with a collection of features.
+Throughout the thesis we will frequently refer to performing the "operation" on an orbifold 
+consisting of removing and adding thouse features. 
+What we mean by this is giving as a result of an operation on one orbifold, defined 
+by some list of features on a sphere, another one 
+with a modified list of features according to the described operation. 
 
-Write about the general operations we are interested in i.e. taking any number of features (handles 
-cross caps, parts of boundry components with orbipoints on it, orbipoints in the interior) and
-replacing it by any other feauters
-(Some preserve the area)
-Write about operations nesseserie for reduction of cases
-write that every operation reduces \Eoc.
+When we will be talking about "adding" or "removing" a feature from an orbifold, we 
+will mean adding or removing this feature from a list defining this orbifold and 
+taking the orbifold defined by resultin list as a result of the operation.
+ 
+As our main interest is to figure out, for a given rational number 
+$\frac{p}{q}$ which orbifolds have $\frac{p}{q}$ as their \Eoc\ and for a given 
+orbifold $O$, which orbifolds 
+have the same \Eoc\ as $O$, we will be particulary interested in such operations 
+that do not change \Eoc, which will be used in \ref{sufficiency of D2 and S2}.
+
+
+
+%One of a usefull approuches will be to treat 
+%Write about the general 
+operations we are interested in i.e. taking any number of features (handles 
+%cross caps, parts of boundry components with orbipoints on it, orbipoints in the interior) and
+%replacing it by any other feauters
+%(Some preserve the area)
+%Write about operations nesseserie for reduction of cases
+%write that every operation reduces \Eoc.
 
 %This does not have any particular deep geometrical meaning
 

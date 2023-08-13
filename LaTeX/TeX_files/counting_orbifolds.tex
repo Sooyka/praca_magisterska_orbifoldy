@@ -216,7 +216,7 @@ $n\in \mathbb{N}$,
 there exists an $x\in U$ such that there are at least $n$ orbifolds with $x$ as their 
 \Eoc.
 \end{theorem}
-\textbf{Proof.}\\
+\subsubsection{Proof.}
 This will follow from the theorem about the sums of egiptian fractions from \cite{Browning2011}.
 It states that for ...
 %Napisać, że dowolnie blisko każdego punktu skupienia da się znaleźć liczbę o dowolnie wielu 
@@ -229,8 +229,9 @@ It states that for ...
 \section{Dividing the problem into an arithmetical and combinatorical parts}
 \label{dividing the problem}
 Here will divide the question "Given the number $x$, how many orbifolds have $x$ as an \Eoc?" 
-into two parts. The answears to these partial questions will be given in \ref{algorithm} and 
-\ref{}.   
+into two parts. The answears to these partial questions will be given in 
+\ref{Counting orbifolds -- arithmetical part} and 
+\ref{Counting orbifolds -- combinatorical part}.   
 % Below in section \ref{arithmeticla part} and \ref{combinatorical} 
 \section{Arithmetical part}\label{arithmetical part}
 %Given a number $x$, the question about how many orbifolds have $x$ as an \Eoc\ can be 
@@ -244,15 +245,17 @@ The first part is to aswear the following question:
 1-\sum_{i=1}^m \frac{d_j-1}{2d_j} 
 %-\sum_{i=1}^n \frac{r_i-1}{r_i}
 \end{equation} 
-and
-\begin{equation}\label{counting S2}
-2-\sum_{i=1}^n \frac{r_i-1}{r_i}
-\end{equation}
-with $n\in \mathbb{N}$ and $\forall_i\ d_i,r_i\in\mathbb{N}\cup\{\infty\}$, are equal to $x$?"
+%and
+%\begin{equation}\label{counting S2}
+%2-\sum_{i=1}^n \frac{r_i-1}{r_i}
+%\end{equation}
+with $n\in \mathbb{N}$ and $\forall_i\ d_i\in\mathbb{N}\cup\{\infty\}$, are equal to $x$?"
 
 It is a matter of convention (and then coherently translating this convention to the final result) 
 what sums are we treating as "the same". The convention we will take, is that a sum is determined 
-uniquly by the tuple $(d_1,\dots,d_n)$ \rba{or $(r_1,\dots,r_n)$} of orders 
+uniquly by the tuple $(d_1,\dots,d_n)$ 
+%\rba{or $(r_1,\dots,r_n)$} 
+of orders 
 of orbipoints, ordered in deacreasing order, appearing in the sum. 
 
 This part describes how adding rotational orbipoints to a shepre and dihedral points 
@@ -289,13 +292,30 @@ orbifolds have smaller \Eoc\ than their base manifolds
 (\ref{orbifolds have smaller Eoc than their base manifolds}).
 \item Then for each manifold $M$, we answer one of the following questions: 
 
-$\bullet$ if $M$ has a boundary: 
+$\bullet$ if $M$ has a boundary (\ref{translation with b not 0}): 
 
-"How many sums of the ?", 
+"How many sums of the form 
+\begin{equation}
+1-\sum_{i=1}^m \frac{d_j-1}{2d_j} 
+\end{equation}
+are equal to 
+\begin{equation}
+\frac{p}{q} - \chi(M) - 1 \ ?", 
+\end{equation}
 
-$\bullet$ if $M$ has no boundary: 
 
-"How namy sums of the form?".
+
+
+$\bullet$ if $M$ has no boundary (\ref{translation with b 0}): 
+
+"How namy sums of the form
+\begin{equation}
+1-\sum_{i=1}^m \frac{d_j-1}{2d_j} 
+\end{equation}
+are equal to 
+\begin{equation}
+\frac{1}{2}\frac{p}{q} - \frac{1}{2}\chi(M) -1\ ?".
+\end{equation}
 
 Here we consider the sums to be "the same" in the same way as in \ref{arithmetical part}.
 This we can do, since these questions are equivalent to asking respective questions 
@@ -305,7 +325,8 @@ In the case where $M$ has no boundary this gives us our result, since \ref{samen
 \item Finally we take into account two remaining things concerning the case 
 where $M$ has a boundary:
 \begin{enumerate}
-\item For now we only considered sums coresponding to 
+\item\label{additional things in boundary case -- rotational} 
+For now we only considered sums coresponding to 
 orbifolds with either rotational or dihedral orbipoints. 
 When $M$ has a boundary, $M$-orbifold can have both of these types of points. 
 Fortunatelly, to take this into account, be don't have to answear the 

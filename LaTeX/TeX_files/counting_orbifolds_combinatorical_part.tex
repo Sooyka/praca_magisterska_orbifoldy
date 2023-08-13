@@ -1,2 +1,185 @@
 % mainfile: ../praca_magisterska_orbifoldy.tex
 \chapter{Counting orbifolds -- combinatorical part}\label{Counting orbifolds -- combinatorical part}
+We will go through the steps described in \ref{combinatorical part}.
+
+We will form our answer in a form of anwering the 
+quetion for a given number $\frac{P}{q}$ and a given manifold $M$. 
+As stated in \ref{combinatorical part} at the end all answers for all $M$ needs to be summed, 
+and we know that for $M$ such that $\chi(M) < \frac{p}{q}$, the answear is $0$, so there 
+are always only finitely many answers to be summed. 
+
+\section{Manifolds without boundary}
+In this case we ask our algorithm from \ref{Counting orbifolds -- arithmetical part}: 
+"How namy sums of the form
+\begin{equation}
+1-\sum_{i=1}^m \frac{d_j-1}{2d_j} 
+\end{equation}
+are equal to 
+\begin{equation}
+\frac{1}{2}\frac{p}{q} - \frac{1}{2}\chi(M) -1\ ?",
+\end{equation}
+and the result is our final answer, as (\ref{sameness}) the list of degrees of rotational orbipoints ordered 
+in descending order uniquily defines a two dimentional $M$-orbifold without boundary. 
+\section{Manifolds with boundary}
+\subsection{Using \ref{Counting orbifolds -- arithmetical part}}\label{use algorithm step}
+We ask our algorithm from \ref{Counting orbifolds -- arithmetical part} for the list 
+of all possible sums of the form
+\begin{equation}
+1-\sum_{i=1}^m \frac{d_j-1}{2d_j} 
+\end{equation}
+that are equal to 
+\begin{equation}
+\frac{p}{q} - \chi(M) - 1. 
+\end{equation}
+As we know from: 
+\begin{itemize}
+\item \ref{second_finiteness_theorem} 
+\item the fact, that to each 
+sum corresponds at least one $M$-orbifold
+\item the fact, that to different sums corresponds different $M$-orbifolds
+\end{itemize}
+this list of sums will be finite. 
+%\subsection{Fixed}
+\subsection{Reduction to only dihedral orbipoints}\label{reduction only to dihedral}
+As stated in \ref{additional things in boundary case -- rotational}, we need to first 
+take into account that an orbifold can have both dihedral and rotational orbipoints. 
+
+We have complite list of sums coresponding to degrees of dihedral orbipoints that result in 
+the $\frac{p}{q}$ orbicharacteristic on $M$-orbifold. 
+
+We are intersted in having complite list of sums coresponding to degrees of both dihedral 
+and rotational 
+orbipoints that result in 
+the $\frac{p}{q}$ orbicharacteristic on $M$-orbifold. 
+We will now propose a unique  
+reduction ($\ast$) of every list corresponding to both dihedral and 
+rotational orbipoints to the list of only dihedral orbipoints. 
+
+The reduction ($\ast$) goes as follows: for a list of degrees of orbipoints consisting of 
+$r_1r_2\cdots r_n$ for rotational orbipoints and $d_1d_2\cdots d_m$ for dihedral orbipoints, 
+we replace each $r_i$ from the list of rotational orbipoints by to entries of the same 
+value on the list of dihedral orbipoints. This does not change the 
+corresponding \Eoc, since $\Delta(n) = \Delta(^*n^*n)$ (as stated in \ref{}). 
+
+This procedure is unambigues and gives only one possible list of dihedral orbipoints degrees 
+for every list of both rotational and dihedral orbipoints degrees. 
+
+Based on this, for a given sum $d_1d_2\cdots d_n$,
+we can perform the transformation of replacing $n$ by $^*n^*n$ in another direction to 
+produce all possible sums consisting of both rotational and dihedral degrees, that 
+would be reducted to sum $d_1d_2\cdots d_n$. The uniqness of reduction ($\ast$) guarantees, that 
+we won't arive to the same unreducted sum from different starting lists of only dihedral degrees.
+
+Based on this, after getting the list of sums from \ref{use algorithm step}, we need to 
+add to this list all possible sums that could be reducted by ($\ast$) to some 
+of the sums that we got from \ref{use algorithm step}. 
+
+Sums on the new extended list have also rotational orbipoints taken into account. 
+At this point we have full list of sums resulting in \Eoc\ equal to $\frac{p}{q}$ on a 
+$M$-orbifolds. 
+In further considerations we will not explicitely rotational orbipoints degrees as they play 
+no role in combinatorics.
+
+\subsection{Fixed sum}
+
+Let us now consider a cese with a manifold $M$, and a sum $d_1d_2\cdots d_n$ (as we wrote 
+at the end of the previous section we are not writing rotational degrees as 
+they will play no role from this point, however, they are possibly present in some sums). 
+Then the last step of the procedure will be to sum over all sums produced in 
+\ref{reduction only to dihedral}. 
+
+
+
+Let $b$ be the number of boundary components of $M$. We know from the assumption, that $b > 0$. 
+
+Let the sum be of the form $a_1^{k_1}a_2^{k_2}\cdots a_m^{k_m}$, meaning that the 
+list $d_1d_2\cdots d_n$ looks like (let $l_i \coloneqq \sum_{j = 1}^i k_j$):
+\begin{equation}
+\underbrace{d_1d_2\cdots d_{l_1}}_{k_1\ \mathrm{times}\ a_1} 
+\underbrace{d_{l_1+1}d_{l_1+2}\cdots d_{l_2}}_{k_2\ \mathrm{times}\ a_2} \cdots 
+\underbrace{d_{l_{m-1}}d_{l_{m-1}+1}\cdots d_n}_{k_m\ \mathrm{times}\ a_m}. 
+\end{equation}
+
+We need to partition $a_1^{k_1}a_2^{k_2}\cdots a_m^{k_m}$ among boundary 
+components of $M$. 
+
+%At first we will give each of the boundary component a label and treat them as distinguishable. 
+%At the end, we will divide the result by $b!$ reflecting the fact, that topologically, they are 
+%not 
+%distinguishable. 
+
+%Effective way to iterate over all the partitions 
+Let us consider some partition of $a_1^{k_1}a_2^{k_2}\cdots a_m^{k_m}$ among the boundary 
+components. After this, results from all partitions need to be sumed together. 
+
+
+
+\subsection{Fixed partition and boundary component}
+Let us now consider one partition and one boundary component. 
+Suppose that in this partition this boundary component have orbipoints of degrees 
+$b_1^{s_1}b_2^{s_2}\cdots b_n^{s_n}$.  
+We want to know how namy possible cyclic orders there are on a boundary component with 
+$b_1^{s_1}b_2^{s_2}\cdots b_n^{s_n}$ on it. 
+Having this answer we will multiply these answers from each boundary component in 
+a given partition, this way resulting in an answear for a partition. 
+
+%First, we will start with answearing the question when all $s_i$ are equal to $1$. 
+%Then:
+%\begin{itemize}
+%\item if $M$ is orientable, possible number of orders is the number 
+%of linear orders -- $n!$, divided by 
+%the number of cyclic permutations -- $n$, giving the answear $(n-1)!$. 
+%\item  if $M$ is non orientable and $n \geq 3$, possible number of orders is the number 
+%of linear orders -- $n!$, divided by the number of elements in a dihedral group $D_n$, 
+%that is -- $2n$, resultng in an answer $\frac{(n-1)!}{2}$.
+%\item if $M$ is non orientable and $n < 3$, then the answear is the same as in orientable case 
+%and there exists only one cyclic order that is inveriant to reflections.  
+%%as cyclic orders of one ore two elements are invariant to reflections. 
+%\end{itemize} 
+
+%Then 
+
+%\subsubsection{Fixed cyclic order for the type of the components}
+%We can enumerate through all the cyclic orders by iterating though linear orders
+We can count cyclic orders by iterating through linear orders, but counting each linear 
+order $o$ with the 
+weight (let $t \coloneqq \sum_{i = 0}^n s_i$):  
+%where $\Gamma$ is (let $t \coloneqq \sum_{i = 0}^n s_i$): 
+\begin{itemize}
+\item in case $M$ is orientable -- $\frac{|\mathbb{Z}_k|}{|\mathbb{Z}_t|} = \frac{k}{t}$, 
+where $\mathbb{Z}_k$ 
+is the biggest cyclic subgroup of $S_t$, under which $o$ is invariant as a linear order,
+\item in case $M$ is not orientable -- $\frac{|\mathbb{D}_k|}{|\mathbb{D}_t|} = \frac{2k}{2t} 
+=\frac{k}{t}$ , 
+where $\mathbb{D}_k$ is 
+the biggest 
+subgroup of $S_t$, under 
+which $o$ is invariant as a linear order. 
+\end{itemize}
+%After this, we need to divide 
+%First, let us answear this question for $b = 1$. 
+
+
+
+%Let us start with only cosidering dihedral orbipoints.
+
+%Let us first calculate number of possible divisions of $a_1^{k_1}a_2^{k_2}\cdots a_m^{k_m}$ 
+%among boundarie components. If we have $k_i$ copies of the orbipoint of degree $a_i$, 
+%the problem of counting the possible distributions of them among $b$ boundary is 
+%equivalent to the problem of dividing $k_i$ elemnent set into $b$ distinguishable compartemets. 
+%This is in turn equivalent to a problem of placing $b-1$ 
+%undistinguishable objects into $k_i+1$ distinguishable compartements 
+%(each of this compartemett is a places of divisions of 
+%$k_i$ element 
+%set into the next of consequtive $b$ groups). This in turn is equal to     
+
+%\section{Counting orbifolds -- combinatorical part summary}
+\subsection{Comment about possibility of a single equation}
+Although, given enough effort, results from this section could be summarise in one 
+equation consisting only 
+of $b$ and $k_1, k_2, \cdots, k_n$ for a given sum, 
+we feel that it would be long enogh not to give any new 
+insight into the structure of the problem. We are stoping thus at giving the above procedure.
+%what is an algorithm if not very elaborate equation after all?
+
+

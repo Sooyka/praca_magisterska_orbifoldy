@@ -1,39 +1,73 @@
 % mainfile: ../praca_magisterska_orbifoldy.tex
 \chapter{Conclusions}
 
-We described the spectrum of possible \Eoc s of two dimentional orbifolds. 
-It has topology of $\omega^\omega$ and the problem, whether the given point is in the 
-spectrum is desidable. \\
+\section{What was done}
+In \ref{reduction_to_arithmetical} we proved that $\neg \speD \subseteq \speS$ and 
+$\neg \speS \subseteq \speD$. 
 
-We also provided some finitess results, such as that there are always only finately many 
-orbifolds for a given \Eoc. So the problem how much are for a given number is also decidable.\\
+In \ref{order structure}, amoung other things, we described the spectrum of possible \Eoc s 
+of two dimentional orbifolds in a topologicall manner. 
+It has order type and topology of $\omega^\omega$. 
+We also proved, that every accumulation point of $\speS$ is in $\speD$.
+%and the problem, whether the given point is in the 
+%spectrum is desidable. \\
 
-From \smalltodo{referencja} we know, that there are howe ver, blab la dowolnie dużo na \Eoc. \\
+In \ref{Searching the spectrum} 
+we provided algorithm for deciding for a given number $x$, whether 
+there exists an orbifold $O$, such that $\cho{O} = x$ and proved its correctness.
 
-It remains unclear how Disk spectrum and Sphere spcectrum lies relative to each other, 
-but some result was, shown, namely, that every accumulation point of Sphere spectum
-is also in the disk spectrum.
+In \ref{counting occurrences} we provided some finitess results, such as that 
+there are always only finately many 
+orbifolds for a given \Eoc. 
+%So the problem how much are for a given number is also decidable.\\
+We also proved that for every $n$, in every neighbourhood of every accumulation point 
+of $\spe$ of order at least $2$, there is at leat one number $x$, such that there are at least 
+$n$ orbifolds such tht $\cho{O} = x$.
 
-for every denominator, do they coincide 
-from a sufficiently distatn point? (Yes.) 
+In \ref{Counting orbifolds -- arithmetical part} 
+and \ref{Counting orbifolds -- combinatorical part} 
+we provided an algorithm 
+ for counting for a given number $x$ number of orbifold such that $\cho{O} = x$,
+and proved its correctness. 
+ 
+%of this algorithm and discussed, 
+We also discussed that its complexity is low enough for actual implementation 
+and practical usage on a resonably small denumerators and reasonably close to zero.
+%From \smalltodo{referencja} we know, that there are howe ver, blab la dowolnie dużo na \Eoc. \\
+
+
+
+%for every denominator, do they coincide 
+%from a sufficiently distatn point? (Yes.) 
 
 \section{Further directions}
-\subsection{Asked, but unanswered questions}
-Our ultimate goal is to give the answer to the questions such as: \\
-- For a given $x \in \sigma$, how many orbifolds have $x$ as their \Eoc?\\
-- Why? Is there some underlying geometrical reason for that?\\
-- Can we characterise points $x \in \sigma$ that has the most orbifolds corresponding to them? \\
-- Is there any reasonable normalisation to counter the effect that there are 'more' 
-points as we go 
-to lesser values. (What we mean by 'more' was sted in) \\
-The first equstion we can tackle is steaming from the chapter \ref{order structure} 
-and it is -- Do $\speD$ and $\speS$ coincide? It is easy to answer that $\speD \neq \speS$ 
-(and we will do that along some harder questions in the moment), but do they coincide 
-starting from a sufficiently distant point? 
+It remains unclear how Disk spectrum and Sphere spcectrum lies relative to each other. 
+In particular we still don't know, whether they coincide from a suficiently distant point.
+%but some result was, shown, namely, that every accumulation point of Sphere spectum
+%is also in the disk spectrum.
+
+%\subsection{Asked, but unanswered questions}
+%Our ultimate goal would to give the answer to the questions such as: \\
+%- For a given $x \in \sigma$, how many orbifolds have $x$ as their \Eoc?\\
+We don't really know why there is exactly "this" many orbifolds for a given \Eoc? 
+%Giving only the algorithm gave little 
+We would like to know, whether there is some underlying geometrical reason for that?
+
+We would like to somehow characterise points $x \in \sigma$ that has "the most" 
+orbifolds corresponding to them. With reasonable normalisation of what it means for a number
+to have "more" orbifolds as we go to lesser values of \Eoc. 
+
+%- Is there any reasonable normalisation to counter the effect that there are 'more' 
+%points as we go 
+%to lesser values. (What we mean by 'more' was sted in) \\
+%The first equstion we can tackle is steaming from the chapter \ref{order structure} 
+%and it is -- Do $\speD$ and $\speS$ coincide? It is easy to answer that $\speD \neq \speS$ 
+%(and we will do that along some harder questions in the moment), but do they coincide 
+%starting from a sufficiently distant point? 
 %Or maybe, for every denominator, do they coincide 
 %from a sufficiently distatn point? (Yes.) \\
 %\todo{przenieść (przekopiować?) część może do futher direction}
-write about cyclic order
+%write about cyclic order
 %\subsection{Unasked and unanswered questions}
 %\subsection{Power series and generating functions}
 %\subsection{Seifert manifolds}
