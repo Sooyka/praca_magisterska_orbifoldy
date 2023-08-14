@@ -166,7 +166,7 @@ $\leq 1$.
 %%There is also a pivot pointing on one counter at any time.  
 \section{Regular cases}
 First we will describe what we use in the algorithm, giving the brief semantics. 
-The detailed semantics are given in \ref{idea of the algorithm}.
+The detailed semantics are given in \ref{the idea of the algoritm}.
 \subsection{What we use}
 We use: 
 \begin{itemize}
@@ -336,7 +336,7 @@ In the case, the $flag\_value$ is equal to:
     }
 }
 \end{lstlisting}
-\section{The idea of the algorithm}\label{the idea of the algorithm}
+\section{The idea of the algorithm}\label{the idea of the algoritm}
 We will now present in more detail what the algorithm is intented to do. 
 To do this and for the later sections, we will first introduce an order on the states 
 of counters satisfying \ref{valid state of counters} (as mentioned in 
@@ -535,9 +535,14 @@ disregard the whole sequence right away, since
 $\chi(*\infty d_2d_3\cdots)$ is the infimum of $\{*(d_1+n)d_2d_3\cdots\}$.
 
 \subsubsection{What after we checked infinite connected sequence?}
-Let us uppouse that we just checked  th
+Let us suppouse that we just checked the infinite connected sequence, together with its supremum. 
 %From this we have the method to check any infinite connected sequence of finite states in finitely 
 %many steps.
+
+%THere are two options -- either inf > pq or not. 
+
+
+
 \subsection{Three "modes" of the algorithm}
 The algorithm has three distinct fragments: 
 \begin{itemize}
@@ -548,7 +553,7 @@ The algorithm has three distinct fragments:
 %The graph of the control flow of these parts looks like this:
 
 
-\section{Proof of the correctness of the algorithm}
+\section{Proof of the correctness of the algorithm}\label{memory state proof}
 Firstly, let us observe, that algorithm gives the answear on lines 8, 14-15, 35-36, 55-56, 
 62-63 and 
 always ends immedietly after giving the answear. Thus, it will always give at most one answear.
