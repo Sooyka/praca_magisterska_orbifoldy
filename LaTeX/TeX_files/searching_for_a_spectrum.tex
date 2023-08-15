@@ -364,6 +364,7 @@ $\cho{*D_1} \geq \cho{*D_2}$.
 Since $\preceq$ is a suborder of a lexicographical order it is a good order. 
 \end{observation}
 
+Let us use $succ(a)$ for a successor
 We can explicitly write the form of the successor of any state $d_1d_2d_3\cdots$ in $\preceq$:
 %(Quotation marks around the counters' states in the following 
 %lemma are added here only for readability 
@@ -467,7 +468,10 @@ The state of the counters in the algorithm is weakly increasing with respect to 
 The state of the counters is changed in lines 10-11, 46, 66-67. In each of these lines 
 the counter with the gretest index of all changed counters increases in value, so 
 the resulting state is bigger with respect to order $\preceq$. $_\square$
-
+\begin{lemma}
+For avery infinite steate $a$ and its successor $a'$, w ehave that $chi chi$. 
+The equality holds only for one element -- .
+\end{lemma}
 \subsection{Basic idea}
 The basic idea of the algorithm is to search through all the states of the counters going 
 from the smallest (in the sense of $\preceq$) state of counters, which will be when all counters 
@@ -541,7 +545,16 @@ Let us suppouse that we just checked the infinite connected sequence, together w
 
 %THere are two options -- either inf > pq or not. 
 
+There are two options -- either it is smaller or larger. 
+we will strat with the case of being larger. 
+We run ourselves into nother ttrouble ...
+another 
+so instead we  first check whether any finite value hhas a chnce of being  yeah yeah
 
+case a being smaller . This case is easy, if a state is smaller all states that are before are 
+also smaller, they have all counters higher, and we can go right to that one. 
+
+thas it. 
 
 \subsection{Three "modes" of the algorithm}
 The algorithm has three distinct fragments: 
@@ -551,7 +564,7 @@ The algorithm has three distinct fragments:
 \item fragment in the lines 64-93, that will be called the "Less" part.
 \end{itemize}
 %The graph of the control flow of these parts looks like this:
-
+Above idea is structured among three parts of the algorithm 
 
 \section{Proof of the correctness of the algorithm}\label{memory state proof}
 Firstly, let us observe, that algorithm gives the answear on lines 8, 14-15, 35-36, 55-56, 
@@ -631,6 +644,7 @@ the algorithm will go beyond it.
 %    \item abcd
 %\end{enumerate}
 %\section{Improvements}
+We will prove that for any state different than 222222 it will go beyond it.
 
 \section{Another questions the algorithm can answear}
 \subsection{Deciding the order of accumulation}
