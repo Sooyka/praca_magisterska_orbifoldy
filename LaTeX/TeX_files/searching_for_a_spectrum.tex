@@ -228,6 +228,7 @@ consider only such states.
 %%of \Eoc\ equal $\chi^{orb}(*d_1d_2\cdots)$
 %$*d_1d_2\cdots$ (where the trailing $1$'s are trunkated). 
 \subsection{The algorithem for searching for a spectrum}
+\label{the algorithm for searching the spectrum itself}
 When the algorithm is in the state: 
 \begin{itemize}
 \item counters with values: $d_1d_2\cdots$
@@ -364,7 +365,7 @@ $\cho{*D_1} \geq \cho{*D_2}$.
 Since $\preceq$ is a suborder of a lexicographical order it is a good order. 
 \end{observation}
 
-Let us use $succ(a)$ for a successor
+Let us use $S(a)$ for a successor of $a$.
 We can explicitly write the form of the successor of any state $d_1d_2d_3\cdots$ in $\preceq$:
 %(Quotation marks around the counters' states in the following 
 %lemma are added here only for readability 
@@ -402,22 +403,22 @@ $d_1$ being different from (resp. being equal to) $\infty$.
 
 %\end{observation}
 \begin{observation}\label{finiteness of the successor}
-For any state $D$, the successor of $D$ is a finite state.
+For any state $D$, we have that $S(D)$ is a finite state.
 \end{observation}
 \begin{definition}
 We will call the ascending sequence $\{D_n\}$ 
 in $\preceq$, such 
-that for all $n$, we have that $D_{n+1}$ is the succesor of $D_n$, a \textbf{connected} sequence in 
+that for all $n$, we have that $S(D_n) = D_{n+1}$, a \textbf{connected} sequence in 
 $\preceq$.   
 \end{definition}
 \begin{observation}
 Every connected sequence of the finite states is of the form $\{(d_1+n)d_2d_3\cdots\}$, 
 where all $d_n$ are different from $\infty$.
 \end{observation}
-\begin{observation}\label{Successor lemma}
-Let $D_1$ and $D_2$ be finite states and let $D_2$ be the successor of $D_1$ in 
+\begin{lemma}\label{Successor lemma}
+Let $D_1$ and $D_2$ be finite states and let $S(D_1) = D_2$ in 
 $\preceq$. Then $\cho{*D_1} > \cho{*D_2}$.
-\end{observation}
+\end{lemma}
 \subsubsection{Proof.}
 From \ref{form of the successor} we know, that taking the successor 
 of the finite state always chages  
@@ -429,15 +430,43 @@ decreases \Eoc. $_\square$
 The sequence $\{\cho{*D_n}\}$ is descending for every connected sequence 
 of finite states $\{D_n\}$ in $\preceq$. 
 \end{corollary}
+
+\begin{lemma}
+Leet $D_1$ be infinite state and let $D_2 \coloneqq S(D_1)$ in $\preceq$. 
+Then $\cho{*D_1} \leq \cho{*D_2}$. Furthermore there is only one element in $\preceq$ for 
+which the equality holds: $\infty\ 1\ 1\ 1\cdots$, for all the rest the inequality is strict. 
+%For avery infinite steate $D$ and its successor $a'$, w ehave that $chi chi$. 
+%The equality holds only for one element -- .
+\end{lemma}
+\subsubsection{Proof.}
+%We have that $\cho{*\infty\ 1\ 1\ 1\cdots} =\frac{1}{2}$. 
+%We also have that $S(\infty\ 1\ 1\ 1\cdots) = 2\ 2\ 1\ 1\cdots$ and that 
+%$\cho{*2\ 2\ 1\ 1\cdots} = \frac{1}{2}$. 
+
+For the state $\infty d_2d_3d_4\cdots$ and its successor 
+$S(\infty d_2d_3d_4\cdots) = (d_2+1)(d_2+1)d_3\cdots$, we have that: 
+\begin{align}
+\cho{*\infty d_2d_3d_4\cdots} &- \cho{(d_2+1)(d_2+1)d_3d_4\cdots} = \notag \\
+1 + \Delta(\infty d_2) + \Delta(d_3d_4\cdots) &- 
+(1 + \Delta((d_2+1)(d_2+1)) + \Delta(d_3d_4\cdots)) = \notag \\ 
+\Delta(\infty d_2) &- \Delta((d_2+1)(d_2+1)) = \notag \\
+-\frac{1}{2}- \frac{d_2-1}{2d_2} &+ 2\frac{(d_2+1)-1}{2(d_2+1)} =  \\
+\frac{-d_2(d_2+1) - (d_2-1)(d_2+1) + 2d_2^2}{2d_2(d_2+1)}& = 
+\frac{-d_2 -d_2 + d_2 +1 }{2d_2(d_2+1)} = 
+\frac{1- d_2}{2d_2(d_2 + 1)}. \notag
+\end{align}
+So the difference is not negative only for $d_2 = 1$ and for $d_2 = 1$ it is equal 
+to $0$. $_\square$ 
+
 \begin{lemma}\label{chi supp functoriality}
 %Let $d_1$ be different form $\infty$. 
 The supremum of the connected sequence 
 of finite states $\{(d_1+n)d_2d_3\cdots\}$ is $\infty d_2d_3\cdots$, and 
 %the following diagram commutes:
-the infimum of the corresponding sequence $\{\chi(*(d_1+n)d_2d_3\cdots)\}$ is  
-$\chi(*\infty d_2d_3\cdots)$.
+the infimum of the corresponding sequence $\{\cho{*(d_1+n)d_2d_3\cdots}\}$ is  
+$\cho{*\infty d_2d_3\cdots}$.
 \end{lemma}
-\subsubsection{Proof.} 
+\subsubsection{Proof.} \label{chi supp functoriality proof}
 %From \ref{good lexicographical order} we know, that every bounded sequence in $\preceq$ have 
 %sup
 
@@ -448,19 +477,69 @@ is the supremum of $\{(d_1+n)d_2d_3\cdots\}$.
 
 For every $n$ we have that: 
 \begin{align}
-\chi(*(d_1+n)d_2d_3\cdots) &= \chi(*d_1d_2d_3\cdots) 
+\cho{*(d_1+n)d_2d_3\cdots} &= \cho{*d_1d_2d_3\cdots} 
 - \frac{(d_1+n)-1}{2(d_1+n)} + \frac{d_1-1}{2d_1} \notag\\ 
-&= \chi(*d_1d_2d_3\cdots) - \frac{1}{2d_1} + \frac{1}{2(d_1+n)}
+&= \cho{*d_1d_2d_3\cdots} - \frac{1}{2d_1} + \frac{1}{2(d_1+n)}
 \end{align}
 We also have that:
 \begin{align}
-\chi(*\infty d_2d_3\cdots) &= \chi(*d_1d_2d_3\cdots) 
+\cho{*\infty d_2d_3\cdots} &= \cho{*d_1d_2d_3\cdots} 
 - \frac{1}{2} + \frac{d_1-1}{2d_1} \notag\\ 
-&= \chi(*d_1d_2d_3\cdots) - \frac{1}{2d_1} + 0.
+&= \cho{*d_1d_2d_3\cdots} - \frac{1}{2d_1} + 0.
 \end{align}
-Thus $\chi(*\infty d_2d_3\cdots)$ is the infimum of $\{\chi(*(d_1+n)d_2d_3\cdots)\}$.
+Thus $\cho{*\infty d_2d_3\cdots}$ is the infimum of $\{\cho{*(d_1+n)d_2d_3\cdots}\}$.
 $_\square$
+\begin{observation}
+We have that for $d_n \neq \infty$:
+\begin{equation}
+\cho{\infty\infty\cdots\infty d_n d_{n+1} d_{n+2}\cdots} > 
+\cho{\infty\infty\cdots\infty (d_n+1) d_{n+1} d_{n+2}\cdots}. 
+\end{equation}
+As increasing the counter increases corresponding \Eoc.
+\end{observation}
+\begin{lemma}\label{chi supp functoriality non finite}
+%Let $d_1$ be different form $\infty$. 
+The supremum of the sequence 
+of states $\{\infty\infty\cdots\infty (d_n+m) d_{n+1} d_{n+2}\cdots\}_m$ 
+is $\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots$, and 
+%the following diagram commutes:
+the infimum of the corresponding sequence 
+$\{\cho{*\infty\infty\cdots\infty (d_n+m) d_{n+1} d_{n+2}\cdots}\}_m$ is  
+$\cho{*\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots}$.
+\end{lemma}
+\subsubsection{Proof.}
+The proof will be analogous to \ref{chi supp functoriality proof}
 
+For every $m$ we have that 
+$\infty\infty\cdots\infty(d_n+m)d_{n+1}d_{n+2}\cdots\preceq
+\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots$. Furthermore for 
+every $d_1'd_2'd_3'\cdots$ such that 
+$d_1'd_2'd_3'\cdots\preceq \infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots$, there 
+exists $m$, such that 
+$d_1'd_2'd_3' \cdots\preceq\infty\infty\cdots\infty(d_n+m)d_{n+1}d_{n+2}\cdots$. 
+
+Thus, $\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots$ 
+is the supremum of $\{\infty\infty\cdots\infty (d_n+m) d_{n+1} d_{n+2}\cdots\}_m$.
+
+For every $m$ we have that: 
+\begin{align}
+\cho{*\infty\infty\cdots\infty (d_n+m) d_{n+1} d_{n+2}\cdots} &= 
+\cho{*\infty\infty\cdots\infty d_n d_{n+1} d_{n+2}\cdots} 
+- \frac{(d_n+m)-1}{2(d_n+m)} + \frac{d_n-1}{2d_n} \notag\\ 
+&= \cho{*\infty\infty\cdots\infty d_n d_{n+1} d_{n+2}\cdots} - 
+\frac{1}{2d_n} + \frac{1}{2(d_n+m)}
+\end{align}
+We also have that:
+\begin{align}
+\cho{*\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots} &= 
+\cho{*\infty\infty\cdots\infty d_n d_{n+1} d_{n+2}\cdots} 
+- \frac{1}{2} + \frac{d_n-1}{2d_n} \notag\\ 
+&= \cho{*\infty\infty\cdots\infty d_n d_{n+1} d_{n+2}\cdots} - \frac{1}{2d_n} + 0.
+\end{align}
+Thus 
+$\cho{*\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots}$ is the infimum of 
+$\{\infty\infty\cdots\infty (d_n+m) d_{n+1} d_{n+2}\cdots\}_m$.
+$_\square$
 \begin{lemma}
 The state of the counters in the algorithm is weakly increasing with respect to order $\preceq$. 
 \end{lemma}
@@ -468,11 +547,8 @@ The state of the counters in the algorithm is weakly increasing with respect to 
 The state of the counters is changed in lines 10-11, 46, 66-67. In each of these lines 
 the counter with the gretest index of all changed counters increases in value, so 
 the resulting state is bigger with respect to order $\preceq$. $_\square$
-\begin{lemma}
-For avery infinite steate $a$ and its successor $a'$, w ehave that $chi chi$. 
-The equality holds only for one element -- .
-\end{lemma}
-\subsection{Basic idea}
+
+\subsection{Basic idea}\label{basic idea}
 The basic idea of the algorithm is to search through all the states of the counters going 
 from the smallest (in the sense of $\preceq$) state of counters, which will be when all counters 
 are set to $1$, up to some upper limit beyond which we are sure that no configuration of 
@@ -488,7 +564,8 @@ questions how we go through all the states and what can be this upper limit.
 \subsection{Checking all the states}
 This can't be done directly as there are infinite ascending sequences in $\preceq$. 
 However, it can be done with some use of the properties we derived in the previous subsection.
-\subsubsection{Checking infinite connected sequences in finitely many steps}
+\subsection{Checking infinite connected sequences in finitely many steps}
+\label{searching idea connected}
 We will now present the method how to check any infinite connected sequence for solutions 
 in finite number of steps.
 
@@ -538,35 +615,204 @@ One case that is left, is when $\chi(*\infty d_2d_3\cdots) > \frac{p}{q}$, but t
 disregard the whole sequence right away, since 
 $\chi(*\infty d_2d_3\cdots)$ is the infimum of $\{*(d_1+n)d_2d_3\cdots\}$.
 
-\subsubsection{What after we checked infinite connected sequence?}
+\subsection{What after we checked infinite connected sequence?}
 Let us suppouse that we just checked the infinite connected sequence, together with its supremum. 
 %From this we have the method to check any infinite connected sequence of finite states in finitely 
 %many steps.
 
 %THere are two options -- either inf > pq or not. 
 
-There are two options -- either it is smaller or larger. 
-we will strat with the case of being larger. 
-We run ourselves into nother ttrouble ...
-another 
-so instead we  first check whether any finite value hhas a chnce of being  yeah yeah
+The supremum is of the form $\infty d_2 d_3d_4\cdots$.
+Then, trying to perform \ref{basic idea}, 
+we continue with the successor $S(\infty d_2 d_3d_4\cdots) = (d_2+1)(d_2+1)d_3d_4\cdots$ 
+(\ref{form of the successor}). Provided the successor is not our solution, 
+there are two options:
+\begin{enumerate} 
+\item $\cho{*(d_2+1)(d_2+1)d_3d_4\cdots} > \frac{p}{q}$,
+\item $\cho{*(d_2+1)(d_2+1)d_3d_4\cdots} < \frac{p}{q}$.
+\end{enumerate} 
+%We will start with 
+%the case, where $\cho{*(d_2+1)(d_2+1)d_3d_4\cdots} > \frac{p}{q}$.
 
-case a being smaller . This case is easy, if a state is smaller all states that are before are 
-also smaller, they have all counters higher, and we can go right to that one. 
+\subsection{Case when $\cho{*(d_2+1)(d_2+1)d_3d_4\cdots} > \frac{p}{q}$}\label{greater idea}
 
-thas it. 
+%There are two options -- either it is smaller or larger. 
+%we will strat with the case of being larger. 
+%We run ourselves into nother ttrouble ...
+%another 
+%so instead we  first check whether any finite value hhas chnce of being  yeah yeah
+We could start checking through the connected sequence starting at 
+\begin{equation}
+(d_2+1)(d_2+1)d_3d_4\cdots, 
+\end{equation}
+however, if 
+\begin{equation}
+\cho{*\infty(d_2+1)d_3d_4\cdots} > \frac{p}{q}, 
+\end{equation}
+we would end up in the same place that we are now, only with 
+\begin{equation}
+(d_2+2)(d_2+2)d_3d_4\cdots.
+\end{equation}
+Without further changes, this will lead to possibly checking one by one of infinitely many states 
+of the form 
+\begin{equation}\label{sequence second order}
+\infty(d_2+n)d_3d_4\cdots. 
+\end{equation}
+We can solve this problem, by checking the state 
+\begin{equation}
+\infty\infty d_3d_4\cdots, 
+\end{equation}
+that have corresponding \Eoc lower than all of \ref{sequence second order}. 
+If it will happen that 
+\begin{equation}
+\cho{*\infty\infty d_3d_4\cdots} > \frac{p}{q},
+\end{equation}
+we ruled out all states of the form
+\begin{equation}
+\infty(d_2+n)d_3d_4\cdots,
+\end{equation}
+and we can continue this pattern on further coordinates, checking: 
+\begin{equation}
+\infty\infty \cdots \infty d_k\cdots, 
+\end{equation}
+until we find some $n$, such that
+\begin{equation}
+\cho{*\infty\infty \cdots \infty d_{n+1}\cdots} < \frac{p}{q}.
+\end{equation}
+We always find $n$ like that, because at all time only finately many counters are set 
+to non-1 value, so from some point moving to next coordinate will result in 
+comparing to $\frac{p}{q}$ the number $\frac{1}{2}$ smaller than from previous coordinate. 
+
+Once we find such $n$, we need to perform actions decribed in \ref{searching mode idea}.  
+
+%If it will happen that 
+%\begin{eqaution}
+%\cho{*\infty\infty d_3d_4\cdots} < \frac{p}{q},
+%\end{eqaution}
+%we can go to 
+%\begin{equation}
+%S(\infty\infty d_3d_4\cdots) = (d_3+1)(d_3+1)(d_3+1)d_4\cdots
+%\end{equation}
+%we can apply ganeralised behaviour described in 
+
+\subsection{Case when $\cho{*(d_2+1)(d_2+1)d_3d_4\cdots} < \frac{p}{q}$}\label{Less idea}
+%case a being smaller . This case is easy, if a state is smaller all states that are before are 
+%also smaller, they have all counters higher, and we can go right to that one. 
+
+%thas it. 
+In this case, we know that every state $D$ such that:
+\begin{equation}
+(d_2+1)(d_2+1)d_3d_4d_5\cdots \preceq D\prec (d_3+1)(d_3+1)(d_3+1)d_4d_5\cdots
+\end{equation}
+have $\cho{D} < \frac{p}{q}$, since for any such state $D$, we have that 
+counter $c_3$ and all to the right of it are the same as in 
+\begin{equation}
+(d_2+1)(d_2+1)d_3d_4d_5\cdots,
+\end{equation}
+but counters $c_1$ and $c_2$ are at least equal to $d_2+1$. For this reason, we can 
+go to 
+\begin{equation}\label{less hop two}
+(d_3+1)(d_3+1)(d_3+1)d_4d_5\cdots, 
+\end{equation}
+as we ruled out all the sates smaller than \ref{less hop two}. Then, we can continue 
+from this state.
+
+This behaviour can be generalised -- whenever, in our algorithm we will have counters 
+if the state 
+\begin{equation}
+(d_n+1)(d_n+1)\cdots (d_n + 1)d_{n+1}d_{n+2}d_{n+3}\cdots,
+\end{equation} 
+and we will know that 
+\begin{equation}
+\cho{*(d_n+1)(d_n+1)\cdots (d_n + 1)d_{n+1}d_{n+2}d_{n+3}\cdots} < \frac{p}{q},
+\end{equation} 
+we can rule out all the states up to (but not including) state:
+\begin{equation}\label{less generalised}
+(d_{n+1}+1)(d_{n+1}+1)\cdots (d_{n+1} + 1)(d_{n+1}+1)d_{n+2}d_{n+3}\cdots
+\end{equation}
+by the analogous reasoning as for $n = 2$ and continue from state \ref{less generalised}.
+
+\subsection{Searching}\label{searching mode idea}
+We are in the state, as described in \ref{greater idea}, that we found $n$, such that 
+\begin{equation}
+\cho{*\infty\infty \cdots \infty d_{n+1}\cdots} < \frac{p}{q}.
+\end{equation}
+The idea of algorithm at this point was, to rule out all the states that have 
+corresponding \Eoc greater than $\frac{p}{q}$. We ruled out all smaller or equal to
+(in the sense of $\preceq$) than 
+\begin{equation}
+\infty\infty \cdots \infty 1d_{n+1}\cdots.
+\end{equation}
+At this point, we can use a procedure analogus to the one from 
+\ref{searching idea connected}, checking through the sequence (iterated with respect to $m$)
+\begin{equation}
+\infty\infty \cdots \infty md_{n+1}\cdots,
+\end{equation}
+that at some $m_0$ is guaranteed to have
+\begin{equation}
+\cho{\infty\infty \cdots \infty m_0d_{n+1}\cdots)} \leq \frac{p}{q},
+\end{equation}
+since 
+\begin{equation}
+\cho{\infty\infty \cdots \infty \infty d_{n+1}\cdots)} < \frac{p}{q}
+\end{equation}
+and we have that \ref{chi supp functoriality non finite}. 
+%Let us suppouse that it is not a solution.
+
+This way, we know that no state smaller or equal than 
+\begin{equation}\label{searching state}
+\infty\infty \cdots \infty (m_0-1) d_{n+1}\cdots
+\end{equation}
+is the solution. 
+We know that $m_0 \geq 2$, since we know from  the procedure \ref{greater idea} that 
+\begin{equation}
+\cho{\infty\infty \cdots \infty 1 d_{n+1}\cdots)} > \frac{p}{q}
+\end{equation}
+We know proceed to check from the succesorr:
+\begin{equation}
+S(\infty\infty \cdots \infty (m_0-1) d_{n+1}\cdots) = m_0m_0\cdots m_0 m_0 d_{n+1}\cdots
+\end{equation}
+and 
+up.
+
+This presents the idea of the algorithm.
 
 \subsection{Three "modes" of the algorithm}
-The algorithm has three distinct fragments: 
+The algorithm has three distinct fragments that coincide with 
+the description of the idea above: 
 \begin{itemize}
-\item fragment in the lines 3-35. that will be called the "Greater" part,
-\item fragment in the lines 27-62, that will be called the "Searching" part,
-\item fragment in the lines 64-93, that will be called the "Less" part.
+\item fragment in the lines 3-35. that will be called the "Greater" part, 
+that corresponds to \ref{greater idea}
+\item fragment in the lines 27-62, that will be called the "Searching" part, 
+that corresponds to \ref{searching idea connected} and \ref{searching mode idea}
+\item fragment in the lines 64-93, that will be called the "Less" part, that 
+corresponds to \ref{Less idea}.
 \end{itemize}
 %The graph of the control flow of these parts looks like this:
-Above idea is structured among three parts of the algorithm 
+%Above idea is structured among three parts of the algorithm 
+
+The control flow of the parts can be seen on the diagram:
+
+The execution of the algorithm then goes as follows:
+
+We start at "Greater" and proceed to do the procedure from \ref{greater idea}. 
+Once the procedure stops, we do procedure from \ref{searching mode idea}, then 
+dependent whether the result have corresponding \Eoc\ greater or smaller than $\frac{p}{q}$, 
+we perform, respectively -- again procedure from \ref{greater idea} or the 
+procedure from \ref{less idea}. We repeat \ref{less idea} as long as neccessery. 
+Once it gives the state that have \Eoc\ greater than $\frac{p}{q}$ we set the flag to 
+"Greater" again and repeat the whole process starting from the procedure in \ref{greater idea}. 
+In the case that reapeting the procedure from \ref{Less idea} won't give any state with 
+corresponding \Eoc\ greater than $\frac{p}{q}$ the algorithm will hit its stoping condition 
+and answear "no" as written in the algorithm 
+\ref{the algorithm for searching the spectrum itself} itself.   
 
 \section{Proof of the correctness of the algorithm}\label{memory state proof}
+Now, we will perform the proof, that the idea of the algorithm presented above in 
+\ref{the idea of the algoritm}, as 
+well as the algorithm itself \ref{the algorithm for searching the spectrum itself}, 
+works as intented.
+
 Firstly, let us observe, that algorithm gives the answear on lines 8, 14-15, 35-36, 55-56, 
 62-63 and 
 always ends immedietly after giving the answear. Thus, it will always give at most one answear.
