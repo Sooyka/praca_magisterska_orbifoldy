@@ -274,14 +274,7 @@ In the case, the $flag\_value$ is equal to:
         for the value $d_p'$ of the $c_p$ such that
         $\chi^{orb}(*d_1\cdots d_{p-1}d_p'd_{p+1}\cdots)\leq\frac{p}{q}$ and
         $\chi^{orb}(*d_1\cdots d_{p-1}(d_p'-1)d_{p+1}\cdots)>\frac{p}{q}$.
-        if $\chi^{orb}(*d_1\cdots d_{p-1}d_p'd_{p+1}\cdots)=\frac{p}{q}$ then 
-        {
-            We found an orbifold and we are ending the whole
-            algorithm with answer "yes, $*d_1\cdots d_{p-1}d_p'd_{p+1}\cdots$".
-            
-            
-        }
-        We set $d_p$ and values of all the counters 
+        We set $c_p$ and all of the counters 
         to the left of $c_p$ to the value $d_p'$.
         if $\chi^{orb}(*d_1d_2d_3\cdots)=\frac{p}{q}$ then 
         {
@@ -783,9 +776,9 @@ the description of the idea above:
 \begin{itemize}
 \item fragment in the lines 3-35. that will be called the "Greater" part, 
 that corresponds to \ref{greater idea}
-\item fragment in the lines 27-62, that will be called the "Searching" part, 
+\item fragment in the lines 27-55, that will be called the "Searching" part, 
 that corresponds to \ref{searching idea connected} and \ref{searching mode idea}
-\item fragment in the lines 64-93, that will be called the "Less" part, that 
+\item fragment in the lines 57-86, that will be called the "Less" part, that 
 corresponds to \ref{Less idea}.
 \end{itemize}
 %The graph of the control flow of these parts looks like this:
@@ -808,6 +801,42 @@ and answear "no" as written in the algorithm
 \ref{the algorithm for searching the spectrum itself} itself.   
 % for searching the spectrum, that is
 \section{Proof of the correctness of the algorithm}\label{memory state proof}
+\subsection{Lemmas}
+Firstly, we will prove that our invariants indeed are conserved during the execution 
+of the algorithm. We will also proof some additional lemmas regarding the state of memory 
+during the algorithm.
+
+-- THere are only finitely many couters non 1
+
+--order of counters is always decreasing
+
+\begin{lemma}\label{Greater infinities to the left lemma}
+When control is at the line 15. and the pivot is then at the counter $c_n$, all counters 
+to the left of $c_n$ are set to $\infty$. 
+\end{lemma}
+\subsubsection{Proof.}
+We can get to the line 15. by two ways: from Greater and from Searching. 
+Searching puts us on the first counter. 
+Greater increases counter by one. 
+To get to counter $c_n$. we would need to go through all the counters to the left of it 
+setting tem to $\infty$. 
+\begin{lemma}\label{Searching infinities to the left lemma}
+When control is at the line 33. and the pivot is then at the counter $c_n$, all counters 
+to the left of $c_n$ are set to $\infty$. 
+\end{lemma}
+
+\begin{lemma}\label{Searching infinities to the left lemma}
+When control is at the line 66. and the pivot is then at the counter $c_n$, all counters 
+to the left of $c_n$ are set to the same value. 
+\end{lemma}
+
+\begin{lemma}
+All counters strictly to the left to the pivot have the same value at any stage of 
+the execution of the algorithm.
+\end{lemma}
+\subsubsection{Proof.}
+At the start they have, and after every change they also have.
+\subsection{Proof}
 Now, we will perform the proof, that the idea of the algorithm presented above in 
 \ref{the idea of the algoritm}, as 
 well as the algorithm itself \ref{the algorithm for searching the spectrum itself}, 
@@ -842,12 +871,12 @@ $\bullet$ That the algorithm always ends in a finite number of steps (Guaranteed
 %\subsubsection{Proof.}
 
 \subsection{No false positives}
-Algorithm gives answear "yes" at lines 7-8, 35-36, 44-45, 75-76. At each of these places, 
+Algorithm gives answear "yes" at lines 7-8, 37-38, 68-69. At each of these places, 
 the answear contains the example of an orbifold with \Eoc\ equal to $\frac{p}{q}$ that was 
-explicitly checked for correctness just before giving the answear (see lines 5, 33, 42, 73). 
+explicitly checked for correctness just before giving the answear (see lines 5, 35, 66). 
 $_\square$    
 \subsection{No false negatives}
-Let $d_1d_2d_3\cdots$ be such that $\cho{*d_1d_2d_3\cdots} = \frac{p}{q}$. 
+Let $D = d_1d_2d_3\cdots$ be such that $\cho{*d_1d_2d_3\cdots} = \frac{p}{q}$. 
 
 %Let us assume for a contradiction, that algorithm started with $\frac{p}{q}$ answered "no". 
 %
@@ -858,22 +887,87 @@ First, we will show that the algorithm will never
 go beyond $d_1d_2d_3\cdots$ counter state in $\preceq$ order. 
 
 Let us observe that the only lines where 
-the counters are changed are lines 15, 40-41 and 71-72, and while changing, 
+the counters are changed are lines 15, 40-41 and 71-72, 
+
+Right right before 
+the change from 15 and right after each change from 40-41, 71-72 
+(lines, respectively 5, 35, 66), 
+the new state is checked if it is a solution and 
+if it is a solution, the algorithm stops. From this, we 
+have that going beyond $d_1d_2d_3\cdots$ can not happen from $d_1d_2d_3\cdots$, 
+it must happen from some state $D' \preceq d_1d_2d_3\cdots$.
+
+Furthermore while changing, 
 only counters 
 at pivot and to the left of the pivot are changed. 
 
-Because of that, going beyond $d_1d_2d_3\cdots$ counter state 
-could happen only in lines 15, 40-41 or 71-72, while pivot would be 
+Because of that:
+\begin{observation}\label{position of pointer observation}
+Going beyond $d_1d_2d_3\cdots$ counter state 
+could happen only in lines 15, 33-34 or 64-65, while pivot would be 
 %lovely
-on the rightmost counter that is differrent from $d_1d_2d_3\cdots$. 
+at the rightmost counter that is differrent from $d_1d_2d_3\cdots$ or further to the right. 
+That is, if $d_1'd_2'd_3'\cdots$ is the current state, and 
+$c_k$ is the rightmost counter on which $d_1d_2d_3\cdots$ 
+and $d_1'd_2'd_3'\cdots$ differ and $c_n$ is the counter at wich the pivot is on then 
+at the moment of chenge that goes beyond $d_1d_2d_3\cdots$, it must hold that $k \leq n$.
+\end{observation}
 %This is because these are the only lines where the counters are changed and while changing, 
 %only counters 
 %at pivot and to the left of the pivot are changed. 
 
-We will now eliminate all three options case by case. 
+We will show that if the counters are below $D$ in $\preceq$ before the change they still 
+be below $D$ or at $D$ after the change. 
+
+We will now eliminate all three options arising from lines 15, 33-34 and 64-65 case by case. 
+Let $D' = d_1'd_2'd_3'\cdots$ be current state of counters before the change 
+during the execution of the algorithm. 
+Let $c_k$ be the rightmost counter on which $d_1d_2d_3\cdots$ 
+and $d_1'd_2'd_3'\cdots$ differ. Let $c_n$ be the counter at wich the pivot is on. 
 \subsubsection{Line 15}
-\subsubsection{Lines 40-41}
-\subsubsection{Lines 71-72}
+We will show that under taken assumptions, we will never get to this line. 
+First, let us prove, that the pivot must be exactly at the counter $c_k$. 
+By \ref{Greater infinities to the left lemma} we know, that if the pivot is 
+on the counter $c_n$, while execution is at line 15, 
+all the counters to the left of $c_n$ are set to $\infty$. 
+
+This however means, that
+\begin{equation}
+\underbrace{\infty\infty\cdots\infty}_{n-1\ \mathrm{times}}d_nd{n+1}d_{n+2}\cdots \preceq D.
+\end{equation}
+Together with the fact, that for $k$, which is $\leq n$, we have that 
+for any $l > k$, we have that $d_l = d_l'$ this means that if $n \geq k+1$, we have that 
+$D = D'$. This is a contradiction with the assumption of $k$. 
+From this we have that $n = k$.
+
+We have then that pivot is on the rightmost counter $c_k$, 
+that differes between $D$ and $D'$, and 
+that all the counters to the left of $c_k$ are set to $\infty$. 
+
+From the assumption that $D' \preceq D$ we know, that $d_k' < d_k$ and that all 
+counters to the left of $c_k$ also must be $\infty$ in $D$.  
+
+From this we have, that $D'$ and $D$ differ only on the counter $c_k$. 
+
+From this, sice $\cho{*d_1d_2d_3\cdots} = \frac{p}{q}$, we have, that: 
+\begin{equation}
+\cho{*d_1'd_2'd_3'\cdots d_{k-1}'\infty d_{k+1}'\cdots} \leq \frac{p}{q} 
+\end{equation}
+
+From this, we have the contradiction with the assumption that we will get to the line 15. 
+
+\subsubsection{Lines 33-34}
+Similarly as in the previous case, this time using \ref{Searching infinities to the left lemma} 
+we can prove, that $n=k$, as well as that $d_k' < d_k$, that all 
+counters to the left of $c_k$ also must be $\infty$ in $D$, and that 
+$D'$ and $D$ differ only on the counter $c_k$.
+
+This leads us to the conclusion that searching procedure from lines 
+29-32 will find $d_k$ as a result. 
+
+\subsubsection{Lines 64-65}
+WE will show that $n = k$. We can get to line 64 only if the configuration (all of the pivot to 
+the left the same ) ha \Eoc smaller thsn pq. However, this has no smaller . 
 
 \subsection{Guaranteed termination}
 Let us assume that for some input $M$ and $\frac{p}{q}$ the algorithm does not anwear "yes". 
@@ -891,6 +985,54 @@ the algorithm will go beyond it.
 %\end{enumerate}
 %\section{Improvements}
 We will prove that for any state different than 222222 it will go beyond it.
+
+Proof will be inductive, with respect to order $\preceq$. Our inductive assumption will be, that 
+for a given state $D$, that at most 22222, 
+all the states $D'\preceq D$ have some state $D''$, such 
+that $d'\preceq D''$, and that $D''$ was the state of the counters at some point. 
+
+$\bullet$ For the fist state we have it is true since it is the $D''$ for all the previous ones.   
+
+$\bullet$ Let us suppouse that for a state $D = d_1d_2d_3\cdots$ we have aour induction thesis. 
+We will go through several cases. 
+\begin{enumerate}
+\item $D$ is a successor of some $D'$. There are two options -- either $D'$ was a state of counters 
+at some point or it wasn't. If it wasn't from the inductive assumption we know 
+that some state equal at least $D$ was the state of counters.
+
+In the case it was a state of counters --  three cases
+here there will be 222222 as an exeption
+
+
+\item $D$ was not a cuccessor of any $D' \preceq D$. From this, we have that $D$ has at least one 
+$\infty$ on its couters. \ref all are on the left. 
+Let $c_l$ be the counter that has rightmost infty in $D$. 
+
+We know that for any smaller there is one . Let take the smallest ones for each. if any of them 
+are greater than D we are done, so let us suppouse that they are all smaller. 
+
+This needs to be a finite set, since there was only finitely many states as a stets of counters. 
+This means that, since for every non infty one there are some ddadada there is an upper limit 
+dadada. THere is one that has $infty$ at this . Since they have the same to the right as D 
+it must be 
+greater or equal than D,  
+
+\end{enumerate}
+
+Now we will show that at some point, lgorithm will have as a state of counters exactly 222222. 
+
+Let us observe that every counter with number greater than dadada 
+has pivot on it for the first time while the execution is in dadada (maybe llemat)
+
+From this, we have, that every time there is a stete of counters thhat for the first time 
+involves counter with number greater than dadada, it is the state 2222222. 
+Since we know that we will have for every state bigger state, we know, that at some point we have 
+state bigger than nifty infty infty infty. The smallest biggest state involves additiona lcounter 
+and by what we shouwed then there will be 222222. $_\square$
+
+
+
+
 
 \section{Another questions the algorithm can answear}
 \subsection{Deciding the order of accumulation}
