@@ -822,20 +822,32 @@ To get to counter $c_n$. we would need to go through all the counters to the lef
 setting tem to $\infty$. 
 \begin{lemma}\label{Searching infinities to the left lemma}
 When control is at the line 33. and the pivot is then at the counter $c_n$, all counters 
-to the left of $c_n$ are set to $\infty$. 
+to the left of $c_n$ are set to $\infty$ and the counter $c_n$ is not set to $\infty$. 
 \end{lemma}
 
-\begin{lemma}\label{Searching infinities to the left lemma}
+\begin{lemma}\label{Less same to the left lemma}
 When control is at the line 66. and the pivot is then at the counter $c_n$, all counters 
-to the left of $c_n$ are set to the same value. 
+to the left of $c_n$, are set to the same value $d_{n-1}$ and the counter $c_n$ 
+is not set to the value $d_{n-1}$. 
 \end{lemma}
 
 \begin{lemma}
-All counters strictly to the left to the pivot have the same value at any stage of 
+All counters strictly to the left to the pivot have the same value and 
+counter at the pivot have different value than these ones 
+%at any of above lines. 
+ at any stage of 
 the execution of the algorithm.
 \end{lemma}
 \subsubsection{Proof.}
 At the start they have, and after every change they also have.
+\begin{lemma}\label{Small searching always terminates}
+Searching procedure from lines 29-32 always terminates.
+\end{lemma}
+\subsubsection{Proof.}
+\begin{lemma}
+There are always only finitely many steps in execution of the algorithm before it 
+changes the state of the counters. 
+\end{lemma}
 \subsection{Proof}
 Now, we will perform the proof, that the idea of the algorithm presented above in 
 \ref{the idea of the algoritm}, as 
@@ -925,7 +937,8 @@ during the execution of the algorithm.
 Let $c_k$ be the rightmost counter on which $d_1d_2d_3\cdots$ 
 and $d_1'd_2'd_3'\cdots$ differ. Let $c_n$ be the counter at wich the pivot is on. 
 \subsubsection{Line 15}
-We will show that under taken assumptions, we will never get to this line. 
+%For the sake of contradiction, let us assume, that 
+We will show that under taken assumptions, we will not get to this line. 
 First, let us prove, that the pivot must be exactly at the counter $c_k$. 
 By \ref{Greater infinities to the left lemma} we know, that if the pivot is 
 on the counter $c_n$, while execution is at line 15, 
@@ -942,12 +955,9 @@ From this we have that $n = k$.
 
 We have then that pivot is on the rightmost counter $c_k$, 
 that differes between $D$ and $D'$, and 
-that all the counters to the left of $c_k$ are set to $\infty$. 
+that all the counters strictly to the left of $c_k$ in $D'$ are set to $\infty$. 
 
-From the assumption that $D' \preceq D$ we know, that $d_k' < d_k$ and that all 
-counters to the left of $c_k$ also must be $\infty$ in $D$.  
-
-From this we have, that $D'$ and $D$ differ only on the counter $c_k$. 
+%From the assumption that $D' \preceq D$ we know, that $d_k' < d_k$. 
 
 From this, sice $\cho{*d_1d_2d_3\cdots} = \frac{p}{q}$, we have, that: 
 \begin{equation}
@@ -959,22 +969,56 @@ From this, we have the contradiction with the assumption that we will get to the
 \subsubsection{Lines 33-34}
 Similarly as in the previous case, this time using \ref{Searching infinities to the left lemma} 
 we can prove, that $n=k$, as well as that $d_k' < d_k$, that all 
-counters to the left of $c_k$ also must be $\infty$ in $D$, and that 
-$D'$ and $D$ differ only on the counter $c_k$.
+counters strictly to the left of $c_k$ in $D'$ also must be $\infty$.
 
 This leads us to the conclusion that searching procedure from lines 
-29-32 will find $d_k$ as a result. 
+29-32 will find some $ d_k'' \leq d_k$ as a result. Then, the resulting state 
+still will be $\preceq D$. 
 
 \subsubsection{Lines 64-65}
-WE will show that $n = k$. We can get to line 64 only if the configuration (all of the pivot to 
-the left the same ) ha \Eoc smaller thsn pq. However, this has no smaller . 
+We will show the contradiction by showing that pivot must be on 
+the counter strictly to the left of $c_k$. 
+%We will show that $n = k$. 
+By \ref{Less same to the left lemma} 
+we know, that all the counters to the left of $c_n$ are set to $d_{n-1}'$. 
+From this, from the fact that $d_k' < d_k$ and 
+from the fact that $\cho{*d_1d_2d_3\cdots} = \frac{p}{q}$, 
+we have that, unless $n < k$, we have that 
+\begin{equation}
+\cho{*d_1'd_2'd_3'\cdots} \geq \frac{p}{q}.
+\end{equation}
+However, this is a contradiction with being at lines 64-65, as 
+the only way to get there with the execution, is either from lines 
+45-47 or the lines 82-84, reaching either require for the state of counters to have 
+corresponding \Eoc\ $<\frac{p}{q}$.
+
+% We can get to line 64 only if the configuration (all of the pivot to 
+%the left the same ) ha \Eoc smaller thsn pq. However, this has no smaller . 
 
 \subsection{Guaranteed termination}
-Let us assume that for some input $M$ and $\frac{p}{q}$ the algorithm does not anwear "yes". 
-We will show, that then it will answear "no" in finite number of steps.
+First let us observe, that 
+Let 
+\begin{equation}
+_\infty D = \underbrace{\infty\ \infty\ \infty\cdots 
+\infty\ }_{\lfloor 2(1-\frac{p}{q})\rfloor\ \mathrm{times}}1\ 1\ 1\cdots
+\end{equation}
+and let 
+\begin{equation}
+_2D = \underbrace{2\ 2\ 2\cdots 
+2\ }_{\lfloor 4(1-\frac{p}{q})\rfloor\ \mathrm{times}}1\ 1\ 1\cdots.
+\end{equation}
+These are the state consisting of only, respectively, $\infty$ and $2$ as a non-$1$ counters 
+values, that have the property, that they have the most non-$1$ counters from all 
+states of such form, having the corresponding \Eoc\ $\geq\frac{p}{q}$. 
 
-We will show it by firstly show, that for any state d1d2d3 smaller than 1/21/21/21/2
-the algorithm will go beyond it.
+Let us assume that for some input $M$ and $\frac{p}{q}$ the algorithm does not anwear "yes". 
+We will show, that then it will answear "no" in finite number of steps. By \ref{} 
+we can show this, by showing, that it will answear "no" after 
+finately many of counters state changes. 
+
+We will show it by firstly showing, that for any state $D = d_1d_2d_3\cdots$ smaller 
+or equal to  
+$D_2$ the algorithm will go to it or beyond it.
 %\begin{enumerate}
 %    \item if the pivot is on the zeroth column ($c = 0$), then 
 %    \begin{enumerate}[label*=\arabic*.]
@@ -984,45 +1028,86 @@ the algorithm will go beyond it.
 %    \item abcd
 %\end{enumerate}
 %\section{Improvements}
-We will prove that for any state different than 222222 it will go beyond it.
+%We will prove that for any state different than 222222 it will go beyond it.
 
 Proof will be inductive, with respect to order $\preceq$. Our inductive assumption will be, that 
-for a given state $D$, that at most 22222, 
-all the states $D'\preceq D$ have some state $D''$, such 
-that $d'\preceq D''$, and that $D''$ was the state of the counters at some point. 
+for a given state $D$, that is at most $D_2$, 
+%all the states $D'\prec D$ 
+%have 
+there is some state $D'$, such 
+that $D\preceq D''$, and that $D'$ was the state of the counters after a finite 
+number of steps of execution of the algorithm. 
+%at some point. 
 
-$\bullet$ For the fist state we have it is true since it is the $D''$ for all the previous ones.   
+$\bullet$ For the fist state we have that this is true since it is the $D'$ for itself.
+%for all the previous ones.   
 
-$\bullet$ Let us suppouse that for a state $D = d_1d_2d_3\cdots$ we have aour induction thesis. 
-We will go through several cases. 
-\begin{enumerate}
-\item $D$ is a successor of some $D'$. There are two options -- either $D'$ was a state of counters 
-at some point or it wasn't. If it wasn't from the inductive assumption we know 
-that some state equal at least $D$ was the state of counters.
+$\bullet$ Let us suppouse that for a state $D = d_1d_2d_3\cdots \preceq D_2$, for  
+all the states $\preceq D$ our inductive assumption holds. We will show that it holds 
+for $D$. 
+ 
+We will have two cases. 
+\begin{itemize}
+\item $D$ is a successor of some $D_1$. 
+There are two options -- either $D_1$ was a state of counters 
+at some point of the execution, or it wasn't. 
 
-In the case it was a state of counters --  three cases
-here there will be 222222 as an exeption
+If it wasn't, from the inductive assumption we know 
+that some state equal at least $D$ was the state of counters. From this we have the induction 
+thesis for $D$.
+
+In the case $D_1$ was a state of counters, from \ref{} we have, that the next 
+state of counters will be equal at least $D$.  
+%there are three cases
+%, depending on 
+%which lines will be the change from $D_1$ to the next state in the execution. 
+%\begin{itemize}
+%\item Line 15 
+
+%in this case the state is chenged 
+%\item Line 
 
 
-\item $D$ was not a cuccessor of any $D' \preceq D$. From this, we have that $D$ has at least one 
-$\infty$ on its couters. \ref all are on the left. 
+%\item Line
+
+% 
+%\end{itemize}
+%here there will be 222222 as an exeption
+
+
+\item $D$ is not a successor of any $D' \preceq D$. From this, we have that $D$ has at least one 
+$\infty$ on its couters.  
 Let $c_l$ be the counter that has rightmost infty in $D$. 
+From \ref{} we have, that all the counters to the left of $c_l$ also are set to $\infty$.
 
-We know that for any smaller there is one . Let take the smallest ones for each. if any of them 
-are greater than D we are done, so let us suppouse that they are all smaller. 
+There are three cases:
+\begin{itemize}
+\item
+\item
+\item
+\end{itemize}
 
-This needs to be a finite set, since there was only finitely many states as a stets of counters. 
-This means that, since for every non infty one there are some ddadada there is an upper limit 
-dadada. THere is one that has $infty$ at this . Since they have the same to the right as D 
-it must be 
-greater or equal than D,  
+%From the inductive assumption, we know that for any state $D' \preceq D$.
+%Let us take an ascending sequence of ${D_n}$, such that   
+%Let take the smallest ones for each. if any of them 
+%are greater than D we are done, so let us suppouse that they are all smaller. 
 
-\end{enumerate}
+%This needs to be a finite set, since there was only finitely many states as a stets of counters. 
+%This means that, since for every non infty one there are some ddadada there is an upper limit 
+%dadada. THere is one that has $infty$ at this . Since they have the same to the right as D 
+%it must be 
+%greater or equal than D,  
 
-Now we will show that at some point, lgorithm will have as a state of counters exactly 222222. 
+\end{itemize}
 
-Let us observe that every counter with number greater than dadada 
+Now we will show that at some point, algorithm will have as a state of counters $_2D$. 
+
+\begin{lemma}
+Every counter with number greater than dadada 
 has pivot on it for the first time while the execution is in dadada (maybe llemat)
+\end{lemma}
+%Let us observe that 
+\subsubsection{Proof.}
 
 From this, we have, that every time there is a stete of counters thhat for the first time 
 involves counter with number greater than dadada, it is the state 2222222. 
