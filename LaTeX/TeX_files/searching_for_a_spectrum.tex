@@ -811,7 +811,7 @@ during the algorithm.
 --order of counters is always decreasing
 
 \begin{lemma}\label{Greater infinities to the left lemma}
-When control is at the line 15. and the pivot is then at the counter $c_n$, all counters 
+When control is at the line 15. and the pivot is at the counter $c_n$, all counters 
 to the left of $c_n$ are set to $\infty$. 
 \end{lemma}
 \subsubsection{Proof.}
@@ -848,6 +848,7 @@ Searching procedure from lines 29-32 always terminates.
 There are always only finitely many steps in execution of the algorithm before it 
 changes the state of the counters. 
 \end{lemma}
+\subsubsection{Proof.}
 \subsection{Proof}
 Now, we will perform the proof, that the idea of the algorithm presented above in 
 \ref{the idea of the algoritm}, as 
@@ -886,7 +887,7 @@ $\bullet$ That the algorithm always ends in a finite number of steps (Guaranteed
 Algorithm gives answear "yes" at lines 7-8, 37-38, 68-69. At each of these places, 
 the answear contains the example of an orbifold with \Eoc\ equal to $\frac{p}{q}$ that was 
 explicitly checked for correctness just before giving the answear (see lines 5, 35, 66). 
-$_\square$    
+%$_\square$    
 \subsection{No false negatives}
 Let $D = d_1d_2d_3\cdots$ be such that $\cho{*d_1d_2d_3\cdots} = \frac{p}{q}$. 
 
@@ -1005,7 +1006,7 @@ _\infty D = \underbrace{\infty\ \infty\ \infty\cdots
 and let 
 \begin{equation}
 _2D = \underbrace{2\ 2\ 2\cdots 
-2\ }_{\lfloor 4(1-\frac{p}{q})\rfloor\ \mathrm{times}}1\ 1\ 1\cdots.
+2\ }_{\lceil 4(1-\frac{p}{q})\rceil\ \mathrm{times}}1\ 1\ 1\cdots.
 \end{equation}
 These are the state consisting of only, respectively, $\infty$ and $2$ as a non-$1$ counters 
 values, that have the property, that they have the most non-$1$ counters from all 
@@ -1015,7 +1016,7 @@ Let us assume that for some input $M$ and $\frac{p}{q}$ the algorithm does not a
 We will show, that then it will answear "no" in finite number of steps. By \ref{} 
 we can show this, by showing, that it will answear "no" after 
 finately many of counters state changes. 
-\subsubsection{Going beyond every state smaller or equal than $_2D$}
+\subsubsection{Going beyond every state smaller or equal than $_2D$}\label{going beyond}
 We will show it by firstly showing, that for any state $D = d_1d_2d_3\cdots$ smaller 
 or equal to  
 $D_2$ the algorithm will go to it or beyond it.
@@ -1043,7 +1044,7 @@ $\bullet$ For the fist state we have that this is true since it is the $D'$ for 
 %for all the previous ones.   
 
 $\bullet$ Let us suppouse that for a state $D = d_1d_2d_3\cdots \preceq D_2$, for  
-all the states $\preceq D$ our inductive assumption holds. We will show that it holds 
+all the states $\prec D$ our inductive assumption holds. We will show that it holds 
 for $D$. 
  
 We will have two cases. 
@@ -1075,7 +1076,7 @@ state of counters will be equal at least $D$.
 %here there will be 222222 as an exeption
 
 
-\item $D$ is not a successor of any $D' \preceq D$. From this, we have that $D$ has at least one 
+\item $D$ is not a successor of any $D' \prec D$. From this, we have that $D$ has at least one 
 $\infty$ on its couters.  
 Let $c_l$ be the counter that has rightmost infty in $D$. 
 From \ref{} we have, that all the counters to the left of $c_l$ also are set to $\infty$.
@@ -1141,18 +1142,33 @@ the state larger in $\preceq$ than $D$.
 \subsubsection{Reaching $_2D$ at finite number of steps}
 Now we will show that at some point, algorithm will have as a state of counters $_2D$. 
 
-\begin{lemma}
-Every counter with number greater than dadada 
-has pivot on it for the first time while the execution is in dadada (maybe llemat)
+\begin{lemma}\label{incorporating counters}
+Every counter with number greater than $\lfloor 2(1-\frac{p}{q})\rfloor\ \mathrm{times}$ 
+has pivot on it for the first time while the execution is in line 
 \end{lemma}
 %Let us observe that 
 \subsubsection{Proof.}
 
-From this, we have, that every time there is a stete of counters thhat for the first time 
-involves counter with number greater than dadada, it is the state 2222222. 
-Since we know that we will have for every state bigger state, we know, that at some point we have 
-state bigger than nifty infty infty infty. The smallest biggest state involves additiona lcounter 
-and by what we shouwed then there will be 222222. $_\square$
+
+From this, we have, that every time there is a state of counters that for the first time 
+involves counter with number greater than 
+$\lfloor 2(1-\frac{p}{q})\rfloor\ \mathrm{times}$, it is the state 
+of the form $2\ 2\ 2\cdots\ 2\ 1\ 1\ 1\cdots$. 
+Since from \ref{going beyond} 
+we know that for every state $D \preceq _2D$, 
+we will have some bigger state $D'$, that at some point was a state of counters, we 
+have that at some point counter $c_{\lceil 4(1-\frac{p}{q})\rceil}$ will 
+obtain non-zero value (if the predescor of $_2 D$ will be the state of counters 
+at some point, then $c_{\lceil 4(1-\frac{p}{q})\rceil}$ will have non-$1$ value at the 
+next chenge of counters.). 
+%We have 
+%some state $_\infty D' \succeq _\infty D$. In the next change of the conters, state of 
+%the counters will have non-$1$ value at the counter $\lfloor 2(1-\frac{p}{q})\rfloor + 1$.
+From \ref{incorporating counters}, we know, that then there must have been state $_2D$ 
+at some point as a state of counters. 
+%The smallest biggest state involves additiona lcounter 
+%and by what we shouwed then there will be 222222. 
+$_\square$
 
 
 

@@ -13,8 +13,11 @@
 
 %Compared to the previous version, we also use an occurance counter, starting with it set to 0 
 %and with the list of orbifolds, wich is empty at the start.
-
-This will be an extention of the algorithm from \ref{}. 
+\section{The idea of the algorithm}
+This is an extention of the algorithm from \ref{}. It only differs by 
+lines after finding the solution. Then, instead terminating it appends the sollution to the 
+initialy empty list and proceeds to search through the states as if the solution was 
+the starting configuration. 
 
 \begin{lstlisting}[firstnumber=1,consecutivenumbers=true]
 In the case, the $flag\_value$ is equal to: 
@@ -106,13 +109,18 @@ In the case, the $flag\_value$ is equal to:
 }
 \end{lstlisting}
 
-\section{Why this works}
+\section{Proof of the correctness of the algorithm}
+Let us observe, that whole proof from the chapter \ref{} was independent from the choise of 
+the starting configuration. As such, since algorithm from this chapter is the repeting iteration 
+of the algorithm from chapter \ref{} and since \ref{}, 
+above algorithm will hold all nesseserly traits. $_\square$
 
 \section{Implementation}\label{implementation}
 As an appendix in the separate document, there is a source of a program with implementation 
-of this algorithm 
-with full  
-enhancments described in this chapter. It is written in Rust. 
+of this algorithm with optimisation described below.
+%with full  
+%enhancments described in this chapter. 
+It is written in Rust. 
 It can be also found on \smalltodoII{dać ref do github} along with the \LaTeX\ source of 
 this thesis.
 %It is in the separate file, as it would take too much space in this 
