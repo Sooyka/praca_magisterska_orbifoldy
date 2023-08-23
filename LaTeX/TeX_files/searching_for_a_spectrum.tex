@@ -436,8 +436,14 @@ which the equality holds: $\infty\ 1\ 1\ 1\cdots$, for all the rest the inequali
 %We also have that $S(\infty\ 1\ 1\ 1\cdots) = 2\ 2\ 1\ 1\cdots$ and that 
 %$\cho{*2\ 2\ 1\ 1\cdots} = \frac{1}{2}$. 
 
-For the state $\infty d_2d_3d_4\cdots$ and its successor 
-$S(\infty d_2d_3d_4\cdots) = (d_2+1)(d_2+1)d_3\cdots$, we have that: 
+For the state 
+\begin{equation}
+\infty d_2d_3d_4\cdots\end{equation} 
+and its successor 
+\begin{equation}
+S(\infty d_2d_3d_4\cdots) = (d_2+1)(d_2+1)d_3\cdots,
+\end{equation}
+ we have that: 
 \begin{align}
 \cho{*\infty d_2d_3d_4\cdots} &- \cho{(d_2+1)(d_2+1)d_3d_4\cdots} = \notag \\
 1 + \Delta(\infty d_2) + \Delta(d_3d_4\cdots) &- 
@@ -454,25 +460,56 @@ to $0$. $_\square$
 \begin{lemma}\label{chi supp functoriality}
 %Let $d_1$ be different form $\infty$. 
 The supremum of the connected sequence 
-of finite states $\{(d_1+n)d_2d_3\cdots\}$ is $\infty d_2d_3\cdots$, and 
+of finite states 
+\begin{equation}
+\{(d_1+n)d_2d_3\cdots\}
+\end{equation}
+is
+\begin{equation}
+\infty d_2d_3\cdots
+\end{equation}, and 
 %the following diagram commutes:
-the infimum of the corresponding sequence $\{\cho{*(d_1+n)d_2d_3\cdots}\}$ is  
-$\cho{*\infty d_2d_3\cdots}$.
+the infimum of the corresponding sequence 
+\begin{equation}
+\{\cho{*(d_1+n)d_2d_3\cdots}\}\end{equation} 
+is  
+\begin{equation}
+\cho{*\infty d_2d_3\cdots}.
+\end{equation}
 \end{lemma}
 \subsubsection{Proof.} \label{chi supp functoriality proof}
 %From \ref{good lexicographical order} we know, that every bounded sequence in $\preceq$ have 
 %sup
 
-For every $n$ we have that $(d_1+n)d_2d_3\cdots\preceq\infty d_2d_3\cdots$. Furthermore for 
-every $d_1'd_2'd_3'\cdots$ such that $d_1'd_2'd_3'\cdots\preceq \infty d_2d_3\cdots$, there 
-exists $n$, such that $d_1'd_2'd_3' \cdots\preceq(d_1+n)d_2d_3\cdots$. Thus, $\infty d_2d_3\cdots$ 
-is the supremum of $\{(d_1+n)d_2d_3\cdots\}$.
+For every $n$ we have that 
+\begin{equation}
+(d_1+n)d_2d_3\cdots\preceq\infty d_2d_3\cdots.
+\end{equation} 
+Furthermore for 
+every 
+\begin{equation}
+d_1'd_2'd_3'\cdots\end{equation} such that 
+\begin{equation}
+d_1'd_2'd_3'\cdots\preceq \infty d_2d_3\cdots,
+\end{equation} there 
+exists $n$, such that 
+\begin{equation}
+d_1'd_2'd_3' \cdots\preceq(d_1+n)d_2d_3\cdots.
+\end{equation} 
+Thus, 
+\begin{equation}
+\infty d_2d_3\cdots
+\end{equation} 
+is the supremum of 
+\begin{equation}
+\{(d_1+n)d_2d_3\cdots\}.
+\end{equation}
 
 For every $n$ we have that: 
 \begin{align}
 \cho{*(d_1+n)d_2d_3\cdots} &= \cho{*d_1d_2d_3\cdots} 
 - \frac{(d_1+n)-1}{2(d_1+n)} + \frac{d_1-1}{2d_1} \notag\\ 
-&= \cho{*d_1d_2d_3\cdots} - \frac{1}{2d_1} + \frac{1}{2(d_1+n)}
+&= \cho{*d_1d_2d_3\cdots} - \frac{1}{2d_1} + \frac{1}{2(d_1+n)}.
 \end{align}
 We also have that:
 \begin{align}
@@ -490,49 +527,77 @@ We have that for $d_n \neq \infty$:
 \end{equation}
 As increasing the counter increases corresponding \Eoc.
 \end{observation}
+
 \begin{lemma}\label{chi supp functoriality non finite}
 %Let $d_1$ be different form $\infty$. 
 The supremum of the sequence 
-of states $\{\infty\infty\cdots\infty (d_n+m) d_{n+1} d_{n+2}\cdots\}_m$ 
-is $\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots$, and 
+of states 
+\begin{equation}
+\{\infty\infty\cdots\infty (d_n+m) d_{n+1} d_{n+2}\cdots\}_m
+\end{equation} 
+is 
+\begin{equation}
+\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots,
+\end{equation} and 
 %the following diagram commutes:
 the infimum of the corresponding sequence 
-$\{\cho{*\infty\infty\cdots\infty (d_n+m) d_{n+1} d_{n+2}\cdots}\}_m$ is  
-$\cho{*\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots}$.
+\begin{equation}
+\{\cho{*\infty\infty\cdots\infty (d_n+m) d_{n+1} d_{n+2}\cdots}\}_m
+\end{equation} is  
+\begin{equation}
+\cho{*\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots}.
+\end{equation}
 \end{lemma}
 \subsubsection{Proof.}
 The proof will be analogous to \ref{chi supp functoriality proof}
 
 For every $m$ we have that 
-$\infty\infty\cdots\infty(d_n+m)d_{n+1}d_{n+2}\cdots\preceq
-\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots$. Furthermore for 
+\begin{equation}
+\infty\infty\cdots\infty(d_n+m)d_{n+1}d_{n+2}\cdots\preceq
+\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots.
+\end{equation} 
+Furthermore for 
 every $d_1'd_2'd_3'\cdots$ such that 
-$d_1'd_2'd_3'\cdots\preceq \infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots$, there 
+\begin{equation}
+d_1'd_2'd_3'\cdots\preceq \infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots,
+\end{equation} there 
 exists $m$, such that 
-$d_1'd_2'd_3' \cdots\preceq\infty\infty\cdots\infty(d_n+m)d_{n+1}d_{n+2}\cdots$. 
+\begin{equation}
+d_1'd_2'd_3' \cdots\preceq\infty\infty\cdots\infty(d_n+m)d_{n+1}d_{n+2}\cdots.
+\end{equation} 
 
-Thus, $\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots$ 
-is the supremum of $\{\infty\infty\cdots\infty (d_n+m) d_{n+1} d_{n+2}\cdots\}_m$.
+Thus, 
+\begin{equation}
+\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots
+\end{equation} 
+is the supremum of 
+\begin{equation}
+\{\infty\infty\cdots\infty (d_n+m) d_{n+1} d_{n+2}\cdots\}_m.
+\end{equation}
 
 For every $m$ we have that: 
 \begin{align}
-\cho{*\infty\infty\cdots\infty (d_n+m) d_{n+1} d_{n+2}\cdots} &= 
+\cho{*\infty\infty\cdots\infty (d_n+m) d_{n+1} d_{n+2}\cdots} &= \\ 
 \cho{*\infty\infty\cdots\infty d_n d_{n+1} d_{n+2}\cdots} 
-- \frac{(d_n+m)-1}{2(d_n+m)} + \frac{d_n-1}{2d_n} \notag\\ 
-&= \cho{*\infty\infty\cdots\infty d_n d_{n+1} d_{n+2}\cdots} - 
+&- \frac{(d_n+m)-1}{2(d_n+m)} + \frac{d_n-1}{2d_n} = \notag \\ 
+\cho{*\infty\infty\cdots\infty d_n d_{n+1} d_{n+2}\cdots} &- 
 \frac{1}{2d_n} + \frac{1}{2(d_n+m)}
 \end{align}
 We also have that:
 \begin{align}
-\cho{*\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots} &= 
+\cho{*\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots} &= \\
 \cho{*\infty\infty\cdots\infty d_n d_{n+1} d_{n+2}\cdots} 
-- \frac{1}{2} + \frac{d_n-1}{2d_n} \notag\\ 
-&= \cho{*\infty\infty\cdots\infty d_n d_{n+1} d_{n+2}\cdots} - \frac{1}{2d_n} + 0.
+&- \frac{1}{2} + \frac{d_n-1}{2d_n} = \notag \\ 
+\cho{*\infty\infty\cdots\infty d_n d_{n+1} d_{n+2}\cdots} &- \frac{1}{2d_n} + 0.
 \end{align}
 Thus 
-$\cho{*\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots}$ is the infimum of 
-$\{\infty\infty\cdots\infty (d_n+m) d_{n+1} d_{n+2}\cdots\}_m$.
-$_\square$
+\begin{equation}
+\cho{*\infty\infty\cdots\infty \infty d_{n+1} d_{n+2}\cdots}
+\end{equation} 
+is the infimum of 
+\begin{equation}
+\{\infty\infty\cdots\infty (d_n+m) d_{n+1} d_{n+2}\cdots\}_m. _\square
+\end{equation}
 \begin{lemma}
 The state of the counters in the algorithm is weakly increasing with respect to order $\preceq$. 
 \end{lemma}
@@ -785,7 +850,7 @@ corresponds to \ref{Less idea}.
 %Above idea is structured among three parts of the algorithm 
 
 The control flow of the parts can be seen on the diagram:
-
+\todo{obrazek}
 The execution of the algorithm then goes as follows:
 
 We start at "Greater" and proceed to do the procedure from \ref{greater idea}. 
@@ -801,55 +866,138 @@ and answear "no" as written in the algorithm
 \ref{the algorithm for searching the spectrum itself} itself.   
 % for searching the spectrum, that is
 \section{Proof of the correctness of the algorithm}\label{memory state proof}
-\subsection{Lemmas}
+\subsection{Lemmas}\label{lemmas for the proof of the correctness}
 Firstly, we will prove that our invariants indeed are conserved during the execution 
-of the algorithm. We will also proof some additional lemmas regarding the state of memory 
+of the algorithm. We will also proof some other lemmas regarding the state of memory 
 during the algorithm.
 
--- THere are only finitely many couters non 1
-
---order of counters is always decreasing
+%-- THere are only finitely many couters non 1
+\begin{lemma}
+During any time of the execution of the algorithm, there are only finitely many counters 
+that have non-$1$ value.
+\end{lemma}
+\subsubsection{Proof.}
+We start with the state that have only finitely many non-$1$ value. Let us observe, that 
+all three of the places -- lines: 15, 33-34, 64-65, 
+where the counters are changed, change them in the way 
+that preserves this state. As during any time of execution, there were only finitely many 
+changes, we have the thesis. $_\square$
 
 \begin{lemma}\label{Greater infinities to the left lemma}
-When control is at the line 15. and the pivot is at the counter $c_n$, all counters 
+When control is at the line 15. and the pivot is at the counter $c_p$, all counters 
 to the left of $c_n$ are set to $\infty$. 
 \end{lemma}
 \subsubsection{Proof.}
-We can get to the line 15. by two ways: from Greater and from Searching. 
-Searching puts us on the first counter. 
-Greater increases counter by one. 
-To get to counter $c_n$. we would need to go through all the counters to the left of it 
-setting tem to $\infty$. 
+We can get to the line 15th only in two ways: from line 18 in "Greater" section or from line 53 
+in "Searching" section. 
+In this process "Searching" moves pivot to the first counter and  
+"Greater" moves pivot one counter to the right. 
+As long as the pivot is not on the 1st counter, control flow must have came then to the line 15th 
+from "Greater" section amd if pivot is at the 1st counter it must have camo from the 
+"Searching" section. From this we have,  
+that for the pivot, to get to the counter $c_p$, it would need to go through all 
+the counters to the left of $c_p$ while being on the line 15th and 
+setting them to $\infty$. 
 \begin{lemma}\label{Searching infinities to the left lemma}
-When control is at the line 33. and the pivot is then at the counter $c_n$, all counters 
-to the left of $c_n$ are set to $\infty$ and the counter $c_n$ is not set to $\infty$. 
+When control is at the line 33rd and the pivot is then at the counter $c_p$, all counters 
+to the left of $c_p$ are set to $\infty$ and the counter $c_p$ is not set to $\infty$. 
 \end{lemma}
+\subsubsection{Proof.}
+The only way to get to the line 33rd is from line 23rd in "Greater" section. 
+From \ref{Greater infinities to the left lemma} we know, that then all the counters to the left 
+of $c_p$ are set to $\infty$. Counter $c_p$ on the other hand can not be set to infty, 
+since, from the fact that control flow was at the block from line 21st, we know that
+\begin{equation}
+\cho{*d_1d_2\cdots d_{p-1}\infty d_{p+1}\cdots} < \frac{p}{q}
+\end{equation}
+and from the fact, that control flow was in the "Greater" block we know, that 
+\begin{equation}
+\cho{*d_1d_2d_3\cdots } > \frac{p}{q}._\square
+\end{equation}
+
+\begin{lemma}\label{state is ordered}
+For any state of counters during the execution of the algorithm $D = d_1d_2d_3\cdots$ we have that 
+$d_1 \geq d_2\geq d_3 \geq \cdots$.
+\end{lemma}
+%--order of counters is always decreasing
+\subsubsection{Proof.}
+We start with the state where $d_1 \geq d_2\geq d_3 \geq \cdots$. Let us observe, that, by 
+\ref{Greater infinities to the left lemma}, changing at line 15 preserves this state. 
+Changing at lines 33-34 or 64-65, preserve this state as they increase
+the value of the counter at which pivot is by one (to some $d_p+1$) and change all counters 
+to the left of the pivot to $d_p+1$. $_\square$
 
 \begin{lemma}\label{Less same to the left lemma}
-When control is at the line 66. and the pivot is then at the counter $c_n$, all counters 
-to the left of $c_n$, are set to the same value $d_{n-1}$ and the counter $c_n$ 
-is not set to the value $d_{n-1}$. 
+When control is at the line 66th and the pivot is then at the counter $c_p$, all counters 
+to the left of $c_p$, are set to the same value $d_{p-1}$ and the counter $c_p$ 
+is not set to the value $d_{p-1}$. 
 \end{lemma}
+\subsubsection{Proof.}
+The only way for the control flow to get to the line 66th is from line 47th or 84th. 
+In both of these cases, the counters to the left of $c_p$ were set to the same value on, 
+respectively lines 33-34 or 64-65. Also, on lines 33-34 or 64-65, the value 
+of the counter $c_{p-1}$ was increased by $1$. From this and 
+from \ref{state is ordered}, we know, that $d_{p-1} > d_p$ 
+%when we are at the line 66th
+.$_\square$
 
-\begin{lemma}
-All counters strictly to the left to the pivot have the same value and 
-counter at the pivot have different value than these ones 
+\begin{lemma}\label{same value on the counters to the left}
+All counters strictly to the left to the pivot have the same value 
+%and 
+%counter at the pivot have different value than these ones 
 %at any of above lines. 
  at any stage of 
 the execution of the algorithm.
 \end{lemma}
 \subsubsection{Proof.}
-At the start they have, and after every change they also have.
+As state of the counters changes only on lines 15, 33-34 or 64-65, and 
+the pivot is moving at most by one position to the right 
+between the changes to the state of the counters, this is the 
+corollary from \ref{Greater infinities to the left lemma}, 
+\ref{Searching infinities to the left lemma} and \ref{Less same to the left lemma}. $_\square$
+
 \begin{lemma}\label{Small searching always terminates}
 Searching procedure from lines 29-32 always terminates.
 \end{lemma}
 \subsubsection{Proof.}
-\begin{lemma}
+Let $c_p$ be the counter at which pivot is, when the searching procedure from lines 
+29-32 stars. Control flow can get to the lines 29-32 only from line 23rd. This guarantees, that 
+when starting the searching procedure, we have that:
+\begin{equation}
+\cho{*d_1d_2\cdots d_{p-1}\infty d_{p+1}\cdots} < \frac{p}{q}
+\end{equation}
+and  
+\begin{equation}
+\cho{*d_1d_2d_3\cdots } > \frac{p}{q}.
+\end{equation}
+From this and from \ref{chi supp functoriality non finite}, 
+we know, that there exists some $d_p' < \infty$ such that 
+\begin{equation}
+\cho{*d_1d_2\cdots d_{p-1}d_p' d_{p+1}\cdots} < \frac{p}{q}
+\end{equation}
+As such, the searching procedure stops. $_\square$
+\begin{lemma}\label{finitely many steps between counter changes}
 There are always only finitely many steps in execution of the algorithm before it 
 changes the state of the counters. 
 \end{lemma}
 \subsubsection{Proof.}
-\subsection{Proof}
+The only steps not explicitly listed in the algorithm are from the searching procedure from lines 
+29-32. From \ref{Small searching always terminates} we know, that this procedure 
+always terminates. 
+All other control flow can be check explicitly to have always only finitely many steps between 
+the change of the counters. 
+The change of the counters itself is also a finite procedure, as we are always only changing 
+the counters at pivot or at and to the left of the pivot, and there are only finitely many 
+such counters. $_\square$
+\begin{lemma}\label{always increases}
+For any state $D_1$ that is a state of counters at some point of the execution of the algorithm 
+and $D_2$ such that $D_1$ is changed to $D_2$ during the execution, we have that $D_1 \prec D_2$.
+\end{lemma}
+\subsubsection{Proof.}
+Let us observe that in each instance of chenging the counters -- in lines 15, 33-34 and 64-65. 
+the rightmost counter that is changed is always increased. From this, the lemma follows. 
+$_\square$
+\subsection{Proof.}\label{proof of the correctness of the algorithm}
 Now, we will perform the proof, that the idea of the algorithm presented above in 
 \ref{the idea of the algoritm}, as 
 well as the algorithm itself \ref{the algorithm for searching the spectrum itself}, 
@@ -1013,7 +1161,8 @@ values, that have the property, that they have the most non-$1$ counters from al
 states of such form, having the corresponding \Eoc\ $\geq\frac{p}{q}$. 
 
 Let us assume that for some input $M$ and $\frac{p}{q}$ the algorithm does not anwear "yes". 
-We will show, that then it will answear "no" in finite number of steps. By \ref{} 
+We will show, that then it will answear "no" in finite number of steps. By 
+\ref{finitely many steps between counter changes} 
 we can show this, by showing, that it will answear "no" after 
 finately many of counters state changes. 
 \subsubsection{Going beyond every state smaller or equal than $_2D$}\label{going beyond}
@@ -1057,7 +1206,7 @@ If it wasn't, from the inductive assumption we know
 that some state equal at least $D$ was the state of counters. From this we have the induction 
 thesis for $D$.
 
-In the case $D_1$ was a state of counters, from \ref{} we have, that the next 
+In the case $D_1$ was a state of counters, from \ref{always increases} we have, that the next 
 state of counters will be equal at least $D$.  
 %there are three cases
 %, depending on 
@@ -1108,9 +1257,12 @@ This sequence will be generated by repedeatly going through line 15 in the algor
 at every step, the corresponding \Eoc of the state of conters will be $> \frac{p}{q}$.
 
 \item $\cho{D} < \frac{p}{q}$
-From \ref{}, we know, that there must exists such state $^0D = ^0d_1^0d_2^0d_3'\cdots$, that 
-all $^0d_i$ are less than $\infty$ and the same for 
-any $i \leq l$, and $\cho{^0D} < \frac{p}{q}$. 
+From \ref{chi supp functoriality non finite}, we know, that there must exists state 
+\begin{equation}^0D = ^0d_1^0d_2^0d_3'\cdots,
+\end{equation} 
+such that 
+all $^0d_i$ are less than $\infty$ and are the same for 
+any $i \leq l$, and that $\cho{^0D} < \frac{p}{q}$. 
 
 From this, we conclude, that $\cho{D'} < \frac{p}{q}$. 
 Regardless of at which line state $D'$ was produced, the execution will then follow, 
@@ -1176,6 +1328,7 @@ $_\square$
 
 \section{Another questions the algorithm can answear}
 \subsection{Deciding the order of accumulation}
+\todo{sprawdzić to}
 Let $m \in \mathbb{N}$ be such that $\frac{p}{q} \in (1-\frac{m}{2},1-
 \frac{m+1}{2})$
 Let us denote by $r \coloneqq \frac{p}{q} - (1-\frac{m}{2})$. \\ 
