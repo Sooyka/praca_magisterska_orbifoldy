@@ -274,7 +274,7 @@ section \ref{Reduction to arithmetical questions section} which will provide us
 with more convenient language. 
 
 \section{Reduction to arithmetical questions}\label{Reduction to arithmetical questions section}
-As written in \ref{\Eoc on 2d}, we can express an \Eoc of a $M$-orbifold $O$ as:
+As written in \ref{spectra}, we can express an \Eoc of a $M$-orbifold $O$ as:
 \begin{equation}
 \cho{O} = \chi (M) - \sum_{i=1}^n \frac{r_i-1}{r_i} - \sum_{j=1}^m \frac{d_j-1}{2d_j},
 \end{equation}
@@ -321,7 +321,7 @@ with $r_i$ and $d_j$ ranging over $\mathbb{N}_{>0}\cup \{\infty\}$.
 %that $\varphi(\infty) \coloneqq \lim\limits_{k\to \infty} \varphi(k)$. 
 %\end{observation}
 
-As $\Delta(\infty) = 1 = \Delta(2^2)$ and $\Delta(^*\infty) = \frac{1}{2} = \Delta((^*)^2)$, 
+As $\Delta(\infty) = 1 = \Delta(2^2)$ and $\Delta(^*\infty) = \frac{1}{2} = \Delta((^*2)^2)$, 
 we could perform futher reductions to have an orbifold with 
 particular orbicharacteristic without cusps (if needed) and then (after these reductions) 
 we can analyse only expressions with $r_i$ and $d_j$ ranging over $\mathbb{N}_{>0}$ and 
@@ -332,6 +332,118 @@ so we are stating this observation only as a side remark.
 %The fact that this agrees with the definition of the \Eoc\ on the geometrical terms was 
 %addressed in \ref{extended_Euler_orbicharacteristic}. 
 
+\section{Hurwitz theorem}\label{największy orbifold}
+%\subsection{Hurwitz theorem}
+One of the well known facts about two-dimensional orbifolds comes from \cite{Hurwitz1893} 
+(page )
+Although formulated in different language, it states, that the orbifolds 
+with hyperbolic structure can have an \Eoc\ at most $-\frac{1}{84}$. 
+Here we will present the proof of this result with the language used in this thesis.
+%We will now prove this result 
+%in a straighforward way. 
+%\todo{dopisać}
+\begin{theorem}
+If a two dimensional orbifold admits hyperbolic structure, then the maximal \Eoc\ it can 
+have is $-\frac{1}{84}$ and the only orbifold that realises this \Eoc\ is $*2\ 3\ 7$.
+\end{theorem}
+\subsubsection{Proof.}
+From \ref{sufficiency of D2 and S2} we know, that to check if $-\frac{1}{84}$ is maximal 
+negative \Eoc\ a two dimensional orbifold can have, we only need to check possible 
+\Eoc s of $S^2$ orbifolds and $D^2$ orbifolds. 
+
+Firstly, we will show, that $*2\ 3\ 7$ has biggest negative \Eoc\ from all $D^2$ orbifolds 
+and its the only one with this \Eoc\ from $D^2$ orbifolds.
+
+We have that 
+\begin{equation}
+\cho{*2\ 3\ 7} = 1 - \frac{1}{4} - \frac{2}{6} - \frac{6}{14} = -\frac{1}{84}. 
+\end{equation}
+From \ref{spectra} we know, that $\speD = \spe^d(D^2)$, so we can consider only dihedral 
+orbipoints. 
+Let us observe, that since 
+$\max\{\Delta(^*n)\ |\ n \in \mathbb{N}_{>0} \cup \{\infty\}\} = \frac{1}{2}$, we have, that 
+$D^2$ orbifold has to have at least $3$ orbipoints.
+%Let us observe
+ 
+Let us observe, that for any $D^2$ orbifold that have $5$ orbipoints or more, have an \Eoc 
+equal at most $1 - 5\frac{1}{4} = -\frac{1}{4} < -\frac{1}{84}$. So we can restrict our search 
+only to orbifolds with at most $4$ orbipoints. 
+
+Let us observe, that $*2\ 2\ 2\ 3$ and $* 3\ 3\ 4$ are $D^2$ orbifolds with the biggest 
+negative \Eoc among orbifolds, respectively, with four orbipoints, without any 
+point of degree $2$. The proof of this observation is, that any other orbifold of these 
+respective kinds, would need to have all degrees of orbipoints (when ordered in increasing manner) 
+pairwise $\geq$ than $*2\ 2\ 2\ 3$ or $* 3\ 3\ 4$.
+%Let us observe, that id $D^2$ orbifold have at least one rotational orbipoint, then 
+%the smallest possible \Eoc\ is 
+%\begin{equation}
+%\cho{2 * 2 3} = 1 - \ 
+%\end{equation}
+
+Let us observe, that 
+the orbifold fith the greatest negative \Eoc, that 
+%have no orbipoints of degree $2$, that is, $* 3\ 3\ 4$, have \Eoc\ 
+\begin{equation}
+\cho{*2\ 2\ 2\ 3} = 1 - \frac{1}{4} - \frac{1}{4} - \frac{1}{4} - \frac{2}{6} = -\frac{1}{12} 
+< -\frac{1}{84}
+\end{equation}
+and
+\begin{equation}
+\cho{*3\ 3\ 4} = 1 - \frac{2}{6} - \frac{2}{6} - \frac{3}{8} = -\frac{1}{24} < -\frac{1}{84},
+\end{equation}
+From this, we can conclude, that we can restrict our search only to orbifolds with 
+exactly $3$ orbipoints, where at least one of them is equal to $2$. 
+
+Let us observe, that for such orbifold to have negative \Eoc, it needs to have at two orbipoints 
+of order at least $3$, otherwise it has \Eoc\ at most 
+\begin{equation}
+\cho{*2\ 2\ \infty} = 1- \frac{1}{4} - \frac{1}{4} - \frac{1}{2} = 0. 
+\end{equation}
+
+Further, let us observe, that $*2\ 4\ 5$ has the greatest negative \Eoc\ among orbifolds 
+that have no orbipoint of degree $3$. The proof of this observation is simmilar to the proof 
+of the previous one --any other orbifold of this kind, 
+would need to have all degrees of orbipoints (when ordered in increasing manner) 
+pairwise $\geq$ than $*2\ 4\ 5$.
+We have that 
+\begin{equation}
+\cho{*2\ 4\ 5} = 1 - \frac{1}{4} - \frac{3}{8} - \frac{4}{10} = -\frac{1}{40} < - \frac{1}{84}. 
+\end{equation}
+From this, we conclude, that we can restric our search to the orbifolds of 
+the form $*2\ 3\ n$ and it has to be unique. 
+The one with the biggest \Eoc\ among them is $*2\ 3\ 7$. 
+
+Let us observe that no $D^2$ orbifold with rotational orbipoints can have such \Eoc. 
+For the sake of contradiction, let us assume that there is some orbifold 
+$r_1 \cdots r_n * d_1 \cdots d_m$, with \Eoc\ equal to $-\frac{1}{84}$. 
+However, then also $*r_1r_1 \cdots r_nr_nd_1\cdots d_m$, 
+with only dihedral orbiponts, 
+would have \Eoc\ equal to $-\frac{1}{84}$. However, $*2\ 3\ 7$ is unique one with this \Eoc\ 
+and it have no repeted degree, so it can't bo of the form $*r_1r_1 \cdots r_nr_nd_1\cdots d_m$ 
+with $n\neq 0$. 
+ 
+Now, we will prove, that no $S^2$ orbifold has \Eoc\ $-\frac{1}{84}$. 
+%From this, 
+Since we have \ref{2times homeomorphism} 
+%it will 
+%it folows, that no $S^2$ orbifold 
+%has greater negative \Eoc. 
+%The argument goes as folows:
+We can perform following argument:  
+ 
+For the sake of contradiction let us assume, that 
+$-\frac{1}{84} \in \speS$, then, from \ref{2times homeomorphism} we know, that 
+$\frac{1}{2}\left(-\frac{1}{84}\right)\in \speD$. This is a contradiction as 
+$0 > \frac{1}{2}\left(-\frac{1}{84}\right) > -\frac{1}{84}$. 
+
+What is left to prove, is that $-\frac{1}{84}$ is not an \Eoc\ for an $M$ orbifold 
+for any other two dimensional manifold $M$. 
+We can rule out all manifolds with Euler characteristic $\leq 0$ as orbifolds 
+corresponding to them have \Eoc at most $-\frac{1}{4}$. 
+From the arguments above, we can also conclude, that we can also rule out 
+$\mathbb{R}\mathrm{P}^1$ -- the only 
+other manifold left under our consideration, as orbifolds corresponding to it can only have 
+rotational orbipoints. $_\square$ 
 
 \section{Neccessity of $S^2$ and $D^2$}\label{neccessity of d2 and s2}
 As we know from \ref{Operations} adding an orbipoint to a manifold decreases it's 
@@ -339,13 +451,15 @@ orbicharacteristic. As $S^2$ has the highest Euler characteristic: $2$ of all
 two dimentional manifolds, there is no other orbifold with \Eoc\ equal to $2$. 
 $S^2$ is then necesery to include $2$. 
 
-As known from \cite{największy orbifold}, the number $-\frac{1}{84}\in\speD$ and it is 
+As known from \ref{największy orbifold}, the number $-\frac{1}{84}\in\speD$, it is 
 the greatest negative 
-\Eoc any two dimensional orbifold can have. We will now show, that 
-$-\frac{1}{84} \not\in \speS$. For the sake of contradiction let us assume, that 
-$-\frac{1}{84} \in \speS$, then, from \ref{2times homeomorphism} we know, that 
-$\frac{1}{2}\left(-\frac{1}{84}\right)\in \speD$. This is a contradiction as 
-$0 > \frac{1}{2}\left(-\frac{1}{84}\right) > -\frac{1}{84}$. $_\square$  
+\Eoc any two dimensional orbifold can have and $-\frac{1}{84}\not\in\speS$. 
+%We will now show, that 
+%$-\frac{1}{84} \not\in \speS$. For the sake of contradiction let us assume, that 
+%$-\frac{1}{84} \in \speS$, then, from \ref{2times homeomorphism} we know, that 
+%$\frac{1}{2}\left(-\frac{1}{84}\right)\in \speD$. This is a contradiction as 
+%$0 > \frac{1}{2}\left(-\frac{1}{84}\right) > -\frac{1}{84}$. 
+$_\square$  
 
 Futher examination of connections between $\speD$ and $\speS$ is performed in \ref{D_and_S}.
 

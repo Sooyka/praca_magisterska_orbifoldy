@@ -305,8 +305,11 @@ thus having that
 \begin{equation}\label{volume to chi}
 V(O) = 2\pi|\cho{O}|.
 \end{equation}
+
+As mentioned in \cite{}, there are oly types of elicptical, only 17 paraboloid total and infonitely many hyperbolic. 
 Our main goal in this thesis is to describe possible volumes of two dimensional orbifolds, 
-especially thouse with negative \Eoc. As from \ref{volume to chi} we have direct correspondence 
+especially thouse with hyperbolic structure. 
+As from \ref{volume to chi} we have direct correspondence 
 between volumes and \Eoc s, and with \Eoc, we can restrict ourselves to rational numbers, 
 we will try to describe possible \Eoc\ of two dimensional orbifolds.  
 
@@ -349,16 +352,54 @@ defined, by specifying:
 \item how many handles it has,
 \item how many cross-caps it has.
 \end{itemize} 
-\todo{dopisać}
+%\todo{dopisać}
+From this, adapting the notation from \cite{Conway2016}, we will write 
+a two dimensional $M$ orbifold as a list: 
+\begin{equation}
+\times \underbrace{\circ\cdots\circ}_{c\ \mathrm{times}}r_1\cdots r_n 
+*d_1^1\cdots d_{m_1}^1 \cdots *d_1^b\cdots d_{m_b}^b,
+\end{equation}
+where $\times$ is present only if $M$ is non-orientable, each $\circ$ represent one handle, 
+$r_1\cdots r_n$ are degrees of orbipoints in increasing order and 
+$*d_1^1\cdots d_{m_1}^1 \cdots *d_1^b\cdots d_{m_b}^b$ are $b$ boundary components 
+with dihedral orbipoints of degrees $d_1^k\cdots d_{m_k}^k$ ordered with the preservation 
+of the cyclic order on the boundary component. 
+In this notation, the sphere $S^2$ will be denoted as $\varepsilon$ -- an empty word.
+This notation is not necesserly unique for a given orbifold. We can freerly permute 
+boundary components and change dihedral points inside each boundary component by cyclic 
+permutations. 
 
-When we will write $\Delta(feature)$ we would mean the difference in \Eoc
+We will also view any two dimentional orbifold as a $S^2$ with added features listed above:
+\begin{itemize}
+\item cross-caps
+\item handles
+\item boundary components
+\item rotational orbipoints
+\item dihedral orbipoints.
+\end{itemize}
+For all these features exept dihedral orbipoints 
+the notation for a feature treated as an object alone (it can be view 
+as a map from orbifolds to orbifolds, that takes one orbifold $O_1$ defined by some list and 
+returns the other orbifold $O_2$ defined by the list of $O_1$ with added feature), will 
+be the same as the notation of the feature in the list. For dihedral points, when they will apear 
+alone, we will write $^*d_i$, instead of $d_i$, to signify, that they are dihedral orbipoints 
+and we will write expressions like $^*2$ or $^*3$. 
+%When we will write 
+
+%When we will write $\Delta(feature)$ we would mean the difference in \Eoc\ caused by adding this 
+%feature (in the sense described above). 
+We will denote the difference in Euler characteristic which is made by modifying 
+an orbifold by such a feature as $\Delta(modification)$.
+Let us observe, that this is well defined, since the difference of \Eoc\ between orbifolds 
+$O_1$ and $O_2$, defined by the lists differing by one feature is independent of 
+$O_1$, nor $O_2$, nor the choice of the list describing them at depends only on the feature.
 
 %dać na sferę $\varepsilon$ słowo puste.
 %We will regard parts of that notation not only as features on an orbifold but also as 
 %an operations 
 %on orbifolds transforming one to another by adding particular feature. \\
-We will denote the difference in Euler characteristic which is made by modifying 
-an orbifold by such a feature as $\Delta(modification)$.
+%We will denote the difference in Euler characteristic which is made by modifying 
+%an orbifold by such a feature as $\Delta(modification)$.
 %\todo{rozwinąć} 
 %dopisać, że w Conwayowej >= 2
 
