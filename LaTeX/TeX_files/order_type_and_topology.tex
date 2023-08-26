@@ -327,7 +327,7 @@ For any given $n \in \mathbb{N}$ the set $B_n$ is a subset of the interval
 $[1-\frac{n}{2}, 1-\frac{n}{4}]$.
 \end{lemma}
 \subsubsection{Proof.}
-Take $x \in B_n$. There exists an orbifold $O$ with signature $\ast ^*b_1, \cdots, ^*b_n$, 
+Take $x \in B_n$. There exists an orbifold $O$ with signature $\ast b_1, \cdots, b_n$, 
 such that $\cho{O} = x$. We have that $\forall_i -\frac{1}{2} \leq \Delta(^*b_i) \leq 
 -\frac{1}{4}$. From this $-\frac{n}{2} \leq \Delta(^*b_1, \cdots, ^*b_n) \leq -\frac{n}{4}$, 
 so $\cho{O} \in [1-\frac{n}{2}, 1-\frac{n}{4}]$. $_\square$
@@ -567,7 +567,7 @@ of order $1$ of the set $\speD$. $_\square$
 \subsection{Saturation theorem}
 \begin{theorem}\label{saturation theorem}
 For any rational number $\frac{p}{q}$, for any two dimensional manifold $M$
-there exists $N\in\mathbb{N}_0$ such that 
+there exists $N\in\mathbb{Z}$ such that 
 for all $n \geq N$, we have that $\frac{p}{q} - n \in \spebr{M}$.
 \end{theorem}
 \subsubsection{Proof.}
@@ -576,12 +576,21 @@ From \ref{Egyptian_fractions},
 %after \cite{every number is expressible 
 %as an egyptian fraction} 
 we know that every rational number is expressable as an egyptian 
-fraction (it is true for usual definition and for our less strict definition, we can always have 
-$\frac{m}{n} = \underbrace{\frac{1}{n}+\cdots+\frac{1}{n}}_{m\ \mathrm{times}}$). 
+fraction. 
+%(it is true for usual definition and for our less strict definition, we can always have 
+%$\frac{m}{n} = \underbrace{\frac{1}{n}+\cdots+\frac{1}{n}}_{m\ \mathrm{times}}$). 
 Let us name the number of summends in some egyptian fraction of $\frac{p}{q}$ 
 as $k$. From \ref{from Egyptian fractions} we know that then 
-$\chi(M) - k + \frac{p}{q} \in \spebr{M}$.  $_\square$
-\todo{dokończyć}
+$\chi(M) - k + \frac{p}{q} \in \spebr{M}$. From \ref{accumulation_points_are_in_the_spectrum} 
+and \ref{all_spectra_are_isomorphic} we also know, 
+that if $x \in \spebr{M}$, then $x - l\in\spebr{M}$, for any $l \in \mathbb{N}_0$. 
+From this, we have, that 
+%if $\chi(M)-k \leq 0$, then 
+$k-\chi(M)$ is our $N$. 
+%from the theorem and 
+%the proof is finished. If $\chi(M)-k > 0$, we can take as $N$ 
+$_\square$
+%\todo{dokończyć}
 %\begin{corolarry}
 %The following theorem tells us that for any denumerator, from a sufficiently distant 
 %point all rational number with this denumerator are in $\speS$.

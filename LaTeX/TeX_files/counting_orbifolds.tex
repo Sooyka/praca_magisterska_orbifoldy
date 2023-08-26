@@ -229,15 +229,66 @@ f_k(p,q) \coloneqq
 we have that for any fixed $p\in\mathbb{N}_{>0}$, there are infinitely many values of 
 $q\in\mathbb{N}_{>0}$ for which
 \begin{equation}
-f_2(p,q) > \exp\left((\log{3}+o(1))\frac{\log(n)}{\log(\log(n))}\right).
+f_2(p,q) > \exp\left((\log{3}+o(1))\frac{\log(q)}{\log(\log(q))}\right).
 \end{equation}
 %Napisaeqauć, że dowolnie blisko każdego punktu skupienia da się znaleźć liczbę o dowolnie wielu 
 %odpowiadających jej orbifoldach.
 
 %\todo{dac jakieś źródła i ok}
 %\todo{Dopisać}
-From \ref{} we know, that for point $x$ to be an accumulation points of order 
+From \ref{third_order_lemma} we know, that for point $x$ to be an accumulation points of order 
 at least $2$ of the set $\speD$ means, that $x + 1 \in \speD$. This also means, that 
+all points of the form 
+\begin{equation}\label{pq condition}
+x + 1 - \frac{d_1-1}{2d_1} - \frac{d_2-1}{2d_2} = x + \frac{1}{2d_1} + \frac{1}{2d_2}
+\end{equation} 
+are in $\speD$. 
+
+Let $x$ be an accumulation point od the set $\speD$ of order at least $2$, let $U$ be 
+some neighbohood of $x$ and let $n \in \mathbb{N}$. Let us take $p = 1$ and $q$, such that:
+\begin{enumerate} \label{choice for q}
+\item \ref{pq condition} holds, 
+%\item \begin{equation}
+\item$\exp\left((\log{3}+o(1))\frac{\log(q)}{\log(\log(q))}\right) > n$,
+%\end{equation}
+\item $x + \frac{1}{q} \in U$. 
+\end{enumerate}
+We can always find such one, since:
+\begin{itemize} 
+\item from \cite{Browning2011} we know, that there exists 
+inifinitely many $q$, for $p = 1$, such that \ref{pq condition}, 
+%and since
+\item
+%\begin{equation}
+$\lim_{q \to \infty }\exp\left((\log{3}+o(1))\frac{\log(q)}{\log(\log(q))}\right) = \infty$,
+%\end{equation}  
+\item conditions 2. and 3. have the propertie, that if some $q_1$ satisfies them, 
+then any $q_2 > q_1$ also satisfies them. 
+\end{itemize}
+From this, we have, that $x + \frac{1}{q} \in U$ and there exists at least $n$ different pairs of numbers $(n_1^1, n_2^1)\cdots (n_1^n, n_2^2)$, such that for any $1 \leq i \leq n$, we have 
+$\frac{1}{n_1^i}+\frac{1}{n_2^i} = \frac{1}{q}$. 
+
+This means also that $x + \frac{1}{2q} \in U$ and that for any $1 \leq i \leq n$, we have 
+$\frac{1}{2n_1^i}+\frac{1}{2n_2^i} = \frac{1}{2q}$. 
+%Let $d_j^i \coloneqq 2n_j^i$, for 
+%$1 \leq i \leq n$ and $j \in \{1, 2\}$
+
+As for any $1 \leq i \leq n$, we have that  $x + \frac{1}{2n_1^i}+\frac{1}{2n_2^i}$ 
+is of the form \ref{pq condition}, we have, that for any $1 \leq i \leq n$, we have 
+$x + \frac{1}{2n_1^i}+\frac{1}{2n_2^i} \in \speD$. 
+%$y = x + \frac{1}{q}$ is 
+Let $O$, be a $D^2$ orbifold with 
+\Eoc\ equal to $x+1$. All of $n$ different orbifolds, created by adding to $O$ two dihedral 
+orbipoints, respectively to $i$, of orders, $n_1^i$ and $n_2^i$ have an \Eoc equal to 
+\begin{equation}
+x + 1 - \frac{n_1^i-1}{2n_1^i} - \frac{n_2^i-1}{2n_2^i} = 
+x + \frac{1}{2n_1^i} + \frac{1}{2n_2^i} = x + \frac{1}{2q}.
+\end{equation} 
+
+As such, we found $y = x + \frac{1}{2q}$, such that $y \in U$ and 
+%there are at least $n$ 
+found $n$
+different orbifolds, with an \Eoc\ equal $y$. $_\square$ 
  
 
 
