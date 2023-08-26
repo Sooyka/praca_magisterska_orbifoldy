@@ -2,15 +2,15 @@
 \chapter{Counting orbifolds -- combinatorical part}\label{Counting orbifolds -- combinatorical part}
 We will go through the steps described in \ref{combinatorical part}.
 
-We will form our answer in a form of anwering the 
-quetion for a given number $\frac{P}{q}$ and a given manifold $M$. 
+We will form our answer in a form of answering the 
+question for a given number $\frac{P}{q}$ and a given manifold $M$. 
 As stated in \ref{combinatorical part} at the end all answers for all $M$ needs to be summed, 
-and we know that for $M$ such that $\chi(M) < \frac{p}{q}$, the answear is $0$, so there 
+and we know that for $M$ such that $\chi(M) < \frac{p}{q}$, the answer is $0$, so there 
 are always only finitely many answers to be summed. 
 
 \section{Manifolds without boundary}
 In this case we ask our algorithm from \ref{Counting orbifolds -- arithmetical part}: 
-"How namy sums of the form
+"How many sums of the form
 \begin{equation}
 1-\sum_{i=1}^m \frac{d_j-1}{2d_j} 
 \end{equation}
@@ -19,7 +19,7 @@ are equal to
 \frac{1}{2}\frac{p}{q} - \frac{1}{2}\chi(M) -1\ ?",
 \end{equation}
 and the result is our final answer, as (\ref{sameness}) the list of degrees of rotational orbipoints ordered 
-in descending order uniquily defines a two dimentional $M$-orbifold without boundary. 
+in descending order uniquely defines a two dimensional $M$-orbifold without boundary. 
 \section{Manifolds with boundary}
 \subsection{Using \ref{Counting orbifolds -- arithmetical part}}\label{use algorithm step}
 We ask our algorithm from \ref{Counting orbifolds -- arithmetical part} for the list 
@@ -44,10 +44,10 @@ this list of sums will be finite.
 As stated in \ref{additional things in boundary case -- rotational}, we need to first 
 take into account that an orbifold can have both dihedral and rotational orbipoints. 
 
-We have complite list of sums coresponding to degrees of dihedral orbipoints that result in 
+We have complete list of sums corresponding to degrees of dihedral orbipoints that result in 
 the $\frac{p}{q}$ orbicharacteristic on $M$-orbifold. 
 
-We are intersted in having complite list of sums coresponding to degrees of both dihedral 
+We are interested in having complete list of sums corresponding to degrees of both dihedral 
 and rotational 
 orbipoints that result in 
 the $\frac{p}{q}$ orbicharacteristic on $M$-orbifold. 
@@ -61,14 +61,14 @@ we replace each $r_i$ from the list of rotational orbipoints by to entries of th
 value on the list of dihedral orbipoints. This does not change the 
 corresponding \Eoc, since $\Delta(n) = \Delta(^*n^*n)$ (as stated in \ref{}). 
 
-This procedure is unambigues and gives only one possible list of dihedral orbipoints degrees 
+This procedure is unambiguous and gives only one possible list of dihedral orbipoints degrees 
 for every list of both rotational and dihedral orbipoints degrees. 
 
 Based on this, for a given sum $d_1d_2\cdots d_n$,
 we can perform the transformation of replacing $n$ by $^*n^*n$ in another direction to 
 produce all possible sums consisting of both rotational and dihedral degrees, that 
-would be reducted to sum $d_1d_2\cdots d_n$. The uniqness of reduction ($\ast$) guarantees, that 
-we won't arive to the same unreducted sum from different starting lists of only dihedral degrees.
+would be reduced to sum $d_1d_2\cdots d_n$. The uniqueness of reduction ($\ast$) guarantees, that 
+we won't arrive to the same unreducted sum from different starting lists of only dihedral degrees.
 
 Based on this, after getting the list of sums from \ref{use algorithm step}, we need to 
 add to this list all possible sums that could be reducted by ($\ast$) to some 
@@ -77,12 +77,12 @@ of the sums that we got from \ref{use algorithm step}.
 Sums on the new extended list have also rotational orbipoints taken into account. 
 At this point we have full list of sums resulting in \Eoc\ equal to $\frac{p}{q}$ on a 
 $M$-orbifolds. 
-In further considerations we will not explicitely rotational orbipoints degrees as they play 
+In further considerations we will not explicitly rotational orbipoints degrees as they play 
 no role in combinatorics.
 
 \subsection{Fixed sum}
 
-Let us now consider a cese with a manifold $M$, and a sum $d_1d_2\cdots d_n$ (as we wrote 
+Let us now consider a case with a manifold $M$, and a sum $d_1d_2\cdots d_n$ (as we wrote 
 at the end of the previous section we are not writing rotational degrees as 
 they will play no role from this point, however, they are possibly present in some sums). 
 Then the last step of the procedure will be to sum over all sums produced in 
@@ -110,7 +110,7 @@ components of $M$.
 
 %Effective way to iterate over all the partitions 
 Let us consider some partition of $a_1^{k_1}a_2^{k_2}\cdots a_m^{k_m}$ among the boundary 
-components. After this, results from all partitions need to be sumed together. 
+components. After this, results from all partitions need to be summed together. 
 
 
 
@@ -118,10 +118,10 @@ components. After this, results from all partitions need to be sumed together.
 Let us now consider one partition and one boundary component. 
 Suppose that in this partition this boundary component have orbipoints of degrees 
 $b_1^{s_1}b_2^{s_2}\cdots b_n^{s_n}$.  
-We want to know how namy possible cyclic orders there are on a boundary component with 
+We want to know how many possible cyclic orders there are on a boundary component with 
 $b_1^{s_1}b_2^{s_2}\cdots b_n^{s_n}$ on it. 
 Having this answer we will multiply these answers from each boundary component in 
-a given partition, this way resulting in an answear for a partition. 
+a given partition, this way resulting in an answer for a partition. 
 
 %First, we will start with answearing the question when all $s_i$ are equal to $1$. 
 %Then:
@@ -178,8 +178,8 @@ which $o$ is invariant as a linear order.
 Although, given enough effort, results from this section could be summarise in one 
 equation consisting only 
 of $b$ and $k_1, k_2, \cdots, k_n$ for a given sum, 
-we feel that it would be long enogh not to give any new 
-insight into the structure of the problem. We are stoping thus at giving the above procedure.
+we feel that it would be long enough not to give any new 
+insight into the structure of the problem. We are stopping thus at giving the above procedure.
 %what is an algorithm if not very elaborate equation after all?
 
 

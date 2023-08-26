@@ -14,11 +14,11 @@
 %Compared to the previous version, we also use an occurance counter, starting with it set to 0 
 %and with the list of orbifolds, wich is empty at the start.
 \section{The idea of the algorithm}
-This is an extention of the algorithm from \ref{Searching the spectrum}. It only differs by 
+This is an extension of the algorithm from \ref{Searching the spectrum}. It only differs by 
 lines after finding the solution -- 7-11, 37-41 and 68-72. They all send the control flow 
 to line 57th.
-Instead terminating the algorithm the sollution is appended to the 
-initialy empty list and the algorithm proceeds to search through the states as if the 
+Instead terminating the algorithm the solution is appended to the 
+initially empty list and the algorithm proceeds to search through the states as if the 
 the state that the solution was changed to 
 %after some repetitions of changes 
 at lines 64-65 during continuation of the execution was  
@@ -32,7 +32,7 @@ In the case, the $flag\_value$ is equal to:
         If $\chi^{orb}(*d_1\dots d_{p-1}\infty d_{p+1}\dots)=\frac{p}{q}$ then
         {
             We found an orbifold, we add it to a list 
-            and increase the occurence counter by 1. 
+            and increase the occurrence counter by 1. 
             We set the flag to "Less".
             We put pivot to the $c_{p+1}$ counter.
             We go to the 1st line.
@@ -62,7 +62,7 @@ In the case, the $flag\_value$ is equal to:
         if $\chi^{orb}(*d_1d_2d_3\dots)=\frac{p}{q}$ then 
         {
             We found an orbifold, we add it to a list 
-            and increase the occurence counter by 1. 
+            and increase the occurrence counter by 1. 
             We set the flag to "Less".
             We put the pivot at the $c_{p+1}$.
             We go to the 1st line.
@@ -93,7 +93,7 @@ In the case, the $flag\_value$ is equal to:
         If $\chi^{orb}(*d_1d_2d_3\dots)=\frac{p}{q}$ then
         {
             We found an orbifold, we add it to a list 
-            and increase the occurence counter by 1. 
+            and increase the occurrence counter by 1. 
             We set the flag to "Less".
             We put pivot at the $c_{p+1}$.
             We go to the line 1..
@@ -116,18 +116,18 @@ In the case, the $flag\_value$ is equal to:
 
 \section{Proof of the correctness of the algorithm}
 Let us observe, that whole proof from the chapter \ref{Searching the spectrum} 
-was independent from the choise of 
+was independent from the choice of 
 the starting configuration -- state of counters, flag value and pivot placement, as 
-long as they would hold the inveriants that were prooved in 
+long as they would hold the invariants that were proved in 
 \ref{lemmas for the proof of the correctness} and were used in 
 \ref{proof of the correctness of the algorithm} and the fact, that flag value will 
 correspond to the relation between \Eoc\ corresponding to the current state and $\frac{p}{q}$. 
 We know, that the found solution was satisfying all the lemmas -- as it was the state of 
 the counters at some point of the execution. The only thing left to see, is that 
-the flag value will be appropriete. 
+the flag value will be appropriate. 
 
 Let $D = d_1d_2d_3\cdots$ be the solution. 
-Let $c_p$ be the couter at which the pointer was when the solution was found. Then, since 
+Let $c_p$ be the counter at which the pointer was when the solution was found. Then, since 
 \ref{same value on the counters to the left} and the fact that after each change the value of 
 the counter that pivot is at is the same as value of the counters to the left of it 
 and \ref{state is ordered}, we conclude 
@@ -137,16 +137,16 @@ As such, we can proceed from the state
 \begin{equation}
 D' = (d_{p+1}+1)(d_{p+1}+1)(d_{p+1}+1)\cdots (d_{p+1}+1)(d_{p+1}+1)d_{p+2}d_{p+3}\cdots.
 \end{equation}
-Setting flag to "Less" after finding the solution, will result in producing exectly this state. 
+Setting flag to "Less" after finding the solution, will result in producing exactly this state. 
 Then, flag will be set accordingly to the comparison on line 76 or 82 or another solution will 
 be found on line 68. 
 From \ref{second_finiteness_theorem} we know, that there will be only finitely many 
 solution. 
-Once after, finding the solution $d_1d_2d_3\cdots$ and going to "Less" won't immedietly produce 
+Once after, finding the solution $d_1d_2d_3\cdots$ and going to "Less" won't immediately produce 
 another solution 
 %and process described obave will repeat.  
 %From this point 
-all the invariants will be safisfied and the algorithm will proceed 
+all the invariants will be satisfied and the algorithm will proceed 
 until it finds another solution or it stops. 
 %In algorithm from this chapter, after finding the solution the control flow is always redirected 
 %to line 57th.  
@@ -165,7 +165,7 @@ $_\square$
 The source of the program with implementation of this algorithm, written in 
 \href{https://www.rust-lang.org/}{Rust} can be found 
 on
-\href{https://github.com/Sooyka/praca_magisterska_orbifoldy}{Github} 
+\href{https://github.com/Sooyka/praca_magisterska_orbifoldy}{GitHub} 
 along with the \LaTeX\ source of 
 this thesis.
 %It is written in \href{https://www.rust-lang.org/}{Rust}. 

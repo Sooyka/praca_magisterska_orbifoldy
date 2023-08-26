@@ -31,7 +31,7 @@
 
 %Corespondence between accumulation points and cantor bendixon derivative are describen 
 %in appendix \smalltodoII{link to appendix}. 
-This definitions is usefull for us in chapter \ref{order structure}, the exact same copy 
+This definitions will be useful for us in chapter \ref{order structure}, the exact same copy 
 of it is included there \ref{accumulation_points_definitions repetition} 
 as well for a readers convenience .
 
@@ -42,27 +42,27 @@ For a given set we define as follows:
 (Inductive). 
 %We say, that the point $a$  from the topological space $X$ is an acccumulation 
 %point of the transitive order 0, when
-We say that the point $x$ is an acccumulation point of a set $X$ 
+We say that the point $x$ is an accumulation point of a set $X$ 
 of order at least $0$, when it belongs to the set $X$. 
-We say that the point $x$ is an acccumulation point of a set 
+We say that the point $x$ is an accumulation point of a set 
 of order at least $n + 1$, when it is 
-an acccumulation point (in the usual sense) of the accumulation points each of order at least 
+an accumulation point (in the usual sense) of the accumulation points each of order at least 
 $n$ i.e. in every neighbourhood of $x$ there is at least one accumulation point of a set $X$ 
-of order at least $n$, distincs from $x$. 
+of order at least $n$, distinct from $x$. 
 \end{definition}  
 %The only issue of the above definition is that the point of the transitive order $n$ 
 %is also a point 
 %of the transitive order $k$, for all $0< k \leq n$. We want a definition of order such that 
 %for any point, there is at most one integer that is its order. So we define:
 \begin{definition}
-We say that the point is an acccumulation point of order $n$ iff it is an acccumulation point 
-of order at least $n$ and it is not an acccumulation point of order at least $n+1$. 
-If the point is an acccumulation point of order at least $n$ for an arbitrary large 
+We say that the point is an accumulation point of order $n$ iff it is an accumulation point 
+of order at least $n$ and it is not an accumulation point of order at least $n+1$. 
+If the point is an accumulation point of order at least $n$ for an arbitrary large 
 $n$ we say that 
-the point is an acccumulation point of order $\omega$.
+the point is an accumulation point of order $\omega$.
 \end{definition}
 When we will say that a point is an accumulation point of some set without specifying an order 
-then we will mean being an accumulation point in the ussual sense; from the point of view 
+then we will mean being an accumulation point in the usual sense; from the point of view 
 of above definitions, that is, an accumulation point of order at least one.
 %\todo{dopisać notację do punktów skupienia różnego stopnia}
 
@@ -99,7 +99,7 @@ strictly increasing, which gives us a contradiction. $_\square$ \\
 
 
 %\section{Order preserving homeomorphisms}
-Conserning accumulation points, we will use the terminology, that we introduced in 
+Concerning accumulation points, we will use the terminology, that we introduced in 
 \ref{accumulation_points_definitions}
 
 \begin{lemma}\label{order_preserving_homeomorphism_theorem}
@@ -114,7 +114,7 @@ order type $\alpha$ but is also homeomorphic to $\alpha$.
 %From every such interval we can pick a rational number. From this we have injection of $A$ into 
 %$\mathbb{Q}$. \\
 Without loss of generality, let us assume, that $A$ has no infinite descending sequence 
-(case with $A$ having no infinite ascending sequence is completly analogus). \\
+(case with $A$ having no infinite ascending sequence is completely analogous). \\
 
 As $A$ has an order type $\alpha$ we have that there is an order preserving bijection 
 $f : \alpha \to A$. \\
@@ -439,20 +439,20 @@ $n \in \mathbb{N}$ (it may be that $a \notin A$) iff order type of $A$ is at lea
 Inductive, with respect to $n$ in $\omega^n$.
 
 $\bullet$ $n=0$
-Let us suppouse, that $A$ has an accumulation point of order $0$.
+Let us suppose, that $A$ has an accumulation point of order $0$.
 Having an accumulation point of order $0$ means that $A$ is non-empty. As that it has an order 
 type of at least $\omega^0 = 1$. \\
 
-Let us suppouse, that $A$ has order type at least $\omega^0=1$. Then it is non-empty, so it 
+Let us suppose, that $A$ has order type at least $\omega^0=1$. Then it is non-empty, so it 
 has at least one accumulation point of order $0$. 
 
 $\bullet$ Induction step
 
-Let us suppouse that $A$ has an accumulation point $a$ of order $n+1$. This means that every 
-neighbourhood of $a$ we can find infinetely many accumulation points of $A$ of order $n$. 
+Let us suppose that $A$ has an accumulation point $a$ of order $n+1$. This means that every 
+neighbourhood of $a$ we can find infinitely many accumulation points of $A$ of order $n$. 
 Let take one such neighbourhood and one such family $\{b_i\}_{i \in \mathbb{N}}$ 
 of accumulation points of order $n$. 
-Let us then take family of pairwise disjoint neibourhoods $\{U_i\}_{i\in\mathbb{N}}$ of 
+Let us then take family of pairwise disjoint neighbourhoods $\{U_i\}_{i\in\mathbb{N}}$ of 
 $\{b_i\}_{i \in \mathbb{N}}$. Let $A_i \coloneqq U_i\cap A$. 
 
 From the induction assumption for all $i$, we have that $A_i$ is of order type at least 
@@ -460,15 +460,15 @@ $\omega^n$. As that, we managed to show an pairwise disjoint inclusions of count
 of order type at least $\omega^n$ into $A$. As that we have the order preserving inclusion of 
 $\omega^{n+1}$ into $A$, so $A$ is of order type at least $\omega^{n+1}$. \\
 
-Let us now suppouse that $A$ has the order type of at least $\omega^{n+1}$. Then, we can find 
+Let us now suppose that $A$ has the order type of at least $\omega^{n+1}$. Then, we can find 
 a family $\{A_i\}_{i \in \mathbb{A}}$ 
 of pairwise disjoint subsets of $A$, each of order type $\omega^{n}$, with the property $(\ast)$, 
 that $\forall_{i,j\in\mathbb{N}}i<j \implies \forall_{x \in A_i,y\in A_j} x< y$. 
 
 From the inductive 
 assumption, for all $i$, we have that $A_i$ has an accumulation point of order $n$. Let 
-$\{b_i\}_{i\in\mathbb{N}}$ be the set of thouse accumulation points.
-Because of the property $(\ast)$, thouse accumulation points are pairwise distinc, between 
+$\{b_i\}_{i\in\mathbb{N}}$ be the set of those accumulation points.
+Because of the property $(\ast)$, those accumulation points are pairwise distinct, between 
 $A_i, A_j$, with $i\neq j$. Since $A$ is bounded, we have that, the set $\{b_i\}_{i\in\mathbb{N}}$ 
 is bounded, so it has an accumulation point $a$. As an accumulation point of the accumulation 
 points of order $n$, it is an accumulation point of order $n+1$. $_\square$ 
@@ -494,12 +494,12 @@ is a proper subset of $A$. Thus, we have, that for all accumulation points $\bar
 order $n$ we have that $\forall_{a\in A}\ a<\bar{a}$. 
 
 It remains to show that there is only one 
-such accumulation piont - $a'$. For the sake of contradiction, let us assume, that 
+such accumulation point - $a'$. For the sake of contradiction, let us assume, that 
 there exists an accumulation point of $A$ of order $n$, named $\bar{a}$, such that 
-$\bar{a} \neq a'$. Let us assume that $\bar{a} < a'$. Then, as in every neibourhood 
+$\bar{a} \neq a'$. Let us assume that $\bar{a} < a'$. Then, as in every neighbourhood 
 of $a'$ there is a point from $A$, we have 
 that $\exists_{a_0} a_0 > \bar{a}$. The absurdity of this statement is shown above. 
-Case where $\bar{a} > a'$ is completly analogous. $_\square$
+Case where $\bar{a} > a'$ is completely analogous. $_\square$
 
 
 \begin{lemma}\label{The order does not grow lemma}
@@ -512,10 +512,10 @@ Inductive.
 
 $\bullet$ $n = 0$. Then $r$ is an isolated point of $B$ and either $r$ is isolated point of $A$ 
 or $r \not\in A$. From this we have that there exists $U_1, U_2$ such that $B \cap U_1 = \{r\}$ and 
-$A \cap U_2 \subseteq \{r\}$. From thi we have that $(A\cup B) \cap (U_1\cap U_2) = \{r\}$. 
+$A \cap U_2 \subseteq \{r\}$. From this we have that $(A\cup B) \cap (U_1\cap U_2) = \{r\}$. 
 So $r$ is an isolated point of $A \cup B$.
 
-$\bullet$ Inductive step. Let us suppouse that for all $k < n$, the statement holds. Let $r$ 
+$\bullet$ Inductive step. Let us suppose that for all $k < n$, the statement holds. Let $r$ 
 be an accumulation point of order $n$ of $B$ and order $m$ of A, where $m \leq n$. From this 
 we have that there exists $U_1, U_2 \ni r$ 
 such that in $B\cap U_1$ there are only accumulation points 
@@ -526,7 +526,7 @@ $A \cup B$.
 This means that $r$ is an accumulation point of order at most $n$ of $A\cup B$. 
 
 We also know that, in every $U_1, U_2 \ni r$, there are accumulation points of order exactly $n-1$ 
-of $B$ and exatly $m-1$ for $A$. From the inductive assumption we have then, that in 
+of $B$ and exactly $m-1$ for $A$. From the inductive assumption we have then, that in 
 $(A \cup B) \cap (U_1 \cap U_2)$ there are accumulation points of order $n-1$ of $A\cup B$. 
 This means that $r$ is an accumulation point of order exactly $n$ of $A\cup B$.
 %This means 
@@ -579,7 +579,7 @@ is an order preserving injection, thus, $\omega^n \leq \gamma$.
 $\bullet$ $\omega^n \geq \gamma$: 
 
 From \ref{that_important_corollary} we know, that $B$ has exactly one accumulation point $b'$ of 
-order $n$. This point has the propertie that $\forall_{b\in B}\ b<b'$.
+order $n$. This point has the property that $\forall_{b\in B}\ b<b'$.
 %From the assumptions, we know that there exists $b_0 \in B$, such that $\forall_{a\in A}\ a<b_0$. 
 %From this, we know that $(A\cup B) \cap (b_0,\infty) = B \cap (b_0, \infty)$. 
 %Let us name the suffix $(A\cup B) \cap (b_0,\infty)$ of $A\cup B$ as $S$.

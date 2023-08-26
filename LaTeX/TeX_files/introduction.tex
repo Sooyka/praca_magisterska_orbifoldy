@@ -2,43 +2,43 @@
 \chapter{Introduction}
 \setcounter{page}{9}
 \section{Motivations}
-Orbifols are geometrical spaces that encodes some of group action properties. 
+Orbifolds are geometrical spaces that encodes some of group action properties. 
 
-They played a crucial role in Thurstons geometrisation program (\cite{Thurston1979}). 
+They played a crucial role in Thurston's geometrisation program (\cite{Thurston1979}). 
 %leading to very important 
 %results in geomerty, such as 
 %Quotiens by a groups
 They are also correlated and find direct use or indirect use (be unintended 
-emergent occurance) 
+emergent occurrence) 
 in different subjects, 
 from geometry, to number theory -- f.e. as spaces correlated with modular forms, 
 physics -- f.e. they are used in modeling the string theory, 
 signal analysis -- f.e. aliasing can be modeled with $D_\infty$, an 
-infinite dihedral group and coresponding , and art -- they are visible f.e. 
+infinite dihedral group and corresponding , and art -- they are visible f.e. 
 on the prints of M.C.Esher.  
 %-- se e esher art analysis -- 
 %differnt patterns of fresks and os on,freski.
 
-They are also beatiful symmetrical structers on they own, providing 
+They are also beautiful symmetrical structures on they own, providing 
 nice 
 %and neat 
-and uniform language to describe platonic solids, tilings of the euklidean 
-and hyperbolid plane, 
+and uniform language to describe platonic solids, tilings of the euclidean 
+and hyperbolic plane, 
 %asher pictures 
-as well as general notion of symmety
+as well as general notion of symmetry
 
 %Praca o ujemnym ale z najwyzszą orbicharakterystyką
 
-The focus of this thesis is on possible volumes of two-dimensional orbifodls.
-Such analyssis was performed also in dimension three, where 
-(\cite{Thurston1979}, \cite{Gromov1981}) it was prooved, the specturm of possible volumes 
+The focus of this thesis is on possible volumes of two-dimensional orbifolds.
+Such analysis was performed also in dimension three, where 
+(\cite{Thurston1979}, \cite{Gromov1981}) it was proved, the spectrum of possible volumes 
 of three dimensional orbifolds form a closed, non-discrete set on the real line, 
 that this set is well ordered, its ordinal type is $\omega^\omega$ and there are 
 only finitely many orbifolds with a given volume. This are exactly the same results 
 as some of the results we will obtain in this thesis for two-dimensional orbifolds 
 \ref{order structure}. 
-What is interesting, techniques used in the three dimentional case can't be used in the 
-two-dimensional one, fortunatelly, in the two-dimentsional case, much simpler, 
+What is interesting, techniques used in the three dimensional case can't be used in the 
+two-dimensional one, fortunately, in the two-dimensional case, much simpler, 
 thought different techniques can be used and we will present them here. 
 We will also f.e. present that the spectrum in two dimensional case is locally unbounded 
 in number of orbifolds corresponding to a single volume 
@@ -49,7 +49,7 @@ in number of orbifolds corresponding to a single volume
 
 \section{Scope}
 In this thesis we would like to give some description of the spectrum of the volumes 
-of two dimensional orbifolds, in particlar thouse of negative \Eoc. 
+of two dimensional orbifolds, in particular those of negative \Eoc. 
 We will examine order type and topology of the spectrum \ref{order structure} 
 as well as the structure 
 of the spectrum based on spectra corresponding to different manifolds \ref{spectra}, 
@@ -61,7 +61,7 @@ well as tools to compute how many orbifolds correspond to a given volume in the 
 
 \section{Technical introductions}
 Now, we will proceed to give technical introductions about orbifolds, \Eoc\ and the 
-technics we will use in this thesis, alongside with some definitions and notation and 
+techniques we will use in this thesis, alongside with some definitions and notation and 
 naming conventions. 
  
 \section{Orbifolds}
@@ -71,19 +71,19 @@ The definition of the orbifold is taken from Thurston \cite{Thurston1979} (chapt
 with slight modification described in \ref{compactness}. 
 We briefly recall the concept, but for full discussion we refer to \cite{Thurston1979}. 
 
-An orbifold is a generalisation of a manifold. As manifold, it consists of a Hausdorf space 
+An orbifold is a generalisation of a manifold. As manifold, it consists of a Hausdorff space 
 (which we will call a base space)
 with some additional structure. 
 Compared to manifolds, one allows more variety of local behaviour. 
 On a manifold a map is a homeomorphism between $\mathbb{R}^n$ and some open set on a manifold. 
 On an orbifold a map is a homeomorphism between a quotient of $\mathbb{R}^n$ by some 
 finite group and some open set on an orbifold. 
-In addition to that, the orbifold structure consist the informations about that finite group 
+In addition to that, the orbifold structure consist the information about that finite group 
 and a quotient map for any such open set. 
 
-We can make an observation, that since in dimension 2, quatient of $\mathbb{R}^2$ by a finite 
+We can make an observation, that since in dimension 2, quotient of $\mathbb{R}^2$ by a finite 
 group is topologically always either $\mathbb{R}^2$ or $\mathbb{R}\times\mathbb{R}_{\geq 0}$, 
-we have that in dimension 2, the underlying Hausdorf space of any orbifold is a topological 
+we have that in dimension 2, the underlying Hausdorff space of any orbifold is a topological 
 manifold (possibly with a boundary). For an orbifold $O$ we will call this underlying manifold $M$
 a base manifold of $O$ and we will call $O$ an $M$-orbifold.  
 
@@ -96,7 +96,7 @@ it is 'good'. Otherwise we say, that it is 'bad'.
 
 %For this subsection we will also adopting notation from \cite{Thurston1979}. 
 
-In two dimentions there are only four types of bad orbifolds, namely
+In two dimensions there are only four types of bad orbifolds, namely
 (adopting notation from \cite{Thurston1979}): 
 \begin{itemize}
 \item $S^2(n)$ 
@@ -115,15 +115,15 @@ Manifolds with boundary can be treated as orbifolds with trivial group on all ma
 interior and with group $\mathbb{Z}_2$ on the boundary, as described in \cite{Thurston1979} 
 (example 13.2.2.).
 
-\subsection{Therminology}
+\subsection{Terminology}
 We differ from Thurston in the terms of naming points with maps with non-trivial groups. 
 We will call them orbipoints. If the group acts as the group of rotations (so a 
-cyclic group) we will call them rotational points. If the group is a dihedreal group we will 
+cyclic group) we will call them rotational points. If the group is a dihedral group we will 
 call them 
-dihedreal points. And if the point is on the boundry that stabilises reflection we will call it a 
+dihedral points. And if the point is on the boundary that stabilises reflection we will call it a 
 reflection point. 
 
-If a group associated to the orbipoint has degree $n$, we will say that tha orbipoint is 
+If a group associated to the orbipoint has degree $n$, we will say that the orbipoint is 
 of degree $n$. 
 \subsection{Finite number of orbipoints}\label{finite number of orbipoints}
 In this thesis we will consider only orbifolds with finitely many orbipoints and all orbifolds 
@@ -137,8 +137,8 @@ However, noncompact orbifolds, such as ones from \cite{Conway2016} (chapter 18)
 which are quotients 
 of a group action of an infinite group acting on $\mathbb{R}^2$ (that will 
 be also frequently interpreted in this setting as a hyperbolic plane $\mathbb{H}^2$), 
-also interests us. We would like to accomodate some of noncompact orbifolds that 
-will satisfy the condition simmilar to the \ref{finite number of orbipoints}. 
+also interests us. We would like to accommodate some of noncompact orbifolds that 
+will satisfy the condition similar to the \ref{finite number of orbipoints}. 
 To do this we will slightly expand our definition of an orbifold. 
 
 Let us start with a following construction.
@@ -147,7 +147,7 @@ For an noncompact orbifold $O$, let us take it's one point compactification.
 Let the compactification point be named $x_O$.  
 For some set $X$, let $\#(X)$ be the number of connected components of $X$.
 Now let us consider some connected open set $U \ni x_O$. The set $U\setminus\{x_O\}$ is 
-not neccesserly connected.
+not necessarily connected.
  
 Let 
 \begin{equation}
@@ -161,9 +161,9 @@ connected components of $U\setminus\{x_O\}$ with a separate point. We will call 
 we will call it a cusp on a boundary. In the other case, we will call it a cusp in the interior.
 
 The result is a compact topological space. We will treat it as an orbifold, with 
-cusps as orbipoits in extended definition. 
+cusps as orbipoints in extended definition. 
 We extend the definition as such, that the map from the compactification of 
-some open subset consisting point $x$ can go to the quationt of compactification of 
+some open subset consisting point $x$ can go to the quotient of compactification of 
 $\mathbb{H}^2$ by $S^1$. The group, we will take to act on $\mathbb{H}^2$ will 
 be:
 \begin{itemize} 
@@ -176,7 +176,7 @@ model on a hyperbolic plane.
 \end{itemize}
 
 Note that in both cases, the is exactly one point in the compactification of $\mathbb{H}$, that is 
-fixed for every elemnt of the acting group -- point from the compactification at 
+fixed for every element of the acting group -- point from the compactification at 
 the infinity on the top of the plane. This point is will be always mapped to the orbipoint $x$. 
 We will call $x$ an, respectively, rotational, or dihedral orbipoint of infinite degree.
 
@@ -215,10 +215,10 @@ in the pairwise same cyclic orders (up to orientation if the base manifold is no
 %quotiens
 \subsection{Euler characteristic}
 On CW-complexes we can define Euler characteristic as additive topological invariant 
-normalised on symplexes.
+normalised on simplex.
 
 On a CW-complex it is then an alternating sum of numbers of cells in 
-a consecutive dimentions: 
+a consecutive dimensions: 
 \begin{equation}
 \chi(C) = \sum_{d = 0}^n (-1)^d k_d
 \end{equation}
@@ -237,7 +237,7 @@ by the action of a finite group $G$, that acts properly discontinuously and free
 
 \subsection{\Eoc}\label{Eoc}\label{extended_Euler_orbicharacteristic}
 We would like to extend the definition of Euler characteristic to orbifolds in a way 
-that will reflect on their structre. 
+that will reflect on their structure. 
 We will call the resulting additive topological invariant the Euler orbicharacteristic 
 and denote it by $\chi^{\rm orb}$.
 
@@ -259,24 +259,24 @@ associated to each cell, if $c_i$ is a cusp and $|\Gamma(c_i)| = \infty$ we put
 $\frac{1}{|\Gamma(c_i)|} = 0$. We will call $\frac{1}{|\Gamma(c_i)|}$ a weight of a cell $c_i$.
 \end{definition} 
 
-This definition results in the propertie, that if an orbifold $O_2$ is a quotient 
+This definition results in the property, that if an orbifold $O_2$ is a quotient 
 of a orbifold $O_1$, by the action of the finite group $G$, that acts properly 
-discontinuosly, but not neceserly freely on $O_1$, then:
+discontinuously, but not necessarily freely on $O_1$, then:
 \begin{equation}
 \cho{O_2} = \frac{\chi(O_1)}{|G|}.
 \end{equation}
-For a two dimentional orbifolds, the possible cells with weights different than $1$ are 
-only in dimensions $0$ and $1$. In dimention 0 they are rotational and dihedral 
-orbipoints. In dimention 1 they are fragments of the boundary that stabilises reflections. 
+For a two dimensional orbifolds, the possible cells with weights different than $1$ are 
+only in dimensions $0$ and $1$. In dimension 0 they are rotational and dihedral 
+orbipoints. In dimension 1 they are fragments of the boundary that stabilises reflections. 
 The weights of these cells are (with the convention that $\frac{1}{\infty} = 0$):
 \begin{itemize}
 \item for a rotational point of degree $n$, the weight is $\frac{1}{n}$,
 \item for a dihedral point of degree $n$, the weight is $\frac{1}{2n}$,
 \item for a reflection line, the weight is $\frac{1}{2}$.
 \end{itemize}
-We can see that weights of rotational and dihedral orbipoints are monotonously decrising 
+We can see that weights of rotational and dihedral orbipoints are monotonously decreasing 
 and converges to $0$, as degree diverges to infinity. Moreover, the 
-cusps -- rbipoints of an inifinte degree, 
+cusps -- orbipoints of an infinite degree, 
 that are stabilised by a groups of infinite degree, has weight $0$.
 
 From this we will obtain the formula for an Euler orbicharacteristic of a two dimensional 
@@ -296,7 +296,7 @@ For $O$ with only dihedral orbipoints:
 \end{equation}
 
 From these formulas we can see, that as number of orbipoints diverges to infinity, the \Eoc\ 
-diverges to minus infinity. For this reason, we restric ourselves only to orbifolds 
+diverges to minus infinity. For this reason, we restrict ourselves only to orbifolds 
 with finitely many orbipoints.
 \begin{observation}\label{orbifolds have smaller Eoc than their base manifolds}
 A $M$-orbifold that is different than $M$ always have strictly smaller \Eoc\ than $M$. 
@@ -312,14 +312,15 @@ A $M$-orbifold that is different than $M$ always have strictly smaller \Eoc\ tha
 As described and proved in \cite{Thurston1979} (13.3.6.) all good orbifolds have either:
 \begin{itemize}
 \item Elliptic structure, if $\cho{O} > 0$,
-\item Parabollic structure, if $\cho{O} = 0$,
+\item Parabolic structure, if $\cho{O} = 0$,
 \item Hyperbolic structure, if $\cho{O} < 0$.
 \end{itemize}
-With an elliptic or a hyperbollic metric structre, we can meassure the volume of the orbifold as 
+With an elliptic or a hyperbolic metric structure, we can measure the volume of the orbifold as 
 \begin{equation}
 V(O) = |\int_O K dA|
 \end{equation} 
-Also, as stated in \cite{Thurston1979} (13.3.5.), the Gauss-Bonnet theorem works also for orbifolds 
+Also, as stated in \cite{Thurston1979} (13.3.5.), the Gauss-Bonnet 
+theorem works also for orbifolds 
 and we have that:
 \begin{equation}
 \int_O K dA = 2\pi|\cho{O}|,
@@ -329,9 +330,11 @@ thus having that
 V(O) = 2\pi|\cho{O}|.
 \end{equation}
 
-As mentioned in \cite{}, there are oly types of elicptical, only 17 paraboloid total and infonitely many hyperbolic. 
+As mentioned in \cite{Thurston1979} (Theorem 13.3.6), there are only 5 types of elliptical 
+orbifolds (each type consisting of infinitely many), 
+only 17 parabolic orbifolds total and infinitely many types hyperbolic. 
 Our main goal in this thesis is to describe possible volumes of two dimensional orbifolds, 
-especially thouse with hyperbolic structure. 
+especially those with hyperbolic structure. 
 As from \ref{volume to chi} we have direct correspondence 
 between volumes and \Eoc s, and with \Eoc, we can restrict ourselves to rational numbers, 
 we will try to describe possible \Eoc\ of two dimensional orbifolds.  
@@ -339,23 +342,24 @@ we will try to describe possible \Eoc\ of two dimensional orbifolds.
 \section{Classification of two dimensional manifolds}\label{2 dim manifolds}
 %\todo{twierdzenie o klasyfikacji powierzchni}
 In this thesis we aim to better recognise possible two dimensional orbifolds. 
-The fundament that we are relaying on is the classification of two dimensional manifolds. 
+The foundation that we are relaying on is the classification of two dimensional manifolds. 
 
 It is phrased as a well known theorem, that we will recall from \cite{Conway2016} (Theorem 8.2).
-After \cite{Conway2016} we will treat two dimensional manifold as a $S^2$ with a collection of features 
+After \cite{Conway2016} we will treat two dimensional manifold as a $S^2$ with 
+a collection of features 
 made by:
 \begin{itemize}
-\item taking a connected sum with $\mathbb{R}P^1$, the corresponding ffeature, 
+\item taking a connected sum with $\mathbb{R}P^1$, the corresponding feature, 
 we will call, after \cite{Conway2016}, a cross-cap
 \item taking connected sum with $\mathbb{T^2}$, the corresponding feature, we will call, 
 after Conway, a handle
-\item cuttind out $D^2$ without boundary, creating the boundary component. 
+\item cutting out $D^2$ without boundary, creating the boundary component. 
 \end{itemize}
 The theorem, written in this language is:
 \begin{theorem}
 To obtain an
 arbitrary connected surface from a sphere, it suffices to add either
-handles or crosscaps and maybe to punch some holes, giving
+handles or cross-caps and maybe to punch some holes, giving
 boundaries.
 \end{theorem}
 
@@ -368,7 +372,7 @@ boundaries.
 
 
 
-\section{Therminology and notation}\label{therminology and notation}
+\section{Terminology and notation}\label{therminology and notation}
 \subsection{Manifold notation}
 %After Conway we will treat two dimensional manifold as a $S^2$ with a collection of features 
 %consisting of:
@@ -396,7 +400,7 @@ where each $\times$ represents the cross-cap,
 %is present only if $M$ is non-orientable, 
 each $\circ$ represent one handle and each $*$ represents a boundary component.
 
-This notation is not necesserly unique, as $\circ^a\times^b = \times^{2a+b}$. For a more 
+This notation is not necessarily unique, as $\circ^a\times^b = \times^{2a+b}$. For a more 
 detailed description we refer to \cite{Conway2016} (page 101-102).
 
 \subsection{Orbifold notation}
@@ -404,7 +408,7 @@ For the rest of this thesis we will use slightly modified notation from \cite{Co
 %"feature"
 %Write about manifold Euler characterestic
 %We treat manifolds and orbifolds as a sphere with some features added by the operations.
-As we know from \ref{sameness}, two dimentional orbifold can be defined 
+As we know from \ref{sameness}, two dimensional orbifold can be defined 
 by specifying:
 \begin{itemize} 
 \item its base manifold, 
@@ -432,11 +436,11 @@ $*d_1^1\cdots d_{m_1}^1 \cdots *d_1^b\cdots d_{m_b}^b$ are $b$ boundary componen
 with dihedral orbipoints of degrees $d_1^k\cdots d_{m_k}^k$ ordered with the preservation 
 of the cyclic order on the boundary component. 
 In this notation, the sphere $S^2$ will be denoted as $\varepsilon$ -- an empty word.
-This notation is not necesserly unique for a given orbifold. We can freerly permute 
+This notation is not necessarily unique for a given orbifold. We can freely permute 
 boundary components and change dihedral points inside each boundary component by cyclic 
 permutations. 
 \subsection{Feature notation}
-We will view any two dimentional orbifold as a $S^2$ with added features
+We will view any two dimensional orbifold as a $S^2$ with added features
 \begin{itemize}
 \item cross-caps
 \item handles
@@ -445,11 +449,11 @@ We will view any two dimentional orbifold as a $S^2$ with added features
 \item dihedral orbipoints.
 \end{itemize}
 
-For all these features exept dihedral orbipoints 
+For all these features except dihedral orbipoints 
 the notation for a feature treated as an object alone (it can be view 
 as a map from orbifolds to orbifolds, that takes one orbifold $O_1$ defined by some list and 
 returns the other orbifold $O_2$ defined by the list of $O_1$ with added feature), will 
-be the same as the notation of the feature in the list. For dihedral points, when they will apear 
+be the same as the notation of the feature in the list. For dihedral points, when they will appear 
 alone, we will write $^*d_i$, instead of $d_i$, to signify, that they are dihedral orbipoints 
 and we will write expressions like $^*2$ or $^*3$. 
 
@@ -486,9 +490,9 @@ $O_1$, nor $O_2$, nor the choice of the list describing them at depends only on 
 %dopisać, że w Conwayowej >= 2
 
 \subsection{Expressions involving $\infty$}
-If not stated othewise, in the expressions containing $\infty$ symbol, their value is understood 
+If not stated otherwise, in the expressions containing $\infty$ symbol, their value is understood 
 as $\varphi(\infty) \coloneqq \lim\limits_{n\to \infty}\varphi(n)$. Only expressions 
-where such limits exists will occour without futther notice.
+where such limits exists will occur without further notice.
 %\todo{}
 
 \subsection{Addition of sets and numbers}
@@ -498,9 +502,9 @@ A+B \coloneqq \{a+b\ |\ a \in A, b\in B\}.
 \end{equation}
 
 \subsection{Two dimensionality}
-From this point, throught the whole thesis we will consider only two dimensional manifolds and 
-orbifolds, for this reason words "two-dimensional" will be sometimes ommited, nevertheless 
-from this poinnt we will always mean only two dimensional manifolds and orbifolds.  
+From this point, through the whole thesis we will consider only two dimensional manifolds and 
+orbifolds, for this reason words "two-dimensional" will be sometimes omitted, nevertheless 
+from this point we will always mean only two dimensional manifolds and orbifolds.  
 
 %delta
 %h c b
@@ -515,7 +519,7 @@ We would denote the set of all possible \Eoc\ of a $M$-orbifolds
 that have only dihedral orbipoints by $\spe^d(M)$, but from this section, it follows that 
 we always have $\spe^d(M) = \spebr{M}$. 
 
-We will also denote the sum of spectra of all two dimentional manifolds by:
+We will also denote the sum of spectra of all two dimensional manifolds by:
 \begin{equation}
 \spe \coloneqq \bigcup_{M\textrm{ : 2d manifold}} \spebr{M}.
 \end{equation}
@@ -570,7 +574,7 @@ and
 \end{align}
 
 \begin{observation}\label{all_spectra_are_isomorphic}\label{spe_M}
-For every two dimentional manifold $M$, we have that $\spe(M)$ is homeomorphic to $\speD$. 
+For every two dimensional manifold $M$, we have that $\spe(M)$ is homeomorphic to $\speD$. 
 %For $M$ with $h$ handles, $c$ cross-cups and $b$ boundary components, 
 This homeomorphism is: \\
 $\bullet$ for $b \neq 0$:
@@ -613,7 +617,7 @@ and
 \begin{equation}
 \speS = 2\speD.
 \end{equation}
-From this, the observation follows immedietly. $_\square$
+From this, the observation follows immediately. $_\square$
 
 \begin{observation}\label{spectrum lesser than chi}
 For every manifold $M$, for every $x \in \spebr{M}$, we have that $x \leq \chi(M)$.
@@ -621,14 +625,14 @@ For every manifold $M$, for every $x \in \spebr{M}$, we have that $x \leq \chi(M
 
 %\todo{dopisać, że spectrum jest poniżejchi rozmaitości}
 
-\section{Egyptian franctions}
-Egyptian frantion is a finite sum of fractions, all with numerators one. 
+\section{Egyptian fractions}
+Egyptian fraction is a finite sum of fractions, all with numerators one. 
 Most of the time it is also required, that the fractions in the sum have pairwise distinct 
 denominators. We will however take less usual convention and will drop that requirement, 
-calling an egyptian fraction any sum of unitary fractions. 
+calling an Egyptian fraction any sum of unitary fractions. 
 
 As a side remark, we can say, that even in case of the usual, more strict definition, 
-every rational number can be expressed as an egyptian fraction. One of the methods 
+every rational number can be expressed as an Egyptian fraction. One of the methods 
 to do so was described in \cite{Engel1913}.
 
 In our less strict definition, we can always have 
@@ -657,7 +661,7 @@ and
 \end{equation}
 
 %In expressions there are 
-In this form, the egyptian fractions are explicitly present in expresions of 
+In this form, the Egyptian fractions are explicitly present in expressions of 
 points in $\spebr{M}$.
 %This is very simmilar to the notion of the egyptian franction, 
 %which is a rational number expressed as a sum of a fractions with numerator $1$ and 
@@ -665,14 +669,14 @@ points in $\spebr{M}$.
 %following that convention in this thesis. 
 
 The $-n$ and $-\frac{m}{2}$ terms provide constraints on the number of fractions that 
-can apprear in the sum.
+can appear in the sum.
 %The particular interest is in translating questions related to spectra to the questions 
 %of egyptian franctions. 
 %What the data of the spectra imposes is the number of fractions to be summed. 
 
 %We are interested in translating 
 We will now translate the questions of being in the spectrum 
-to the questions of being expressable as egyptian fraction with the particular number 
+to the questions of being expressible as Egyptian fraction with the particular number 
 of summands. It will be used in \ref{saturation theorem} and \ref{unboundness}.
 
 %We can make following corollaries:
@@ -704,11 +708,11 @@ of summands. It will be used in \ref{saturation theorem} and \ref{unboundness}.
 %\end{corollary}
 %We may now expand our corollaries about egyptian fractions to arbitrary $M$:
 
-We will now state two corrolaries that follows immediately from the 
+We will now state two corollaries that follows immediately from the 
 form of expressions \ref{Egyptian S2 sum} and \ref{Egyptian D2 sum}, and from 
 \ref{two dim manifold spectrum}.
 \begin{corollary}\label{from Egyptian fractions}
-If $x$ can be expressed as an egyptian fraction with $n$ summands, then for any two dimensional 
+If $x$ can be expressed as an Egyptian fraction with $n$ summands, then for any two dimensional 
 manifold $M$ we have: 
 \begin{equation}
 \chi(M) - n + x \in \spebr{M}
@@ -725,8 +729,8 @@ then
 \begin{equation}
 y + n - \chi(M)
 \end{equation} 
-can be expressed as an egyptian fraction with $n$ 
-(not nessecerely distincs) summands. 
+can be expressed as an Egyptian fraction with $n$ 
+(not necessarily distinct) summands. 
 
 If for some two dimensional manifold $M$ with at least one boundary component 
 we have that $y \in \spebr{M}$ as an \Eoc of an orbifold which has $m$ dihedral orbipoints and 
@@ -735,27 +739,27 @@ then
 \begin{equation}
 2y + \frac{m}{2} - 2\chi(M)
 \end{equation}
-can be expressed as an egyptian fraction with $m$ 
-(not nessecerely distinct) summands. 
+can be expressed as an Egyptian fraction with $m$ 
+(not necessarily distinct) summands. 
 \end{corollary}
 
 \section{Operations on orbifolds}\label{Operations}
-As stated in \ref{therminology and notation} we will often see two dimentional orbifold 
+As stated in \ref{therminology and notation} we will often see two dimensional orbifold 
 as a sphere $S^2$ with a collection of features.
 Throughout the thesis we will frequently refer to performing the "operation" on an orbifold 
-consisting of removing and adding thouse features. 
+consisting of removing and adding those features. 
 What we mean by this is giving as a result of an operation on one orbifold, defined 
 by some list of features on a sphere, another one 
 with a modified list of features according to the described operation. 
 
 When we will be talking about "adding" or "removing" a feature from an orbifold, we 
 will mean adding or removing this feature from a list defining this orbifold and 
-taking the orbifold defined by resultin list as a result of the operation.
+taking the orbifold defined by resulting list as a result of the operation.
  
 As our main interest is to figure out, for a given rational number 
 $\frac{p}{q}$ which orbifolds have $\frac{p}{q}$ as their \Eoc\ and for a given 
 orbifold $O$, which orbifolds 
-have the same \Eoc\ as $O$, we will be particulary interested in such operations 
+have the same \Eoc\ as $O$, we will be particularly interested in such operations 
 that do not change \Eoc, which will be used in \ref{sufficiency of D2 and S2}.
 
 
@@ -782,7 +786,7 @@ of its order type and topology and relation to other sets such as $\speD$ and $\
 We will focus on these questions in \ref{order structure}. 
 
 $\bullet$ Ones regarding $\spe$ as an image of a $\chi^{orb}$, sending orbifolds to their \Eoc s. 
-There, we will ask for example how namy orbifolds have particular \Eoc\ and 
+There, we will ask for example how many orbifolds have particular \Eoc\ and 
 related questions. We will focus on these questions in the chapter \ref{counting occurrences}.  
 
 %Reduction presented in \ref{reduction_to_arithmetical} are with . 

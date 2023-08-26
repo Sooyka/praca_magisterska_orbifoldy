@@ -1,9 +1,9 @@
 % mainfile: ../praca_magisterska_orbifoldy.tex
 \chapter{Algorithm for searching for the spectrum}\label{Searching the spectrum}
 
-In the previous chapter we answeared the questions about how $\spe$ looks like -- in particular 
+In the previous chapter we answered the questions about how $\spe$ looks like -- in particular 
 what is it's order type and topology. In this chapter we would like to develop a 
-methods for answearing the 
+methods for answering the 
 following question: 
 %In the previous chapter the main question was about which rational numbers are in $\spe$. 
 %We can ask, how to answear the question 
@@ -11,12 +11,12 @@ following question:
 %In this chapter we will show that the question 
 "For a given rational number, is it in $\spe$?" 
 
-We have some sort of answear to this question -- an algorithm.
+We have some sort of answer to this question -- an algorithm.
 %a very long equation that 
 %commonly is refered to as an algorithm. 
 
-It is not an ideal answear as it gives little insight of what is a general structure 
-of the spectrum. Nethertheless it is a constructive and computable answear. 
+It is not an ideal answer as it gives little insight of what is a general structure 
+of the spectrum. Nevertheless it is a constructive and computable answer. 
 %What's more, 
 %later, in implementation chapter we discuss that for numbers with denominators of a reasonable 
 %size and in reasonable distance from zero this algorithm can be run successfully on a 
@@ -48,7 +48,7 @@ of the spectrum. Nethertheless it is a constructive and computable answear.
 %question.
 %unansweared question 
 
-The exact question we will provide algorithm to answear here is: 
+The exact question we will provide algorithm to answer here is: 
 
 \textit{For a given rational number $r$ and manifold $M$, is there at least one 
 $M$ orbifold with $r$ as its \Eoc?}
@@ -112,7 +112,7 @@ is in $\sdD$.
 
 Considering this fact, from this point, WLOG we will assume that $M = D^2$ and, 
 following \ref{only dihedral}, we will 
-be conserned only with dihedral orbipoints.
+be concerned only with dihedral orbipoints.
 
 %\subsection{Arithmetic formulation}
 %We want to determine whether there exists $d_1,d_2,\cdots,d_k$, such that 
@@ -129,7 +129,7 @@ $\frac{4-l}{2}$
 and for an odd $l$ it is a condensation point of order $\frac{3-l}{2}$ (see \ref{greatest \apots} 
 and \ref{predescors}). 
 
-In the case, where $\frac{p}{q} > 1$, we also can give answer rigth away and this answr is "no". 
+In the case, where $\frac{p}{q} > 1$, we also can give answer right away and this answer is "no". 
 
 Now we will consider only cases when $\frac{p}{q}$ is not of the form $l\frac{1}{4}$ and is 
 $\leq 1$.
@@ -175,16 +175,16 @@ with values ranging on $\mathbb{N}_{>0}\cup\{\infty\}$.
 %$1$, through all natural numbers, to infinity 
 %(with infinity included). 
 Each counter correspond to one dihedral point 
-on the boundry of the disk of period equal to the value of the counter (with the note, that 
+on the boundary of the disk of period equal to the value of the counter (with the note, that 
 if counter is set to $1$ it means a trivial dihedral point - namely a non-orbi point, 
 a normal point). 
 
 We will write the state of the counters without commas, using the letter $d$. 
 Note that with this convention, $c_i$ will refer to the $i$-th counter and $d_i$ will 
-refet to the value of the $i$-th counter. 
+refer to the value of the $i$-th counter. 
 
 So the state of the counters $d_1d_2\cdots$ correspond to the orbifold 
-$*d_1d_2\cdots$ (where the trailing $1$'s are trunkated).
+$*d_1d_2\cdots$ (where the trailing $1$'s are truncated).
 
 We will refer to the counters being "to the left" or "to the right" of each other, as 
 the numbering would go from left to right.
@@ -216,8 +216,8 @@ We will do our computation such that:
 \begin{itemize}
 \item every state of the counters during runtime of the algorithm will have only finitely many 
 counters with value non-$1$. 
-\item every state in the rutime of the algorithm 
-will have values on consequtive counters ordered in weakly decreasing order.
+\item every state in the runtime of the algorithm 
+will have values on consecutive counters ordered in weakly decreasing order.
 \end{itemize}
 \end{claim}
 From now we will 
@@ -227,7 +227,7 @@ consider only such states.
 %The state of the counters $d_1d_2\cdots$ correspond to the orbifold 
 %%of \Eoc\ equal $\chi^{orb}(*d_1d_2\cdots)$
 %$*d_1d_2\cdots$ (where the trailing $1$'s are trunkated). 
-\subsection{The algorithem for searching for a spectrum}
+\subsection{The algorithm for searching for a spectrum}
 \label{the algorithm for searching the spectrum itself}
 When the algorithm is in the state: 
 \begin{itemize}
@@ -235,7 +235,7 @@ When the algorithm is in the state:
 \item pivot: at the counter $c_p$
 \item flag: set to the value $flag\_value$,
 \end{itemize}
-we procced as follows 
+we proceed as follows 
 %(the term "We continue." means, that we start the following procedure from the beginning)
 :
 %// More on how we search for it will be told later, 
@@ -331,7 +331,7 @@ In the case, the $flag\_value$ is equal to:
 }
 \end{lstlisting}
 \section{The idea of the algorithm}\label{the idea of the algoritm}
-We will now present in more detail what the algorithm is intented to do. 
+We will now present in more detail what the algorithm is indented to do. 
 To do this and for the later sections, we will first introduce an order on the states 
 of counters satisfying \ref{valid state of counters} (as mentioned in 
 \ref{valid state of counters} we will consider only such states) and prove several lemmas about it. 
@@ -414,7 +414,7 @@ $\preceq$. Then $\cho{*D_1} > \cho{*D_2}$.
 \end{lemma}
 \subsubsection{Proof.}
 From \ref{form of the successor} we know, that taking the successor 
-of the finite state always chages  
+of the finite state always changes  
 only first counter and it is changing it by increasing it by 1. 
 Increasing the order of the orbipoint  
 decreases \Eoc. $_\square$
@@ -425,7 +425,7 @@ of finite states $\{D_n\}$ in $\preceq$.
 \end{corollary}
 
 \begin{lemma}
-Leet $D_1$ be infinite state and let $D_2 \coloneqq S(D_1)$ in $\preceq$. 
+Let $D_1$ be infinite state and let $D_2 \coloneqq S(D_1)$ in $\preceq$. 
 Then $\cho{*D_1} \leq \cho{*D_2}$. Furthermore there is only one element in $\preceq$ for 
 which the equality holds: $\infty\ 1\ 1\ 1\cdots$, for all the rest the inequality is strict. 
 %For avery infinite steate $D$ and its successor $a'$, w ehave that $chi chi$. 
@@ -603,7 +603,7 @@ The state of the counters in the algorithm is weakly increasing with respect to 
 \end{lemma}
 \subsubsection{Proof.}
 The state of the counters is changed in lines 10-11, 46, 66-67. In each of these lines 
-the counter with the gretest index of all changed counters increases in value, so 
+the counter with the greatest index of all changed counters increases in value, so 
 the resulting state is bigger with respect to order $\preceq$. $_\square$
 
 \subsection{Basic idea}\label{basic idea}
@@ -612,7 +612,7 @@ from the smallest (in the sense of $\preceq$) state of counters, which will be w
 are set to $1$, up to some upper limit beyond which we are sure that no configuration of 
 counters will yield the \Eoc\ that we are looking for. 
 
-Now we will go through several obstacles of how to do so and solutions for them, answearing for 
+Now we will go through several obstacles of how to do so and solutions for them, answering for 
 example the 
 questions how we go through all the states and what can be this upper limit. 
 
@@ -633,13 +633,13 @@ in finite number of steps.
 %$\{\cho{*a_n}\}$ is strictly descending. 
 
 First, we will perform a reduction from 
-arbitrary infinite connected sequence to the inifite connected sequence of finite states. 
+arbitrary infinite connected sequence to the infinite connected sequence of finite states. 
 
 Let us observe, that, by \ref{finiteness of the successor}, 
 there can be at most one infinite state in 
 any connected sequence, and if it is present it must be the first one. If such state 
 $D_0$ is present, 
-we can chceck it whether $\chi(*D_0))$ is equal to $\frac{p}{q}$ or not (one step), 
+we can check it whether $\chi(*D_0))$ is equal to $\frac{p}{q}$ or not (one step), 
 and then all states that are left to be checked are finite and form infinite 
 connected sequence of finite states, thus ending our reduction. 
 %separately from the rest of the sequence 
@@ -649,7 +649,7 @@ infinite connected sequence of finite states.
 
 First, let us observe that thanks to \ref{connected sequences corollary}, 
 when we are searching through the infinite connected sequence of finite states in 
-$\preceq$, once we get (without fiding any solution) 
+$\preceq$, once we get (without finding any solution) 
 to the state $D_n$ for which $\cho{*D_n} < \frac{p}{q}$, we know 
 that no state $D_m$ with $m>n$ can have $\cho{*D_m} = \frac{p}{q}$ 
 and we can disregard whole sequence. 
@@ -658,7 +658,7 @@ There is, however, another problem, namely, that when we are searching through
 the infinite connected sequence of the finite state, 
 %of consequtive 
 %states of counters, 
-initialy, we don't now, whether there will be any state 
+initially, we don't now, whether there will be any state 
 $D_k = (d_1+k)d_2d_3\cdots$ in it, that 
 will have $\cho{*(d_1+k)d_2d_3\cdots} \leq \frac{p}{q}$. 
 However, thanks to \ref{chi supp functoriality} 
@@ -674,7 +674,7 @@ disregard the whole sequence right away, since
 $\chi(*\infty d_2d_3\cdots)$ is the infimum of $\{*(d_1+n)d_2d_3\cdots\}$.
 
 \subsection{What after we checked infinite connected sequence?}
-Let us suppouse that we just checked the infinite connected sequence, together with its supremum. 
+Let us suppose that we just checked the infinite connected sequence, together with its supremum. 
 %From this we have the method to check any infinite connected sequence of finite states in finitely 
 %many steps.
 
@@ -737,11 +737,11 @@ until we find some $n$, such that
 \begin{equation}
 \cho{*\infty\infty \cdots \infty d_{n+1}\cdots} < \frac{p}{q}.
 \end{equation}
-We always find $n$ like that, because at all time only finately many counters are set 
+We always find $n$ like that, because at all time only finitely many counters are set 
 to non-1 value, so from some point moving to next coordinate will result in 
 comparing to $\frac{p}{q}$ the number $\frac{1}{2}$ smaller than from previous coordinate. 
 
-Once we find such $n$, we need to perform actions decribed in \ref{searching mode idea}.  
+Once we find such $n$, we need to perform actions described in \ref{searching mode idea}.  
 
 %If it will happen that 
 %\begin{eqaution}
@@ -801,7 +801,7 @@ corresponding \Eoc greater than $\frac{p}{q}$. We ruled out all smaller or equal
 \begin{equation}
 \infty\infty \cdots \infty 1d_{n+1}\cdots.
 \end{equation}
-At this point, we can use a procedure analogus to the one from 
+At this point, we can use a procedure analogous to the one from 
 \ref{searching idea connected}, checking through the sequence (iterated with respect to $m$)
 \begin{equation}
 \infty\infty \cdots \infty md_{n+1}\cdots,
@@ -826,7 +826,7 @@ We know that $m_0 \geq 2$, since we know from  the procedure \ref{greater idea} 
 \begin{equation}
 \cho{\infty\infty \cdots \infty 1 d_{n+1}\cdots)} > \frac{p}{q}
 \end{equation}
-We know proceed to check from the succesorr:
+We know proceed to check from the successor:
 \begin{equation}
 S(\infty\infty \cdots \infty (m_0-1) d_{n+1}\cdots) = m_0m_0\cdots m_0 m_0 d_{n+1}\cdots
 \end{equation}
@@ -857,12 +857,12 @@ We start at "Greater" and proceed to do the procedure from \ref{greater idea}.
 Once the procedure stops, we do procedure from \ref{searching mode idea}, then 
 dependent whether the result have corresponding \Eoc\ greater or smaller than $\frac{p}{q}$, 
 we perform, respectively -- again procedure from \ref{greater idea} or the 
-procedure from \ref{less idea}. We repeat \ref{less idea} as long as neccessery. 
+procedure from \ref{less idea}. We repeat \ref{less idea} as long as necessarily. 
 Once it gives the state that have \Eoc\ greater than $\frac{p}{q}$ we set the flag to 
 "Greater" again and repeat the whole process starting from the procedure in \ref{greater idea}. 
-In the case that reapeting the procedure from \ref{Less idea} won't give any state with 
-corresponding \Eoc\ greater than $\frac{p}{q}$ the algorithm will hit its stoping condition 
-and answear "no" as written in the algorithm 
+In the case that repeating the procedure from \ref{Less idea} won't give any state with 
+corresponding \Eoc\ greater than $\frac{p}{q}$ the algorithm will hit its stopping condition 
+and answer "no" as written in the algorithm 
 \ref{the algorithm for searching the spectrum itself} itself.   
 % for searching the spectrum, that is
 \section{Proof of the correctness of the algorithm}\label{memory state proof}
@@ -893,7 +893,7 @@ in "Searching" section.
 In this process "Searching" moves pivot to the first counter and  
 "Greater" moves pivot one counter to the right. 
 As long as the pivot is not on the 1st counter, control flow must have came then to the line 15th 
-from "Greater" section amd if pivot is at the 1st counter it must have camo from the 
+from "Greater" section and if pivot is at the 1st counter it must have came from the 
 "Searching" section. From this we have,  
 that for the pivot, to get to the counter $c_p$, it would need to go through all 
 the counters to the left of $c_p$ while being on the line 15th and 
@@ -905,7 +905,7 @@ to the left of $c_p$ are set to $\infty$ and the counter $c_p$ is not set to $\i
 \subsubsection{Proof.}
 The only way to get to the line 33rd is from line 23rd in "Greater" section. 
 From \ref{Greater infinities to the left lemma} we know, that then all the counters to the left 
-of $c_p$ are set to $\infty$. Counter $c_p$ on the other hand can not be set to infty, 
+of $c_p$ are set to $\infty$. Counter $c_p$ on the other hand can not be set to infinity, 
 since, from the fact that control flow was at the block from line 21st, we know that
 \begin{equation}
 \cho{*d_1d_2\cdots d_{p-1}\infty d_{p+1}\cdots} < \frac{p}{q}
@@ -994,25 +994,25 @@ For any state $D_1$ that is a state of counters at some point of the execution o
 and $D_2$ such that $D_1$ is changed to $D_2$ during the execution, we have that $D_1 \prec D_2$.
 \end{lemma}
 \subsubsection{Proof.}
-Let us observe that in each instance of chenging the counters -- in lines 15, 33-34 and 64-65. 
+Let us observe that in each instance of changing the counters -- in lines 15, 33-34 and 64-65. 
 the rightmost counter that is changed is always increased. From this, the lemma follows. 
 $_\square$
 \subsection{Proof.}\label{proof of the correctness of the algorithm}
 Now, we will perform the proof, that the idea of the algorithm presented above in 
 \ref{the idea of the algoritm}, as 
 well as the algorithm itself \ref{the algorithm for searching the spectrum itself}, 
-works as intented.
+works as intended.
 
-Firstly, let us observe, that algorithm gives the answear on lines 8, 14-15, 35-36, 55-56, 
+Firstly, let us observe, that algorithm gives the answer on lines 8, 14-15, 35-36, 55-56, 
 62-63 and 
-always ends immedietly after giving the answear. Thus, it will always give at most one answear.
+always ends immediately after giving the answer. Thus, it will always give at most one answer.
 Furthermore let us observe that these are the only places where the algorithm terminates, 
-so if it terminates it will give at least one answear.
+so if it terminates it will give at least one answer.
  
 There are three things to be checked: \\
-$\bullet$ That the algorithm never answears "yes" if there is no orbifold of the \Eoc\ 
+$\bullet$ That the algorithm never answers "yes" if there is no orbifold of the \Eoc\ 
 $\frac{p}{q}$ (No false positives)\\
-$\bullet$ That the algorithm never answears "no" if there is an orbifold of \Eoc\ 
+$\bullet$ That the algorithm never answers "no" if there is an orbifold of \Eoc\ 
 $\frac{p}{q}$ (No false negatives)\\ 
 $\bullet$ That the algorithm always ends in a finite number of steps (Guaranteed termination). 
 
@@ -1032,9 +1032,9 @@ $\bullet$ That the algorithm always ends in a finite number of steps (Guaranteed
 %\subsubsection{Proof.}
 
 \subsection{No false positives}
-Algorithm gives answear "yes" at lines 7-8, 37-38, 68-69. At each of these places, 
-the answear contains the example of an orbifold with \Eoc\ equal to $\frac{p}{q}$ that was 
-explicitly checked for correctness just before giving the answear (see lines 5, 35, 66). 
+Algorithm gives answer "yes" at lines 7-8, 37-38, 68-69. At each of these places, 
+the answer contains the example of an orbifold with \Eoc\ equal to $\frac{p}{q}$ that was 
+explicitly checked for correctness just before giving the answer (see lines 5, 35, 66). 
 %$_\square$    
 \subsection{No false negatives}
 Let $D = d_1d_2d_3\cdots$ be such that $\cho{*d_1d_2d_3\cdots} = \frac{p}{q}$. 
@@ -1067,11 +1067,11 @@ Because of that:
 Going beyond $d_1d_2d_3\cdots$ counter state 
 could happen only in lines 15, 33-34 or 64-65, while pivot would be 
 %lovely
-at the rightmost counter that is differrent from $d_1d_2d_3\cdots$ or further to the right. 
+at the rightmost counter that is different from $d_1d_2d_3\cdots$ or further to the right. 
 That is, if $d_1'd_2'd_3'\cdots$ is the current state, and 
 $c_k$ is the rightmost counter on which $d_1d_2d_3\cdots$ 
-and $d_1'd_2'd_3'\cdots$ differ and $c_n$ is the counter at wich the pivot is on then 
-at the moment of chenge that goes beyond $d_1d_2d_3\cdots$, it must hold that $k \leq n$.
+and $d_1'd_2'd_3'\cdots$ differ and $c_n$ is the counter at which the pivot is on then 
+at the moment of change that goes beyond $d_1d_2d_3\cdots$, it must hold that $k \leq n$.
 \end{observation}
 %This is because these are the only lines where the counters are changed and while changing, 
 %only counters 
@@ -1084,7 +1084,7 @@ We will now eliminate all three options arising from lines 15, 33-34 and 64-65 c
 Let $D' = d_1'd_2'd_3'\cdots$ be current state of counters before the change 
 during the execution of the algorithm. 
 Let $c_k$ be the rightmost counter on which $d_1d_2d_3\cdots$ 
-and $d_1'd_2'd_3'\cdots$ differ. Let $c_n$ be the counter at wich the pivot is on. 
+and $d_1'd_2'd_3'\cdots$ differ. Let $c_n$ be the counter at which the pivot is on. 
 \subsubsection{Line 15}
 %For the sake of contradiction, let us assume, that 
 We will show that under taken assumptions, we will not get to this line. 
@@ -1103,12 +1103,12 @@ $D = D'$. This is a contradiction with the assumption of $k$.
 From this we have that $n = k$.
 
 We have then that pivot is on the rightmost counter $c_k$, 
-that differes between $D$ and $D'$, and 
+that differs between $D$ and $D'$, and 
 that all the counters strictly to the left of $c_k$ in $D'$ are set to $\infty$. 
 
 %From the assumption that $D' \preceq D$ we know, that $d_k' < d_k$. 
 
-From this, sice $\cho{*d_1d_2d_3\cdots} = \frac{p}{q}$, we have, that: 
+From this, since $\cho{*d_1d_2d_3\cdots} = \frac{p}{q}$, we have, that: 
 \begin{equation}
 \cho{*d_1'd_2'd_3'\cdots d_{k-1}'\infty d_{k+1}'\cdots} \leq \frac{p}{q} 
 \end{equation}
@@ -1160,11 +1160,11 @@ These are the state consisting of only, respectively, $\infty$ and $2$ as a non-
 values, that have the property, that they have the most non-$1$ counters from all 
 states of such form, having the corresponding \Eoc\ $\geq\frac{p}{q}$. 
 
-Let us assume that for some input $M$ and $\frac{p}{q}$ the algorithm does not anwear "yes". 
-We will show, that then it will answear "no" in finite number of steps. By 
+Let us assume that for some input $M$ and $\frac{p}{q}$ the algorithm does not answer "yes". 
+We will show, that then it will answer "no" in finite number of steps. By 
 \ref{finitely many steps between counter changes} 
-we can show this, by showing, that it will answear "no" after 
-finately many of counters state changes. 
+we can show this, by showing, that it will answer "no" after 
+finitely many of counters state changes. 
 \subsubsection{Going beyond every state smaller or equal than $_2D$}\label{going beyond}
 We will show it by firstly showing, that for any state $D = d_1d_2d_3\cdots$ smaller 
 or equal to  
@@ -1192,7 +1192,7 @@ number of steps of execution of the algorithm.
 $\bullet$ For the fist state we have that this is true since it is the $D'$ for itself.
 %for all the previous ones.   
 
-$\bullet$ Let us suppouse that for a state $D = d_1d_2d_3\cdots \preceq D_2$, for  
+$\bullet$ Let us suppose that for a state $D = d_1d_2d_3\cdots \preceq D_2$, for  
 all the states $\prec D$ our inductive assumption holds. We will show that it holds 
 for $D$. 
  
@@ -1226,8 +1226,8 @@ state of counters will be equal at least $D$.
 
 
 \item $D$ is not a successor of any $D' \prec D$. From this, we have that $D$ has at least one 
-$\infty$ on its couters.  
-Let $c_l$ be the counter that has rightmost infty in $D$. 
+$\infty$ on its counters.  
+Let $c_l$ be the counter that has rightmost infinity in $D$. 
 From \ref{} we have, that all the counters to the left of $c_l$ also are set to $\infty$.
 
 Let us consider the state $^0D = ^0d_1^0d_2^0d_3'\cdots$, such that for any $i > l$, we have that 
@@ -1236,8 +1236,8 @@ such that $^0D\preceq D'$ and such that $D'$ was a state of the counters after f
 many steps of the algorithm. If $D' \succeq D$, then we have induction thesis for $D$. 
 Let us consider the case, where $D' \prec D$. Then, since $^0D \preceq D' \prec D$, we have 
 that for every $i > l$, we have $d_i' = d_i$. From this, we have, that $D'$ differs from 
-$D$ only on the counters at, are to the left of $c_l$. We know, that all the counters 
-to the left ot at $c_l$
+$D$ only on the counters at, or to the left of $c_l$. We know, that all the counters 
+to the left of, or at $c_l$
 are set to $\infty$ in $D$ and that there is at least one counter set to $\infty$. 
 Moreover, we know, that $D'$ differ from $D$ on at least one counter.
 
@@ -1253,8 +1253,8 @@ have consecutive sequence length at most $l$, of states of counters, where
 values of consecutive counters 
 from $D'$ will be 
 replaced by $\infty$, up to the counter $c_l$ at which state $D$ will be reached. 
-This sequence will be generated by repedeatly going through line 15 in the algorithm, since 
-at every step, the corresponding \Eoc of the state of conters will be $> \frac{p}{q}$.
+This sequence will be generated by repeatedly going through line 15 in the algorithm, since 
+at every step, the corresponding \Eoc of the state of counters will be $> \frac{p}{q}$.
 
 \item $\cho{D} < \frac{p}{q}$
 From \ref{chi supp functoriality non finite}, we know, that there must exists state 
@@ -1271,11 +1271,11 @@ have consecutive sequence length at most $l$, of states of counters, where
 values of consecutive counters 
 from $D'$ will be increased by one and all the counters to the left of them will be set to 
 the value of the counter which was just increased. 
-This sequence will be generated by repedeatly going through line 66 in the algorithm, since 
-at every step, the corresponding \Eoc of the state of conters will be $< \frac{p}{q}$.
+This sequence will be generated by repeatedly going through line 66 in the algorithm, since 
+at every step, the corresponding \Eoc of the state of counters will be $< \frac{p}{q}$.
 
-This sequance will end by going with the pivot to the counter $c_{l+1}$, which we 
-know from the asumption that has value smaller than $\infty$, increasing it by one 
+This sequence will end by going with the pivot to the counter $c_{l+1}$, which we 
+know from the assumption that has value smaller than $\infty$, increasing it by one 
 and setting all the counters to the left of if to value $d_{l+1}+1$, this way obtaining 
 the state larger in $\preceq$ than $D$. 
 \end{itemize}
@@ -1310,9 +1310,9 @@ Since from \ref{going beyond}
 we know that for every state $D \preceq _2D$, 
 we will have some bigger state $D'$, that at some point was a state of counters, we 
 have that at some point counter $c_{\lceil 4(1-\frac{p}{q})\rceil}$ will 
-obtain non-zero value (if the predescor of $_2 D$ will be the state of counters 
+obtain non-zero value (if the predecessor of $_2 D$ will be the state of counters 
 at some point, then $c_{\lceil 4(1-\frac{p}{q})\rceil}$ will have non-$1$ value at the 
-next chenge of counters.). 
+next change of counters.). 
 %We have 
 %some state $_\infty D' \succeq _\infty D$. In the next change of the conters, state of 
 %the counters will have non-$1$ value at the counter $\lfloor 2(1-\frac{p}{q})\rfloor + 1$.
@@ -1326,12 +1326,12 @@ $_\square$
 
 
 
-\section{Another questions the algorithm can answear}
+\section{Another questions the algorithm can answer}
 \subsection{Deciding the order of accumulation}
 Using above algorithm, for a point $\frac{p}{q}$ and a manifold $M$, we can check 
 what order of accumulation point $\frac{p}{q}$ is in $\spebr{M}$. 
 
-Analogously to \ref{algorithm reduction to D2}, we will wlog answear the question fr $ M = D^2$. 
+Analogously to \ref{algorithm reduction to D2}, we will wlog answer the question fr $ M = D^2$. 
 
 First, we check with the algorithm, whether $\frac{p}{q} \in \speD$. If not, it is not 
 an accumulation point of $\speD$, since \ref{accumulation_points_of_the_set}.
@@ -1353,7 +1353,7 @@ $\lfloor 2 \left(1 -\frac{p}{q} \right)\rfloor$ such numbers.
 Let $n_0$, be the biggest of the checked numbers, for which 
 $\frac{p}{q} + \frac{n}{2} \in \speD$. 
 Then, from \ref{predescors} 
-we know, that $\frac{p}{q}$ is an ccumulation point of order $n_0$ in $\speD$. 
+we know, that $\frac{p}{q}$ is an accumulation point of order $n_0$ in $\speD$. 
 
  
 
@@ -1379,4 +1379,4 @@ we know, that $\frac{p}{q}$ is an ccumulation point of order $n_0$ in $\speD$.
 
 \section{Implementation}
 This algorithm is a part of the algorithm from \ref{Counting orbifolds -- arithmetical part} 
-where the implementation of the whole will be discused in \ref{implementation}.
+where the implementation of the whole will be discussed in \ref{implementation}.
