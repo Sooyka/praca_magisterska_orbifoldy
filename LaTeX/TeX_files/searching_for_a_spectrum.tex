@@ -79,7 +79,7 @@ We start with $r=\frac{p}{q}$, where $p \in \mathbb{Z}$, $q \in \mathbb{N}_{>0}$
 %\end{itemize}
 %\subsection{The algorithm}
 %and $\textrm{gcd}(p,q)$. \\ 
-\section{Reduction from arbitrary $M$ to $D^2$}
+\section{Reduction from arbitrary $M$ to $D^2$}\label{algorithm reduction to D2}
 This reduction is based on \ref{spe_M}.
 Note, that this is a different reduction than the one in \ref{reduction_to_arithmetical}. 
 In \ref{reduction_to_arithmetical} we are saying that for any $M$, we have $\spebr{M} 
@@ -1328,25 +1328,54 @@ $_\square$
 
 \section{Another questions the algorithm can answear}
 \subsection{Deciding the order of accumulation}
-\todo{poprawić}
-Let $m \in \mathbb{N}$ be such that $\frac{p}{q} \in (1-\frac{m}{2},1-
-\frac{m+1}{2})$
-Let us denote by $r \coloneqq \frac{p}{q} - (1-\frac{m}{2})$. \\ 
+Using above algorithm, for a point $\frac{p}{q}$ and a manifold $M$, we can check 
+what order of accumulation point $\frac{p}{q}$ is in $\spebr{M}$. 
 
-We will searching in $\sigma$ as such: \\
+Analogously to \ref{algorithm reduction to D2}, we will wlog answear the question fr $ M = D^2$. 
 
-If $\frac{p}{q} \in \sigma$, then, from the corollary \ref{predescors} we know, that there 
-exist some $n \in \mathbb{N}$, such that $\frac{p}{q} + \frac{n}{2} \in \sigma$ but 
-$\frac{p}{q} + \frac{n}{2} \not\in \sigma$. \\
+First, we check with the algorithm, whether $\frac{p}{q} \in \speD$. If not, it is not 
+an accumulation point of $\speD$, since \ref{accumulation_points_of_the_set}.
 
-We will be consequently checking points from $1+r$, through $1+r-\frac{l}{2}$, for 
-$0 \leq l \leq m$, to the $\frac{p}{q}$. We stop at the first found point. 
-If one of these point is in the spectrum, then all smaller (so also $\frac{p}{q}$) are in 
-the spectrum and $\frac{p}{q}$ is the accumulation point of the spectrum of order $m-l$ 
-(from this, 
-we can see some heuristic, that the points that have smaller order will be generally 
-harder to find in some sense). If none of this points are in in the spectrum, then $\frac{p}{q}$ 
-is not. \\
+Let us now consider the case, where $\frac{p}{q} \in \speD$.
+
+From \ref{predescors}, we know, that for a point $\frac{p}{q}$ being an accumulation 
+point of the set $\speD$, of order at least $n$ is equivalent to the fact that 
+$\frac{p}{q} + \frac{n}{2} \in \speD$. From \ref{spectrum lesser than chi} 
+on the other hand, we know, that 
+for any $x > 1$, we have $x \not\in \speD$.
+
+%Let us assume, that $\frac{p}{q} \in D^2$
+  
+As such, for a given $\frac{p}{q}$, we can, using our algorithm, check one by one 
+every number of the form $\frac{p}{q} + \frac{n}{2}$, such that $n \in \mathbb{N}_0$ and 
+$\frac{p}{q} + \frac{n}{2} < 1$. There are at most 
+$\lfloor 2 \left(1 -\frac{p}{q} \right)\rfloor$ such numbers. 
+Let $n_0$, be the biggest of the checked numbers, for which 
+$\frac{p}{q} + \frac{n}{2} \in \speD$. 
+Then, from \ref{predescors} 
+we know, that $\frac{p}{q}$ is an ccumulation point of order $n_0$ in $\speD$. 
+
+ 
+
+%\todo{poprawić}
+%Let $m \in \mathbb{N}$ be such that $\frac{p}{q} \in (1-\frac{m}{2},1-
+%\frac{m+1}{2})$
+%Let us denote by $r \coloneqq \frac{p}{q} - (1-\frac{m}{2})$. \\ 
+
+%We will searching in $\sigma$ as such: \\
+
+%If $\frac{p}{q} \in \sigma$, then, from the corollary \ref{predescors} we know, that there 
+%exist some $n \in \mathbb{N}$, such that $\frac{p}{q} + \frac{n}{2} \in \sigma$ but 
+%$\frac{p}{q} + \frac{n}{2} \not\in \sigma$. \\
+
+%We will be consequently checking points from $1+r$, through $1+r-\frac{l}{2}$, for 
+%$0 \leq l \leq m$, to the $\frac{p}{q}$. We stop at the first found point. 
+%If one of these point is in the spectrum, then all smaller (so also $\frac{p}{q}$) are in 
+%the spectrum and $\frac{p}{q}$ is the accumulation point of the spectrum of order $m-l$ 
+%(from this, 
+%we can see some heuristic, that the points that have smaller order will be generally 
+%harder to find in some sense). If none of this points are in in the spectrum, then $\frac{p}{q}$ 
+%is not. \\
 
 \section{Implementation}
 This algorithm is a part of the algorithm from \ref{Counting orbifolds -- arithmetical part} 

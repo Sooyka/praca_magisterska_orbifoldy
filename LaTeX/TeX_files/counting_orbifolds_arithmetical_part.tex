@@ -21,8 +21,8 @@ Instead terminating the algorithm the sollution is appended to the
 initialy empty list and the algorithm proceeds to search through the states as if the 
 the state that the solution was changed to 
 %after some repetitions of changes 
-at lines 64-65, together with the pointer placement and flag value was  
-the starting configuration. 
+at lines 64-65 during continuation of the execution was  
+the starting configuration, together with the pointer placement and flag value. 
 
 \begin{lstlisting}[firstnumber=1,consecutivenumbers=true]
 In the case, the $flag\_value$ is equal to: 
@@ -121,9 +121,9 @@ the starting configuration -- state of counters, flag value and pivot placement,
 long as they would hold the inveriants that were prooved in 
 \ref{lemmas for the proof of the correctness} and were used in 
 \ref{proof of the correctness of the algorithm} and the fact, that flag value will 
-correspond to the relation between corresponding \Eoc\ and $\frac{p}{q}$. 
+correspond to the relation between \Eoc\ corresponding to the current state and $\frac{p}{q}$. 
 We know, that the found solution was satisfying all the lemmas -- as it was the state of 
-the counters at some pont of the execution. The only thing left to see, is that 
+the counters at some point of the execution. The only thing left to see, is that 
 the flag value will be appropriete. 
 
 Let $D = d_1d_2d_3\cdots$ be the solution. 
@@ -138,28 +138,42 @@ As such, we can proceed from the state
 D' = (d_{p+1}+1)(d_{p+1}+1)(d_{p+1}+1)\cdots (d_{p+1}+1)(d_{p+1}+1)d_{p+2}d_{p+3}\cdots.
 \end{equation}
 Setting flag to "Less" after finding the solution, will result in producing exectly this state. 
-From this point all the invariants will be safisfied and the algorithm will proceed 
+Then, flag will be set accordingly to the comparison on line 76 or 82 or another solution will 
+be found on line 68. 
+From \ref{second_finiteness_theorem} we know, that there will be only finitely many 
+solution. 
+Once after, finding the solution $d_1d_2d_3\cdots$ and going to "Less" won't immedietly produce 
+another solution 
+%and process described obave will repeat.  
+%From this point 
+all the invariants will be safisfied and the algorithm will proceed 
 until it finds another solution or it stops. 
 %In algorithm from this chapter, after finding the solution the control flow is always redirected 
 %to line 57th.  
 %As such, since algorithm from this chapter is the repeting iteration 
 %of the algorithm from chapter \ref{Searching the spectrum} and since \ref{}, 
 %above algorithm will hold all nesseserly traits. 
-From \ref{second_finiteness_theorem} we know, that there will be only finitely many 
-solution.
+%From \ref{second_finiteness_theorem} we know, that there will be only finitely many 
+%solution, so the process will eventualy stop. 
 $_\square$
 
 \section{Implementation}\label{implementation}
-As an appendix in the separate document, there is a source of a program with implementation 
-of this algorithm with optimisation described below.
+%As an appendix in the separate document, there is a source of a program with implementation 
+%of this algorithm with optimisation described below.
 %with full  
 %enhancments described in this chapter. 
-It is written in \href{https://www.rust-lang.org/}{Rust}. 
-It can be also found on 
-\href{https://github.com/Sooyka/praca_magisterska_orbifoldy}{Github}
-%\smalltodoII{dać ref do github} 
+The source of the program with implementation of this algorithm, written in 
+\href{https://www.rust-lang.org/}{Rust} can be found 
+on
+\href{https://github.com/Sooyka/praca_magisterska_orbifoldy}{Github} 
 along with the \LaTeX\ source of 
 this thesis.
+%It is written in \href{https://www.rust-lang.org/}{Rust}. 
+%It can be also found on 
+%\href{https://github.com/Sooyka/praca_magisterska_orbifoldy}{Github}
+%\smalltodoII{dać ref do github} 
+%along with the \LaTeX\ source of 
+%this thesis.
 %It is in the separate file, as it would take too much space in this 
 %document and wouldn't be readable. 
 
