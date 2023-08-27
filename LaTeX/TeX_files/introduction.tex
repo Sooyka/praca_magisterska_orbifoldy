@@ -11,11 +11,12 @@ They played a crucial role in Thurston's geometrisation program (\cite{Thurston1
 They are also correlated and find direct use or indirect use (be unintended 
 emergent occurrence) 
 in different subjects, 
-from geometry, to number theory -- f.e. as spaces correlated with modular forms, 
-physics -- f.e. they are used in modeling the string theory, 
+from geometry, to number theory -- e.g. as spaces correlated with modular forms, 
+physics -- e.g. they are used in modeling the string theory, 
 signal analysis -- f.e. aliasing can be modeled with $D_\infty$, an 
-infinite dihedral group and corresponding , and art -- they are visible f.e. 
+infinite dihedral group and corresponding , and art -- they are visible e.g. 
 on the prints of M.C.Esher.  
+\todo{referencje}
 %-- se e esher art analysis -- 
 %differnt patterns of fresks and os on,freski.
 
@@ -28,21 +29,22 @@ and hyperbolic plane,
 as well as general notion of symmetry
 
 %Praca o ujemnym ale z najwyzszą orbicharakterystyką
-
-The focus of this thesis is on possible volumes of two-dimensional orbifolds.
-Such analysis was performed also in dimension three, where 
-(\cite{Thurston1979}, \cite{Gromov1981}) it was proved, the spectrum of possible volumes 
-of three dimensional orbifolds form a closed, non-discrete set on the real line, 
+%\todo{three dimensions}
+The focus of this thesis is on possible areas of two-dimensional orbifolds.
+Simmilar analysis was performed in dimension three for manifolds, where 
+(\cite{Thurston1979}, \cite{Gromov1981}) it was proved, that the spectrum of possible volumes 
+of three dimensional manifolds form a closed, non-discrete set on the real line, 
 that this set is well ordered, its ordinal type is $\omega^\omega$ and there are 
-only finitely many orbifolds with a given volume. This are exactly the same results 
+only finitely many manifolds with a given volume. 
+What is interesting, these are the same results 
 as some of the results we will obtain in this thesis for two-dimensional orbifolds 
 \ref{order structure}. 
-What is interesting, techniques used in the three dimensional case can't be used in the 
-two-dimensional one, fortunately, in the two-dimensional case, much simpler, 
-thought different techniques can be used and we will present them here. 
-We will also f.e. present that the spectrum in two dimensional case is locally unbounded 
+%Techniques used in the three dimensional case can't be used in the 
+%two-dimensional one, fortunately, in the two-dimensional case, much simpler, 
+%thought different techniques can be used and we will present them here. 
+We will also e.g. present that the spectrum in two dimensional case is locally unbounded 
 in number of orbifolds corresponding to a single volume 
-\ref{Unboundeness of some number of occurences}. 
+\ref{unboundness}. 
 %cite cite cite.
 
 %\todo{dopisać}
@@ -50,14 +52,14 @@ in number of orbifolds corresponding to a single volume
 \section{Scope}
 In this thesis we would like to give some description of the spectrum of the volumes 
 of two dimensional orbifolds, in particular those of negative \Eoc. 
-We will examine order type and topology of the spectrum \ref{order structure} 
+We will examine order type and topology of the spectrum (chapter \ref{order structure}) 
 as well as the structure 
 of the spectrum based on spectra corresponding to different manifolds \ref{spectra}, 
 \ref{reduction_to_arithmetical}.
 We will also provide tools for determining whether a given number is in spectrum of volumes 
-\ref{Searching the spectrum} as 
+(chapter \ref{Searching the spectrum}) as 
 well as tools to compute how many orbifolds correspond to a given volume in the spectrum 
-\ref{counting occurrences}. 
+(chapter \ref{counting occurrences}). 
 
 \section{Technical introductions}
 Now, we will proceed to give technical introductions about orbifolds, \Eoc\ and the 
@@ -66,7 +68,7 @@ naming conventions.
  
 \section{Orbifolds}
 %\todo{jak sie juz wszystko zbierze co ma tu być, to to dopisać}
-\subsection{Definition}
+\subsection{Definition}\label{first definition}
 The definition of the orbifold is taken from Thurston \cite{Thurston1979} (chapter 13), 
 with slight modification described in \ref{compactness}. 
 We briefly recall the concept, but for full discussion we refer to \cite{Thurston1979}. 
@@ -84,47 +86,41 @@ and a quotient map for any such open set.
 We can make an observation, that since in dimension 2, quotient of $\mathbb{R}^2$ by a finite 
 group is topologically always either $\mathbb{R}^2$ or $\mathbb{R}\times\mathbb{R}_{\geq 0}$, 
 we have that in dimension 2, the underlying Hausdorff space of any orbifold is a topological 
-manifold (possibly with a boundary). For an orbifold $O$ we will call this underlying manifold $M$
+manifold (possibly with a boundary).
+ 
+In dimension two, only possible groups acting on the map sets are:
+\begin{itemize}
+\item cyclic groups $\mathbb{Z}_n$ acting by rotations around certain point
+\item dihedral groups $\mathbb{D}_n$ acting by reflections about $n$ different lines 
+crossing at the certain point 
+\item group $\mathbb{Z}_2$ acting as reflection about certain line
+\end{itemize}
+
+ For an orbifold $O$ we will call this underlying manifold $M$
 a base manifold of $O$ and we will call $O$ an $M$-orbifold.  
 
-\subsection{Good and bad orbifolds}
-Above definition says that an orbifold is locally homeomorphic do the quotient of $\mathbb{R}^n$ 
-by some finite group. 
-
-When an orbifold as a whole is quotient of some finite group acting on a manifold we say, that 
-it is 'good'. Otherwise we say, that it is 'bad'. 
-
-%For this subsection we will also adopting notation from \cite{Thurston1979}. 
-
-In two dimensions there are only four types of bad orbifolds, namely
-(adopting notation from \cite{Thurston1979}): 
-\begin{itemize}
-\item $S^2(n)$ 
-\item $D^2(;n)$ 
-\item $S^2(n_1,n_2)$ for $n_1 < n_2$ 
-\item $D^2(;n_1,n_2)$ for $n_1 < n_2$. 
-\end{itemize}
-All other orbifolds are good -- \cite{Thurston1979} (theorem 13.3.6).
-%As manifolds are special case of orbifolds with all ...
-%Write about isomorphism of all spectra
-
-%$M$ - orbifold
-
-Manifolds without boundary can be treated as orbifolds with trivial group for every map and will. 
+Manifolds without boundary can be treated as orbifolds with trivial group for every map.
+% and will. 
 Manifolds with boundary can be treated as orbifolds with trivial group on all maps from the 
 interior and with group $\mathbb{Z}_2$ on the boundary, as described in \cite{Thurston1979} 
 (example 13.2.2.).
 
 \subsection{Terminology}
-We differ from Thurston in the terms of naming points with maps with non-trivial groups. 
-We will call them orbipoints. If the group acts as the group of rotations (so a 
-cyclic group) we will call them rotational points. If the group is a dihedral group we will 
+We differ from Thurston in the terms of naming points with every map with non-trivial groups. 
+We will call them orbipoints. If a cyclic group acts by rotations 
+%(so a 
+%cyclic group) 
+around such point, we will call it rotational point. 
+If a dihedral group acts by reflections about $n$ different lines 
+crossing at such point, we will 
 call them 
-dihedral points. And if the point is on the boundary that stabilises reflection we will call it a 
-reflection point. 
+dihedral points. And if $\mathbb{Z}_2$ group acts by reflection about certain line consisting 
+of such point, will call it a 
+reflection point and such line we will call a reflection line. 
 
 If a group associated to the orbipoint has degree $n$, we will say that the orbipoint is 
-of degree $n$. 
+of degree $n$.
+ 
 \subsection{Finite number of orbipoints}\label{finite number of orbipoints}
 In this thesis we will consider only orbifolds with finitely many orbipoints and all orbifolds 
 mentioned from this point are meant as such without further notice. Reason for this 
@@ -195,19 +191,168 @@ We will call $x$ an, respectively, rotational, or dihedral orbipoint of infinite
 %\subsection{Maps between orbifolds}
 %Map between orbifolds can be defined as follows:
 %%\cite{kleiner2014geometrization}
-\subsection{Equivalence}\label{sameness}
-As stated in \cite{Conway16} (chapter 18) two two-dimensional orbifolds are the same iff they have:
+%\subsection{Equivalence}\label{sameness}
+%As stated in \cite{Conway2016} (chapter 18) two two-dimensional orbifolds are 
+%equivalent iff they have:
+%\begin{itemize}
+%\item the same base manifold, 
+%\item the same number of orbipoints for each type and degree 
+%\item orbipoints on the boundaries 
+%in the pairwise same cyclic orders (up to orientation if the base manifold is non-orientable).
+%\end{itemize}
+%From this we can treat that and that orbifolds as the same.
+
+%Without boundary -- uniquely determined by orbipoints list. 
+
+%With boundary -- in general not. 
+
+\section{Classification of two dimensional manifolds}\label{2 dim manifolds}
+%\todo{twierdzenie o klasyfikacji powierzchni}
+In this thesis we aim to better recognise possible two dimensional orbifolds. 
+The foundation that we are relaying on is the classification of two dimensional manifolds. 
+
+It is phrased as a well known theorem:
+\todo{cytowanie}
+%The theorem, written in this language is:
+\begin{theorem}
+Any two dimensional manifold can be obtained from $S^2$ by taking some number of 
+connected sums with $\mathbb{R}P^2$ and $\mathbb{T}^2$, and by cutting out 
+some nuber of $D^2$ without boundary.
+%, To obtain an
+%arbitrary connected surface from a sphere, it suffices to add either
+%handles or cross-caps and maybe to punch some holes, giving
+%boundaries.
+\end{theorem}
+%, that we will recall from \cite{Conway2016} (Theorem 8.2).
+
+After \cite{Conway2016} we will treat two dimensional manifold as a $S^2$ with 
+a collection of features
+made by:
+\begin{itemize}
+\item taking a connected sum with $\mathbb{R}P^2$, the corresponding feature, that
+we will call, after \cite{Conway2016}, a cross-cap
+\item taking connected sum with $\mathbb{T}^2$, the corresponding feature, that we will call, 
+after Conway, a handle
+\item cutting out $D^2$ without boundary, creating the boundary component. 
+\end{itemize}
+
+
+
+%\section{Classification of orbifolds}
+%The list of all orbifolds with non-negative Euler orbicharacteristic
+%%Powiedzieć coś o tym, że orbicharatkeryttyka odpowiada polom (Gauss Bonett itd.)
+%\cite{}
+%\subsection{Non-negative \Eoc}
+
+
+
+\section{Presentations}\label{therminology and notation}
+\subsection{Manifold presentation}
+%After Conway we will treat two dimensional manifold as a $S^2$ with a collection of features 
+%consisting of:
+%\begin{itemize}
+%\item mobius band glued into the sphere, which, after Conway, we will call cross-caps 
+%\item 
+%\end{itemize}
+%\todo{do the theorem}
+%This notatn
+From \ref{2 dim manifolds} we know, two dimensional manifold 
+can be 
+defined, by specifying:
+\begin{itemize}
+\item how many boundary components it has,
+\item how many handles it has,
+\item how many cross-caps it has.
+\end{itemize} 
+From this, adapting the notation from \cite{Conway2016}, we will write 
+a two dimensional manifold as a list: 
+\begin{equation}
+\circ^h*^b\times^c = \underbrace{\circ\cdots\circ}_{h\ \mathrm{times}} 
+\underbrace{*\cdots*}_{b\ \mathrm{times}}\underbrace{\times\cdots \times }_{c\ \mathrm{times}},
+\end{equation}
+where each $\times$ represents the cross-cap, 
+%is present only if $M$ is non-orientable, 
+each $\circ$ represent one handle and each $*$ represents a boundary component.
+
+This presentation is not necessarily unique, as $\circ^a\times^b = \times^{2a+b}$. For a more 
+detailed description we refer to \cite{Conway2016} (page 101-102).
+
+\subsection{Orbifold presentation}
+For the rest of this thesis we will use slightly modified notation from \cite{Conway2016}, 
+presented below.
+%"feature"
+%Write about manifold Euler characterestic
+%We treat manifolds and orbifolds as a sphere with some features added by the operations.
+%As we know from \ref{sameness}, two dimensional orbifold can be defined 
+%by specifying:
+%\begin{itemize} 
+%\item its base manifold, 
+%\item the list of degrees of rotational points (we will 
+%always write them in the decreasing order) 
+%\item the list of the lists of dihedral points for each boundary component
+%\end{itemize}
+
+As stated in \cite{Conway2016} (chapter 18) two two-dimensional orbifolds are 
+equivalent iff they have:
 \begin{itemize}
 \item the same base manifold, 
 \item the same number of orbipoints for each type and degree 
 \item orbipoints on the boundaries 
 in the pairwise same cyclic orders (up to orientation if the base manifold is non-orientable).
 \end{itemize}
-%From this we can treat that and that orbifolds as the same.
 
-%Without boundary -- uniquely determined by orbipoints list. 
+%\todo{dopisać}
+From this, adapting the notation from \cite{Conway2016}, we will write 
+a two dimensional 
+%$M$ 
+orbifold as a list: 
+\begin{equation}
+%\underbrace{\circ\cdots\circ}_{h\ \mathrm{times}}
+h^cr_1\cdots r_n 
+*d_1^1\cdots d_{m_1}^1 \cdots *d_1^b\cdots d_{m_b}^b\times^c
+%\underbrace{\times\cdots \times }_{c\ \mathrm{times}},
+\end{equation}
+where each $\times$ represents the cross-cap, 
+%is present only if $M$ is non-orientable, 
+each $\circ$ represent one handle, 
+$r_1\cdots r_n$ are degrees of orbipoints in increasing order and 
+$*d_1^1\cdots d_{m_1}^1 \cdots *d_1^b\cdots d_{m_b}^b$ are $b$ boundary components 
+with dihedral orbipoints of degrees $d_1^k\cdots d_{m_k}^k$ ordered with the preservation 
+of the cyclic order on the boundary component. 
+In this notation, the sphere $S^2$ will be denoted as $\varepsilon$ -- an empty word.
+This presentation is not necessarily unique for a given orbifold. We can freely permute 
+boundary components and change dihedral points inside each boundary component by cyclic 
+permutations. 
+\subsection{Feature notation}
+We will view any two dimensional orbifold as a $S^2$ with added features:
+\begin{itemize}
+\item cross-caps
+\item handles
+\item boundary components
+\item rotational orbipoints
+\item dihedral orbipoints.
+\end{itemize}
 
-%With boundary -- in general not. 
+For all these features except dihedral orbipoints 
+the notation for a feature treated as an object alone (it can be view 
+as a map from orbifolds to orbifolds, that takes one orbifold $O_1$ defined by some list and 
+returns the other orbifold $O_2$ defined by the list of $O_1$ with added feature), will 
+be the same as the notation of the feature in the list. For dihedral points, when they will appear 
+alone, we will write $^*d_i$, instead of $d_i$, to signify, that they are dihedral orbipoints 
+and we will write expressions like $^*2$ or $^*3$. 
+
+For writing a sequence of numbers -- $\underbrace{^8d\cdots ^*d}_{n\ \mathrm{times}}$ 
+in the power notation, we will use 
+parenthesis and write $(^*d)^n$ instead $^*d^n$, for example 
+$(^*4)^5 = ^*4^*4^*4^*4^*4$ for dihedral 
+orbipoints, or $(4)^5 = 4\ 4\ 4\ 4\ 4$ for rotational orbipoints, to avoid confusion with 
+raising the numbers themselves to some power. 
+
+We will usually (but not always) 
+separate numbers by spaces not commas in this context. 
+We will sometimes enclose whole orbifold presentation in the parentesis e.g. $(2\ 3\ 7)$ instead 
+of writing $2\ 3\ 7$ for readability.
+%When we will write 
 
 \section{Euler (orbi)characteristic}\label{E_orb}
 \label{\Eoc_as_a_sum}
@@ -307,166 +452,96 @@ A $M$-orbifold that is different than $M$ always have strictly smaller \Eoc\ tha
 %%Write about cusp as a limit.
 %We can extent our definition of \Eoc\ to orbifolds with cusps. 
 
-\section{Metric structures on the orbifolds and volumes of the orbifolds}
-%\subsection{Metric structure on the orbifolds}
-As described and proved in \cite{Thurston1979} (13.3.6.) all good orbifolds have either:
+\section{Metric structures on the orbifolds and areas of the orbifolds}
+
+\subsection{Good and bad orbifolds}
+Definition presented in \ref{first definition} 
+says that an orbifold is locally homeomorphic do the quotient of $\mathbb{R}^n$ 
+by some finite group. 
+
+When an orbifold as a whole is quotient of some finite group acting on a manifold we say, that 
+it is 'good'. Otherwise we say, that it is 'bad'. 
+
+%For this subsection we will also adopting notation from \cite{Thurston1979}. 
+
+In two dimensions there are only four types of bad orbifolds, namely
+%(adopting notation from \cite{Thurston1979})
+: 
+%\todo{obrazek}
 \begin{itemize}
-\item Elliptic structure, if $\cho{O} > 0$,
-\item Parabolic structure, if $\cho{O} = 0$,
-\item Hyperbolic structure, if $\cho{O} < 0$.
+\item $(n)$ -- $S^2$ with only one rotational orbipoint 
+\item $(*n)$ -- $D^2$ with only one dihedral orbipoint
+\item $(n_1n_2)$ for $n_1 < n_2$ -- $S^2$ with two rotational orbipoints of different degrees 
+\item $(*n_1n_2)$ for $n_1 < n_2$. -- $D^2$ with two dihedral orbipoints of differen degrees 
 \end{itemize}
-With an elliptic or a hyperbolic metric structure, we can measure the volume of the orbifold as 
+All other orbifolds are good -- \cite{Thurston1979} (theorem 13.3.6).
+%As manifolds are special case of orbifolds with all ...
+%Write about isomorphism of all spectra
+
+%$M$ - orbifold
+\subsection{Metric structures}
+%\subsection{Metric structure on the orbifolds}
+As described and proved in \cite{Thurston1979} (13.3.6.) orbifold $O$ 
+%is good iff it 
+%can be equiped 
+have
+either 
+%with
+:
+\begin{itemize}
+\item if $\cho{O} > 0$ -- an elliptic structure,
+\item if $\cho{O} = 0$ -- a parabolic structure,
+\item if $\cho{O} < 0$ -- a hyperbolic structure.
+\end{itemize}
+With an elliptic or a hyperbolic metric structure, we can measure the area of the orbifold as 
 \begin{equation}
 V(O) = |\int_O K dA|
 \end{equation} 
 Also, as stated in \cite{Thurston1979} (13.3.5.), the Gauss-Bonnet 
 theorem works also for orbifolds 
-and we have that:
+and we have that integral over curvature is independent of the particular metric choosen 
+and is proportional to $\chi^{orb}$:
 \begin{equation}
 \int_O K dA = 2\pi|\cho{O}|,
 \end{equation}
-thus having that 
+thus having that the area is:
 \begin{equation}\label{volume to chi}
 V(O) = 2\pi|\cho{O}|.
 \end{equation}
 
-As mentioned in \cite{Thurston1979} (Theorem 13.3.6), there are only 5 types of elliptical 
-orbifolds (each type consisting of infinitely many), 
-only 17 parabolic orbifolds total and infinitely many types hyperbolic. 
+As mentioned in \cite{Thurston1979} (Theorem 13.3.6), there are only 3 families of elliptical 
+orbifolds (grouped with respect to base manifolds):
+\begin{itemize}
+\item $S^2$: $(\varepsilon)$, $(n)$, $(nn)$, $(2\ 2\ n)$, $(2\ 3\ 3)$, $(2\ 3\ 4)$, 
+ $(2\ 3\ 5)$,
+\item $D^2$: $(*)$, $(*nn)$, $(*2\ 2\ n)$, $(*2\ 3\ 3)$, $(*2\ 3\ 4)$, 
+$(*2\ 3\  5)$, $n*$, $2*m$, $3*2$,
+\item $\mathbb{R}P^2$: $(\times)$, $(n\times)$.
+\end{itemize}
+%\todo{rozwinąć} 
+%(each type consisting of infinitely many), 
+only 17 parabolic orbifolds total (with 7 different families, with respect to 
+possible base manifolds):
+\begin{itemize}
+\item $S^2$: $(2\ 3\ 6)$, $(2\ 4\ 4)$,  $(3\ 3\ 3)$,  $(2\ 2\ 2\ 2)$, 
+\item $D^2$: $(*2\ 3\ 6)$,  $(*2\ 4\ 4)$, $(*3\ 3\ 3)$,  $(*2\ 2\ 2\ 2)$,  
+$(2*2\ 2)$,  $(3*3)$,  $(4*2)$,  $(2\ 2*)$, 
+\item $\mathbb{R}P^2$: $(2\ 2\times)$, 
+\item $\mathbb{T}^2$: $(\circ)$, 
+\item Klein bottle: $(\times\times)$, 
+\item annulus: $(**)$, 
+\item Möbius band: $(*\times)$, 
+\end{itemize}
+and infinitely many families of hyperbolic orbifolds. 
+
 Our main goal in this thesis is to describe possible volumes of two dimensional orbifolds, 
 especially those with hyperbolic structure. 
 As from \ref{volume to chi} we have direct correspondence 
 between volumes and \Eoc s, and with \Eoc, we can restrict ourselves to rational numbers, 
 we will try to describe possible \Eoc\ of two dimensional orbifolds.  
 
-\section{Classification of two dimensional manifolds}\label{2 dim manifolds}
-%\todo{twierdzenie o klasyfikacji powierzchni}
-In this thesis we aim to better recognise possible two dimensional orbifolds. 
-The foundation that we are relaying on is the classification of two dimensional manifolds. 
 
-It is phrased as a well known theorem, that we will recall from \cite{Conway2016} (Theorem 8.2).
-After \cite{Conway2016} we will treat two dimensional manifold as a $S^2$ with 
-a collection of features 
-made by:
-\begin{itemize}
-\item taking a connected sum with $\mathbb{R}P^1$, the corresponding feature, 
-we will call, after \cite{Conway2016}, a cross-cap
-\item taking connected sum with $\mathbb{T^2}$, the corresponding feature, we will call, 
-after Conway, a handle
-\item cutting out $D^2$ without boundary, creating the boundary component. 
-\end{itemize}
-The theorem, written in this language is:
-\begin{theorem}
-To obtain an
-arbitrary connected surface from a sphere, it suffices to add either
-handles or cross-caps and maybe to punch some holes, giving
-boundaries.
-\end{theorem}
-
-
-%\section{Classification of orbifolds}
-%The list of all orbifolds with non-negative Euler orbicharacteristic
-%%Powiedzieć coś o tym, że orbicharatkeryttyka odpowiada polom (Gauss Bonett itd.)
-%\cite{}
-%\subsection{Non-negative \Eoc}
-
-
-
-\section{Terminology and notation}\label{therminology and notation}
-\subsection{Manifold notation}
-%After Conway we will treat two dimensional manifold as a $S^2$ with a collection of features 
-%consisting of:
-%\begin{itemize}
-%\item mobius band glued into the sphere, which, after Conway, we will call cross-caps 
-%\item 
-%\end{itemize}
-%\todo{do the theorem}
-%This notatn
-From \ref{2 dim manifolds} we know, two dimensional manifold 
-can be 
-defined, by specifying:
-\begin{itemize}
-\item how many boundary components it has,
-\item how many handles it has,
-\item how many cross-caps it has.
-\end{itemize} 
-From this, adapting the notation from \cite{Conway2016}, we will write 
-a two dimensional manifold as a list: 
-\begin{equation}
-\circ^h*^b\times^c = \underbrace{\circ\cdots\circ}_{h\ \mathrm{times}} 
-\underbrace{*\cdots*}_{b\ \mathrm{times}}\underbrace{\times\cdots \times }_{c\ \mathrm{times}},
-\end{equation}
-where each $\times$ represents the cross-cap, 
-%is present only if $M$ is non-orientable, 
-each $\circ$ represent one handle and each $*$ represents a boundary component.
-
-This notation is not necessarily unique, as $\circ^a\times^b = \times^{2a+b}$. For a more 
-detailed description we refer to \cite{Conway2016} (page 101-102).
-
-\subsection{Orbifold notation}
-For the rest of this thesis we will use slightly modified notation from \cite{Conway2016}.
-%"feature"
-%Write about manifold Euler characterestic
-%We treat manifolds and orbifolds as a sphere with some features added by the operations.
-As we know from \ref{sameness}, two dimensional orbifold can be defined 
-by specifying:
-\begin{itemize} 
-\item its base manifold, 
-\item the list of degrees of rotational points (we will 
-always write them in the decreasing order) 
-\item the list of the lists of dihedral points for each boundary component
-\end{itemize}
-
-%\todo{dopisać}
-From this, adapting the notation from \cite{Conway2016}, we will write 
-a two dimensional 
-%$M$ 
-orbifold as a list: 
-\begin{equation}
-%\underbrace{\circ\cdots\circ}_{h\ \mathrm{times}}
-h^cr_1\cdots r_n 
-*d_1^1\cdots d_{m_1}^1 \cdots *d_1^b\cdots d_{m_b}^b\times^c
-%\underbrace{\times\cdots \times }_{c\ \mathrm{times}},
-\end{equation}
-where each $\times$ represents the cross-cap, 
-%is present only if $M$ is non-orientable, 
-each $\circ$ represent one handle, 
-$r_1\cdots r_n$ are degrees of orbipoints in increasing order and 
-$*d_1^1\cdots d_{m_1}^1 \cdots *d_1^b\cdots d_{m_b}^b$ are $b$ boundary components 
-with dihedral orbipoints of degrees $d_1^k\cdots d_{m_k}^k$ ordered with the preservation 
-of the cyclic order on the boundary component. 
-In this notation, the sphere $S^2$ will be denoted as $\varepsilon$ -- an empty word.
-This notation is not necessarily unique for a given orbifold. We can freely permute 
-boundary components and change dihedral points inside each boundary component by cyclic 
-permutations. 
-\subsection{Feature notation}
-We will view any two dimensional orbifold as a $S^2$ with added features
-\begin{itemize}
-\item cross-caps
-\item handles
-\item boundary components
-\item rotational orbipoints
-\item dihedral orbipoints.
-\end{itemize}
-
-For all these features except dihedral orbipoints 
-the notation for a feature treated as an object alone (it can be view 
-as a map from orbifolds to orbifolds, that takes one orbifold $O_1$ defined by some list and 
-returns the other orbifold $O_2$ defined by the list of $O_1$ with added feature), will 
-be the same as the notation of the feature in the list. For dihedral points, when they will appear 
-alone, we will write $^*d_i$, instead of $d_i$, to signify, that they are dihedral orbipoints 
-and we will write expressions like $^*2$ or $^*3$. 
-
-For writing a sequence of numbers -- $\underbrace{^8d\cdots ^*d}_{n\ \mathrm{times}}$ 
-in the power notation, we will use 
-parenthesis and write $(^*d)^n$ instead $^*d^n$, for example 
-$(^*4)^5 = ^*4^*4^*4^*4^*4$ for dihedral 
-orbipoints, or $(4)^5 = 4\ 4\ 4\ 4\ 4$ for rotational orbipoints, to avoid confusion with 
-raising the numbers themselves to some power. 
-
-We will also usually separate numbers by spaces not commas in this context. 
-%When we will write 
-
+\section{Notation and terminology}
 %When we will write $\Delta(feature)$ we would mean the difference in \Eoc\ caused by adding this 
 %feature (in the sense described above). 
 \subsection{Difference in \Eoc\ -- $\Delta$ notation}
@@ -502,10 +577,11 @@ A+B \coloneqq \{a+b\ |\ a \in A, b\in B\}.
 \end{equation}
 
 \subsection{Two dimensionality}
-From this point, through the whole thesis we will consider only two dimensional manifolds and 
+Through the whole thesis we will consider only two dimensional manifolds and 
 orbifolds, for this reason words "two-dimensional" will be sometimes omitted, nevertheless 
 from this point we will always mean only two dimensional manifolds and orbifolds.  
 
+We will also sometimes use term "volume" when we will mean "area".
 %delta
 %h c b
 
