@@ -249,6 +249,10 @@ of order $n-1$. From the inductive assumption $x+\frac{1}{2} \in \speD$. Then,
 from \ref{accumulation_points_are_in_the_spectrum}, we have that $x \in \speD$. 
 $_\square$ 
 
+\begin{corollary}
+Set $\speD$ is closed in $\mathbb{R}$.
+\end{corollary}
+
 \begin{theorem}\label{greatest \apots}
 The greatest \apots\ $\speD$ of order $n$ is $1-\frac{n}{2}$.
 \end{theorem}
@@ -382,7 +386,7 @@ But this contradicts \ref{ascending_in_B_n}.  $_\square$
 \subsection{Proof that order structure and topology of $\speD$ are those of $\omega^\omega$}
 %\smalltodoII{rozbić to na dwa?} 
 \begin{theorem}\label{speD_order_type}
-Order type and topology of $\speD$ is $\omega^\omega$. 
+Order type and topology inheritef from $\mathbb{R}$ of $\speD$ are $\omega^\omega$. 
 \end{theorem}
 \subsubsection{Proof.} 
 %that order type of $\speD$ is $\omega^\omega$: \\
@@ -428,7 +432,8 @@ we know, that $1-\frac{n}{2}$ is the greatest accumulation point of order $n$ in
 %\newpage
 %
 
-Now, we will prove, that the topology of $\speD$ is that of $\omega^\omega$.
+Now, we will prove, that the topology inherited from $\mathbb{R}$ 
+on $\speD$ is that of $\omega^\omega$.
 
 From \ref{accumulation_points_of_the_set} we know that every accumulation point 
 of $\speD$ is in $\speD$. 
@@ -438,7 +443,7 @@ and
 %\ref{accumulation_points_of_the_set} and the first part of the proof, that just showed, 
 %that the order type 
 we have that 
-the topology of $\speD$ is $\omega^\omega$. 
+the topology of $\speD$ inherited from $\mathbb{R}$ is $\omega^\omega$. 
 
 
 
@@ -456,7 +461,8 @@ the topology of $\speD$ is $\omega^\omega$.
 
 \section{Order type and topology of $\spe$}
 \begin{theorem}
-The order type of the set of possible Euler orbicharacteristics of two-dimensional orbifolds 
+The order type of the set and topologi inherited from $\mathbb{R}$ 
+of the set of possible Euler orbicharacteristics of two-dimensional orbifolds  
 $\spe$ is $\omega^\omega$. 
 \end{theorem}
 \subsubsection{Proof.}
@@ -494,9 +500,10 @@ From this we have that
 \end{equation} 
 have an order type $\omega^\omega$.
 
-Now we will prove, that the topology of $\spe$ is that of $\omega^\omega$ too.
+Now we will prove, that the topology inherited from $\mathbb{R}$ on $\spe$ 
+is that of $\omega^\omega$.
 
-We have that for $\speD$ \rba{$\speS$} that every accumulation point of 
+We have that for $\speD$ \rba{$\speS$} every accumulation point of 
 $\speD$ \rba{$\speS$} is in $\speD$ \rba{$\speS$}. From this and from 
 \ref{derivative and sum is commutative} we have, that all accumulations points of $\spe$ 
 are in $\spe$. From this, from lemma \ref{order_preserving_homeomorphism_theorem} we have 
@@ -552,18 +559,22 @@ of two-dimensional orbifolds is equal to $\speS \cup \speD$ and $\speS = 2\speD$
 the greatest negative point of the set $\speS$ is smaller than the greatest negative accumulation 
 point of the set $\speD$. 
 
-$\bullet$ $-\frac{1}{12}=\chi^{orb}((2,3))-\frac{1}{2}$, from this we have that $-\frac{1}{12}$ 
+$\bullet$ $-\frac{1}{12}=\chi^{orb}((2,3))-\frac{1}{2}$, from this, from 
+\ref{third_order_lemma}, we have that $-\frac{1}{12}$ 
 an accumulation point of the set $\speD$ of order at least $1$. 
 
-$\bullet$ Let us assume (for a contradiction), that there exist bigger, negative 
+$\bullet$ Let us assume for a contradiction, that there exist bigger, negative 
 accumulation point of the set $\speD$ of order at least $1$. Let us denote it by $x$. 
 
-However, then, from the lemma \ref{third_order_lemma} point $x+\frac{1}{2}$ is the accumulation 
-point of the set $\speD$. What is more, since $x\in (0, -\frac{1}{12})$, then $x+\frac{1}{2} 
-\in (\frac{1}{2}, \frac{5}{12}$. From the lemma \ref{accumulation_points_of_the_set} we 
-have that $x$ is in $\speD$. But orbifolds of the type $\ast b_1$ can have \Eoc only greater or 
-equal $\frac{1}{2}$. Orbifolds of the type $\ast b_1b_2$ can only have \Eoc $\frac{1}{2}$, 
-$\frac{5}{12}$ and some smaller. Orbifolds of the type $\ast b_1b_2b_3\cdots$ can have \Eoc only 
+However, then, from the lemma \ref{third_order_lemma} point $x+\frac{1}{2}$ is 
+the accumulation 
+point of 
+%in
+the set $\speD$. What is more, since $x\in (0, -\frac{1}{12})$, then $x+\frac{1}{2} 
+\in (\frac{1}{2}, \frac{5}{12})$. From the lemma \ref{accumulation_points_of_the_set} we 
+have that $x$ is in $\speD$. But orbifolds of the type $\ast d_1$ can have \Eoc\ only greater or 
+equal $\frac{1}{2}$. Orbifolds of the type $\ast d_1d_2$ can only have \Eoc\ $\frac{1}{2}$, 
+$\frac{5}{12}$ and some smaller. Orbifolds of the type $\ast d_1d_2d_3\cdots$ can have \Eoc\ only 
 lower than $\frac{1}{4}$. This analysis of the cases leads us to the conclusion, that 
 $(\frac{1}{2},\frac{5}{12})\cap \speD=\emptyset$ and to the contradiction. 
 
@@ -572,6 +583,12 @@ is
 an isolated point of the set $\speD$, from this $-\frac{1}{12}$ is an accumulation point 
 of order $1$ of the set $\speD$. $_\square$ 
 
+%Let us observe, that this is a variant of Hurwitz theorem for non-compact manifolds. 
+%This can be formulated as following corollary:
+%\begin{corollary}
+
+%\end{corollary}
+%\subsubsection{Proof.}
 \subsection{Saturation theorem}
 \begin{theorem}\label{saturation theorem}
 For any rational number $\frac{p}{q}$, for any two dimensional manifold $M$

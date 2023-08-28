@@ -36,9 +36,17 @@ Simmilar analysis was performed in dimension three for manifolds, where
 of three dimensional manifolds form a closed, non-discrete set on the real line, 
 that this set is well ordered, its ordinal type is $\omega^\omega$ and there are 
 only finitely many manifolds with a given volume. 
-What is interesting, although techniques used to obtain them are completly different, 
-these are the same results 
-as some of the results we will obtain in this thesis for two-dimensional orbifolds 
+What is interesting, 
+%although techniques used to obtain them are completly different, 
+in this thesis
+simmilar results 
+are obtained 
+for two-dimensional orbifolds 
+using more elementary methods
+%these are the same results 
+%as some of the results we will obtain 
+%in this thesis 
+%for two-dimensional orbifolds 
 (chapter \ref{order structure}). 
 %Techniques used in the three dimensional case can't be used in the 
 %two-dimensional one, fortunately, in the two-dimensional case, much simpler, 
@@ -68,14 +76,15 @@ well as tools to compute how many orbifolds correspond to a given area in the sp
 %techniques we will use in this thesis, alongside with some definitions and notation and 
 %naming conventions. 
  
-\section{Orbifolds}
+\section{Orbifolds}\label{first definition}
 %\todo{jak sie juz wszystko zbierze co ma tu być, to to dopisać}
-\subsection{Definition}\label{first definition}
-The definition of the orbifold is taken from Thurston \cite{Thurston1979} (chapter 13):
-\begin{definition}
-Orbifold
-\end{definition}
-It will have sligth slight modification described in \ref{compactness}. 
+%\subsection{Definition}\label{first definition}
+The definition of the orbifold is taken from Thurston \cite{Thurston1979} (chapter 13),
+%\begin{definition}
+%Orbifold
+%\end{definition}
+%It will have sligth 
+with slight modification described in \ref{compactness}. 
 We briefly recall the concept, but for full discussion we refer to \cite{Thurston1979}. 
 
 An orbifold is a generalisation of a manifold. As manifold, it consists of a Hausdorff space 
@@ -92,7 +101,11 @@ We can make an observation, that since in dimension 2, quotient of $\mathbb{R}^2
 group is topologically always either $\mathbb{R}^2$ or $\mathbb{R}\times\mathbb{R}_{\geq 0}$, 
 we have that in dimension 2, the underlying Hausdorff space of any orbifold is a topological 
 manifold (possibly with a boundary).
- 
+
+For an orbifold $O$ we will call this underlying manifold $M$
+a base manifold of $O$ and denote it by $|O|$,
+and we will call $O$ an $M$-orbifold.  
+
 In dimension two, only possible groups acting on the map sets are:
 \begin{itemize}
 \item cyclic groups $\mathbb{Z}_n$ acting by rotations around certain point
@@ -100,10 +113,6 @@ In dimension two, only possible groups acting on the map sets are:
 crossing at the certain point 
 \item group $\mathbb{Z}_2$ acting as reflection about certain line
 \end{itemize}
-
- For an orbifold $O$ we will call this underlying manifold $M$
-a base manifold of $O$ and denote it by $|O|$,
- and we will call $O$ an $M$-orbifold.  
 
 Manifolds without boundary can be treated as orbifolds with trivial group for every map.
 % and will. 
@@ -126,6 +135,11 @@ reflection point and such line we will call a reflection line.
 
 If a group associated to the orbipoint has degree $n$, we will say that the orbipoint is 
 of degree $n$.
+
+Through the whole thesis we will consider only two dimensional manifolds and 
+orbifolds, for this reason, for brevity, 
+words "two-dimensional" will be sometimes omitted, nevertheless 
+we will always mean only two dimensional manifolds and orbifolds if not stated otherwise. 
  
 \subsection{Finite number of orbipoints}\label{finite number of orbipoints}
 In this thesis we will consider only orbifolds with finitely many orbipoints and all orbifolds 
@@ -414,7 +428,7 @@ $\frac{1}{|\Gamma(c_i)|} = 0$. We will call $\frac{1}{|\Gamma(c_i)|}$ a weight o
 This definition results in the property, that if an orbifold $O_2$ is a quotient 
 of a orbifold $O_1$, by the action of the finite group $G$, that acts properly 
 discontinuously, but not necessarily freely on $O_1$, then:
-\begin{equation}
+\begin{equation}\label{acting on an orbifold cho}
 \cho{O_2} = \frac{\chi(O_1)}{|G|}.
 \end{equation}
 For a two dimensional orbifolds, the possible cells with weights different than $1$ are 
@@ -506,7 +520,7 @@ curvature equal $-1$,
 \end{itemize}
 With an elliptic or a hyperbolic metric structure, we can measure the area of the orbifold as 
 \begin{equation}
-V(O) = |\int_O K dA|
+A(O) = |\int_O K dA|
 \end{equation} 
 Also, as stated in \cite{Thurston1979} (13.3.5.), the Gauss-Bonnet 
 theorem works also for orbifolds 
@@ -517,7 +531,7 @@ and is proportional to $\chi^{orb}$:
 \end{equation}
 thus having that the area is:
 \begin{equation}\label{area to chi}
-V(O) = 2\pi|\cho{O}|.
+A(O) = 2\pi|\cho{O}|.
 \end{equation}
 
 As mentioned in \cite{Thurston1979} (Theorem 13.3.6), there are only 3 families of elliptical 
@@ -582,16 +596,21 @@ as $\varphi(\infty) \coloneqq \lim\limits_{n\to \infty}\varphi(n)$. Only express
 where such limits exists will occur without further notice.
 %\todo{}
 
-\subsection{Addition of sets of numbers}
+\subsection{Sets of numbers}
 For $A, B \subseteq \mathbb{R}$, we define 
-\begin{equation}
-A+B \coloneq \{a+b\ |\ a \in A, b\in B\}.
-\end{equation}
-
-\subsection{Two dimensionality}
-Through the whole thesis we will consider only two dimensional manifolds and 
-orbifolds, for this reason words "two-dimensional" will be sometimes omitted, nevertheless 
-from this point we will always mean only two dimensional manifolds and orbifolds.  
+\begin{align}
+A+B &\coloneqq \{a+b\ |\ a \in A, b\in B\}, \\
+AB &\coloneqq \{ab\ |\ a \in A, b\in B\}.
+\end{align}
+For $A \subseteq \mathbb{R}$ and $r \in \mathbb{R}$, we define:
+\begin{align}
+r + A = A + r &\coloneqq \{a+r\ |\ a \in A\}, \\
+rA = Ar &\coloneqq  \{ar\ |\ a \in A\}.
+\end{align}
+%\subsection{Two dimensionality}
+%Through the whole thesis we will consider only two dimensional manifolds and 
+%orbifolds, for this reason words "two-dimensional" will be sometimes omitted, nevertheless 
+%from this point we will always mean only two dimensional manifolds and orbifolds.  
 
 %We will also sometimes use term "volume" when we will mean "area".
 %delta
@@ -611,7 +630,7 @@ We will also denote the sum of spectra of all two dimensional manifolds by:
 \begin{equation}
 \spe \coloneqq \bigcup_{M} \spebr{M},
 \end{equation}
-where sum is taken other all compact manifolds possibly with boundary.
+where sum is taken other all compact two dimensional manifolds possibly with boundary.
 This will be the main interest of this thesis. 
 %$\spe$. dadada
 
@@ -621,7 +640,7 @@ Euler characteristic is given by:
 \begin{equation}
 \chi(M) = 2-2h-c-b.
 \end{equation}
-The set of $\Delta$ for possible orbifold features are:\\
+The sets of $\Delta$ for possible orbifold features are:\\
 $\bullet$ for $b\neq 0$:
 \begin{equation}
 \{-\frac{n-1}{2n}\ \big|\ n\in\mathbb{N}_{>0}\cup \{\infty\}\}
