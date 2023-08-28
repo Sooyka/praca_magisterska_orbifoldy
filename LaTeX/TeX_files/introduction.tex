@@ -13,7 +13,7 @@ emergent occurrence)
 in different subjects, 
 from geometry, to number theory -- e.g. as spaces correlated with modular forms, 
 physics -- e.g. they are used in modeling the string theory, 
-signal analysis -- f.e. aliasing can be modeled with $D_\infty$, an 
+signal analysis -- e.g. aliasing can be modeled with $D_\infty$, an 
 infinite dihedral group and corresponding , and art -- they are visible e.g. 
 on the prints of M.C.Esher.  
 \todo{referencje}
@@ -36,15 +36,16 @@ Simmilar analysis was performed in dimension three for manifolds, where
 of three dimensional manifolds form a closed, non-discrete set on the real line, 
 that this set is well ordered, its ordinal type is $\omega^\omega$ and there are 
 only finitely many manifolds with a given volume. 
-What is interesting, these are the same results 
+What is interesting, although techniques used to obtain them are completly different, 
+these are the same results 
 as some of the results we will obtain in this thesis for two-dimensional orbifolds 
-\ref{order structure}. 
+(chapter \ref{order structure}). 
 %Techniques used in the three dimensional case can't be used in the 
 %two-dimensional one, fortunately, in the two-dimensional case, much simpler, 
 %thought different techniques can be used and we will present them here. 
-We will also e.g. present that the spectrum in two dimensional case is locally unbounded 
-in number of orbifolds corresponding to a single volume 
-\ref{unboundness}. 
+%We will also e.g. present that the spectrum in two dimensional case is locally unbounded 
+%in number of orbifolds corresponding to a single volume. 
+%\ref{unboundness}. 
 %cite cite cite.
 
 %\todo{dopisać}
@@ -54,17 +55,18 @@ In this thesis we would like to give some description of the spectrum of the vol
 of two dimensional orbifolds, in particular those of negative \Eoc. 
 We will examine order type and topology of the spectrum (chapter \ref{order structure}) 
 as well as the structure 
-of the spectrum based on spectra corresponding to different manifolds \ref{spectra}, 
-\ref{reduction_to_arithmetical}.
+of the spectrum based on spectra corresponding to different manifolds 
+(section \ref{spectra}), 
 We will also provide tools for determining whether a given number is in spectrum of volumes 
+(chapter \ref{reduction_to_arithmetical}).
 (chapter \ref{Searching the spectrum}) as 
 well as tools to compute how many orbifolds correspond to a given volume in the spectrum 
 (chapter \ref{counting occurrences}). 
 
-\section{Technical introductions}
-Now, we will proceed to give technical introductions about orbifolds, \Eoc\ and the 
-techniques we will use in this thesis, alongside with some definitions and notation and 
-naming conventions. 
+%\section{Technical introductions}
+%Now, we will proceed to give technical introductions about orbifolds, \Eoc\ and the 
+%techniques we will use in this thesis, alongside with some definitions and notation and 
+%naming conventions. 
  
 \section{Orbifolds}
 %\todo{jak sie juz wszystko zbierze co ma tu być, to to dopisać}
@@ -97,7 +99,8 @@ crossing at the certain point
 \end{itemize}
 
  For an orbifold $O$ we will call this underlying manifold $M$
-a base manifold of $O$ and we will call $O$ an $M$-orbifold.  
+a base manifold of $O$ and denote it by $|O|$,
+ and we will call $O$ an $M$-orbifold.  
 
 Manifolds without boundary can be treated as orbifolds with trivial group for every map.
 % and will. 
@@ -128,7 +131,7 @@ choice will be described in \ref{Eoc}.
 
 \subsection{Compactness}\label{compactness}
 Orbifold as a topological space is the same as its base manifold.
-We, would like to restrict our interest only to compact orbifolds. 
+We would like to restrict our interest only to compact orbifolds. 
 However, noncompact orbifolds, such as ones from \cite{Conway2016} (chapter 18) 
 which are quotients 
 of a group action of an infinite group acting on $\mathbb{R}^2$ (that will 
@@ -274,7 +277,8 @@ where each $\times$ represents the cross-cap,
 %is present only if $M$ is non-orientable, 
 each $\circ$ represent one handle and each $*$ represents a boundary component.
 
-This presentation is not necessarily unique, as $\circ^a\times^b = \times^{2a+b}$. For a more 
+This presentation is not necessarily unique, as 
+there is one relation $\circ^a\times^b = \times^{2a+b}$. For a more 
 detailed description we refer to \cite{Conway2016} (page 101-102).
 
 \subsection{Orbifold presentation}
@@ -293,7 +297,7 @@ presented below.
 %\end{itemize}
 
 As stated in \cite{Conway2016} (chapter 18) two two-dimensional orbifolds are 
-equivalent iff they have:
+isomorphic iff they have:
 \begin{itemize}
 \item the same base manifold, 
 \item the same number of orbipoints for each type and degree 
@@ -341,7 +345,7 @@ be the same as the notation of the feature in the list. For dihedral points, whe
 alone, we will write $^*d_i$, instead of $d_i$, to signify, that they are dihedral orbipoints 
 and we will write expressions like $^*2$ or $^*3$. 
 
-For writing a sequence of numbers -- $\underbrace{^8d\cdots ^*d}_{n\ \mathrm{times}}$ 
+For writing a sequence of numbers -- $\underbrace{^*d\cdots ^*d}_{n\ \mathrm{times}}$ 
 in the power notation, we will use 
 parenthesis and write $(^*d)^n$ instead $^*d^n$, for example 
 $(^*4)^5 = ^*4^*4^*4^*4^*4$ for dihedral 
@@ -482,16 +486,20 @@ All other orbifolds are good -- \cite{Thurston1979} (theorem 13.3.6).
 \subsection{Metric structures}
 %\subsection{Metric structure on the orbifolds}
 As described and proved in \cite{Thurston1979} (13.3.6.) orbifold $O$ 
-%is good iff it 
+is good iff 
+%it 
 %can be equiped 
 have
 either 
 %with
 :
 \begin{itemize}
-\item if $\cho{O} > 0$ -- an elliptic structure,
-\item if $\cho{O} = 0$ -- a parabolic structure,
-\item if $\cho{O} < 0$ -- a hyperbolic structure.
+\item if $\cho{O} > 0$ -- an elliptic structure, i.e some metric with constant sectional 
+curvature equal $1$,  
+\item if $\cho{O} = 0$ -- a parabolic structure, i.e some metric with constant sectional 
+curvature equal $0$,
+\item if $\cho{O} < 0$ -- a hyperbolic structure. i.e some metric with constant sectional 
+curvature equal $-1$,
 \end{itemize}
 With an elliptic or a hyperbolic metric structure, we can measure the area of the orbifold as 
 \begin{equation}
@@ -544,7 +552,8 @@ we will try to describe possible \Eoc\ of two dimensional orbifolds.
 \section{Notation and terminology}
 %When we will write $\Delta(feature)$ we would mean the difference in \Eoc\ caused by adding this 
 %feature (in the sense described above). 
-\subsection{Difference in \Eoc\ -- $\Delta$ notation}
+\subsection{Difference in \Eoc}
+%\subsection{}
 
 We will denote the difference in \Eoc\ which is made by modifying 
 an orbifold by a feature $\alpha$ as 
@@ -597,8 +606,9 @@ we always have $\spe^d(M) = \spebr{M}$.
 
 We will also denote the sum of spectra of all two dimensional manifolds by:
 \begin{equation}
-\spe \coloneqq \bigcup_{M\textrm{ : 2d manifold}} \spebr{M}.
+\spe \coloneqq \bigcup_{M} \spebr{M},
 \end{equation}
+where sum is taken other all compact manifolds possibly with boundary.
 This will be the main interest of this thesis. 
 %$\spe$. dadada
 
@@ -832,7 +842,7 @@ When we will be talking about "adding" or "removing" a feature from an orbifold,
 will mean adding or removing this feature from a list defining this orbifold and 
 taking the orbifold defined by resulting list as a result of the operation.
  
-As our main interest is to figure out, for a given rational number 
+As our main interest is to determine, for a given rational number 
 $\frac{p}{q}$ which orbifolds have $\frac{p}{q}$ as their \Eoc\ and for a given 
 orbifold $O$, which orbifolds 
 have the same \Eoc\ as $O$, we will be particularly interested in such operations 
@@ -859,7 +869,7 @@ There will be two main parts of question:
 
 $\bullet$ Ones regarding $\spe$ as a set, where we will be asking 
 of its order type and topology and relation to other sets such as $\speD$ and $\speS$. 
-We will focus on these questions in \ref{order structure}. 
+We will focus on these questions in chapter \ref{order structure}. 
 
 $\bullet$ Ones regarding $\spe$ as an image of a $\chi^{orb}$, sending orbifolds to their \Eoc s. 
 There, we will ask for example how many orbifolds have particular \Eoc\ and 
