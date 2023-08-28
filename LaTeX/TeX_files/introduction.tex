@@ -57,10 +57,10 @@ We will examine order type and topology of the spectrum (chapter \ref{order stru
 as well as the structure 
 of the spectrum based on spectra corresponding to different manifolds 
 (section \ref{spectra}), 
-We will also provide tools for determining whether a given number is in spectrum of volumes 
+We will also provide tools for determining whether a given number is in spectrum of areas 
 (chapter \ref{reduction_to_arithmetical}).
 (chapter \ref{Searching the spectrum}) as 
-well as tools to compute how many orbifolds correspond to a given volume in the spectrum 
+well as tools to compute how many orbifolds correspond to a given area in the spectrum 
 (chapter \ref{counting occurrences}). 
 
 %\section{Technical introductions}
@@ -71,8 +71,11 @@ well as tools to compute how many orbifolds correspond to a given volume in the 
 \section{Orbifolds}
 %\todo{jak sie juz wszystko zbierze co ma tu być, to to dopisać}
 \subsection{Definition}\label{first definition}
-The definition of the orbifold is taken from Thurston \cite{Thurston1979} (chapter 13), 
-with slight modification described in \ref{compactness}. 
+The definition of the orbifold is taken from Thurston \cite{Thurston1979} (chapter 13):
+\begin{definition}
+Orbifold
+\end{definition}
+It will have sligth slight modification described in \ref{compactness}. 
 We briefly recall the concept, but for full discussion we refer to \cite{Thurston1979}. 
 
 An orbifold is a generalisation of a manifold. As manifold, it consists of a Hausdorff space 
@@ -513,7 +516,7 @@ and is proportional to $\chi^{orb}$:
 \int_O K dA = 2\pi|\cho{O}|,
 \end{equation}
 thus having that the area is:
-\begin{equation}\label{volume to chi}
+\begin{equation}\label{area to chi}
 V(O) = 2\pi|\cho{O}|.
 \end{equation}
 
@@ -542,10 +545,10 @@ $(2*2\ 2)$,  $(3*3)$,  $(4*2)$,  $(2\ 2*)$,
 \end{itemize}
 and infinitely many families of hyperbolic orbifolds. 
 
-Our main goal in this thesis is to describe possible volumes of two dimensional orbifolds, 
+Our main goal in this thesis is to describe possible areas of two dimensional orbifolds, 
 especially those with hyperbolic structure. 
-As from \ref{volume to chi} we have direct correspondence 
-between volumes and \Eoc s, and with \Eoc, we can restrict ourselves to rational numbers, 
+As from \ref{area to chi} we have direct correspondence 
+between areas and \Eoc s, and with \Eoc, we can restrict ourselves to rational numbers, 
 we will try to describe possible \Eoc\ of two dimensional orbifolds.  
 
 
@@ -579,10 +582,10 @@ as $\varphi(\infty) \coloneqq \lim\limits_{n\to \infty}\varphi(n)$. Only express
 where such limits exists will occur without further notice.
 %\todo{}
 
-\subsection{Addition of sets and numbers}
-For $A, B \subseteqq \mathbb{R}$, we define 
+\subsection{Addition of sets of numbers}
+For $A, B \subseteq \mathbb{R}$, we define 
 \begin{equation}
-A+B \coloneqq \{a+b\ |\ a \in A, b\in B\}.
+A+B \coloneq \{a+b\ |\ a \in A, b\in B\}.
 \end{equation}
 
 \subsection{Two dimensionality}
@@ -590,7 +593,7 @@ Through the whole thesis we will consider only two dimensional manifolds and
 orbifolds, for this reason words "two-dimensional" will be sometimes omitted, nevertheless 
 from this point we will always mean only two dimensional manifolds and orbifolds.  
 
-We will also sometimes use term "volume" when we will mean "area".
+%We will also sometimes use term "volume" when we will mean "area".
 %delta
 %h c b
 
@@ -629,7 +632,10 @@ $\bullet$ for $b = 0$:
 \end{equation} 
 %with the convention, that $\varphi(\infty) \coloneqq \lim\limits_{k\to \infty} \varphi(k)$.
 
-Thus, we have that the form of the spectrum of two dimensional manifold $M$ is:\\
+Thus, we have that:
+\begin{observation} 
+\label{two dim manifold spectrum}
+The form of the spectrum of two dimensional manifold $M$ is:\\
 $\bullet$ for $b\neq 0$: 
 \begin{equation}
 \spe(M) = \chi(M) - \left\{\sum\limits_{i=1}^n\frac{d_i-1}{2d_i}\ 
@@ -639,8 +645,8 @@ $\bullet$ for $b = 0$:
 \begin{equation}
 \spe(M) = \chi(M) - \left\{\sum\limits_{i=1}^n \frac{r_i-1}{r_i}\ \big|\ n\in\mathbb{N}_0,\ 
 r_i\in\mathbb{N}_{>0}\cup \{\infty\}\right\}.
-\end{equation} 
-\label{two dim manifold spectrum}
+\end{equation}
+\end{observation} 
 
 
 \begin{observation}\label{2times homeomorphism}
@@ -819,7 +825,7 @@ can be expressed as an Egyptian fraction with $n$
 (not necessarily distinct) summands. 
 
 If for some two dimensional manifold $M$ with at least one boundary component 
-we have that $y \in \spebr{M}$ as an \Eoc of an orbifold which has $m$ dihedral orbipoints and 
+we have that $y \in \spebr{M}$ as an \Eoc\ of an orbifold which has $m$ dihedral orbipoints and 
 not any other, 
 then 
 \begin{equation}
