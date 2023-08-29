@@ -91,13 +91,15 @@ an \Eoc\ less or equal to the Euler characteristic of its underlying manifold.
 
 %We will now provide an argument that shows that for any base manifold $M$, the number 
 %of $M$ orbifolds with \Eoc\ equal to $x$ is finite. It will complete the proof of our theorem.\\
-It remains to proof, that for any base manifold $M$, the number of $M$ orbifolds 
+It remains to prove, that for any base manifold $M$, the number of $M$ orbifolds 
 with \Eoc\ equal to $x$ is finite: 
 
 Let $M$ be a two dimensional manifold. 
 
 For the sake of contradiction, assume, that there exists an infinite set $\mathcal{O}_M$
-of $M$-orbifolds such that $\mathcal{O}_M \subseteq \mathcal{O}$ ($\ast$).
+of $M$-orbifolds such that $\mathcal{O}_M \subseteq \mathcal{O}$ 
+%($\ast$)
+.
 
 If $M$ has some boundary, orbifolds in $\mathcal{O}_M$ 
 can have both rotational and dihedral orbipoints. 
@@ -112,33 +114,33 @@ also infinitely many orbifolds in $\mathcal{O}_M$ having only dihedral orbipoint
 Thus it is sufficient to prove that there are finitely many orbifolds in $\mathcal{O}_M$ 
 that have only one type of the orbipoints. 
 
-We will now perform the proof of above statement in the case of dihedral orbipoints.
-The proof for rotational orbipoints is completely analogous. 
+%We will now perform the proof of above statement in the case of dihedral orbipoints.
+%The proof for rotational orbipoints is completely analogous. 
 
 Let us call the subset of $\mathcal{O}_M$ 
 that consists only of orbifolds with only dihedral orbipoints by $\mathcal{O}_M^d$.
 
-Let $\mathcal{O}_M = \{O_i\}_{i \in I}$. 
-For each $i$, let $s_i = (b^0_i, \cdots, b^{l_i}_i)$ be the signature 
+Let $\mathcal{O}_M^d = \{O_i\}_{i \in I}$. 
+For each $i$, let $s_i = (d^0_i, \cdots, d^{l_i}_i)$ be the signature 
 of $O_i$ written with decreasing orders of 
 dihedral points. So for each $i$ we have, that $b^0_i$ is 
 the order of the orbipoint with the highest order of all the dihedral orbipoints of 
 $O_i$. 
-By \ref{first_finiteness_theorem} we know that if the set $\{b^0_i\}_{i \in I}$ 
+By \ref{first_finiteness_theorem} we know that if the set $\{d^0_i\}_{i \in I}$ 
 would be bounded 
 by some $n \in \mathbb{N}$ it would mean, that $\mathcal{O}_M^d$ would be finite. As 
-from ($\ast$) this is not the case, we know
-that the set $\{b^0_i\}_{i \in I}$ is unbounded. 
+from our assumption for the contradiction, we have that $\mathcal{O}_M^d$ is not finite, we know
+that the set $\{d^0_i\}_{i \in I}$ is unbounded. 
 Let $\{i_n\}_{n\in \mathbb{N}} \subseteq I$ be a sequence of indices such that
-$\{b^0_{i_n}\}_{n\in \mathbb{N}}$ is strictly increasing. 
+$\{d^0_{i_n}\}_{n\in \mathbb{N}}$ is strictly increasing. 
 
 %Let $\{a_n\}$ be the sequence such that $a_n = \frac{m_n-1}{m_n} \end{cases}$ if point 
 %corresponding 
 %to $m_n$ is an rotational point and $a_n = \frac{m_n-1}{2m_n}$ if point corre 
-Let $\{x_n\}$ be the sequence such that $x_n = \Delta(b^0_{i_n})$.
-Let $\{y_n\}$ be the sequence such that $y_n = \Delta(b^1_{i_n},
+Let $\{a_n\}$ be the sequence such that $a_n = \Delta(d^0_{i_n})$.
+Let $\{b_n\}$ be the sequence such that $b_n = \Delta(d^1_{i_n},
 \cdots, b^{l_{i_n}}_{i_n})$. 
-So for every $n$ we know that $\cho{O_{i_n}} = \chi(M) + a_n + b_n$. As $\{b^0_{i_n}\}$ 
+So for every $n$ we know that $\cho{O_{i_n}} = \chi(M) + a_n + b_n$. As $\{d^0_{i_n}\}$ 
 is strictly 
 increasing, we know 
 that $a_n$ is strictly decreasing, so $b_n$ must be strictly 
@@ -148,8 +150,8 @@ increasing
 are from the family with \Eoc\ equal to $x$). 
 
 But $\{b_n\} \subseteq \spebr{M} - \chi(M)$. 
-From \ref{well_order} and \ref{times_two_fact} we know that $\spebr{M}$ has no infinite 
-strongly increasing sequences, so 
+From \ref{well_order} and \ref{all_spectra_are_isomorphic} we know that $\spebr{M}$ has no infinite 
+strictly increasing sequences, so 
 $\spebr{M} - \chi(M)$ has no infinite strongly increasing sequences. That gives us a 
 contradiction. 
 %*. 
@@ -221,7 +223,9 @@ there exists an $y\in U$ such that there are at least $n$ orbifolds with $y$ as 
 \subsubsection{Proof.}
 This will follow from the theorem about the sums of Egyptian fractions from \cite{Browning2011} 
 (Theorem 1. page 1).
-It states that for a counting function
+It states that: 
+\begin{theorem}
+For a counting function
 \begin{equation}
 f_k(p,q) \coloneqq 
 \#\left\{(n_1, \cdots, n_k)\in \mathbb{N}_{>0}^k\ \Big|\ n_1 \leq \cdots \leq n_k 
@@ -232,6 +236,7 @@ $q\in\mathbb{N}_{>0}$ for which
 \begin{equation}
 f_2(p,q) > \exp\left((\log{3}+o(1))\frac{\log(q)}{\log(\log(q))}\right).
 \end{equation}
+\end{theorem}
 %Napisaeqauć, że dowolnie blisko każdego punktu skupienia da się znaleźć liczbę o dowolnie wielu 
 %odpowiadających jej orbifoldach.
 
@@ -257,7 +262,7 @@ some neighborhood of $x$ and let $n \in \mathbb{N}$. Let us take $p = 1$ and $q$
 We can always find such one, since:
 \begin{itemize} 
 \item from \cite{Browning2011} we know, that there exists 
-infinitely many $q$, for $p = 1$, such that \ref{pq condition}, 
+infinitely many $q$, for $p = 1$, such that \ref{pq condition} holds, 
 %and since
 \item
 %\begin{equation}
@@ -310,14 +315,14 @@ The first part is to answer the following question:
 
 "How many sums of the form:
 \begin{equation}\label{counting D2}
-1-\sum_{i=1}^m \frac{d_j-1}{2d_j} 
+1-\sum_{j=1}^m \frac{d_j-1}{2d_j} 
 %-\sum_{i=1}^n \frac{r_i-1}{r_i}
 \end{equation} 
 %and
 %\begin{equation}\label{counting S2}
 %2-\sum_{i=1}^n \frac{r_i-1}{r_i}
 %\end{equation}
-with $n\in \mathbb{N}$ and $\forall_i\ d_i\in\mathbb{N}\cup\{\infty\}$, are equal to $x$?"
+with $m\in \mathbb{N}$ and $\forall_j\ d_j\in\mathbb{N}\cup\{\infty\}$, are equal to $x$?"
 
 It is a matter of convention (and then coherently translating this convention to the final result) 
 what sums are we treating as "the same". The convention we will take, is that a sum is determined 
@@ -364,7 +369,7 @@ $\bullet$ if $M$ has a boundary (\ref{translation with b not 0}):
 
 "How many sums of the form 
 \begin{equation}
-1-\sum_{i=1}^m \frac{d_j-1}{2d_j} 
+1-\sum_{j=1}^m \frac{d_j-1}{2d_j} 
 \end{equation}
 are equal to 
 \begin{equation}
@@ -378,7 +383,7 @@ $\bullet$ if $M$ has no boundary (\ref{translation with b 0}):
 
 "How many sums of the form
 \begin{equation}
-1-\sum_{i=1}^m \frac{d_j-1}{2d_j} 
+1-\sum_{j=1}^m \frac{d_j-1}{2d_j} 
 \end{equation}
 are equal to 
 \begin{equation}
