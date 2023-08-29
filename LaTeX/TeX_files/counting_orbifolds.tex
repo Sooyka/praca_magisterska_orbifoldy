@@ -42,12 +42,31 @@ In \ref{dividing the problem},
 
 \section{Finiteness}\label{finiteness}
 
+In this section, we will prove, that for any $x \in \sigma$ there are only finitely many orbifolds 
+with the \Eoc\ equal to $x$. We will give two proofs of this fact. 
+
 %Here we will show that for any $x \in \sigma$:
 %\begin{itemize}
 %\item for every $n \in \mathbb{N}$ there are only finitely many orbifolds 
 %with the \Eoc\ greater or equal to $x$ and all orbipoints of order at most $n$
 %\item there are finitely many orbifolds with an \Eoc\ equal to $x$. 
 %\end{itemize}
+
+\begin{lemma}\label{sum_of_reciprocals_lemma}
+The function $\rho:\mathbb{N}^m \to \mathbb{Q}$, defined as:
+\begin{equation}
+\rho(n_1, \cdots, n_m) \coloneqq \sum_{i = 0}^m \frac{1}{n_i},
+\end{equation} 
+is finite-to-1.
+\end{lemma}
+\subsubsection{Proof.}
+
+
+%\begin{theorem}\label{second_finiteness_theorem}
+%For any $x \in \sigma$ there are only finitely many orbifolds 
+%with the \Eoc\ equal to $x$.
+%\end{theorem}
+%\subsubsection{Proof.}
 
 \begin{observation}\label{first_finiteness_theorem}
 For any $x \in \sigma$ and $n \in \mathbb{N}$ there are only finitely many orbifolds 
@@ -72,12 +91,61 @@ $(n-1)^{\max \{\lfloor 4(1-x) \rfloor, \lfloor 2(2-x) \rfloor\}}$ orbifolds with
 $y \geq x$, 
 all orbipoints of order at most $n$ and $M$ as a base manifold.$_\square$ 
 
+\begin{observation}
+To prove that for any $x \in \sigma$ there are only finitely many orbifolds 
+with the \Eoc\ equal to $x$, it is sufficient, to prove, that 
+for any $x \in \sigma$, fr any two dimensional manifold $M$, there are only 
+finitely many $M$-orbifolds with only dihedral orbipoints, 
+with the \Eoc\ equal to $x$.
+\end{observation}
+\subsubsection{Proof.}
+Let $x$ be a rational number. 
+Let $\mathcal{O}$ be the set of all orbifolds with 
+an \Eoc\ equal to $x$. 
+Those orbifolds can have different base manifolds. However, the set of base manifolds of 
+orbifolds from $\mathcal{O}$ is finite, as there are only finitely many 
+two dimensional manifolds with an Euler characteristic greater or equal to $x$ and an 
+orbifold always has 
+an \Eoc\ less or equal to the Euler characteristic of its underlying manifold. 
+
+%We will now provide an argument that shows that for any base manifold $M$, the number 
+%of $M$ orbifolds with \Eoc\ equal to $x$ is finite. It will complete the proof of our theorem.\\
+From this, it is sufficient to prove, that for any base manifold $M$, 
+the number of $M$ orbifolds 
+with \Eoc\ equal to $x$ is finite: 
+
+Let $M$ be a two dimensional manifold. 
+
+For the sake of contradiction, assume, that there exists an infinite set $\mathcal{O}_M$
+of $M$-orbifolds such that $\mathcal{O}_M \subseteq \mathcal{O}$ 
+%($\ast$)
+.
+
+If $M$ has some boundary, orbifolds in $\mathcal{O}_M$ 
+can have both rotational and dihedral orbipoints. 
+For the simplicity of the following part of the proof we want now to reduce this case 
+to a case 
+where only one type of the orbipoints is present. 
+
+Let us observe, that every rotational orbipoint can be replaced by two dihedral orbipoints 
+of the same order without changing the \Eoc. Thus, if there would be infinitely many 
+orbifolds in $\mathcal{O}_M$ having both rotational and dihedral orbipoints, there would be 
+also infinitely many orbifolds in $\mathcal{O}_M$ having only dihedral orbipoints. 
+Thus it is sufficient to prove that there are finitely many orbifolds in $\mathcal{O}_M$ 
+that have only one type of the orbipoints. 
+
+%We will now perform the proof of above statement in the case of dihedral orbipoints.
+%The proof for rotational orbipoints is completely analogous. 
+
+Let us call the subset of $\mathcal{O}_M$ 
+that consists only of orbifolds with only dihedral orbipoints by $\mathcal{O}_M^d$.
+
 \begin{theorem}\label{second_finiteness_theorem}
 For any $x \in \sigma$ there are only finitely many orbifolds 
 with the \Eoc\ equal to $x$.
 \end{theorem}
 \todo{obrazek?}
-\subsubsection{Proof.} 
+\subsubsection{Proof I.} 
 
 % Suppouse, that there exists an orbifold with an \Eoc\ qual to $x$. Then, 
 Let $x$ be a rational number. 
