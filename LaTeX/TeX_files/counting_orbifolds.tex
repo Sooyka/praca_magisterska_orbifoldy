@@ -27,7 +27,11 @@ have that \Eoc ?".
 %Secondly:
 In \ref{finiteness}, we will show that for any number, there are only finitely many 
 orbifolds with that \Eoc. 
-In \ref{dividing the problem}, 
+In \ref{infiniteness} we will show the local unboundeness of $\spe$. 
+In \ref{dividing the problem}, we will divide the problem into two parts 
+that will be discussed in chapter 
+\ref{Counting orbifolds -- arithmetical part} and chapter 
+\ref{Counting orbifolds -- combinatorical part} and discuss these parts briefly. 
 %we will separate the problem of finding the exact number into 
 %more arithmetical 
 %part and one more combinatorial. 
@@ -52,14 +56,14 @@ with the \Eoc\ equal to $x$. We will give two proofs of this fact.
 %\item there are finitely many orbifolds with an \Eoc\ equal to $x$. 
 %\end{itemize}
 
-\begin{lemma}\label{sum_of_reciprocals_lemma}
-The function $\rho:\mathbb{N}^m \to \mathbb{Q}$, defined as:
-\begin{equation}
-\rho(n_1, \cdots, n_m) \coloneqq \sum_{i = 0}^m \frac{1}{n_i},
-\end{equation} 
-is finite-to-1.
-\end{lemma}
-\subsubsection{Proof.}
+%\begin{lemma}\label{sum_of_reciprocals_lemma}
+%The function $\rho:\mathbb{N}^m \to \mathbb{Q}$, defined as:
+%\begin{equation}
+%\rho(n_1, \cdots, n_m) \coloneqq \sum_{i = 0}^m \frac{1}{n_i},
+%\end{equation} 
+%is finite-to-1.
+%\end{lemma}
+%\subsubsection{Proof.}
 
 
 %\begin{theorem}\label{second_finiteness_theorem}
@@ -71,6 +75,23 @@ is finite-to-1.
 %\begin{observation}
 
 %\end{observation}
+
+\begin{observation}\label{limit of number of orbipoints lemma}
+Let us observe, that since:
+\begin{itemize} 
+\item $\Delta(^*2) = -\frac{1}{4}$,
+\item $\Delta(2) = -\frac{1}{2}$,
+\item every $M$ with boundary has $\chi(M) \leq 1$,
+\item every $M$ without boundary has $\chi(M) \leq 2$,
+\end{itemize}
+we have, that there can be at most 
+$n \coloneqq \max \{\lfloor 4(1-x) \rfloor, \lfloor 2(2-x) \rfloor\}$ 
+orbipoints at any orbifold with an \Eoc\ $\geq x$. 
+\end{observation}
+
+%\begin{theorem}
+%Let $x$ be an accumulation point of order $0$ 
+%\end{theorem}
 
 \begin{observation}\label{first_finiteness_theorem}
 For any $x \in \sigma$ and $n \in \mathbb{N}$ there are only finitely many orbifolds 
@@ -88,6 +109,7 @@ with $M$ as a base manifold, that have
  an \Eoc\ $y \geq x$, and all orbipoints of order at most $n$.
 
 We proceed now similarly to the proof of \ref{finiteness_lemma} -- 
+From \ref{limit of number of orbipoints lemma} we have that 
 on the orbifold with an \Eoc\ $y \in [x,2]$, there can be at most 
 $\max \{\lfloor 4(1-x) \rfloor, \lfloor 2(2-x) \rfloor\}$ orbipoints. 
 Thus, for a given manifold $M$ and a given $x$ and $n$, there can be at most 
@@ -300,14 +322,15 @@ type of orbipoints
 (rotational in the case $M$ has no boundary, dihedral in the case $M$ has a boundary),
 with \Eoc\ equal to $x$. 
 
-Similarly as in \ref{finiteness_lemma} and \ref{first_finiteness_theorem}, 
-we can deduce, that since:
-\begin{itemize} 
-\item $\Delta(^*2) = -\frac{1}{4}$,
-\item $\Delta(2) = -\frac{1}{2}$,
-\item every $M$ with boundary has $\chi(M) \leq 1$,
-\item every $M$ without boundary has $\chi(M) \leq 2$,
-\end{itemize}
+%Similarly as in \ref{finiteness_lemma} and \ref{first_finiteness_theorem}, 
+%we can deduce, that since:
+%\begin{itemize} 
+%\item $\Delta(^*2) = -\frac{1}{4}$,
+%\item $\Delta(2) = -\frac{1}{2}$,
+%\item every $M$ with boundary has $\chi(M) \leq 1$,
+%\item every $M$ without boundary has $\chi(M) \leq 2$,
+%\end{itemize}
+From \ref{limit of number of orbipoints lemma} 
 we have, that there can be at most 
 $n \coloneqq \max \{\lfloor 4(1-x) \rfloor, \lfloor 2(2-x) \rfloor\}$ 
 orbipoints at any orbifold with an \Eoc\ equal to $x$. 
@@ -337,7 +360,7 @@ equal to $\frac{1}{2}$ or $1$, when, respectively $M$ has a boundary or not.
 As such $\cho{O} = x$ iff $S = \frac{1}{\alpha}x-\frac{1}{\alpha}\chi(M) + k$.  
 
 From \ref{Egyptian fractiona finiteness theorem} we know, that there are only finitely many 
-sums of the form of $S$, equal to any given number. $_\square$
+sums of the form of $S$, equal to any given number. $_\square $
 
  
 %\section{Some connections between \Eoc\ and geometry of corresponding orbifolds}
@@ -350,7 +373,28 @@ sums of the form of $S$, equal to any given number. $_\square$
 %%\end{observation}
 
 
-\section{Infinitness}
+\begin{theorem}
+For every accululation point $x$ of $\spe$ of order $<2$, there exists an neighbourhood $U$ 
+of $x$, such that there exists $n \in \mathbb{N}$, such that for all $y \in U$ there are at most 
+$n$ orbifolds with $y$ as their \Eoc.
+\end{theorem}
+\subsubsection{Proof.} 
+Let $x$, be an accumulation point of $\spe$ of order $0$, then it is isolated point, and as such 
+it has some neighbourhood $U$, such that $U\cap \spe = \{x\}$. From this and from 
+\ref{second_finiteness_theorem} we have the thesis in this case. 
+
+Let $x$, be an accumulation point of $\spe$ of order $1$. 
+Then, there is an neighbourhood $U$ of $x$, such that in $U\setminus \{x\}$ there are only 
+isolated points of $\spe$.  
+%and, since $\spe$ is well-oredered, 
+%$x$ is the smallest point from $\spe$ in $U$. 
+
+%From \ref{limit of number of orbipoints lemma} we know, that orbifolds with \Eoc in 
+%$U$ can have at most  
+
+\todo{dokończyć}
+
+\section{Infinitness}\label{infiniteness}
 %\subsection{Unboundeness of some number of occurences}
 \subsection{Local unboundness}
 We know, that for any $x$, there are only finitely many orbifolds with $x$ as an \Eoc . 
@@ -362,9 +406,11 @@ The answer will be yes, and it can be formulated as such:
 For any neighbourhood $U$ of any accumulation point $x$ of $\speD$ of order at least $2$, for any 
 $n\in \mathbb{N}$, 
 there exists an $y\in U$ such that there are at least $n$ orbifolds with $y$ as their 
-\Eoc.
+\Eoc. 
 \end{theorem}
 \subsubsection{Proof.}
+%The first part 
+%of the theorem 
 This will follow from the theorem about the sums of Egyptian fractions from \cite{Browning2011} 
 (Theorem 1. page 1).
 It states that: 
@@ -386,6 +432,8 @@ f_2(p,q) > \exp\left((\log{3}+o(1))\frac{\log(q)}{\log(\log(q))}\right).
 
 %\todo{dac jakieś źródła i ok}
 %\todo{Dopisać}
+Let us observe, that it is sufficient to show the thesis for $\speD$.
+
 From \ref{third_order_lemma} we know, that for point $x$ to be an accumulation points of order 
 at least $2$ of the set $\speD$ means, that $x + 1 \in \speD$. This also means, that 
 all points of the form 
@@ -438,7 +486,9 @@ x + \frac{1}{2n_1^i} + \frac{1}{2n_2^i} = x + \frac{1}{2q}.
 As such, we found $y = x + \frac{1}{2q}$, such that $y \in U$ and 
 %there are at least $n$ 
 found $n$
-different orbifolds, with an \Eoc\ equal $y$. $_\square$ 
+different orbifolds, with an \Eoc\ equal $y$. 
+
+$_\square$ 
  
 
 
@@ -446,8 +496,8 @@ different orbifolds, with an \Eoc\ equal $y$. $_\square$
 \section{Dividing the problem into an arithmetical and combinatorical parts}
 \label{dividing the problem}
 Here will divide the question "Given the number $x$, how many orbifolds have $x$ as an \Eoc?" 
-into two parts. The answers to these partial questions will be given in 
-\ref{Counting orbifolds -- arithmetical part} and 
+into two parts. The answers to these partial questions will be given in chapter
+\ref{Counting orbifolds -- arithmetical part} and chapter
 \ref{Counting orbifolds -- combinatorical part}.   
 % Below in section \ref{arithmeticla part} and \ref{combinatorical} 
 \section{Arithmetical part}\label{arithmetical part}
