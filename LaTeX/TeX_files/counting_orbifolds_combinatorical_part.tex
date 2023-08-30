@@ -92,36 +92,53 @@ Then the last step of the procedure will be to sum over all sums produced in
 
 Let $b$ be the number of boundary components of $M$. We know from the assumption, that $b > 0$. 
 
-Let the sum be of the form $a_1^{k_1}a_2^{k_2}\cdots a_m^{k_m}$, meaning that the 
-list $d_1d_2\cdots d_n$ looks like (let $l_i \coloneqq \sum_{j = 1}^i k_j$):
-\begin{equation}
-\underbrace{d_1d_2\cdots d_{l_1}}_{k_1\ \mathrm{times}\ a_1} 
-\underbrace{d_{l_1+1}d_{l_1+2}\cdots d_{l_2}}_{k_2\ \mathrm{times}\ a_2} \cdots 
-\underbrace{d_{l_{m-1}}d_{l_{m-1}+1}\cdots d_n}_{k_m\ \mathrm{times}\ a_m}. 
-\end{equation}
+%Let the sum be of the form $a_1^{k_1}a_2^{k_2}\cdots a_m^{k_m}$, meaning that the 
+%list $d_1d_2\cdots d_n$ looks like (let $l_i \coloneqq \sum_{j = 1}^i k_j$):
+%\begin{equation}
+%\underbrace{d_1d_2\cdots d_{l_1}}_{k_1\ \mathrm{times}\ a_1} 
+%\underbrace{d_{l_1+1}d_{l_1+2}\cdots d_{l_2}}_{k_2\ \mathrm{times}\ a_2} \cdots 
+%\underbrace{d_{l_{m-1}}d_{l_{m-1}+1}\cdots d_n}_{k_m\ \mathrm{times}\ a_m}. 
+%\end{equation}
 
-We need to partition $a_1^{k_1}a_2^{k_2}\cdots a_m^{k_m}$ among boundary 
+%We need to partition $a_1^{k_1}a_2^{k_2}\cdots a_m^{k_m}$ among boundary 
+%components of $M$. 
+
+We need to partition $d_1d_2\cdots d_n$ among boundary 
 components of $M$. 
 
+%In considerations of partitions, we will treat 
 %At first we will give each of the boundary component a label and treat them as distinguishable. 
 %At the end, we will divide the result by $b!$ reflecting the fact, that topologically, they are 
 %not 
 %distinguishable. 
 
+At this moment we will treat boundary components as distinguishable. 
+
 %Effective way to iterate over all the partitions 
-Let us consider some partition of $a_1^{k_1}a_2^{k_2}\cdots a_m^{k_m}$ among the boundary 
+Let us consider some partition of $d_1d_2\cdots d_n$ among the 
+distinguishable  boundary 
 components. After this, results from all partitions need to be summed together. 
+The fact that boundary components are not distinguishable 
+will be taken into account in the next subsection by assigning the proper weights in the summation.
+%, but in the 
+%case that $M$ is orientable,
+%results from partitions where at least . 
 
 
 
-\subsection{Fixed partition and boundary component}
-Let us now consider one partition and one boundary component. 
-Suppose that in this partition this boundary component have orbipoints of degrees 
-$b_1^{s_1}b_2^{s_2}\cdots b_n^{s_n}$.  
-We want to know how many possible cyclic orders there are on a boundary component with 
-$b_1^{s_1}b_2^{s_2}\cdots b_n^{s_n}$ on it. 
-Having this answer we will multiply these answers from each boundary component in 
-a given partition, this way resulting in an answer for a partition. 
+\subsection{Fixed partition}
+Let us now consider some fixed partition.
+% and one boundary component. 
+Suppose that in this partition for every $1\leq j \leq b$
+boundary component $B_j$ have orbipoints of degrees: 
+%$^ja_1^{^js_1}\ ^ja_2^{^js_2}\cdots\ ^ja_{n_j}^{^js_{n_j}}$
+$^jd_1\ ^jd_2\cdots ^jd_{n_j}$.  
+We want to know how many possible sets of cyclic orders there are on a boundary components with 
+$^jd_1\ ^jd_2\cdots ^jd_{n_j}$ on $B_i$. 
+%Having this answer we will multiply these answers from each boundary component in 
+%a given partition
+%%, this way resulting in an answer for a partition. 
+%However  
 
 %First, we will start with answearing the question when all $s_i$ are equal to $1$. 
 %Then:
@@ -141,24 +158,51 @@ a given partition, this way resulting in an answer for a partition.
 
 %\subsubsection{Fixed cyclic order for the type of the components}
 %We can enumerate through all the cyclic orders by iterating though linear orders
-We can count cyclic orders by iterating through linear orders, but counting each linear 
-order $o$ with the 
-weight (let $t \coloneqq \sum_{i = 0}^n s_i$):  
+We can count sets of cyclic orders un untistinguishable boundary components 
+by iterating through tuples of 
+linear orders on distinguishable boundary components and summing them with proper weights. 
+
+Given the tuple of linear orders $\mathcal{L} = (L_1, \cdots, L_b)$ on
+distinguishable components, to calculate 
+the weight $W(\mathcal{L})$, we will first set some weights $W(L_j)$, for every 
+$1\leq j \leq b$. 
+%Then we will put $W(L) \coloneqq \prod_{i=1}^bL_i$.  
+
+%We 
+%, but counting each 
+For a linear 
+order $L_j$ we set the 
+weight $W(L_j)$ to be 
+%(let $t \coloneqq \sum_{i = 0}^n s_i$)
+:  
 %where $\Gamma$ is (let $t \coloneqq \sum_{i = 0}^n s_i$): 
 \begin{itemize}
-\item in case $M$ is orientable -- $\frac{|\mathbb{Z}_k|}{|\mathbb{Z}_t|} = \frac{k}{t}$, 
+\item in case $M$ is orientable -- $\frac{|\mathbb{Z}_k|}{|\mathbb{Z}_{n_j}|} = \frac{k}{n_j}$, 
 where $\mathbb{Z}_k$ 
-is the biggest cyclic subgroup of $S_t$, under which $o$ is invariant as a linear order,
-\item in case $M$ is not orientable -- $\frac{|\mathbb{D}_k|}{|\mathbb{D}_t|} = \frac{2k}{2t} 
-=\frac{k}{t}$ , 
+is the biggest cyclic subgroup of $\mathbb{Z}_{n_j}$, under which $L_j$ 
+is invariant as a linear order,
+\item in case $M$ is not orientable -- $\frac{|\mathbb{D}_k|}{|\mathbb{D}_{n_j}|} = 
+\frac{2k}{2n_j} 
+=\frac{k}{n_j}$ , 
 where $\mathbb{D}_k$ is 
-the biggest 
-subgroup of $S_t$, under 
-which $o$ is invariant as a linear order. 
+the biggest dihedral 
+subgroup of $\mathbb{D}_{n_j}$, under 
+which $L_j$ is invariant as a linear order. 
 \end{itemize}
 %After this, we need to divide 
 %First, let us answear this question for $b = 1$. 
 
+Then, we put $W(L) \coloneqq SR\prod_{j=1}^bL_j$, where:
+\begin{itemize}
+\item $S \coloneqq \frac{|G|}{|S_b|}$, where $G$ is the biggest subgroup of permutations 
+$S_b$ under which 
+tuple of orders $\mathcal{L}$ is invariant as a tuple of cyclic orders, 
+\item $R = \frac{1}{2}$ if
+$M$ is orientable and  
+at least one of linear orders $L_j$ is different as a cyclic order than the 
+reverse of $L_j$ as a cyclic order; 
+otherwise $R = 1$
+\end{itemize}
 
 
 %Let us start with only cosidering dihedral orbipoints.

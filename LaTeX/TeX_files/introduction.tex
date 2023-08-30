@@ -321,7 +321,9 @@ isomorphic iff they have:
 \item the same base manifold, 
 \item the same number of orbipoints for each type and degree 
 \item orbipoints on the boundaries 
-in the pairwise same cyclic orders (up to orientation if the base manifold is non-orientable).
+in the pairwise same cyclic orders -- up to orientation of each alone
+if the base manifold is non-orientable  
+and up to simultaniously reversing orientation of every if the base manifold is orientable.
 \end{itemize}
 \end{theorem}
 %\todo{dopisać}
@@ -739,13 +741,13 @@ For every manifold $M$, for every $x \in \spebr{M}$, we have that $x \leq \chi(M
 %\todo{dopisać, że spectrum jest poniżejchi rozmaitości}
 
 \section{Egyptian fractions}
-Egyptian fraction is a finite sum of fractions, all with numerators one. 
+Egyptian fraction is a finite sum of fractions, all with numerators one and positive denominators. 
 Most of the time it is also required, that the fractions in the sum have pairwise distinct 
 denominators. We will however take less usual convention and will drop that requirement, 
 calling an Egyptian fraction any sum of unitary fractions. 
 
 As a side remark, we can say, that even in case of the usual, more strict definition, 
-every rational number can be expressed as an Egyptian fraction. One of the methods 
+every positive rational number can be expressed as an Egyptian fraction. One of the methods 
 to do so was described in \cite{Engel1913}.
 
 In our less strict definition, we can always have 
@@ -790,7 +792,8 @@ can appear in the sum.
 %We are interested in translating 
 We will now translate the questions of being in the spectrum 
 to the questions of being expressible as Egyptian fraction with the particular number 
-of summands. It will be used in \ref{saturation theorem} and \ref{unboundness}.
+of summands. It will be used in \ref{saturation theorem}, 
+\ref{second_finiteness_theorem} and \ref{unboundness}.
 
 %We can make following corollaries:
 %\begin{corollary}\label{from Egyptian fractions}
@@ -855,6 +858,47 @@ then
 can be expressed as an Egyptian fraction with $m$ 
 (not necessarily distinct) summands. 
 \end{corollary}
+
+\begin{theorem}\label{Egyptian fractiona finiteness theorem}
+For any $q\in \mathbb{Q}$ and any $k\in \mathbb{N}_0$, there are only finitely many 
+Egyptian fractions equal to $q$ with $k$ summands.
+\end{theorem}
+\subsubsection{Proof.}
+Let $\frac{1}{n_1} + \cdots + \frac{1}{n_k}$ be the Egyptian fraction of $q$, 
+such that $\frac{1}{n_1} \geq \cdots \geq \frac{1}{n_k}$.  
+
+Let us observe, that then $\frac{1}{n_1} \geq \frac{q}{k}$. From, this, we have that 
+$n_1 \leq \frac{k}{q}$, so there are only finitely many valuse, that $n_1$ can take. 
+Let $n_1'$ be the smallest value $n_1$ can take, such that $\frac{1}{n_1'} < \frac{1}{q}$. 
+Then, we have that $\frac{1}{n_2} \geq \cdots \geq \frac{1}{n_k} \geq q - \frac{1}{n_1'}$. 
+
+We can make an inductive argument, that if $n_1', n_2', \cdots, n_{i-1}'$ are such 
+smallest values for $n_1, n_2, \cdots, n_{i-1}$, then we have, that 
+$\frac{1}{n_i} \geq \cdots \geq \frac{1}{n_k} \geq q - \frac{1}{n_1'} - \frac{1}{n_2'} - 
+\cdots -\frac{1}{n_{i-1}}$. 
+As such, we have, that 
+\begin{equation}
+\frac{1}{n_i} \geq \frac{1}{k-i+1}\left(q - \frac{1}{n_1'} - \frac{1}{n_2'} - 
+\cdots -\frac{1}{n_{i-1}}\right),
+\end{equation}
+so we have that 
+\begin{equation}
+n_i \leq \frac{k-i+1}{q - \frac{1}{n_1'} - \frac{1}{n_2'} - 
+\cdots -\frac{1}{n_{i-1}}}, 
+\end{equation}
+so for every $1\leq i \leq k$. there only finitely many values, that $n_i$ can take. 
+As such, there are only finitely many Egyptian fractions of $q$ of $k$ summands. $_\square$
+
+%But since, for any $n \in \mathbb{N}_0$, we have $\frac{1}{n} \leq 1$, we have also that 
+%%We have then that 
+%$\frac{1}{n_1} + \cdots + \frac{1}{n_{k-i}} \geq q - i$. 
+%From this, that $\frac{1}{n_{k-i}} \geq \frac{q-i}{k-i}$. 
+
+%Transforming inequalities obtained this way, we have, that for every $0\leq i < k$, 
+%we have $n_{k-i} \leq \frac{k-i}{q-i}$. From this, we see that $n_{k-i}$ is bounded 
+%for every $0\leq i < k$. As such, there are only finitely many $n_1, \cdots, n_k$, such that 
+%$\frac{1}{n_1}+\cdots+\frac{1}{n_k} = q$. 
+$_\square$
 
 \section{Operations on orbifolds}\label{Operations}
 As stated in \ref{therminology and notation} we will often see two dimensional orbifold 

@@ -68,6 +68,10 @@ is finite-to-1.
 %\end{theorem}
 %\subsubsection{Proof.}
 
+%\begin{observation}
+
+%\end{observation}
+
 \begin{observation}\label{first_finiteness_theorem}
 For any $x \in \sigma$ and $n \in \mathbb{N}$ there are only finitely many orbifolds 
 with the \Eoc\ greater or equal to $x$ and all orbipoints of order at most $n$.
@@ -91,11 +95,12 @@ $(n-1)^{\max \{\lfloor 4(1-x) \rfloor, \lfloor 2(2-x) \rfloor\}}$ orbifolds with
 $y \geq x$, 
 all orbipoints of order at most $n$ and $M$ as a base manifold.$_\square$ 
 
-\begin{observation}
+\begin{observation}\label{simplification of the finiteness theorem}
 To prove that for any $x \in \sigma$ there are only finitely many orbifolds 
-with the \Eoc\ equal to $x$, it is sufficient, to prove, that 
-for any $x \in \sigma$, fr any two dimensional manifold $M$, there are only 
-finitely many $M$-orbifolds with only dihedral orbipoints, 
+with the \Eoc\ equal to $x$, it is sufficient, to prove that 
+for any $x \in \sigma$, for any two dimensional manifold $M$, there are only 
+finitely many $M$-orbifolds with only one corresponding type of orbipoints (dihedral in the case 
+$M$ has a boundary or rotational in the case $M$ dos not have a boundary), 
 with the \Eoc\ equal to $x$.
 \end{observation}
 \subsubsection{Proof.}
@@ -112,103 +117,125 @@ an \Eoc\ less or equal to the Euler characteristic of its underlying manifold.
 %of $M$ orbifolds with \Eoc\ equal to $x$ is finite. It will complete the proof of our theorem.\\
 From this, it is sufficient to prove, that for any base manifold $M$, 
 the number of $M$ orbifolds 
-with \Eoc\ equal to $x$ is finite: 
+with \Eoc\ equal to $x$ is finite.
 
 Let $M$ be a two dimensional manifold. 
-
-For the sake of contradiction, assume, that there exists an infinite set $\mathcal{O}_M$
-of $M$-orbifolds such that $\mathcal{O}_M \subseteq \mathcal{O}$ 
+%For the sake of contradiction, assume, that there exists an infinite set $\mathcal{O}_M$
+%of $M$-orbifolds such that $\mathcal{O}_M \subseteq \mathcal{O}$ 
 %($\ast$)
-.
+If $M$ has no boundary it can't have dihedral orbipoints and we have the the thesis for manifolds 
+without boundary.
 
-If $M$ has some boundary, orbifolds in $\mathcal{O}_M$ 
+If $M$ has a boundary, $M$-orbifolds 
+%in $\mathcal{O}_M$ 
 can have both rotational and dihedral orbipoints. 
-For the simplicity of the following part of the proof we want now to reduce this case 
-to a case 
-where only one type of the orbipoints is present. 
-
+%For the simplicity of the following part of the proof we want now to reduce this case 
+%to a case 
+%where only one type of the orbipoints is present. 
 Let us observe, that every rotational orbipoint can be replaced by two dihedral orbipoints 
 of the same order without changing the \Eoc. Thus, if there would be infinitely many 
-orbifolds in $\mathcal{O}_M$ having both rotational and dihedral orbipoints, there would be 
-also infinitely many orbifolds in $\mathcal{O}_M$ having only dihedral orbipoints. 
-Thus it is sufficient to prove that there are finitely many orbifolds in $\mathcal{O}_M$ 
-that have only one type of the orbipoints. 
+$M$-orbifolds having both rotational and dihedral orbipoints, there would be 
+also infinitely many $M$-orbifolds having only dihedral orbipoints. 
+Thus in this case it is sufficient to prove that there are finitely many $M$-orbifolds 
+that have only dihedral orbipoints. $_\square$
 
 %We will now perform the proof of above statement in the case of dihedral orbipoints.
 %The proof for rotational orbipoints is completely analogous. 
 
-Let us call the subset of $\mathcal{O}_M$ 
-that consists only of orbifolds with only dihedral orbipoints by $\mathcal{O}_M^d$.
+%Let us call the subset of $\mathcal{O}_M$ 
+%that consists only of orbifolds with only dihedral orbipoints by $\mathcal{O}_M^d$.
 
 \begin{theorem}\label{second_finiteness_theorem}
-For any $x \in \sigma$ there are only finitely many orbifolds 
+For any $x \in \spe$ there are only finitely many orbifolds 
 with the \Eoc\ equal to $x$.
 \end{theorem}
 \todo{obrazek?}
+
+%\subsubsection{Proof.}
+%Let us take $x\in \spe$. 
+%%Using \ref{simplification of the finiteness theorem} 
+%%We will use observation \ref{simplification} and prove, that for any $M$
+%By using observation \ref{simplification of the finiteness theorem} it is only needed to prove, 
+%that for any $M$, there are only finitely many $M$-orbifolds with only dihedral orbipoints 
+%with \Eoc\ equal to $x$. 
+
+%Let $M$, be a two dimensional manifold.  
+
 \subsubsection{Proof I.} 
 
+Let us take $x\in \spe$. 
+By using observation \ref{simplification of the finiteness theorem} it is only needed to prove, 
+that for any $M$, there are only finitely many $M$-orbifolds with only one 
+corresponding type of orbipoints 
+(rotational in the case $M$ has no boundary, dihedral in the case $M$ has a boundary), 
+with \Eoc\ equal to $x$. 
+
 % Suppouse, that there exists an orbifold with an \Eoc\ qual to $x$. Then, 
-Let $x$ be a rational number. 
-Let $\mathcal{O}$ be the set of all orbifolds with 
-an \Eoc\ equal to $x$. 
-Those orbifolds can have different base manifolds. However, the set of base manifolds of 
-orbifolds from $\mathcal{O}$ is finite, as there are only finitely many 
-two dimensional manifolds with an Euler characteristic greater or equal to $x$ and an 
-orbifold always has 
-an \Eoc\ less or equal to the Euler characteristic of its underlying manifold. 
+%Let $x$ be a rational number. 
+%Let $\mathcal{O}$ be the set of all orbifolds with 
+%an \Eoc\ equal to $x$. 
+%Those orbifolds can have different base manifolds. However, the set of base manifolds of 
+%orbifolds from $\mathcal{O}$ is finite, as there are only finitely many 
+%two dimensional manifolds with an Euler characteristic greater or equal to $x$ and an 
+%orbifold always has 
+%an \Eoc\ less or equal to the Euler characteristic of its underlying manifold. 
 
-%We will now provide an argument that shows that for any base manifold $M$, the number 
-%of $M$ orbifolds with \Eoc\ equal to $x$ is finite. It will complete the proof of our theorem.\\
-It remains to prove, that for any base manifold $M$, the number of $M$ orbifolds 
-with \Eoc\ equal to $x$ is finite: 
+%%We will now provide an argument that shows that for any base manifold $M$, the number 
+%%of $M$ orbifolds with \Eoc\ equal to $x$ is finite. It will complete the proof of our theorem.\\
+%It remains to prove, that for any base manifold $M$, the number of $M$ orbifolds 
+%with \Eoc\ equal to $x$ is finite: 
 
-Let $M$ be a two dimensional manifold. 
+%Let $M$ be a two dimensional manifold. 
 
-For the sake of contradiction, assume, that there exists an infinite set $\mathcal{O}_M$
-of $M$-orbifolds such that $\mathcal{O}_M \subseteq \mathcal{O}$ 
+For the sake of contradiction, assume, that the set $\mathcal{O}_M$
+of $M$-orbifolds that have only one type of orbipoints and have \Eoc\ equal to $x$ is infinite 
 %($\ast$)
 .
 
-If $M$ has some boundary, orbifolds in $\mathcal{O}_M$ 
-can have both rotational and dihedral orbipoints. 
-For the simplicity of the following part of the proof we want now to reduce this case 
-to a case 
-where only one type of the orbipoints is present. 
+%If $M$ has some boundary, orbifolds in $\mathcal{O}_M$ 
+%can have both rotational and dihedral orbipoints. 
+%For the simplicity of the following part of the proof we want now to reduce this case 
+%to a case 
+%where only one type of the orbipoints is present. 
 
-Let us observe, that every rotational orbipoint can be replaced by two dihedral orbipoints 
-of the same order without changing the \Eoc. Thus, if there would be infinitely many 
-orbifolds in $\mathcal{O}_M$ having both rotational and dihedral orbipoints, there would be 
-also infinitely many orbifolds in $\mathcal{O}_M$ having only dihedral orbipoints. 
-Thus it is sufficient to prove that there are finitely many orbifolds in $\mathcal{O}_M$ 
-that have only one type of the orbipoints. 
+%Let us observe, that every rotational orbipoint can be replaced by two dihedral orbipoints 
+%of the same order without changing the \Eoc. Thus, if there would be infinitely many 
+%orbifolds in $\mathcal{O}_M$ having both rotational and dihedral orbipoints, there would be 
+%also infinitely many orbifolds in $\mathcal{O}_M$ having only dihedral orbipoints. 
+%Thus it is sufficient to prove that there are finitely many orbifolds in $\mathcal{O}_M$ 
+%that have only one type of the orbipoints. 
 
-%We will now perform the proof of above statement in the case of dihedral orbipoints.
-%The proof for rotational orbipoints is completely analogous. 
+%%We will now perform the proof of above statement in the case of dihedral orbipoints.
+%%The proof for rotational orbipoints is completely analogous. 
 
-Let us call the subset of $\mathcal{O}_M$ 
-that consists only of orbifolds with only dihedral orbipoints by $\mathcal{O}_M^d$.
+%Let us call the subset of $\mathcal{O}_M$ 
+%that consists only of orbifolds with only dihedral orbipoints by $\mathcal{O}_M^d$.
 
-Let $\mathcal{O}_M^d = \{O_i\}_{i \in I}$. 
-For each $i$, let $s_i = (d^0_i, \cdots, d^{l_i}_i)$ be the signature 
-of $O_i$ written with decreasing orders of 
-dihedral points. So for each $i$ we have, that $b^0_i$ is 
+Let $\mathcal{O}_M = \{O_i\}_{i \in I}$. 
+For each $i$, let $s_i = (o^0_i, \cdots, o^{l_i}_i)$ be the list of degrees of 
+the orbipoints  
+of $O_i$ ordered in a decreasing manner. 
+%written with decreasing orders of 
+%dihedral points. 
+So for each $i$ we have, that $o^0_i$ is 
 the order of the orbipoint with the highest order of all the dihedral orbipoints of 
 $O_i$. 
-By \ref{first_finiteness_theorem} we know that if the set $\{d^0_i\}_{i \in I}$ 
+By \ref{first_finiteness_theorem} we know that if the set $\{o^0_i\}_{i \in I}$ 
 would be bounded 
-by some $n \in \mathbb{N}$ it would mean, that $\mathcal{O}_M^d$ would be finite. As 
-from our assumption for the contradiction, we have that $\mathcal{O}_M^d$ is not finite, we know
-that the set $\{d^0_i\}_{i \in I}$ is unbounded. 
+by some $n \in \mathbb{N}$, by \ref{sameness} 
+it would mean, that $\mathcal{O}_M^d$ would be finite. As 
+from our assumption for the contradiction, we have that $\mathcal{O}_M$ is not finite, we know
+that the set $\{o^0_i\}_{i \in I}$ is unbounded. 
 Let $\{i_n\}_{n\in \mathbb{N}} \subseteq I$ be a sequence of indices such that
-$\{d^0_{i_n}\}_{n\in \mathbb{N}}$ is strictly increasing. 
+$\{o^0_{i_n}\}_{n\in \mathbb{N}}$ is strictly increasing. 
 
 %Let $\{a_n\}$ be the sequence such that $a_n = \frac{m_n-1}{m_n} \end{cases}$ if point 
 %corresponding 
 %to $m_n$ is an rotational point and $a_n = \frac{m_n-1}{2m_n}$ if point corre 
-Let $\{a_n\}$ be the sequence such that $a_n = \Delta(d^0_{i_n})$.
-Let $\{b_n\}$ be the sequence such that $b_n = \Delta(d^1_{i_n},
-\cdots, b^{l_{i_n}}_{i_n})$. 
-So for every $n$ we know that $\cho{O_{i_n}} = \chi(M) + a_n + b_n$. As $\{d^0_{i_n}\}$ 
+Let $\{a_n\}$ be the sequence such that $a_n = \Delta(o^0_{i_n})$.
+Let $\{b_n\}$ be the sequence such that $b_n = \Delta(o^1_{i_n},
+\cdots, o^{l_{i_n}}_{i_n})$. 
+So for every $n$ we know that $\cho{O_{i_n}} = \chi(M) + a_n + b_n$. As $\{o^0_{i_n}\}$ 
 is strictly 
 increasing, we know 
 that $a_n$ is strictly decreasing, so $b_n$ must be strictly 
@@ -263,6 +290,55 @@ $_\square$
 %strongly increasing sequences, so 
 %$\speS - 2$ has no infinite strongly increasing sequences. That gives us a contradiction. 
 %\Lightning $_\square$ 
+ 
+\subsubsection{Proof II.}
+
+Let us take $x\in \spe$. 
+By using observation \ref{simplification of the finiteness theorem} it is only needed to prove, 
+that for any $M$, there are only finitely many $M$-orbifolds with only one corresponfding 
+type of orbipoints 
+(rotational in the case $M$ has no boundary, dihedral in the case $M$ has a boundary),
+with \Eoc\ equal to $x$. 
+
+Similarly as in \ref{finiteness_lemma} and \ref{first_finiteness_theorem}, 
+we can deduce, that since:
+\begin{itemize} 
+\item $\Delta(^*2) = -\frac{1}{4}$,
+\item $\Delta(2) = -\frac{1}{2}$,
+\item every $M$ with boundary has $\chi(M) \leq 1$,
+\item every $M$ without boundary has $\chi(M) \leq 2$,
+\end{itemize}
+we have, that there can be at most 
+$n \coloneqq \max \{\lfloor 4(1-x) \rfloor, \lfloor 2(2-x) \rfloor\}$ 
+orbipoints at any orbifold with an \Eoc\ equal to $x$. 
+%and for every $M$ with boundary $\chi(M) \leq 1$, 
+%there can be at most $n \coloneqq \lfloor 4(1-x)\rfloor$ dihedral 
+%orbipoints on an orbifold with any manifold 
+
+Let us take $k\leq n$, we will show that there is only finitely many $M$-orbifolds $O$,
+with exactly $k$ orbipoints of the corresponding type having \Eoc\ equal to $x$. 
+
+Let $O$ be an $M$-orbifold with exactly $k$ orbipoints of the corresponding type. Let 
+$s = (o^0, \cdots, o^{k})$ be the list of degrees of 
+the orbipoints  
+of $O$ ordered in a decreasing manner. From \ref{sameness} we know, that only finitely 
+many orbifolds can have the same such list.  
+%From \ref{Egyptian_fractions}, 
+%we know, that we can associate 
+With list $s$, we can associate a sum:
+\begin{equation} 
+S \coloneqq \sum_{i=0}^k \frac{1}{o^i}.
+\end{equation} 
+
+%From \ref{Egyptian_fractions} we know that 
+We have that $\cho{O} = \chi(M) - \alpha k + \alpha S$, where $\alpha$ is 
+equal to $\frac{1}{2}$ or $1$, when, respectively $M$ has a boundary or not. 
+
+As such $\cho{O} = x$ iff $S = \frac{1}{\alpha}x-\frac{1}{\alpha}\chi(M) + k$.  
+
+From \ref{Egyptian fractiona finiteness theorem} we know, that there are only finitely many 
+sums of the form of $S$, equal to any given number. $_\square$
+
  
 %\section{Some connections between \Eoc\ and geometry of corresponding orbifolds}
 %\todo{zobaczyć, czy ten rozdział ma sens}
