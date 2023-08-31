@@ -36,9 +36,9 @@ Simmilar analysis was performed in dimension three for manifolds, where
 of three dimensional manifolds form a closed, non-discrete set on the real line, 
 that this set is well ordered, its ordinal type is $\omega^\omega$ and there are 
 only finitely many manifolds with a given volume. 
-What is interesting, 
+%What is interesting, 
 %although techniques used to obtain them are completly different, 
-in this thesis
+In this thesis
 simmilar results 
 are obtained 
 for two-dimensional orbifolds 
@@ -183,10 +183,10 @@ some open subset consisting point $x$ can go to the quotient of compactification
 $\mathbb{H}^2$ by $S^1$. The group, we will take to act on $\mathbb{H}^2$ will 
 be:
 \begin{itemize} 
-\item in the case of $x$ being in the interior -- infinite cyclic group $\mathbb{Z}$, 
+\item in the case of $x$ being in the interior of $O$ -- infinite cyclic group $\mathbb{Z}$, 
 where the generator acts as translation by 1 
 in the half-plane model of hyperbolic plane   
-\item in the case of $x$ being on the boundary -- infinite dihedral group $D_\infty$, where 
+\item in the case of $x$ being on the boundary of $O$ -- infinite dihedral group $D_\infty$, where 
 generators will be reflections with respect to vertical lines spaced by 1 in a half-plane 
 model on a hyperbolic plane.
 \end{itemize}
@@ -228,11 +228,11 @@ We will call $x$ an, respectively, rotational, or dihedral orbipoint of infinite
 
 \section{Classification of two dimensional manifolds}\label{2 dim manifolds}
 %\todo{twierdzenie o klasyfikacji powierzchni}
-In this thesis we aim to better recognise possible two dimensional orbifolds. 
-The foundation that we are relaying on is the classification of two dimensional manifolds. 
+In this thesis we aim to better understand possible two dimensional orbifolds. 
+The foundation that we are relying on is the classification of two dimensional manifolds. 
 
-It is phrased as a well known theorem:
-\todo{cytowanie}
+It is phrased as a well known theorem, which can be found, e.g. in \cite{Conway2016}:
+%\todo{cytowanie}
 %The theorem, written in this language is:
 \begin{theorem}
 Any two dimensional manifold can be obtained from $S^2$ by taking some number of 
@@ -869,12 +869,20 @@ such that $\frac{1}{n_1} \geq \cdots \geq \frac{1}{n_k}$.
 
 Let us observe, that then $\frac{1}{n_1} \geq \frac{q}{k}$. From, this, we have that 
 $n_1 \leq \frac{k}{q}$, so there are only finitely many valuse, that $n_1$ can take. 
-Let $n_1'$ be the smallest value $n_1$ can take, such that $\frac{1}{n_1'} < \frac{1}{q}$. 
+Let $n_1'$ be the smallest value $n_1$ can take, such that $\frac{1}{n_1'} < q$. 
 Then, we have that $\frac{1}{n_2} \geq \cdots \geq \frac{1}{n_k} \geq q - \frac{1}{n_1'}$. 
 
 We can make an inductive argument, that if $n_1', n_2', \cdots, n_{i-1}'$ are such 
-smallest values for $n_1, n_2, \cdots, n_{i-1}$, then we have, that 
-$\frac{1}{n_i} \geq \cdots \geq \frac{1}{n_k} \geq q - \frac{1}{n_1'} - \frac{1}{n_2'} - 
+smallest values for $n_1, n_2, \cdots, n_{i-1}$, that 
+for every $1\leq j \leq i-1$ we have that 
+%\begin{eqaution}
+%\frac{1}{n_j'} < q - \frac{1}{n_1'} - \frac{1}{n_2'} -\cdots - \frac{1}{n_{j-1}'},
+%\end{eqaution} 
+\begin{equation}
+\frac{1}{n_j'} < q - \frac{1}{n_1'} - \frac{1}{n_2'} -\cdots - \frac{1}{n_{j-1}'},
+\end{equation} 
+then we have, that 
+$\frac{1}{n_i} + \cdots + \frac{1}{n_k} \geq q - \frac{1}{n_1'} - \frac{1}{n_2'} - 
 \cdots -\frac{1}{n_{i-1}}$. 
 As such, we have, that 
 \begin{equation}
@@ -898,7 +906,7 @@ As such, there are only finitely many Egyptian fractions of $q$ of $k$ summands.
 %we have $n_{k-i} \leq \frac{k-i}{q-i}$. From this, we see that $n_{k-i}$ is bounded 
 %for every $0\leq i < k$. As such, there are only finitely many $n_1, \cdots, n_k$, such that 
 %$\frac{1}{n_1}+\cdots+\frac{1}{n_k} = q$. 
-$_\square$
+%$_\square$
 
 \section{Operations on orbifolds}\label{Operations}
 As stated in \ref{therminology and notation} we will often see two dimensional orbifold 

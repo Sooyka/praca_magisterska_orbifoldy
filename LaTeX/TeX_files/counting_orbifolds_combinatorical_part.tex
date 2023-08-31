@@ -12,7 +12,7 @@ are always only finitely many answers to be summed.
 In this case we ask our algorithm from \ref{Counting orbifolds -- arithmetical part}: 
 "How many sums of the form
 \begin{equation}
-1-\sum_{i=1}^m \frac{d_j-1}{2d_j} 
+1-\sum_{j=1}^m \frac{d_j-1}{2d_j} 
 \end{equation}
 are equal to 
 \begin{equation}
@@ -25,7 +25,7 @@ in descending order uniquely defines a two dimensional $M$-orbifold without boun
 We ask our algorithm from chapter \ref{Counting orbifolds -- arithmetical part} for the list 
 of all possible sums of the form
 \begin{equation}
-1-\sum_{i=1}^m \frac{d_j-1}{2d_j} 
+1-\sum_{j=1}^m \frac{d_j-1}{2d_j} 
 \end{equation}
 that are equal to 
 \begin{equation}
@@ -41,7 +41,9 @@ sum corresponds at least one $M$-orbifold
 this list of sums will be finite. 
 %\subsection{Fixed}
 \subsection{Reduction to only dihedral orbipoints}\label{reduction only to dihedral}
-As stated in \ref{additional things in boundary case -- rotational}, we need to first 
+As stated in \ref{combinatorical part} in point 3.3.1
+%\ref{additional things in boundary case -- rotational}
+, we need to first 
 take into account that an orbifold can have both dihedral and rotational orbipoints. 
 
 We have complete list of sums corresponding to degrees of dihedral orbipoints that result in 
@@ -52,14 +54,20 @@ and rotational
 orbipoints that result in 
 the $\frac{p}{q}$ orbicharacteristic on $M$-orbifold. 
 We will now propose a unique  
-reduction ($\ast$) of every list corresponding to both dihedral and 
+reduction $R$ 
+%($\ast$) 
+of every list corresponding to both dihedral and 
 rotational orbipoints to the list of only dihedral orbipoints. 
 
-The reduction ($\ast$) goes as follows: for a list of degrees of orbipoints consisting of 
+The reduction 
+($\ast$) 
+$R$ goes as follows: for a list of degrees of orbipoints consisting of 
 $r_1r_2\cdots r_n$ for rotational orbipoints and $d_1d_2\cdots d_m$ for dihedral orbipoints, 
 we replace each $r_i$ from the list of rotational orbipoints by to entries of the same 
 value on the list of dihedral orbipoints. This does not change the 
-corresponding \Eoc, since $\Delta(n) = \Delta(^*n^*n)$ (as stated in \ref{}). 
+corresponding \Eoc, since $\Delta(n) = \Delta(^*n^*n)$ 
+%(as stated in \ref{})
+. 
 
 This procedure is unambiguous and gives only one possible list of dihedral orbipoints degrees 
 for every list of both rotational and dihedral orbipoints degrees. 
@@ -67,11 +75,15 @@ for every list of both rotational and dihedral orbipoints degrees.
 Based on this, for a given sum $d_1d_2\cdots d_n$,
 we can perform the transformation of replacing $n$ by $^*n^*n$ in another direction to 
 produce all possible sums consisting of both rotational and dihedral degrees, that 
-would be reduced to sum $d_1d_2\cdots d_n$. The uniqueness of reduction ($\ast$) guarantees, that 
+would be reduced to sum $d_1d_2\cdots d_n$. The uniqueness of reduction $R$ 
+%($\ast$) 
+guarantees, that 
 we won't arrive to the same unreducted sum from different starting lists of only dihedral degrees.
 
 Based on this, after getting the list of sums from \ref{use algorithm step}, we need to 
-add to this list all possible sums that could be reducted by ($\ast$) to some 
+add to this list all possible sums that could be reducted by 
+%($\ast$) 
+$R$ to some 
 of the sums that we got from \ref{use algorithm step}. 
 
 Sums on the new extended list have also rotational orbipoints taken into account. 
