@@ -94,7 +94,12 @@ orbipoints at any orbifold with an \Eoc\ $\geq x$.
 %\end{theorem}
 
 \begin{observation}\label{first_finiteness_theorem}
-For any $x \in \sigma$ and $n \in \mathbb{N}$ there are only finitely many orbifolds 
+For any $x \in \sigma$ and $n \in \mathbb{N}$ there are only 
+at most 
+\begin{equation}
+(n-1)^{\max \{\lfloor 4(1-x) \rfloor, \lfloor 2(2-x) \rfloor\}}
+\end{equation} 
+orbifolds 
 with the \Eoc\ greater or equal to $x$ and all orbipoints of order at most $n$.
 \end{observation}
 \subsubsection{Proof.} 
@@ -373,24 +378,73 @@ sums of the form of $S$, equal to any given number. $_\square $
 %%\end{observation}
 
 
-%\begin{theorem}
-%For every accululation point $x$ of $\spe$ of order $<2$, there exists an neighbourhood $U$ 
-%of $x$, such that there exists $n \in \mathbb{N}$, such that for all $y \in U$ there are at most 
-%$n$ orbifolds with $y$ as their \Eoc.
-%\end{theorem}
-%\subsubsection{Proof.} 
-%Let $x$, be an accumulation point of $\spe$ of order $0$, then it is isolated point, and as such 
-%it has some neighbourhood $U$, such that $U\cap \spe = \{x\}$. From this and from 
-%\ref{second_finiteness_theorem} we have the thesis in this case. 
+\begin{theorem}\label{order <2 boundness}
+For every accululation point $x$ of $\spe$, of order $<2$, there exists an neighbourhood $U$ 
+of $x$, such that there exists $n \in \mathbb{N}$, such that for all $y \in U$ there are at most 
+$n$ orbifolds with $y$ as their \Eoc.
+\end{theorem}
+\subsubsection{Proof.} 
+Let $x$, be an accumulation point of $\spe$ of order $0$, then it is isolated point, and as such 
+it has some neighbourhood $U$, such that $U\cap \spe = \{x\}$. From this and from 
+\ref{second_finiteness_theorem} we have the thesis in this case. 
 
-%Let $x$, be an accumulation point of $\spe$ of order $1$. 
-%Then, there is an neighbourhood $U$ of $x$, such that in $U\setminus \{x\}$ there are only 
-%isolated points of $\spe$.  
-%%and, since $\spe$ is well-oredered, 
-%%$x$ is the smallest point from $\spe$ in $U$. 
+Let $x$, be an accumulation point of $\spe$ of order $1$. 
+%Then, there is an neighbourhood $U_0$ of $x$, such that in $U_0\setminus \{x\}$ there are only 
+%isolated points of $\spe$. From \ref{} we know, that we can choose $U$, such that all 
+%points in $U$ from $\spe$ are $\geq x$. 
 
-%%From \ref{limit of number of orbipoints lemma} we know, that orbifolds with \Eoc in 
-%%$U$ can have at most  
+Let us assume, for a contradiction, that for any neighbourhood $U$ of $x$,  
+for any $n \in \mathbb{N}$ there exists some $a_n \in U \setminus \{x\}$, such that 
+there are at least $n$ orbifolds with $a_n$ as their \Eoc. 
+Let us take such sequence $\{a_n\}$, such that $\lim\limits_{n\to \infty} a_n = x$. 
+%We can do this, since the assumption about existance 
+
+%\ref{limit of number of orbipoints lemma} 
+Since we have \ref{first_finiteness_theorem}, we know, that for every $m \in \mathbb{N}$, 
+there exists $n_m$, such that there exists an orbifold with an \Eoc\ equal to $a_{n_m}$ 
+with an orbipoint of order at least $m$. Since \ref{second_finiteness_theorem} we know 
+that $\lim\limits_{m\to \infty} n_m = \infty$, 
+so $\lim\limits_{n\to \infty} a_{n_m} = x$. 
+
+For each $m \in \mathbb{N}$, let $o_m$ be the largest degree of orbipoint from every orbipoints 
+present on every orbifolds with an \Eoc\ equal to $a_{n_m}$. 
+We were choosing $n_m$, such that we know that for every $m$ we have $o_m \geq m$. 
+%Since \ref{all acc S in D}, we know, that 
+There are infinitely many orbipoints of one of the types -- rotational or dihedral in the 
+sequence of orbipoints corresponding to $o_m$. 
+Let us WLOG assume that we choose $o_m$ (by skiping some elements) 
+to consist only degrees corresponding to one type 
+of points.
+
+Let $O_m$, be an orbifold corresponding to the choosen $o_m$. Let $O_m'$ be the orbifold 
+created by removing orbipoint of degree $o_m$ from $O_m$. 
+
+We can see, that 
+\begin{align}
+\lim_{m\to \infty} \cho{O_m'} = \lim_{m\to\infty}( \cho{O_m} - \Delta(o_m) )&= 
+ \lim_{m\to\infty} (a_{n_m} + 1 - \frac{1}{o_m}) = \notag \\
+ \lim_{m\to\infty} a_{n_m} + 1 -  \frac{1}{o_m} = x + 1 - 0 &= x+1,
+\end{align} 
+in the case we choose rotational points and 
+\begin{align}
+\lim_{m\to \infty} \cho{O_m'} = \lim_{m\to\infty}( \cho{O_m} - \Delta(^*o_m) )&= 
+ \lim_{m\to\infty} (a_{n_m} + \frac{1}{2} - \frac{1}{2o_m}) = \notag \\
+ \lim_{m\to\infty} a_{n_m} + \frac{1}{2} -  \frac{1}{2o_m} = x + \frac{1}{2} - 0 &= x+\frac{1}{2},
+\end{align} 
+in the case we choose rotational points. 
+
+We can see that either $x+1$ or $x = \frac{1}{2}$ is an accumulation point of $\spe$ of order at 
+least one. This however, by reasoning analogous to \ref{first_order_lemma}, 
+gives us the contradiction 
+with the assumption that $x$ was an accumulation point of $\spe$ of order $1$. $_\square$
+%In both cases we see, that 
+%(in the case of rotational points also using \ref{}), 
+%that point $x+\frac{1}{2}$ is 
+%and, since $\spe$ is well-oredered, 
+%$x$ is the smallest point from $\spe$ in $U$. 
+
+%From \ref{limit of number of orbipoints lemma} we know, that orbifolds with \Eoc in 
+%$U$ can have at most  
 
 %\todo{dokończyć}
 
@@ -399,7 +453,9 @@ sums of the form of $S$, equal to any given number. $_\square $
 \subsection{Local unboundness}
 We know, that for any $x$, there are only finitely many orbifolds with $x$ as an \Eoc . 
 However, we can ask about some boundness of number of these orbipoints. 
-In particular, we could ask, whether near any accumulation point, there will be $x$ with an 
+In particular, we could ask, whether near any accumulation point of order at least $2$, 
+(for orders $<2$, we answered this question in \ref{order <2 boundness})
+there will be $x$ with an 
 arbitrary large number of orbifolds corresponding to it. 
 The answer will be yes, and it can be formulated as such:
 \begin{theorem}\label{unboundness}
