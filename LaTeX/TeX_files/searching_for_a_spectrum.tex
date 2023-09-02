@@ -284,16 +284,16 @@ In the case, the $flag\_value$ is equal to:
             
             
         }
-        If $\chi^{orb}(*d_1d_2d_3\cdots)<\frac{p}{q}$ then 
-        {
-            We set the flag to "Less".
-            We put the pivot at the $c_{p+1}$.
-            We go to the 1st line.
-        }
         If $\chi^{orb}(*d_1d_2d_3\cdots)>\frac{p}{q}$ then 
         {
             We set the flag to "Greater".
             We put the pivot at the $c_1$.
+            We go to the 1st line.
+        }
+        If $\chi^{orb}(*d_1d_2d_3\cdots)<\frac{p}{q}$ then 
+        {
+            We set the flag to "Less".
+            We put the pivot at the $c_{p+1}$.
             We go to the 1st line.
         }
     }
@@ -602,7 +602,7 @@ is the infimum of
 The state of the counters in the algorithm is weakly increasing with respect to order $\preceq$. 
 \end{lemma}
 \subsubsection{Proof.}
-The state of the counters is changed in lines 10-11, 46, 66-67. In each of these lines 
+The state of the counters is changed only in lines 15, 33-34, 64-65. In each of these lines 
 the counter with the greatest index of all changed counters increases in value, so 
 the resulting state is bigger with respect to order $\preceq$. $_\square$
 
@@ -851,8 +851,12 @@ corresponds to \ref{Less idea}.
 %The graph of the control flow of these parts looks like this:
 %Above idea is structured among three parts of the algorithm 
 
-The control flow of the parts can be seen on the diagram:
-\todo{obrazek}
+The control flow of the parts can be seen on the diagram (numbers above arrow indicate lines):
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{"../searching_for_a_spectrum/control_flow.jpg"}
+\caption{Diagram of the control flow of the algorithm. Numbers above arrow indicate lines.}
+\end{figure}
 The execution of the algorithm then goes as follows:
 
 We start at "Greater" and proceed to do the procedure from \ref{greater idea}. 
@@ -890,7 +894,7 @@ When control is at the line 15. and the pivot is at the counter $c_p$, all count
 to the left of $c_n$ are set to $\infty$. 
 \end{lemma}
 \subsubsection{Proof.}
-We can get to the line 15th only in two ways: from line 18 in "Greater" section or from line 53 
+We can get to the line 15th only in two ways: from line 18 in "Greater" section or from line 47 
 in "Searching" section. 
 In this process "Searching" moves pivot to the first counter and  
 "Greater" moves pivot one counter to the right. 
@@ -935,7 +939,7 @@ to the left of $c_p$, are set to the same value $d_{p-1}$ and the counter $c_p$
 is not set to the value $d_{p-1}$. 
 \end{lemma}
 \subsubsection{Proof.}
-The only way for the control flow to get to the line 66th is from line 47th or 84th. 
+The only way for the control flow to get to the line 66th is from line 53th or 84th. 
 In both of these cases, the counters to the left of $c_p$ were set to the same value on, 
 respectively lines 33-34 or 64-65. Also, on lines 33-34 or 64-65, the value 
 of the counter $c_{p-1}$ was increased by $1$. From this and 
@@ -1005,8 +1009,7 @@ Now, we will perform the proof, that the idea of the algorithm presented above i
 well as the algorithm itself \ref{the algorithm for searching the spectrum itself}, 
 works as intended.
 
-Firstly, let us observe, that algorithm gives the answer on lines 8, 14-15, 35-36, 55-56, 
-62-63 and 
+Firstly, let us observe, that algorithm gives the answer only on lines 7-8, 37-38, 62, 68-69 and 
 always ends immediately after giving the answer. Thus, it will always give at most one answer.
 Furthermore let us observe that these are the only places where the algorithm terminates, 
 so if it terminates it will give at least one answer.
@@ -1050,10 +1053,10 @@ First, we will show that the algorithm will never
 go beyond $d_1d_2d_3\cdots$ counter state in $\preceq$ order. 
 
 Let us observe that the only lines where 
-the counters are changed are lines 15, 40-41 and 71-72, 
+the counters are changed are lines 15, 33-34 and 64-65, 
 
-Right right before 
-the change from 15 and right after each change from 40-41, 71-72 
+Right before 
+the change from 15 and right after each change from 33-34, 64-65 
 (lines, respectively 5, 35, 66), 
 the new state is checked if it is a solution and 
 if it is a solution, the algorithm stops. From this, we 
@@ -1140,7 +1143,7 @@ we have that, unless $n < k$, we have that
 \end{equation}
 However, this is a contradiction with being at lines 64-65, as 
 the only way to get there with the execution, is either from lines 
-45-47 or the lines 82-84, reaching either require for the state of counters to have 
+51-53 or the lines 82-84, reaching either require for the state of counters to have 
 corresponding \Eoc\ $<\frac{p}{q}$.
 
 % We can get to line 64 only if the configuration (all of the pivot to 
@@ -1268,12 +1271,13 @@ any $i \leq l$, and that $\cho{^0D} < \frac{p}{q}$.
 
 From this, we conclude, that $\cho{D'} < \frac{p}{q}$. 
 Regardless of at which line state $D'$ was produced, the execution will then follow, 
-through line  or to the line    . From this point, since $\cho{D} \geq \frac{p}{q}$, we will 
+through line 53 or 84 to the lines 64-65. From this point, since $\cho{D'} < \frac{p}{q}$, 
+we will 
 have consecutive sequence length at most $l$, of states of counters, where 
 values of consecutive counters 
 from $D'$ will be increased by one and all the counters to the left of them will be set to 
 the value of the counter which was just increased. 
-This sequence will be generated by repeatedly going through line 66 in the algorithm, since 
+This sequence will be generated by repeatedly going through lines 64-65 in the algorithm, since 
 at every step, the corresponding \Eoc of the state of counters will be $< \frac{p}{q}$.
 
 This sequence will end by going with the pivot to the counter $c_{l+1}$, which we 

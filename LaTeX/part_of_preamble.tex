@@ -29,6 +29,7 @@
 %\usepackage[eulermath]{classicthesis}
 \usepackage{xcolor}
 %\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{float}
 \usepackage[
 backend=biber,
 style=alphabetic,
@@ -71,6 +72,8 @@ outer = 25mm
 \newtheorem{claim}[theorem]{Claim}
 
 \numberwithin{equation}{theorem}
+
+\numberwithin{figure}{theorem}
 
 \newcommand{\todo}[1]{\hfill \break \textbf{\Huge \textcolor{violet}{TO DO: #1} \hfill \break}
 \normalsize}
