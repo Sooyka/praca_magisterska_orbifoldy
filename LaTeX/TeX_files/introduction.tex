@@ -115,7 +115,8 @@ For an orbifold $O$ we will call this underlying manifold $M$
 a base manifold of $O$ and denote it by $|O|$,
 and we will call $O$ an $M$-orbifold.  
 
-In dimension two, only possible groups acting on the map sets are:
+In dimension two, only possible groups acting on the map sets are (\cite{Thurston1979} 
+Proposition 13.3.1):
 \begin{itemize}
 \item cyclic groups $\mathbb{Z}_n$ acting by rotations around certain point
 \item dihedral groups $\mathbb{D}_n$ acting by reflections about $n$ different lines 
@@ -556,14 +557,14 @@ curvature equal $-1$,
 %$y \geq 1, 0\leq x \leq 1$ of the half-plane model of a hyperbolic plane.    
 
 With an elliptic or a hyperbolic metric structure, we can measure the area of the orbifold as 
-\begin{equation}
+\begin{equation}\label{area curvature integral}
 A(O) = \left|\int_O K dA\right|
 \end{equation} 
 Also, as stated in \cite{Thurston1979} (13.3.5.), the Gauss-Bonnet 
 theorem works also for orbifolds 
 and we have that integral over curvature is independent of the particular metric chosen 
 and is proportional to $\chi^{orb}$:
-\begin{equation}
+\begin{equation}\label{curvature integral \Eoc}
 \int_O K dA = 2\pi\left|\cho{O}\right|,
 \end{equation}
 thus having that the area is:
@@ -595,6 +596,14 @@ $(2*2\ 2)$,  $(3*3)$,  $(4*2)$,  $(2\ 2*)$,
 \item Möbius band: $(*\times)$, 
 \end{itemize}
 and infinitely many families of hyperbolic orbifolds. 
+
+The proof from \cite{Thurston1979} (theorem 13.3.6.) can be also adapted to the case 
+of orbifolds in a sense of definition extended by subsection \ref{compactness}, to show that 
+they also admit metric structure with finite area and that equations 
+\ref{area curvature integral}, \ref{curvature integral \Eoc} and \ref{area to chi} 
+also holds in elliptic and hyperbolic cases. 
+In this case however, the metric won't be defined on the cusp points themselves 
+(which lie in the compactification).  
 
 Our main goal in this thesis is to describe possible areas of two dimensional orbifolds, 
 especially those with hyperbolic structure. 
@@ -943,7 +952,7 @@ As such, there are only finitely many Egyptian fractions of $q$ of $k$ summands.
 %$_\square$
 
 \section{Operations on orbifolds}\label{Operations}
-As stated in \ref{therminology and notation} we will often see two dimensional orbifold 
+As stated in section \ref{therminology and notation} we will often see two dimensional orbifold 
 as a sphere $S^2$ with a collection of features.
 Throughout the thesis we will frequently refer to performing the "operation" on an orbifold 
 consisting of removing and adding those features. 
@@ -959,7 +968,7 @@ As our main interest is to determine, for a given rational number
 $\frac{p}{q}$ which orbifolds have $\frac{p}{q}$ as their \Eoc\ and for a given 
 orbifold $O$, which orbifolds 
 have the same \Eoc\ as $O$, we will be particularly interested in such operations 
-that do not change \Eoc, which will be used in \ref{sufficiency of D2 and S2}.
+that do not change \Eoc, which will be used in section \ref{sufficiency of D2 and S2}.
 
 
 

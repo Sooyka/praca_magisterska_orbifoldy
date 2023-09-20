@@ -1,0 +1,10 @@
+W tej pracy, stawiamy sobie za cel opisanie spektrum wszystkich możliwych pól powierzchni dwu wymiarowych orbifodów, w szczególności tych o ujemnej orbicharakterystyce Eulera. 
+Będziemy analizować spektrum traktowane zarówno jako podzbiór liczb rzeczywistych i wtedy będziemy badać ich typ porządkowy i topologię; i jako obraz orbicharakterystyki Eulera i wtedy będziemy liczyć orbifoldy odpowiadające poszczególnym punktom w spektrum.
+
+
+
+W tej pracy, stawiamy sobie za cel opisanie spektrum wszystkich możliwych pól powierzchni dwu wymiarowych orbifodów, w szczególności tych o ujemnej orbicharakterystyce Eulera. 
+Będziemy analizować spektrum traktowane zarówno jako podzbiór liczb rzeczywistych -- wtedy będziemy badać ich typ porządkowy i topologię; i jako obraz orbicharakterystyki Eulera -- wtedy będziemy badać ile orbifoldów odpowiada poszczególnym punktom w spektrum.
+
+W tej pracy stawiamy sobie za cel opisanie spektrum wszystkich możliwych pól powierzchni dwu wymiarowych orbifodów, w szczególności tych o ujemnej orbicharakterystyce Eulera. 
+Będziemy analizować spektrum traktowane zarówno jako podzbiór liczb rzeczywistych -- wtedy będziemy badać ich typ porządkowy i topologię; i jako obraz orbicharakterystyki Eulera -- wtedy będziemy liczyć ile orbifoldów odpowiada poszczególnym punktom w spektrum.
